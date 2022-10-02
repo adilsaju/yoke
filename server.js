@@ -18,8 +18,8 @@ async function run() {
 
     const studentDocumentVerification = await Student.studentDocumentVerification.create({medicalLicense: "43243" , radioLicense: "54365", license: "12212"})
 
-    const request = await Student.requestSchema.create({})
-    const request2 = await Student.requestSchema.create({})
+    const request = await Student.request.create({})
+    const request2 = await Student.request.create({})
 
 
     const admin = await Student.admin.create({name: "Claire" , email: "claire@gmail.com", password: "12345678" , approvedRequests: [request,request2], approvedStudentDocuments: [studentDocumentVerification]})
@@ -39,8 +39,8 @@ app.use(express.json())
 //router 
 // const subscribersRouter = require('./routes/s')
 const router = express.Router()
-//getting all
-app.get('/',async (req,res)=>{
+//getting studs
+app.get('/students',async (req,res)=>{
     try {
         const abc=await Student.student.find()
         res.json(abc)
@@ -49,7 +49,24 @@ app.get('/',async (req,res)=>{
     }
     // res.send('hw')
 })
-
+//getting requests
+app.get('/requests',async (req,res)=>{
+    try {
+        const abc=await Student.request.find()
+        res.json(abc)
+    } catch (error) {
+        res.status(500).json({ message: error.message})
+    }
+})
+//getting license verifications
+app.get('/verifications',async (req,res)=>{
+    try {
+        const abc=await Student.studentDocumentVerification.find()
+        res.json(abc)
+    } catch (error) {
+        res.status(500).json({ message: error.message})
+    }
+})
 
 app.listen(port, ()=>{
     console.log('server started');
