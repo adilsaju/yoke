@@ -30,7 +30,6 @@ const studentDocumentVerificationSchema = new mongoose.Schema({
    },
    // student: studentSchema,
    // approvedAdmin: adminSchema,
-
 })
 
 const requestSchema = new mongoose.Schema({
@@ -46,12 +45,12 @@ const requestSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
    },
-   // student: studentSchema,
-   // approvedAdmin: adminSchema,
    adminVerifiedDate: {
       type: Date,
       default: Date.now
    }
+   // student: studentSchema,
+   // approvedAdmin: adminSchema,
 })
 
 
@@ -110,7 +109,7 @@ const studentSchema = new mongoose.Schema({
 module.exports = {
    studentRequirements: mongoose.model('studentRequirements', studentRequirementsSchema, 'studentRequirements'),
    studentDocumentVerification: mongoose.model('studentDocumentVerification', studentDocumentVerificationSchema, 'studentDocumentVerification'),
-   requestSchema: mongoose.model('request', requestSchema, 'request'),
+   request: mongoose.model('request', requestSchema, 'request'),
    admin: mongoose.model('admin', adminSchema, 'admin'),
    student: mongoose.model('student', studentSchema, 'student'),
 
