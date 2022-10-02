@@ -1,4 +1,6 @@
 import React,{ useEffect } from 'react'
+import "./Login.css"
+
 const Login = () => {
 
   const abc = () => {
