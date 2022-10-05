@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose')
 const Student = require("./models/Student.js")
 
-const port = 5001
+const port = process.env.PORT || 5001
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true } )
 const db = mongoose.connection 
