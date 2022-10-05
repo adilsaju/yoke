@@ -36,9 +36,17 @@ run()
 
 //middleware
 app.use(express.json())
+
 //router 
-// const subscribersRouter = require('./routes/s')
-const router = express.Router()
+const login = require('./routes/login')
+app.use("/login", login)
+
+//router 
+// const register = require('./routes/register')
+// app.use("/register", register)
+
+
+
 //getting studs
 app.get('/students',async (req,res)=>{
     try {
