@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
+import Home from './components/AdminDashboard/Home'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
@@ -29,20 +30,43 @@ function App() {
 
   return (
 
-    <div>
+    // <div>
 
 
 
-      <h1>React & Firebase</h1>
-      <h2>By @farazamiruddin</h2>
-      <code>
-        {/* <pre>{JSON.stringify(firebaseApp.options, null, 2)}</pre> */}
-        <pre>{JSON.stringify(app.options, null, 2)}</pre>
+    //   <h1>React & Firebase</h1>
+    //   <h2>By @farazamiruddin</h2>
+    //   <code>
+    //     {/* <pre>{JSON.stringify(firebaseApp.options, null, 2)}</pre> */}
+    //     <pre>{JSON.stringify(app.options, null, 2)}</pre>
         
-      </code>
-      <button id="signin">asd</button>
-      <Login />
-    </div>
+    //   </code>
+    //   <button id="signin">asd</button>
+    //   <Login />
+    // </div>
+
+
+    <>
+
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+        <Link to="/login">Login</Link>
+        </li>
+      </ul>
+    </nav>
+
+    <Routes>
+      <Route path="/" element={ <Home/> } />
+      <Route path="/login" element={ <Login/> } />
+
+    </Routes>
+    
+    
+    </>
   );
 }
 
