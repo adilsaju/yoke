@@ -1,4 +1,5 @@
 # Yoke ✈️
+Flying school student management app for admins
 
 DEV ENVIRONMENT SETUP
 ====================
