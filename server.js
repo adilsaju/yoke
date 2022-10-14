@@ -79,6 +79,3 @@ app.get('/verifications',async (req,res)=>{
 app.listen(port, ()=>{
     console.log('server started');
 })
-
-
-
