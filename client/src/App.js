@@ -1,19 +1,14 @@
+import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
 import Home from './components/AdminDashboard/Home'
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 // import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth } from "firebase/auth";
-import {getStorage} from "firebase/storage";
-import { useState,useEffect } from 'react';
-
-
-
-
 
 
 const firebaseConfig = {
@@ -26,46 +21,12 @@ const firebaseConfig = {
   measurementId: "G-PSY32G7NGY"
 };
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
- const auth = getAuth(app);
- const storage = getStorage(app);
- export {auth,storage,app};
-
- const fetchTasks = async () => {
-  let url1 = `http://localhost:5001/students/`;
-  const res = await fetch(url1);
-  const data = await res.json();
-
-  console.log(data);
-  return data;
-};
-
-
-
 function App() {
-  localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
-  const found = localStorage.getItem("loggedInUserId");
-  // console.log("loca")
   // const firebaseApp = firebase.apps[0];
-  const [students,setStudents] = useState([])
-  // const found = students.filter(e => {
-  //   return e.id === '633a07f18e54c3b88bd83f38';
-  // })
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
 
-  console.log(found)
-useEffect(() => {
-
-  
-  const getTasks = async () => {
-    const tfs = await fetchTasks();
-    setStudents(tfs);
-  };
-
-  getTasks();
-
-
-}, []);
 
   return (
 
@@ -86,23 +47,7 @@ useEffect(() => {
 
 
     <>
-    <div>
-      <h2>Name:{found}</h2>
-    </div>
-    <div>
-      {students.map((student,id)=> {
-      
-        return (
-          <div key={id}>
-            <h2> name:{student.name}</h2>
-            <h3>email:{student.email}</h3>
-            <h3>flownHours:{student.studentRequirements.flownHours}</h3> 
-            <h3>Medical License:{student.studentDocumentVerification.medicalLicense}</h3>
-            </div> 
-        )
-     
-      })}
-    </div>
+
     <nav>
       <ul>
         <li>
