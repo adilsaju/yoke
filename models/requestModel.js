@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
 
+const {studentSchema} = require('./StudentModel')
+const {adminSchema} = require('./adminModel')
+
+
 const requestSchema = new mongoose.Schema({
     flightDate: {
        type: Date,
@@ -17,11 +21,11 @@ const requestSchema = new mongoose.Schema({
        type: Date,
        default: Date.now
     },
-    // student: studentSchema,
-    // approvedAdmin: adminSchema,
+    requestedStudent: studentSchema,
+    approvedAdmin: adminSchema,
 
-   requestedStudent:  mongoose.Schema.Types.ObjectId,
-   approvedAdmin:  mongoose.Schema.Types.ObjectId,
+   // requestedStudent:  mongoose.Schema.Types.ObjectId,
+   // approvedAdmin:  mongoose.Schema.Types.ObjectId,
  })
 
 

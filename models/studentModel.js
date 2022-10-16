@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const {requestSchema} = require('./requestModel')
+// const {requestSchema} = require('./requestModel')
 const {studentRequirementsSchema} = require('./checklistModel')
 
 // mongoose.pluralize(null);
@@ -29,9 +29,9 @@ const studentSchema = new mongoose.Schema({
    isRequirementsOk: {
       type: Boolean,
       default: false
-   },
+   }
    // requests: [requestSchema],
-   requests: [ mongoose.Schema.Types.ObjectId],
+   // requests: [ mongoose.Schema.Types.ObjectId],
 })
 
 

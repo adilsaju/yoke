@@ -3,20 +3,24 @@ const Checklist = require('../models/checklistModel')
 const Request = require('../models/requestModel')
 const Admin = require('../models/adminModel')
 
-console.log("rannnn")
+console.log("rannnn data addd()")
 
 //data creation
-async function run() {
+async function addData() {
 
 
-    const studentRequirements = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "ykkkk", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "ykkk"})
+    const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "ykkkk", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "ykkk"})
 
-    const request = await Request.requestModel.create({})
-    const request2 = await Request.requestModel.create({})
 
-    const admin = await Admin.adminModel.create({name: "Claire" , email: "claire@gmail.com", password: "12345678" , approvedRequests: [request,request2]})
 
-    const student = await Student.studentModel.create({name: "Jane" , email: "adilsaju@gmail.com", password: "12345678", studentNumber: 35209583920, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements,  requests: [request] })
+    const admin1 = await Admin.adminModel.create({name: "Claire" , email: "claire@gmail.com", password: "12345678" })
+
+    const student1 = await Student.studentModel.create({name: "Jane" , email: "adilsaju@gmail.com", password: "12345678", studentNumber: 35209583920, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements1 })
+
+    const student2 = await Student.studentModel.create({name: "Joanne" , email: "adilsaju@gmail.com", password: "12345678", studentNumber: 35209583921, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements1 })
+
+    const request1 = await Request.requestModel.create({requestedStudent: student1,approvedAdmin: admin1})
+    const request2 =await Request.requestModel.create({requestedStudent: student2,approvedAdmin: admin1})
     // user.name = ""
     // await user.save()
 
@@ -24,4 +28,4 @@ async function run() {
     //await user.save()
 }
 
-exports.run = run
+exports.addData = addData

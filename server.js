@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const app = express();
 const mongoose = require('mongoose')
-const {run} = require("./scripts/data-create");
-const studentRoute = require('./routes/student')
+const {addData} = require("./scripts/data-create");
+const studentRoute = require('./routes/studentRoute')
 // const login = require('./routes/login')
 
 const port = process.env.PORT || 5001
@@ -13,7 +13,7 @@ const db = mongoose.connection
 db.on('error',(error)=>console.error(error))
 db.once('open',()=>console.error('connected to database'))
 
-run()
+// addData()
 
 //middleware
 app.use(express.json())

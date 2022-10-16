@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const {requestSchema,requestModel} = require('./requestModel')
+// const {requestSchema,requestModel} = require('./requestModel')
 
 
 const adminSchema = new mongoose.Schema({
@@ -16,13 +16,13 @@ const adminSchema = new mongoose.Schema({
        required: true
     },
    //  approvedRequests: [requestSchema],
-   approvedRequests: [ mongoose.Schema.Types.ObjectId ]
+   // approvedRequests: [ mongoose.Schema.Types.ObjectId ]
  
  })
 
 
  module.exports = {
    adminSchema: adminSchema,
-    adminModel: mongoose.model('admin', adminSchema, 'admin'),
+   adminModel: mongoose.model('admin', adminSchema, 'admin'),
  }
  
