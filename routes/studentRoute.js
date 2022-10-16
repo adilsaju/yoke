@@ -41,7 +41,7 @@ router.get('/requests',async (req,res)=>{
 router.get('/requests/:id',async (req,res)=>{
     try {
         //get requests column from student
-        const abc=await Request.requestModel.find()
+        const abc=await Request.requestModel.find(req.params.id)
         res.json(abc)
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -49,14 +49,22 @@ router.get('/requests/:id',async (req,res)=>{
 })
 
 //getting all requests by a particular student
-router.get('/requests/:id',async (req,res)=>{
+// url: /requests?student=12324sadsa124223
+router.get('/requests',async (req,res)=>{
     try {
+        const studentId = req.query.student
         //get requests column from student
-        const abc=await Student.studentModel.findById(req.params.id).select('requests')
+        // const abc=await Student.studentModel.findById(studentId).select('requests')
+
+        const abc=await  Request.requestModel.find({ "requestedStudent._id":  studentId})
+        
         res.json(abc)
     } catch (error) {
         res.status(500).json({ message: error.message})
     }
 })
+
+
+
 
 module.exports = router ;
