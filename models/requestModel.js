@@ -23,6 +23,15 @@ const requestSchema = new mongoose.Schema({
     },
     requestedStudent: studentSchema,
     approvedAdmin: adminSchema,
+    isRejected: {
+      type: Boolean,
+      default: false
+   },
+    //isExpired
+   isExpired: {
+      type: Boolean,
+      default: false
+   },
 
    // requestedStudent:  mongoose.Schema.Types.ObjectId,
    // approvedAdmin:  mongoose.Schema.Types.ObjectId,
