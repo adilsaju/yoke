@@ -13,6 +13,32 @@
   }
 }
 
+table td {
+
+  margin: 2rem;
+  padding: 2rem;
+}
+
+table th {
+  padding: 1.5rem;
+}
+
+.three {
+  padding-left: 2.5rem;
+}
+
+.four {
+  padding-left: 6rem;
+}
+
+.five {
+  padding-left: 6.5rem;
+}
+
+.views div {
+  border: 1px solid black;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

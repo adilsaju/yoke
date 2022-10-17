@@ -1,20 +1,17 @@
 import './App.css';
 import Login from './components/Login/Login';
 import Home from './components/AdminDashboard/Home'
+import Viewprofile from './components/AdminDashboard/viewprofile'
+
 import { Routes, Route, Link } from "react-router-dom";
 
 
 // import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { collection, getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
-
-
-
-
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -41,72 +38,35 @@ export const db = getFirestore(app);
   return data;
 };
 
-
-
 function App() {
   localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
   const found = localStorage.getItem("loggedInUserId");
-  // console.log("loca")
-  // const firebaseApp = firebase.apps[0];
+ 
   const [students,setStudents] = useState([])
-  // const found = students.filter(e => {
-  //   return e.id === '633a07f18e54c3b88bd83f38';
-  // })
+
 
   console.log(found)
-useEffect(() => {
+    useEffect(() => {
 
-  
-  const getTasks = async () => {
-    const tfs = await fetchTasks();
-    setStudents(tfs);
-  };
-
-  getTasks();
-
-
-}, []);
-
-  return (
-
-    // <div>
-
-
-
-    //   <h1>React & Firebase</h1>
-    //   <h2>By @farazamiruddin</h2>
-    //   <code>
-    //     {/* <pre>{JSON.stringify(firebaseApp.options, null, 2)}</pre> */}
-    //     <pre>{JSON.stringify(app.options, null, 2)}</pre>
-        
-    //   </code>
-    //   <button id="signin">asd</button>
-    //   <Login />
-    // </div>
-
-
-    <>
-    <div>
-      <h2>Name:{found}</h2>
-    </div>
-    <div>
-      {students.map((student,id)=> {
       
-        return (
-          <div key={id}>
-            <h2> name:{student.name}</h2>
-            <h3>email:{student.email}</h3>
-            <h3>flownHours:{student.studentRequirements.flownHours}</h3> 
-            <h3>Medical License:{student.studentDocumentVerification.medicalLicense}</h3>
-            </div> 
-        )
-     
-      })}
-    </div>
+      const getTasks = async () => {
+        const tfs = await fetchTasks();
+        setStudents(tfs);
+      };
+
+      getTasks();
+
+
+    }, []);
+let count = 1;
+  return (
+    
+    <>
+  
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li>
         <Link to="/login">Login</Link>
@@ -115,9 +75,9 @@ useEffect(() => {
     </nav>
 
     <Routes>
-      <Route path="/" element={ <Home/> } />
-      <Route path="/login" element={ <Login/> } />
-
+      {/* <Route path="/" element={ <Home/> } /> */}
+      <Route path="/home" element={ <Home/> } />
+      <Route path="/travel-order/profile" element={ <Viewprofile/> } />
     </Routes>
     
     
