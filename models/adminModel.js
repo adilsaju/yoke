@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 
 const adminSchema = new mongoose.Schema({
+    firebase_uid: String,
     name: {
        type: String,
        required: true

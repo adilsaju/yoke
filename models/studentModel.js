@@ -6,6 +6,7 @@ const {studentRequirementsSchema} = require('./checklistModel')
 
 
 const studentSchema = new mongoose.Schema({
+   firebase_uid: String,
    name: {
       type: String,
       required: true
