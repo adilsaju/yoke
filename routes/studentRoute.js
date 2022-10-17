@@ -50,6 +50,7 @@ router.get('/requests/:id',async (req,res)=>{
 
 //getting all requests by a particular student
 // url: /requests?student=12324sadsa124223
+//FOR travel order page in student UI
 router.get('/requests',async (req,res)=>{
     try {
         const studentId = req.query.student
