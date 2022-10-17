@@ -10,7 +10,7 @@ router.route('/students').get(getStudents())
 
 //getting particular student by id
 router.route('/students/:id').get(getStudentById())
-//put notes field api
+//patch notes field api
 .patch(putStudentById())
 //TODO: upload license PUT api
 
