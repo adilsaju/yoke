@@ -4,6 +4,7 @@ import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
 
 import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 // import firebase from 'firebase/compat/app';
@@ -12,6 +13,8 @@ import { collection, getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -56,13 +59,11 @@ function App() {
 
       getTasks();
 
-
     }, []);
 let count = 1;
   return (
     
     <>
-  
     <nav>
       <ul>
         <li>
