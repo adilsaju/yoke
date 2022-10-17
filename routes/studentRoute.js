@@ -2,21 +2,14 @@ const express = require('express')
 const router = express.Router()
 const Student = require("../models/StudentModel.js")
 const Request = require("../models/requestModel.js")
-
+const getStudents = require("../controllers/studentController.js")
 
 //getting all students
-router.get('/students',async (req,res,next)=>{
-    try {
-        const abc=await Student.studentModel.find()
-        res.json(abc)
-    } catch (error) {
-        res.status(500).json({ message: error.message})
-    }
-})
+router.route('/students').get(getStudents())
 
 
 //getting particular student by id
-router.get('/students/:id',async (req,res,next)=>{
+router.route('/students/:id').get(async (req,res,next)=>{
     try {
         const abc=await Student.studentModel.findById(req.params.id)
         res.json(abc)
@@ -71,8 +64,6 @@ router.route('/requests').get(async (req,res,next)=>{
 }
 
 */
-
-
     try {
         console.log("posttttt")
         console.log(req.body)
@@ -82,7 +73,7 @@ router.route('/requests').get(async (req,res,next)=>{
         console.log("sas",sas)
         //create obj
         const request = {
-            //TODO: 
+            //TODO: add date validation
             flightDate : req.body.flightDate,
             requestedDate: new Date(),
             adminVerifiedDate: null,
