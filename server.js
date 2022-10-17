@@ -25,6 +25,7 @@ app.use("/", studentRoute)
 
 // app.use("/login", login)
 
+//error handler middleware
 app.use(errorHandler)
 
 app.listen(port, ()=>{

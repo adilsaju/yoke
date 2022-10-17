@@ -35,6 +35,27 @@ return async (req,res,next)=>{
 } 
 
 
+const putStudentById =()=>{
+
+    return async (req,res,next)=>{
+        console.log("putStudentById")
+        try {
+            const particularStudent=await Student.studentModel.findById(req.params.id)
+            console.log(req.body)
+            console.log(req.body.notes)
+
+            particularStudent.notes = req.body.notes
+            particularStudent.save()
+            // const sas = await Student.studentModel.findById(req.body.studentId)
+
+            res.json(particularStudent)
+        } catch (error) {
+            res.status(500).json({ message: error.message})
+        }
+    }
+    } 
+
+
 
 const getRequestsByStudentId = () => {
     return async (req,res,next)=>{
@@ -134,6 +155,7 @@ module.exports = {getStudents:getStudents, getStudentById:getStudentById,
 postRequestByStudentId:postRequestByStudentId,
 
 getRequests:getRequests,
-getRequestById: getRequestById
+getRequestById: getRequestById,
+putStudentById: putStudentById
 
 }

@@ -18,6 +18,7 @@ const studentSchema = new mongoose.Schema({
       type: String,
       required: true
    },
+   notes: String,
    studentNumber: Number,
    photo: String,
    dateJoined: {

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Student = require("../models/StudentModel.js")
 const Request = require("../models/requestModel.js")
-const {getStudents,getStudentById,getRequestsByStudentId, postRequestByStudentId, getRequests, getRequestById} = require("../controllers/studentController.js")
+const {getStudents,getStudentById,getRequestsByStudentId, postRequestByStudentId, getRequests, getRequestById, putStudentById} = require("../controllers/studentController.js")
 
 //getting all students
 router.route('/students').get(getStudents())
@@ -10,6 +10,9 @@ router.route('/students').get(getStudents())
 
 //getting particular student by id
 router.route('/students/:id').get(getStudentById())
+//put notes field api
+.patch(putStudentById())
+//TODO: upload license PUT api
 
 
 //getting all requests
