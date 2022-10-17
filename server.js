@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const {addData} = require("./scripts/data-create");
 const studentRoute = require('./routes/studentRoute')
 // const login = require('./routes/login')
+const errorHandler = require('./middlewares/errorMiddleware')
 
 const port = process.env.PORT || 5001
 
@@ -13,7 +14,7 @@ const db = mongoose.connection
 db.on('error',(error)=>console.error(error))
 db.once('open',()=>console.error('connected to database'))
 
-addData()
+// addData()
 
 //middleware
 app.use(express.json())
@@ -23,6 +24,8 @@ app.use(express.json())
 app.use("/", studentRoute)
 
 // app.use("/login", login)
+
+app.use(errorHandler)
 
 app.listen(port, ()=>{
     console.log('server started');
