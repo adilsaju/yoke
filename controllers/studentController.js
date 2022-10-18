@@ -51,6 +51,73 @@ const putStudentById = () => {
   };
 };
 
+const uploadLicensesByStudentId = () => {
+  return async (req, res, next) => {
+      console.log('putStudentById');
+      try {
+        //TODO: 
+
+      res.json({});
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
+//patch
+const approveRequestById = () => {
+  return async (req, res, next) => {
+    console.log('putRequestById');
+    try {
+      console.log(req.body);
+      // console.log(req.body.adminId)
+      const particularRequest =
+        await Request.requestModel.findById(req.params.id);
+      let particularAdmin =null
+      if ( "adminId" in req.body)
+      {
+        if (req.body.adminId != null && req.body.adminId != undefined )
+        {
+            particularAdmin = await Admin.adminModel.findById(req.body.adminId);
+            
+        }
+        else {
+      res.status(500).json({ message: "error.message" });
+
+          return
+        }
+
+      }
+      else {
+      res.status(500).json({ message: "error.message" });
+
+        return
+      }
+        
+      // console.log(req.body.notes);
+
+      // particularRequest.notes = req.body.notes;
+      particularRequest.isApproved = true
+      particularRequest.isRejected = false
+      particularRequest.approvedAdmin = particularAdmin
+      particularRequest.adminVerifiedDate = Date.now
+      // particularRequest.isExpired = false
+
+
+      particularRequest.save();
+      // const sas = await Student.studentModel.findById(req.body.studentId)
+
+      res.json(particularRequest);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+
+
+  };
+};
+
+
+
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
     try {
@@ -253,5 +320,7 @@ module.exports = {
   claireFn: claireFn,
   archive,
   getFinalList: getFinalList,
-  getAdminById: getAdminById
+  getAdminById: getAdminById,
+  approveRequestById: approveRequestById,
+  uploadLicensesByStudentId: uploadLicensesByStudentId
 };

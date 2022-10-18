@@ -13,7 +13,9 @@ const {
   claireFn,
   getFinalList,
   archive,
-  getAdminById
+  getAdminById,
+  approveRequestById,
+  uploadLicensesByStudentId
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -26,6 +28,12 @@ router
   //patch notes field api
   .patch(putStudentById());
 //TODO: upload license PUT api
+router
+  .route('/uploadLicenses/:id')
+  //patch notes field api
+  .patch(uploadLicensesByStudentId());
+
+
 
 //getting all requests
 // router.get('/requests',getRequests())
@@ -39,6 +47,10 @@ router
   .route('/requests')
   .get(getRequestsByStudentId())
   .post(postRequestByStudentId());
+
+router
+.route('/requests/:id/approve')
+    .patch(approveRequestById());
 
 router.get('/pendingRequest', claireFn());
 
