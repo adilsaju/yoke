@@ -167,6 +167,34 @@ const claireFn = () => {
   };
 };
 
+
+const getFinalList = () => {
+  return async (req, res) => {
+    try {
+      const requestsInToday = await Request.requestModel
+        .find({
+          isApproved: true,
+          isRejected: false,
+          isExpired: false,
+          // flightDate: {$eq : Date }
+          flightDate: {
+            $eq : Date.now
+          }
+          //TODO: 
+
+
+          // adminVerifiedDate: null,
+          // approvedAdmin: null
+        })
+        .sort({ flightDate: 1 });
+
+      res.json(pendingRequests);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+}
+
 module.exports = {
   getStudents: getStudents,
   getStudentById: getStudentById,
@@ -177,5 +205,6 @@ module.exports = {
   getRequests: getRequests,
   getRequestById: getRequestById,
   putStudentById: putStudentById,
-  claireFn,
+  claireFn: claireFn,
+  getFinalList: getFinalList
 };

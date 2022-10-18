@@ -11,6 +11,7 @@ const {
   getRequestById,
   putStudentById,
   claireFn,
+  getFinalList,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -38,5 +39,10 @@ router
   .post(postRequestByStudentId());
 
 router.get('/pendingRequest', claireFn());
+
+//final List of that particular day
+router.get('/finalList', getFinalList());
+
+
 
 module.exports = router;
