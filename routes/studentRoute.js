@@ -13,6 +13,7 @@ const {
   claireFn,
   getFinalList,
   archive,
+  getAdminById
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -46,5 +47,9 @@ router.get('/finalList', getFinalList());
 
 
 router.get('/archives', archive());
+
+
+router.route('/admins/:id').get(getAdminById());
+
 
 module.exports = router;

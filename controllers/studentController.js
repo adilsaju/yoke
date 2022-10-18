@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
+const Admin = require('../models/adminModel.js');
+
 
 const getStudents = () => {
   return async (req, res, next) => {
@@ -224,6 +226,20 @@ const archive = () => {
 }
 
 
+const getAdminById = () => {
+  return async (req, res, next) => {
+    console.log('getAdminById');
+    try {
+      const abc = await Admin.adminModel.findById(
+        req.params.id
+      );
+      res.json(abc);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
 module.exports = {
   getStudents: getStudents,
   getStudentById: getStudentById,
@@ -236,5 +252,6 @@ module.exports = {
   putStudentById: putStudentById,
   claireFn: claireFn,
   archive,
-  getFinalList: getFinalList
+  getFinalList: getFinalList,
+  getAdminById: getAdminById
 };
