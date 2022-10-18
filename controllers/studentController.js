@@ -167,6 +167,33 @@ const claireFn = () => {
   };
 };
 
+// ******** admin archive ********
+const archive = () => {
+  return async (req, res) => {
+    try {
+      const archivedRequests = await Request.requestModel
+        .find({
+          $or: [
+            {
+              isApproved: true,
+            },
+            {
+              isRejected: true,
+            },
+            {
+              isExpired: true,
+            },
+          ],
+        })
+        .sort({ flightDate: 1, requestedDate: 1 });
+
+      res.json(archivedRequests);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
 module.exports = {
   getStudents: getStudents,
   getStudentById: getStudentById,
@@ -178,4 +205,5 @@ module.exports = {
   getRequestById: getRequestById,
   putStudentById: putStudentById,
   claireFn,
+  archive,
 };
