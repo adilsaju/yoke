@@ -73,12 +73,49 @@ const approveRequestById = () => {
       // console.log(req.body.adminId)
       const particularRequest =
         await Request.requestModel.findById(req.params.id);
-      let particularAdmin =null
-      if ( "adminId" in req.body)
+
+
+      if (! ("adminId" in req.body) ){
+        res.status(500).json({ message: "no adminId provided in request body" });
+
+        return
+      }
+      //MAIN CHECKS
+      if ( particularRequest.isExpired === true )
       {
+        res.status(500).json({ message: "sorry. already expired" });
+
+        return
+      }
+
+      if ( particularRequest.isRejected === true )
+      {
+        res.status(500).json({ message: "already rejected" });
+
+        return
+      }
+      
+      if ( particularRequest.isApproved === true )
+      {
+        res.status(500).json({ message: "already approved" });
+
+        return
+      }
+
+      let particularAdmin =null
+
         if (req.body.adminId != null && req.body.adminId != undefined )
         {
+          try {
             particularAdmin = await Admin.adminModel.findById(req.body.adminId);
+            
+          } catch (error) {
+            res.status(500).json({ message: "finding particular admin by given id failed" });
+
+            return
+          }
+            
+ 
             
         }
         else {
@@ -87,12 +124,7 @@ const approveRequestById = () => {
           return
         }
 
-      }
-      else {
-      res.status(500).json({ message: "error.message" });
 
-        return
-      }
         
       // console.log(req.body.notes);
 
@@ -100,11 +132,11 @@ const approveRequestById = () => {
       particularRequest.isApproved = true
       particularRequest.isRejected = false
       particularRequest.approvedAdmin = particularAdmin
-      particularRequest.adminVerifiedDate = Date.now
+      particularRequest.adminVerifiedDate = new Date()
       // particularRequest.isExpired = false
 
-
       particularRequest.save();
+
       // const sas = await Student.studentModel.findById(req.body.studentId)
 
       res.json(particularRequest);
@@ -121,6 +153,7 @@ const approveRequestById = () => {
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
     try {
+      //FIXME: if req.query.student is empty, its returning all data fix that
       const studentId = req.query.student;
       //get requests column from student
       // const abc=await Student.studentModel.findById(studentId).select('requests')

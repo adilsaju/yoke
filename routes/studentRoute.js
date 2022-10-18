@@ -37,8 +37,7 @@ router
 
 //getting all requests
 // router.get('/requests',getRequests())
-//getting request by id
-// router.get('/requests/:id',getRequestById())
+
 
 //getting all requests by a particular student
 // url: /requests?student=634c84017abbf81281febf50
@@ -48,11 +47,14 @@ router
   .get(getRequestsByStudentId())
   .post(postRequestByStudentId());
 
+//getting request by id (used for student profile page as well)
+router.get('/requests/:id',getRequestById())
+
 router
 .route('/requests/:id/approve')
     .patch(approveRequestById());
 
-router.get('/pendingRequest', claireFn());
+router.get('/pendingRequests', claireFn());
 
 //final List of that particular day
 router.get('/finalList', getFinalList());

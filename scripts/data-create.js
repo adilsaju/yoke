@@ -20,7 +20,7 @@ async function addData() {
     const student2 = await Student.studentModel.create({name: "Joanne" , email: "adilsaju@gmail.com", password: "12345678", studentNumber: 35209583921, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements1 })
 
     const request1 = await Request.requestModel.create({requestedStudent: student1,approvedAdmin: admin1})
-    const request2 =await Request.requestModel.create({requestedStudent: student2,approvedAdmin: admin1})
+    const request2 =await Request.requestModel.create({requestedStudent: student2,approvedAdmin: null})
     // user.name = ""
     // await user.save()
 
