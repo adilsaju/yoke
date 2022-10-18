@@ -48,19 +48,19 @@ router
   .post(postRequestByStudentId());
 
 //getting request by id (used for student profile page as well)
-router.get('/requests/:id',getRequestById())
+router.route('/requests/:id').get(getRequestById())
 
 router
 .route('/requests/:id/approve')
     .patch(approveRequestById());
 
-router.get('/pendingRequests', claireFn());
+router.route('/pendingRequests').get( claireFn());
 
 //final List of that particular day
-router.get('/finalList', getFinalList());
+router.route('/finalList').get( getFinalList());
 
 
-router.get('/archives', archive());
+router.route('/archives').get( archive());
 
 
 router.route('/admins/:id').get(getAdminById());
