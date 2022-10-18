@@ -1,10 +1,9 @@
 import './App.css';
-import Login from './components/Login/Login';
+import SideMenu from './components/Navbar/SideMenu';
 import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
 
 import { Routes, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 // import firebase from 'firebase/compat/app';
@@ -13,8 +12,8 @@ import { collection, getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth } from "firebase/auth";
+import TravelOrder from './components/AdminDashboard/TravelOrder';
+import Archive from './components/AdminDashboard/Archive';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -66,19 +65,30 @@ let count = 1;
     <>
     <nav>
       <ul>
-        <li>
-          <Link to="/home">Home</Link>
+      <li>
+          <Link to="/">Home</Link>
         </li>
         <li>
+          <Link to="/travel-order">Travel Order</Link>
+        </li>
+        {/* <li>
         <Link to="/login">Login</Link>
+        </li> */}
+        <li>
+          <Link to="/final-list">Final list</Link>
+        </li>
+        <li>
+          <Link to="/archive">Archive</Link>
         </li>
       </ul>
     </nav>
 
     <Routes>
-      {/* <Route path="/" element={ <Home/> } /> */}
-      <Route path="/home" element={ <Home/> } />
+      <Route path="/" element={ <Home/> } /> 
+      <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile" element={ <Viewprofile/> } />
+      <Route path="/final-list" element={<SideMenu/>}/>
+      <Route path="/archive" element={<Archive/>}/>
     </Routes>
     
     

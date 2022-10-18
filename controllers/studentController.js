@@ -189,11 +189,40 @@ const getFinalList = () => {
         .sort({ flightDate: 1 });
 
       res.json(pendingRequests);
+
+    }
+    catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+
+  }}
+// ******** admin archive ********
+const archive = () => {
+  return async (req, res) => {
+    try {
+      const archivedRequests = await Request.requestModel
+        .find({
+          $or: [
+            {
+              isApproved: true,
+            },
+            {
+              isRejected: true,
+            },
+            {
+              isExpired: true,
+            },
+          ],
+        })
+        .sort({ flightDate: 1, requestedDate: 1 });
+
+      res.json(archivedRequests);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   };
 }
+
 
 module.exports = {
   getStudents: getStudents,
@@ -206,5 +235,6 @@ module.exports = {
   getRequestById: getRequestById,
   putStudentById: putStudentById,
   claireFn: claireFn,
+  archive,
   getFinalList: getFinalList
 };

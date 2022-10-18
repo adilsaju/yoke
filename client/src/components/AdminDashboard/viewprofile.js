@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 
 
 const fetchTasks = async () => {
-  let url = `http://localhost:5001/students/`;
+  let url = `http://localhost:5001/students/634c84017abbf81281febf50`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -30,18 +30,8 @@ const Viewprofile = () => {
 
   return (
     <div>
-      {students.map((student,id)=> {
-        return (
-          <div className='views' key={id}>
-            <div>
-        <h1>{student.name}</h1>
-        <h2>Student Number:{student.studentNumber}</h2>
-        <h2>Current License:{student.studentRequirements.licenseType}</h2>  
-        <h2>Flown Hours : {student.requests[0].flightDate}</h2>
-        </div>
-        </div>
-        )
-      })}
+      <h3>{students.name}</h3>
+      <h4>{students.email}</h4>
     </div>
   )
 }

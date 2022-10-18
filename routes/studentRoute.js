@@ -12,6 +12,7 @@ const {
   putStudentById,
   claireFn,
   getFinalList,
+  archive,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -44,5 +45,6 @@ router.get('/pendingRequest', claireFn());
 router.get('/finalList', getFinalList());
 
 
+router.get('/archives', archive());
 
 module.exports = router;
