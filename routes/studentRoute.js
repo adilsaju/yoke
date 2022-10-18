@@ -11,6 +11,7 @@ const {
   getRequestById,
   putStudentById,
   claireFn,
+  archive,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -38,5 +39,7 @@ router
   .post(postRequestByStudentId());
 
 router.get('/pendingRequest', claireFn());
+
+router.get('/archives', archive());
 
 module.exports = router;
