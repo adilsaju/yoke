@@ -54,10 +54,14 @@ const putStudentById = () => {
 const uploadLicensesByStudentId = () => {
   return async (req, res, next) => {
     console.log('putStudentById');
+    console.log(req.file);
+    console.log(req.params.id);
     try {
       //TODO:
 
-      res.json({});
+      res.json({
+        message: `uploaded for student: ${req.params.id}`,
+      });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
