@@ -360,6 +360,12 @@ const declineRequest = () => {
       return;
     }
 
+    if (requestInfo.isRejected === true) {
+      res.status(500).json({ message: 'already rejected' });
+
+      return;
+    }
+
     requestInfo.isRejected = true;
 
     try {
