@@ -53,7 +53,8 @@ const putStudentById = () => {
 
 const uploadLicensesByStudentId = () => {
   return async (req, res, next) => {
-      console.log('putStudentById');
+    console.log('putStudentById');
+    console.log(req.file)
       console.log(req.params.id)
       try {
         //TODO: 
