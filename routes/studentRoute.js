@@ -1,4 +1,8 @@
 const express = require('express');
+
+const multer = require('multer')
+const path = require('path');
+
 const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
@@ -28,10 +32,24 @@ router
   //patch notes field api
   .patch(putStudentById());
 //TODO: upload license PUT api
+
+const storage = multer.diskStorage({
+  destination: (req,file,cb)=>{
+    cb(null,'Images')
+  },
+  filename: (req,file,cb)=>{
+    console.log(file)
+    cb( null, Date.now() + path.extname(file.originalname) )
+  }
+
+})
+
+const upload = multer({storage: storage})
+
 router
   .route('/uploadLicenses/:id')
   //patch notes field api
-  .patch(uploadLicensesByStudentId());
+  .patch(upload.single("image1"), uploadLicensesByStudentId());
 
 
 
