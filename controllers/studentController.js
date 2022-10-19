@@ -3,7 +3,7 @@ const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
-
+const { request } = require('express');
 
 const getStudents = () => {
   return async (req, res, next) => {
@@ -54,12 +54,14 @@ const putStudentById = () => {
 const uploadLicensesByStudentId = () => {
   return async (req, res, next) => {
     console.log('putStudentById');
-    console.log(req.file)
-      console.log(req.params.id)
-      try {
-        //TODO: 
+    console.log(req.file);
+    console.log(req.params.id);
+    try {
+      //TODO:
 
-      res.json({message: `uploaded for student: ${req.params.id}` });
+      res.json({
+        message: `uploaded for student: ${req.params.id}`,
+      });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -76,65 +78,69 @@ const approveRequestById = () => {
       const particularRequest =
         await Request.requestModel.findById(req.params.id);
 
+      if (!('adminId' in req.body)) {
+        res.status(500).json({
+          message: 'no adminId provided in request body',
+        });
 
-      if (! ("adminId" in req.body) ){
-        res.status(500).json({ message: "no adminId provided in request body" });
-
-        return
+        return;
       }
       //MAIN CHECKS
-      if ( particularRequest.isExpired === true )
-      {
-        res.status(500).json({ message: "sorry. already expired" });
+      if (particularRequest.isExpired === true) {
+        res
+          .status(500)
+          .json({ message: 'sorry. already expired' });
 
-        return
+        return;
       }
 
-      if ( particularRequest.isRejected === true )
-      {
-        res.status(500).json({ message: "already rejected" });
+      if (particularRequest.isRejected === true) {
+        res
+          .status(500)
+          .json({ message: 'already rejected' });
 
-        return
-      }
-      
-      if ( particularRequest.isApproved === true )
-      {
-        res.status(500).json({ message: "already approved" });
-
-        return
+        return;
       }
 
-      let particularAdmin =null
+      if (particularRequest.isApproved === true) {
+        res
+          .status(500)
+          .json({ message: 'already approved' });
 
-        if (req.body.adminId != null && req.body.adminId != undefined )
-        {
-          try {
-            particularAdmin = await Admin.adminModel.findById(req.body.adminId);
-            
-          } catch (error) {
-            res.status(500).json({ message: "finding particular admin by given id failed" });
+        return;
+      }
 
-            return
-          }
-            
- 
-            
+      let particularAdmin = null;
+
+      if (
+        req.body.adminId != null &&
+        req.body.adminId != undefined
+      ) {
+        try {
+          particularAdmin = await Admin.adminModel.findById(
+            req.body.adminId
+          );
+        } catch (error) {
+          res.status(500).json({
+            message:
+              'finding particular admin by given id failed',
+          });
+
+          return;
         }
-        else {
-      res.status(500).json({ message: "error.message" });
+      } else {
+        res.status(500).json({ message: 'error.message' });
 
-          return
-        }
+        return;
+      }
 
-
-        
       // console.log(req.body.notes);
 
       // particularRequest.notes = req.body.notes;
-      particularRequest.isApproved = true
-      particularRequest.isRejected = false
-      particularRequest.approvedAdmin = particularAdmin
-      particularRequest.adminVerifiedDate = new Date()
+      particularRequest.isApproved = true;
+      particularRequest.isRejected = false;
+      particularRequest.approvedAdmin = particularAdmin;
+      particularRequest.adminVerifiedDate = new Date();
       // particularRequest.isExpired = false
 
       particularRequest.save();
@@ -145,12 +151,8 @@ const approveRequestById = () => {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
-
-
   };
 };
-
-
 
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
@@ -271,7 +273,6 @@ const claireFn = () => {
   };
 };
 
-
 const getFinalList = () => {
   return async (req, res) => {
     try {
@@ -282,10 +283,9 @@ const getFinalList = () => {
           isExpired: false,
           // flightDate: {$eq : Date }
           flightDate: {
-            $eq : Date.now
-          }
-          //TODO: 
-
+            $eq: Date.now,
+          },
+          //TODO:
 
           // adminVerifiedDate: null,
           // approvedAdmin: null
@@ -293,13 +293,11 @@ const getFinalList = () => {
         .sort({ flightDate: 1 });
 
       res.json(pendingRequests);
-
-    }
-    catch (error) {
+    } catch (error) {
       res.status(500).json({ message: error.message });
     }
-
-  }}
+  };
+};
 // ******** admin archive ********
 const archive = () => {
   return async (req, res) => {
@@ -325,8 +323,7 @@ const archive = () => {
       res.status(500).json({ message: error.message });
     }
   };
-}
-
+};
 
 const getAdminById = () => {
   return async (req, res, next) => {
@@ -341,6 +338,55 @@ const getAdminById = () => {
     }
   };
 };
+
+// ******** admin decline ********
+const declineRequest = () => {
+  return async (req, res, next) => {
+    const requestInfo = await Request.requestModel.findById(
+      req.params.id
+    );
+    //MAIN CHECKS
+    if (requestInfo.isApproved === true) {
+      res.status(500).json({
+        message:
+          'sorry. already approved. Cannot reject again',
+      });
+
+      return;
+    }
+
+    if (requestInfo.isExpired === true) {
+      res.status(500).json({
+        message:
+          'sorry. already approved. Cannot reject again',
+      });
+
+      return;
+    }
+
+    if (requestInfo.isRejected === true) {
+      res.status(500).json({ message: 'already rejected' });
+
+      return;
+    }
+
+    requestInfo.isRejected = true;
+
+    try {
+      const declineArequest = await requestInfo.save();
+      res.json(declineArequest);
+
+      // if (requestInfo == null) {
+      //   return res.status(404).json({ message: 'Cannot find request' });
+      // }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+
+    // res.requestInfo = requestInfo
+    next();
+  }; //end of middleware
+}; //end of declineRequest
 
 module.exports = {
   getStudents: getStudents,
@@ -357,5 +403,6 @@ module.exports = {
   getFinalList: getFinalList,
   getAdminById: getAdminById,
   approveRequestById: approveRequestById,
-  uploadLicensesByStudentId: uploadLicensesByStudentId
+  uploadLicensesByStudentId: uploadLicensesByStudentId,
+  declineRequest,
 };

@@ -19,7 +19,8 @@ const {
   archive,
   getAdminById,
   approveRequestById,
-  uploadLicensesByStudentId
+  uploadLicensesByStudentId,
+  declineRequest,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -51,11 +52,8 @@ router
   //patch notes field api
   .patch(upload.single("image1"), uploadLicensesByStudentId());
 
-
-
 //getting all requests
 // router.get('/requests',getRequests())
-
 
 //getting all requests by a particular student
 // url: /requests?student=634c84017abbf81281febf50
@@ -66,22 +64,23 @@ router
   .post(postRequestByStudentId());
 
 //getting request by id (used for student profile page as well)
-router.route('/requests/:id').get(getRequestById())
+router.route('/requests/:id').get(getRequestById());
 
 router
-.route('/requests/:id/approve')
-    .patch(approveRequestById());
+  .route('/requests/:id/approve')
+  .patch(approveRequestById());
 
-router.route('/pendingRequests').get( claireFn());
+router.route('/pendingRequests').get(claireFn());
 
 //final List of that particular day
-router.route('/finalList').get( getFinalList());
+router.route('/finalList').get(getFinalList());
 
-
-router.route('/archives').get( archive());
-
+router.route('/archives').get(archive());
 
 router.route('/admins/:id').get(getAdminById());
 
+router
+  .route('/requests/:id/decline')
+  .patch(declineRequest());
 
 module.exports = router;
