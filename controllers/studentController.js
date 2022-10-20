@@ -5,6 +5,15 @@ const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
 const { request } = require('express');
 
+const studentRequirementsCutoff = {
+  
+  flownHours: 100,
+  balance: 50,
+  englishProficiency: true,
+
+
+}
+
 const getStudents = () => {
   return async (req, res, next) => {
     console.log('getStudents()');
