@@ -251,6 +251,72 @@ const getRequests = () => {
   };
 };
 
+// Chart3 - get all request within 30days
+const getChartThree = () => {
+  return async (req, res, next) => {
+    try {
+      //const abc = await Request.requestModel.find({
+
+      // $filter: {
+      //   input: 'requestedDate',
+      //   as: 'requests',
+      //   cond: {
+      //     $gte: [
+      //       new Date(
+      //         new Date().getTime() -
+      //           15 * 24 * 60 * 60 * 1000
+      //       ),
+      //     ],
+      //   },
+      // },
+
+      // ** filter 30days **
+      // requestedDate: {
+      //   $gte: [
+      //     new Date(
+      //       new Date().getTime() -
+      //         15 * 24 * 60 * 60 * 1000
+      //     ),
+      //   ],
+      // },
+
+      //});
+      //end of const abc
+
+      const abc = await Request.requestModel.aggregate([
+        {
+          $match: {
+            requestedDate: {
+              $gte: new Date(
+                new Date().getTime() -
+                  30 * 24 * 60 * 60 * 1000
+              ),
+            },
+          },
+        },
+        {
+          $group: {
+            _id: {
+              $dateToString: {
+                format: '%Y-%m-%d',
+                date: '$requestedDate',
+              },
+            },
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $sort: { _id: -1 },
+        },
+      ]);
+
+      res.json(abc);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
 const getRequestById = () => {
   return async (req, res, next) => {
     try {
@@ -288,12 +354,11 @@ const claireFn = () => {
 const getFinalList = () => {
   return async (req, res) => {
     try {
-
       const today = new Date();
-      today.setHours(0,0,0,0);
+      today.setHours(0, 0, 0, 0);
 
-      const tomorrow = new Date(today)
-      tomorrow.setDate(tomorrow.getDate() + 1)   
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
 
       const requestsInToday = await Request.requestModel
         .find({
@@ -306,9 +371,8 @@ const getFinalList = () => {
           //   $eq: Date.now,
           // },
 
-        
-            flightDate: {$gte: today, $lt: tomorrow}
-        
+          flightDate: { $gte: today, $lt: tomorrow },
+
           //TODO:
 
           // adminVerifiedDate: null,
@@ -429,4 +493,5 @@ module.exports = {
   approveRequestById: approveRequestById,
   uploadLicensesByStudentId: uploadLicensesByStudentId,
   declineRequest,
+  getChartThree,
 };
