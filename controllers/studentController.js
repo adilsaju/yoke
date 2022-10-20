@@ -157,7 +157,6 @@ const approveRequestById = () => {
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
     try {
-      //FIXME: if req.query.student is empty, its returning all data fix that
       const studentId = req.query.student;
 
       if (
