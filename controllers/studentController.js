@@ -276,15 +276,27 @@ const claireFn = () => {
 const getFinalList = () => {
   return async (req, res) => {
     try {
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      const tomorrow = new Date(today)
+      tomorrow.setDate(tomorrow.getDate() + 1)   
+
       const requestsInToday = await Request.requestModel
         .find({
           isApproved: true,
           isRejected: false,
           isExpired: false,
           // flightDate: {$eq : Date }
-          flightDate: {
-            $eq: Date.now,
-          },
+
+          // flightDate: {
+          //   $eq: Date.now,
+          // },
+
+        
+            flightDate: {$gte: today, $lt: tomorrow}
+        
           //TODO:
 
           // adminVerifiedDate: null,
@@ -292,7 +304,7 @@ const getFinalList = () => {
         })
         .sort({ flightDate: 1 });
 
-      res.json(pendingRequests);
+      res.json(requestsInToday);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
