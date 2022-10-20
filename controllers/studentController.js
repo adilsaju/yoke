@@ -159,6 +159,19 @@ const getRequestsByStudentId = () => {
     try {
       //FIXME: if req.query.student is empty, its returning all data fix that
       const studentId = req.query.student;
+
+      if (
+        studentId === null ||
+        studentId === undefined ||
+        studentId === ''
+      ) {
+        res
+          .status(500)
+          .json({ message: 'no student ID found' });
+
+        return;
+      }
+
       //get requests column from student
       // const abc=await Student.studentModel.findById(studentId).select('requests')
       console.log('rrrr');
