@@ -4,9 +4,6 @@ import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
 
 import { Routes, Route, Link } from "react-router-dom";
-
-
-// import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { collection, getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
@@ -32,7 +29,7 @@ export const db = getFirestore(app);
  export {auth,storage,app};
 
  const fetchTasks = async () => {
-  let url1 = `http://localhost:5001/students/`;
+  let url1 = `/students/`;
   const res = await fetch(url1);
   const data = await res.json();
 
@@ -69,7 +66,7 @@ let count = 1;
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/travel-order">Travel Order</Link>
+          <Link to="/travel-order">Travel Order({students.map(student => student).length})</Link>
         </li>
         {/* <li>
         <Link to="/login">Login</Link>

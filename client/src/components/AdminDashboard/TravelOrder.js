@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const fetchTasks = async () => {
-  let url1 = `http://localhost:5001/pendingRequest`;
+  let url1 = `/pendingRequests`;
   const res = await fetch(url1);
   const data = await res.json();
 

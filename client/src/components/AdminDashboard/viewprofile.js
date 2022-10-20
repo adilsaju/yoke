@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 
 
 const fetchTasks = async () => {
-  let url = `http://localhost:5001/students/634c84017abbf81281febf50`;
+  let url = `/students/634c84017abbf81281febf50`;
   const res = await fetch(url);
   const data = await res.json();
 
