@@ -373,7 +373,7 @@ const getAdminById = () => {
 };
 
 // ******** admin decline ********
-const declineRequest = () => {
+const declineRequestById = () => {
   return async (req, res, next) => {
     const requestInfo = await Request.requestModel.findById(
       req.params.id
@@ -437,5 +437,5 @@ module.exports = {
   getAdminById: getAdminById,
   approveRequestById: approveRequestById,
   uploadLicensesByStudentId: uploadLicensesByStudentId,
-  declineRequest,
+  declineRequestById,
 };
