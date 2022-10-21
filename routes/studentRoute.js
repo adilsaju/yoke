@@ -1,6 +1,6 @@
 const express = require('express');
 
-const multer = require('multer')
+const multer = require('multer');
 const path = require('path');
 
 const router = express.Router();
@@ -20,6 +20,7 @@ const {
   getAdminById,
   approveRequestById,
   uploadLicensesByStudentId,
+  getChartThree,
   declineRequestById,
 } = require('../controllers/studentController.js');
 
@@ -35,22 +36,24 @@ router
 //TODO: upload license PUT api
 
 const storage = multer.diskStorage({
-  destination: (req,file,cb)=>{
-    cb(null,'Images')
+  destination: (req, file, cb) => {
+    cb(null, 'Images');
   },
-  filename: (req,file,cb)=>{
-    console.log(file)
-    cb( null, Date.now() + path.extname(file.originalname) )
-  }
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-})
-
-const upload = multer({storage: storage})
+const upload = multer({ storage: storage });
 
 router
   .route('/uploadLicenses/:id')
   //patch notes field api
-  .patch(upload.single("image1"), uploadLicensesByStudentId());
+  .patch(
+    upload.single('image1'),
+    uploadLicensesByStudentId()
+  );
 
 //getting all requests
 // router.get('/requests',getRequests())
@@ -82,5 +85,7 @@ router.route('/admins/:id').get(getAdminById());
 router
   .route('/requests/:id/decline')
   .patch(declineRequestById());
+
+router.route('/past30daysRequests').get(getChartThree());
 
 module.exports = router;
