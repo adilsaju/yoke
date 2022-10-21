@@ -62,3 +62,24 @@ table th {
     transform: rotate(360deg);
   }
 }
+
+body{
+  text-align: center;
+  
+}
+button{
+  background-color: lightcyan;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  font-size: larger;
+  text-align: center;
+
+  
+}
+.react-calendar__viewContainer{
+  max-width: 100rem;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+}

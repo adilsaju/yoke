@@ -2,7 +2,18 @@ import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 const SideMenu = () => {
   return (
-    <div>Final List Data</div>
+  
+      <ul>
+   
+
+        <li>
+          <Link to="/student-travel-request">Student Travel Order</Link>
+        </li>
+        <li>
+          <Link to="/student-account-status">Account Status</Link>
+        </li>
+      </ul>
+
   )
 }
 
