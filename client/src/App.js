@@ -1,7 +1,13 @@
 import './App.css';
+import Header from './components/Header'
+import Footer from './components/Footer';
 import SideMenu from './components/Navbar/SideMenu';
 import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
+
+import StudentAccountStatus from './components/StudentDashboard/studentAccountStatus'
+import RequestTravelOrder from './components/StudentDashboard/requestTravelOrder'
+import UploadDocument from './components/StudentDashboard/UploadDocument'
 
 import { Routes, Route, Link } from "react-router-dom";
 import { initializeApp } from 'firebase/app';
@@ -59,6 +65,7 @@ let count = 1;
   return (
     
     <>
+    <Header/>
     <nav>
       <ul>
       <li>
@@ -82,17 +89,21 @@ let count = 1;
           <Link to="/search">Search</Link>
         </li> */}
       </ul>
+        <SideMenu />
     </nav>
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile" element={ <Viewprofile/> } />
-      <Route path="/final-list" element={<SideMenu/>}/>
+      <Route path="/final-list" element={<Archive/>}/>
       <Route path="/archive" element={<Archive/>}/>
       {/* <Route path='/search' element={<Search/>}/> */}
+      <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
+      <Route path="/student-travel-request" element={<RequestTravelOrder/>}/>
+      <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
     </Routes>
     
-    
+      <Footer/>
     </>
   );
 }

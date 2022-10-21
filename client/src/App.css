@@ -62,3 +62,48 @@ table th {
     transform: rotate(360deg);
   }
 }
+
+body{
+  text-align: center;
+  
+}
+button{
+  background-color: darkgray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: larger;
+  text-align: center;
+
+  
+}
+.react-calendar__viewContainer{
+  max-width: 100rem;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+}
+
+img{
+  max-width: 400px;
+}
+nav{
+  background-color: lightgray;
+
+}
+nav ul li{
+  font-size: larger;
+  text-decoration: none;
+  list-style-type: none;
+  
+}
+
+a{
+  color: black;
+
+}
+
+footer{
+  background-color: lightgray;
+  padding: 2rem;
+}
