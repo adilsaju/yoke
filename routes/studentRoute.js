@@ -13,7 +13,7 @@ const {
   postRequestByStudentId,
   getRequests,
   getRequestById,
-  putStudentById,
+  updateStudentNotesById,
   claireFn,
   getFinalList,
   archive,
@@ -35,7 +35,7 @@ router
   .route('/students/:id')
   .get(getStudentById())
   //patch notes field api
-  .patch(putStudentById());
+  .patch(updateStudentNotesById());
 //TODO: upload license PUT api
 
 const storage = multer.diskStorage({

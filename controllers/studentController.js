@@ -43,9 +43,9 @@ const getStudentById = () => {
   };
 };
 
-const putStudentById = () => {
+const updateStudentNotesById = () => {
   return async (req, res, next) => {
-    console.log('putStudentById');
+    console.log('updateStudentNotesById');
     try {
       const particularStudent =
         await Student.studentModel.findById(req.params.id);
@@ -65,7 +65,7 @@ const putStudentById = () => {
 
 const uploadLicensesByStudentId = () => {
   return async (req, res, next) => {
-    console.log('putStudentById');
+    console.log('uploadLicensesByStudentId');
     console.log(req.file);
     console.log(req.params.id);
     try {
@@ -701,7 +701,7 @@ module.exports = {
 
   getRequests: getRequests,
   getRequestById: getRequestById,
-  putStudentById: putStudentById,
+  updateStudentNotesById: updateStudentNotesById,
   claireFn: claireFn,
   archive,
   getFinalList: getFinalList,
