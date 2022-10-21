@@ -220,13 +220,22 @@ const postRequestByStudentId = () => {
 
       //date validation
       try {
-        let d = req.flightDate.toISOString();
+        let d = new Date(req.body.flightDate).toISOString();
       } catch (error) {
         res.status(500).json({
           error: true,
           message: 'invalid flightDate',
         });
         return;
+      }
+
+      if ( new Date(req.body.flightDate).toISOString() == "Invalid Date"){
+        res.status(500).json({
+          error: true,
+          message: 'invalid flightDate',
+        });
+        return;
+
       }
 
       //return all requests of given student
@@ -236,9 +245,11 @@ const postRequestByStudentId = () => {
         });
       // if same student  and same date requests return error
       requestsOfAStudent.map((reqDBObj) => {
+        // console.log("nintha:", reqDBObj.flightDate.toLocaleDateString())
+
         if (
           reqDBObj.flightDate.toLocaleDateString() ===
-          req.body.flightDate.toLocaleDateString()
+          new Date(req.body.flightDate).toLocaleDateString()
         ) {
           res.status(500).json({
             error: true,
@@ -251,7 +262,7 @@ const postRequestByStudentId = () => {
       // if student  request early date, return error
       requestsOfAStudent.map((reqDBObj) => {
         if (
-          req.body.flightDate.toLocaleDateString() <=
+          new Date(req.body.flightDate).toLocaleDateString() <=
           new Date()
         ) {
           //TODO:
@@ -301,10 +312,10 @@ const postRequestByStudentId = () => {
       // const abc=await  Request.requestModel.find({ "requestedStudent._id":  studentId})
 
       res.json(request1);
+      return
     } catch (error) {
-      res
-        .status(500)
-        .json({ error: true, message: error.message });
+      res.json({ error: true, message: error.message });
+      return
     }
   };
 };
