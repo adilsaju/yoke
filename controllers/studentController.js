@@ -13,6 +13,7 @@ const studentRequirementsCutoff = {
 };
 
 const max_request_quota = 10;
+const daysBeforeHecanBook = 7;
 
 //================
 
@@ -198,15 +199,15 @@ const getRequestsByStudentId = () => {
   };
 };
 
+/*
+    {
+        "flightDate" : "2022-11-20T07:47:06.937Z",
+        "studentId": "634c84017abbf81281febf50"
+    }
+    
+    */
 const postRequestByStudentId = () => {
   return async (req, res, next) => {
-    /*
-        {
-            "flightDate" : "2022-11-20T07:47:06.937Z",
-            "studentId": "634c84017abbf81281febf50"
-        }
-        
-        */
     try {
       console.log('posttttt');
       console.log(req.body);
@@ -217,7 +218,7 @@ const postRequestByStudentId = () => {
         );
 
       console.log('particularStudent', particularStudent);
-
+          console.log("cp1")
       //date validation
       try {
         let d = new Date(req.body.flightDate).toISOString();
@@ -237,6 +238,7 @@ const postRequestByStudentId = () => {
         return;
 
       }
+      console.log("cp2")
 
       //return all requests of given student
       const requestsOfAStudent =
@@ -251,21 +253,20 @@ const postRequestByStudentId = () => {
           reqDBObj.flightDate.toLocaleDateString() ===
           new Date(req.body.flightDate).toLocaleDateString()
         ) {
-          res.status(500).json({
-            error: true,
-            message: 'already requested same travel day',
-          });
-          return;
+         throw new Error('already requested same travel day')
+
         }
       });
 
       // if student  request early date, return error
       requestsOfAStudent.map((reqDBObj) => {
+        var after10Days = new Date();
+        after10Days.setDate(after10Days.getDate()+ daysBeforeHecanBook);
+
         if (
-          new Date(req.body.flightDate).toLocaleDateString() <=
-          new Date()
+          new Date(req.body.flightDate).toLocaleDateString() <
+          after10Days
         ) {
-          //TODO:
           res.status(500).json({
             error: true,
             message:
