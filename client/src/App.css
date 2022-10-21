@@ -68,8 +68,8 @@ body{
   
 }
 button{
-  background-color: lightcyan;
-  padding-top: 2rem;
+  background-color: darkgray;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: larger;
   text-align: center;
@@ -82,4 +82,28 @@ button{
   justify-content:center;
   align-items: center;
   text-align: center;
+}
+
+img{
+  max-width: 400px;
+}
+nav{
+  background-color: lightgray;
+
+}
+nav ul li{
+  font-size: larger;
+  text-decoration: none;
+  list-style-type: none;
+  
+}
+
+a{
+  color: black;
+
+}
+
+footer{
+  background-color: lightgray;
+  padding: 2rem;
 }

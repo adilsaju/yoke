@@ -1,4 +1,6 @@
 import './App.css';
+import Header from './components/Header'
+import Footer from './components/Footer';
 import SideMenu from './components/Navbar/SideMenu';
 import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
@@ -64,6 +66,7 @@ let count = 1;
   return (
     
     <>
+    <Header/>
     <nav>
       <ul>
       <li>
@@ -92,11 +95,11 @@ let count = 1;
       <Route path="/final-list" element={<Archive/>}/>
       <Route path="/archive" element={<Archive/>}/>
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
-      <Route path="/student-travel-request" element={<StudentAccountStatus/>}/>
+      <Route path="/student-travel-request" element={<RequestTravelOrder/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
     </Routes>
     
-    
+      <Footer/>
     </>
   );
 }

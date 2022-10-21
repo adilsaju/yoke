@@ -3,6 +3,8 @@ import { useState,useEffect } from 'react';
 import StudentUpload from './studentUpload';
 import { Link } from "react-router-dom";
 
+
+
 //Fetch Data using API
 const fetchTasks = async () => {
   let url = `/students/633a0695b149556c00bfc725`;
@@ -37,7 +39,7 @@ const StudentAccountStatus = () => {
   return (
     
     <div>
-       
+      
        
       <h1>{students.name}</h1>
       {/* use javascript for image  {students.photo} */}
