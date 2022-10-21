@@ -16,10 +16,10 @@
 // export default RequestTravelOrder
 import React from 'react'
 
-const requestTravelOrder = () => {
+const RequestTravelOrder = () => {
   return (
     <div>requestTravelOrder</div>
   )
 }
 
-export default requestTravelOrder
+export default RequestTravelOrder
