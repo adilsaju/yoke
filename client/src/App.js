@@ -17,6 +17,7 @@ import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
 import TravelOrder from './components/AdminDashboard/TravelOrder';
 import Archive from './components/AdminDashboard/Archive';
+import Search from './components/AdminDashboard/Search';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -47,9 +48,7 @@ function App() {
   localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
   const found = localStorage.getItem("loggedInUserId");
  
-  const [students,setStudents] = useState([])
-
-
+  const [students,setStudents] = useState([])  
   console.log(found)
     useEffect(() => {
 
@@ -73,7 +72,9 @@ let count = 1;
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/travel-order">Travel Order({students.map(student => student).length})</Link>
+          <Link to="/travel-order">Travel Order({students.map(student => {if('requestedStudent' in student){
+             return student  
+          }}  ).length})</Link>
         </li>
         {/* <li>
         <Link to="/login">Login</Link>
@@ -84,16 +85,19 @@ let count = 1;
         <li>
           <Link to="/archive">Archive</Link>
         </li>
+        {/* <li>
+          <Link to="/search">Search</Link>
+        </li> */}
       </ul>
         <SideMenu />
     </nav>
-
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile" element={ <Viewprofile/> } />
       <Route path="/final-list" element={<Archive/>}/>
       <Route path="/archive" element={<Archive/>}/>
+      {/* <Route path='/search' element={<Search/>}/> */}
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
       <Route path="/student-travel-request" element={<RequestTravelOrder/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>

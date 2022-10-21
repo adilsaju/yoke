@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+import Accept from './Accept';
+import Decline from './Decline';
 
 
 
@@ -32,6 +34,11 @@ const Viewprofile = () => {
     <div>
       <h3>{students.name}</h3>
       <h4>{students.email}</h4>
+      <div>
+      <Accept/>
+      <Decline/>
+      </div>
+      
     </div>
   )
 }
