@@ -7,7 +7,7 @@ const SideMenu = () => {
    
 
         <li>
-          <Link to="/student-travel-request">Student Travel Order</Link>
+          <Link to="/student-travel-order">Student Travel Order</Link>
         </li>
         <li>
           <Link to="/student-account-status">Account Status</Link>

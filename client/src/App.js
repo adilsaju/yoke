@@ -8,6 +8,7 @@ import Viewprofile from './components/AdminDashboard/viewprofile'
 import StudentAccountStatus from './components/StudentDashboard/studentAccountStatus'
 import RequestTravelOrder from './components/StudentDashboard/requestTravelOrder'
 import UploadDocument from './components/StudentDashboard/UploadDocument'
+import  StudentTravelOrder from './components/StudentDashboard/studentTravelOrder'
 
 import { Routes, Route, Link } from "react-router-dom";
 import { initializeApp } from 'firebase/app';
@@ -99,8 +100,9 @@ let count = 1;
       <Route path="/archive" element={<Archive/>}/>
       {/* <Route path='/search' element={<Search/>}/> */}
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
-      <Route path="/student-travel-request" element={<RequestTravelOrder/>}/>
+      <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
+      
     </Routes>
     
       <Footer/>
