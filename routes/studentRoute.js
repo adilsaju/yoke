@@ -13,7 +13,7 @@ const {
   postRequestByStudentId,
   getRequests,
   getRequestById,
-  putStudentById,
+  updateStudentNotesById,
   claireFn,
   getFinalList,
   archive,
@@ -24,6 +24,7 @@ const {
   declineRequestById,
   getChartTwo,
   getChartOne,
+  getRequestsByStudentIdValidated
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -34,7 +35,7 @@ router
   .route('/students/:id')
   .get(getStudentById())
   //patch notes field api
-  .patch(putStudentById());
+  .patch(updateStudentNotesById());
 //TODO: upload license PUT api
 
 const storage = multer.diskStorage({
@@ -65,7 +66,8 @@ router
 //FOR travel order page in student UI
 router
   .route('/requests')
-  .get(getRequestsByStudentId())
+  // .get(getRequestsByStudentId())
+  .get(getRequestsByStudentIdValidated())
   .post(postRequestByStudentId());
 
 //getting request by id (used for student profile page as well)

@@ -43,9 +43,9 @@ const getStudentById = () => {
   };
 };
 
-const putStudentById = () => {
+const updateStudentNotesById = () => {
   return async (req, res, next) => {
-    console.log('putStudentById');
+    console.log('updateStudentNotesById');
     try {
       const particularStudent =
         await Student.studentModel.findById(req.params.id);
@@ -65,7 +65,7 @@ const putStudentById = () => {
 
 const uploadLicensesByStudentId = () => {
   return async (req, res, next) => {
-    console.log('putStudentById');
+    console.log('uploadLicensesByStudentId');
     console.log(req.file);
     console.log(req.params.id);
     try {
@@ -206,6 +206,92 @@ const getRequestsByStudentId = () => {
     }
     
     */
+//MACHINE VALIDATION OF CHECKLIST LOGIC
+const getRequestsByStudentIdValidated = () => {
+  return async (req, res, next) => {
+    console.log("getRequestsByStudentIdValidated")
+    try {
+      const studentId = req.query.student;
+
+      if (
+        studentId === null ||
+        studentId === undefined ||
+        studentId === ''
+      ) {
+        res
+          .status(500)
+          .json({ message: 'no student ID found' });
+
+        return;
+      }
+
+      //get requests column from student
+      // const abc=await Student.studentModel.findById(studentId).select('requests')
+      console.log('rrrr');
+      const requestsDBArr = await Request.requestModel.find({
+        'requestedStudent._id': studentId,
+      });
+
+      const newRequestsDBArr = JSON.parse(JSON.stringify(requestsDBArr))
+
+      // validate
+      for ( let i =0  ; i< requestsDBArr.length ; i++ )
+      {
+
+        let obj1 = requestsDBArr[i]
+        // console.log(obj1.requestedStudent.studentRequirements.flownHours)
+        if (obj1.requestedStudent.studentRequirements.flownHours >= studentRequirementsCutoff.flownHours) {
+            //Ok
+          console.log("first", "ok")
+          newRequestsDBArr[i].requestedStudent.studentRequirements.flownHours = {
+            value : obj1.requestedStudent.studentRequirements.flownHours,
+            isOk: true
+          }
+        }
+        else{
+            console.log("first", "ok")
+            newRequestsDBArr[i].requestedStudent.studentRequirements.flownHours = {
+            value : obj1.requestedStudent.studentRequirements.flownHours,
+              isOk: false
+            }
+      }
+    }
+      //TODO:
+    //     if (obj1.requestedStudent.studentRequirements.balance > studentRequirementsCutoff.balance) {
+    //       //Ok
+    //   }
+    //   else{
+    //       //NOT OK
+
+    //   }
+
+    //   if (obj1.requestedStudent.studentRequirements.englishProficiency === true) {
+    //     //Ok
+    // }
+    // else{
+    //     //NOT OK
+
+    // }
+
+
+
+
+      //Also set isRequirementsOk based on validator:
+
+      // const request2 = await Request.requestModel.create(
+      //   newRequestsDBArr
+      // );
+      
+      res.json(newRequestsDBArr);
+      return
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: true, message: error.message });
+    }
+  };
+};
+
 const postRequestByStudentId = () => {
   return async (req, res, next) => {
     try {
@@ -615,7 +701,7 @@ module.exports = {
 
   getRequests: getRequests,
   getRequestById: getRequestById,
-  putStudentById: putStudentById,
+  updateStudentNotesById: updateStudentNotesById,
   claireFn: claireFn,
   archive,
   getFinalList: getFinalList,
@@ -626,4 +712,5 @@ module.exports = {
   declineRequestById,
   getChartTwo,
   getChartOne,
+  getRequestsByStudentIdValidated: getRequestsByStudentIdValidated
 };
