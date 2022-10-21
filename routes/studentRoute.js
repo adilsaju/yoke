@@ -23,6 +23,7 @@ const {
   getChartThree,
   declineRequestById,
   getChartTwo,
+  getChartOne,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -90,5 +91,7 @@ router
 router.route('/past30daysRequests').get(getChartThree());
 
 router.route('/studentsInEachProgram').get(getChartTwo());
+
+router.route('/todaysDecisions').get(getChartOne());
 
 module.exports = router;
