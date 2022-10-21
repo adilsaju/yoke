@@ -22,6 +22,7 @@ const {
   uploadLicensesByStudentId,
   getChartThree,
   declineRequestById,
+  getChartTwo,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -87,5 +88,7 @@ router
   .patch(declineRequestById());
 
 router.route('/past30daysRequests').get(getChartThree());
+
+router.route('/studentsInEachProgram').get(getChartTwo());
 
 module.exports = router;
