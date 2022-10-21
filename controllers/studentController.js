@@ -7,14 +7,12 @@ const { request } = require('express');
 
 //===============
 const studentRequirementsCutoff = {
-  
   flownHours: 100,
   balance: 50,
   englishProficiency: true,
+};
 
-}
-
-const max_request_quota  = 10;
+const max_request_quota = 10;
 
 //================
 
@@ -213,70 +211,74 @@ const postRequestByStudentId = () => {
       console.log('posttttt');
       console.log(req.body);
 
-      const particularStudent = await Student.studentModel.findById(
-        req.body.studentId
-      );
+      const particularStudent =
+        await Student.studentModel.findById(
+          req.body.studentId
+        );
 
       console.log('particularStudent', particularStudent);
 
-              //date validation
-              try {
-                 let d = req.flightDate.toISOString();
-              } catch (error) {
-                res
-                .status(500)
-                .json({ error: true, message: "invalid flightDate" });
-                return
-              }
+      //date validation
+      try {
+        let d = req.flightDate.toISOString();
+      } catch (error) {
+        res.status(500).json({
+          error: true,
+          message: 'invalid flightDate',
+        });
+        return;
+      }
 
-
-
-              //return all requests of given student
-              const requestsOfAStudent = await Request.requestModel.find({
-                'requestedStudent._id': req.body.studentId
-              });
-              // if same student  and same date requests return error
-        requestsOfAStudent.map((reqDBObj)=>{
-          if (reqDBObj.flightDate.toLocaleDateString() === req.body.flightDate.toLocaleDateString())
-          {
-            res
-            .status(500)
-            .json({ error: true, message: "already requested same travel day" });
-            return
-          }
-        })
-
-
-              // if student  request early date, return error
-              requestsOfAStudent.map((reqDBObj)=>{
-                if (req.body.flightDate.toLocaleDateString() <= new Date())
-                //TODO: 
-                {
-                  res
-                  .status(500)
-                  .json({ error: true, message: "very early, Cannot process given travel date" });
-                  return
-                }
-              })
-
-        //if student exceeds max quota of requests, return error
-        let cnt = 0 ;
-        requestsOfAStudent.map((req)=>{
-            cnt  = cnt  + 1;
-
-        })
-        if ( cnt >= max_request_quota){
-          res
-          .status(500)
-          .json({ error: true, message: "already requested enough" });
-          return
+      //return all requests of given student
+      const requestsOfAStudent =
+        await Request.requestModel.find({
+          'requestedStudent._id': req.body.studentId,
+        });
+      // if same student  and same date requests return error
+      requestsOfAStudent.map((reqDBObj) => {
+        if (
+          reqDBObj.flightDate.toLocaleDateString() ===
+          req.body.flightDate.toLocaleDateString()
+        ) {
+          res.status(500).json({
+            error: true,
+            message: 'already requested same travel day',
+          });
+          return;
         }
+      });
 
+      // if student  request early date, return error
+      requestsOfAStudent.map((reqDBObj) => {
+        if (
+          req.body.flightDate.toLocaleDateString() <=
+          new Date()
+        ) {
+          //TODO:
+          res.status(500).json({
+            error: true,
+            message:
+              'very early, Cannot process given travel date',
+          });
+          return;
+        }
+      });
 
+      //if student exceeds max quota of requests, return error
+      let cnt = 0;
+      requestsOfAStudent.map((req) => {
+        cnt = cnt + 1;
+      });
+      if (cnt >= max_request_quota) {
+        res.status(500).json({
+          error: true,
+          message: 'already requested enough',
+        });
+        return;
+      }
 
       //create obj
       const request = {
-
         flightDate: req.body.flightDate,
         requestedDate: new Date(),
         adminVerifiedDate: null,
@@ -318,38 +320,33 @@ const getRequests = () => {
   };
 };
 
+// Chart2 - get all request within 30days
+const getChartTwo = () => {
+  return async (req, res, next) => {
+    try {
+      const abc = await Student.studentModel.aggregate([
+        {
+          $group: {
+            _id: '$program',
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $sort: { _id: -1 },
+        },
+      ]);
+
+      res.json(abc);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+}; //end of chart 2
+
 // Chart3 - get all request within 30days
 const getChartThree = () => {
   return async (req, res, next) => {
     try {
-      //const abc = await Request.requestModel.find({
-
-      // $filter: {
-      //   input: 'requestedDate',
-      //   as: 'requests',
-      //   cond: {
-      //     $gte: [
-      //       new Date(
-      //         new Date().getTime() -
-      //           15 * 24 * 60 * 60 * 1000
-      //       ),
-      //     ],
-      //   },
-      // },
-
-      // ** filter 30days **
-      // requestedDate: {
-      //   $gte: [
-      //     new Date(
-      //       new Date().getTime() -
-      //         15 * 24 * 60 * 60 * 1000
-      //     ),
-      //   ],
-      // },
-
-      //});
-      //end of const abc
-
       const abc = await Request.requestModel.aggregate([
         {
           $match: {
@@ -382,7 +379,7 @@ const getChartThree = () => {
       res.status(500).json({ message: error.message });
     }
   };
-};
+}; //end of chart 3
 
 const getRequestById = () => {
   return async (req, res, next) => {
@@ -561,4 +558,5 @@ module.exports = {
   uploadLicensesByStudentId: uploadLicensesByStudentId,
   getChartThree,
   declineRequestById,
+  getChartTwo,
 };
