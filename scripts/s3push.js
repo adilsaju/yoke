@@ -1,11 +1,11 @@
 const { getStorage, ref, uploadBytesResumable, getDownloadURL } = require (  "firebase/storage" ) ;
 const app = require("../firebase")
-const fs = require('fs');
+// const fs = require('fs');
 
-let txtFile = "test.png";
-let str = fs.readFileSync(txtFile,'utf8');
+// let txtFile = "test.png";
+// let str = fs.readFileSync(txtFile,'utf8');
 
-console.log(str.name);
+// console.log(str.name);
 //FIXME: file object
 process.exit()
 
