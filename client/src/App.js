@@ -92,7 +92,7 @@ let count = 1;
       <Route path="/final-list" element={<Archive/>}/>
       <Route path="/archive" element={<Archive/>}/>
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
-      <Route path="/student-travel-request" element={<RequestTravelOrder/>}/>
+      <Route path="/student-travel-request" element={<StudentAccountStatus/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
     </Routes>
     
