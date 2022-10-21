@@ -20,8 +20,8 @@ const {
   getAdminById,
   approveRequestById,
   uploadLicensesByStudentId,
-  declineRequest,
   getChartThree,
+  declineRequestById,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -84,7 +84,7 @@ router.route('/admins/:id').get(getAdminById());
 
 router
   .route('/requests/:id/decline')
-  .patch(declineRequest());
+  .patch(declineRequestById());
 
 router.route('/past30daysRequests').get(getChartThree());
 

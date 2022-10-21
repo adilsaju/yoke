@@ -5,6 +5,19 @@ const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
 const { request } = require('express');
 
+//===============
+const studentRequirementsCutoff = {
+  
+  flownHours: 100,
+  balance: 50,
+  englishProficiency: true,
+
+}
+
+const max_request_quota  = 10;
+
+//================
+
 const getStudents = () => {
   return async (req, res, next) => {
     console.log('getStudents()');
@@ -200,23 +213,77 @@ const postRequestByStudentId = () => {
       console.log('posttttt');
       console.log(req.body);
 
-      const sas = await Student.studentModel.findById(
+      const particularStudent = await Student.studentModel.findById(
         req.body.studentId
       );
 
-      console.log('sas', sas);
+      console.log('particularStudent', particularStudent);
+
+              //date validation
+              try {
+                 let d = req.flightDate.toISOString();
+              } catch (error) {
+                res
+                .status(500)
+                .json({ error: true, message: "invalid flightDate" });
+                return
+              }
+
+
+
+              //return all requests of given student
+              const requestsOfAStudent = await Request.requestModel.find({
+                'requestedStudent._id': req.body.studentId
+              });
+              // if same student  and same date requests return error
+        requestsOfAStudent.map((reqDBObj)=>{
+          if (reqDBObj.flightDate.toLocaleDateString() === req.body.flightDate.toLocaleDateString())
+          {
+            res
+            .status(500)
+            .json({ error: true, message: "already requested same travel day" });
+            return
+          }
+        })
+
+
+              // if student  request early date, return error
+              requestsOfAStudent.map((reqDBObj)=>{
+                if (req.body.flightDate.toLocaleDateString() <= new Date())
+                //TODO: 
+                {
+                  res
+                  .status(500)
+                  .json({ error: true, message: "very early, Cannot process given travel date" });
+                  return
+                }
+              })
+
+        //if student exceeds max quota of requests, return error
+        let cnt = 0 ;
+        requestsOfAStudent.map((req)=>{
+            cnt  = cnt  + 1;
+
+        })
+        if ( cnt >= max_request_quota){
+          res
+          .status(500)
+          .json({ error: true, message: "already requested enough" });
+          return
+        }
+
+
+
       //create obj
       const request = {
-        //TODO: add date validation
-        //TODO: if same student  and same date requests return error!!!!!!!!
-        //TODO: if student exceeds max quota of requests, return error!!!!!!
+
         flightDate: req.body.flightDate,
         requestedDate: new Date(),
         adminVerifiedDate: null,
         isApproved: false,
         isRejected: false,
         isExpired: false,
-        requestedStudent: sas,
+        requestedStudent: particularStudent,
         approvedAdmin: null,
       };
       //update in db
@@ -428,7 +495,7 @@ const getAdminById = () => {
 };
 
 // ******** admin decline ********
-const declineRequest = () => {
+const declineRequestById = () => {
   return async (req, res, next) => {
     const requestInfo = await Request.requestModel.findById(
       req.params.id
@@ -492,6 +559,6 @@ module.exports = {
   getAdminById: getAdminById,
   approveRequestById: approveRequestById,
   uploadLicensesByStudentId: uploadLicensesByStudentId,
-  declineRequest,
   getChartThree,
+  declineRequestById,
 };
