@@ -331,6 +331,60 @@ const getRequests = () => {
   };
 };
 
+// Chart1 - get all request within 30days
+const getChartOne = () => {
+  return async (req, res, next) => {
+    try {
+      const abc = await Request.requestModel.aggregate([
+        {
+          $match: {
+            requestedDate: {
+              $gte: new Date(
+                new Date().getTime() -
+                  1 * 24 * 60 * 60 * 1000
+              ),
+            },
+          },
+        },
+        {
+          $group: {
+            _id: 1,
+            isApproved: {
+              $sum: {
+                $cond: [
+                  { $eq: ['$isApproved', true] },
+                  1,
+                  0,
+                ],
+              },
+            },
+            isRejected: {
+              $sum: {
+                $cond: [
+                  { $eq: ['$isRejected', true] },
+                  1,
+                  0,
+                ],
+              },
+            },
+          },
+        },
+        {
+          $project: {
+            _id: 0,
+            isApproved: 1,
+            isRejected: 1,
+          },
+        },
+      ]);
+
+      res.json(abc);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+}; //end of chart 1
+
 // Chart2 - get all request within 30days
 const getChartTwo = () => {
   return async (req, res, next) => {
@@ -570,4 +624,5 @@ module.exports = {
   getChartThree,
   declineRequestById,
   getChartTwo,
+  getChartOne,
 };
