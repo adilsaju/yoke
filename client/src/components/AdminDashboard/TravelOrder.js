@@ -45,10 +45,6 @@ let count = 1;
                                 id="search-form"
                                 className="search-input"
                                 placeholder="Search for..."
-                                /*
-                                // set the value of our useState q
-                                //  anytime the user types in the search box
-                                */
                                 />
                                 </label>
                                 </div>
