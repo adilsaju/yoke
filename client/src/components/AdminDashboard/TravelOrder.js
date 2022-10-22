@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
-import Search from './Search';
+
 
 const fetchTasks = async () => {
   let url1 = `/pendingRequests`;

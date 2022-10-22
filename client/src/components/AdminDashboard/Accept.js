@@ -1,58 +1,55 @@
 import { async } from '@firebase/util';
 import React from 'react'
 import { useState,useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
+const fetchTasks = async (request_id) => {
+  let url = `/requests/${request_id}`;
+  const res = await fetch(url);
+  const data = await res.json();
 
-const fetchTasks = async () => {
-    let url = `/requests/634c84a03120a384503e8adb`;
-    const res = await fetch(url);
-    const data = await res.json();
-  
-    console.log(data);
-    return data;
-  };
+  console.log("PARTICULAR REQ: ",data);
+  return data;
+};
 
-const Accept = () => {
-    const [students,setStudents] = useState([]);
-    const [tasks, setTasks] = useState([]);
-    useEffect(() => {
+const approve = async (request) => {
+  let url = `/requests/${request._id}/approve`;
+//   const bod1 = {
+//     "adminId": `${adminId}`
+// }
 
-      
-        const getTasks = async () => {
-          const tfs = await fetchTasks();
-          setStudents(tfs);
-        };
-      
-        getTasks();
-      
-      
-      }, []);
-
-  const onCheck = async () => {
-    const res= await fetch(`/requests/634c84a03120a384503e8adb/approve`, {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'text/plain',
-        },    
-        body: {
-          "adminId": "633a0695b149556c00bfc720"
-      },
-      });
-      const data = await res.json();
-      console.log(data);
-    
-   
-let st = null;
-setTasks(
-  tasks.map((task) => {
-    if(task.isAccepted === false) {
-      task.isAccepted = true;
-    }
-  }))
+const bod1 = {
+  "adminId": `633a0695b149556c00bfc720`
 }
 
+  const res = await fetch(url, {method: 'PATCH',
+   body: JSON.stringify(bod1), 
+      headers: {
+    'Content-Type': 'application/json'
+  }, });
+  const data = await res.json();
+  alert("APPROVED!")
+  console.log("IMPPPPPPPPPPPPP:",data);
+  return data;
+};
+
+const Accept = () => {
+  const [request,setStudents] = useState([]);
+  let params = useParams();
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tfs = await fetchTasks(params.id);
+      setStudents(tfs);
+    };
+    getTasks();
+  }, []);
+
+
   return (
-    <button onClick={() => onCheck()}>Accept</button>
+    <div>
+    { (!request.isApproved) && <button onClick={(e) => { approve(request)} }>Approve</button> }
+    </div>
   )
 }
 

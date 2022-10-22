@@ -15,42 +15,6 @@ const fetchTasks = async (request_id) => {
   return data;
 };
 
-const approve = async (request) => {
-  let url = `/requests/${request._id}/approve`;
-//   const bod1 = {
-//     "adminId": `${adminId}`
-// }
-
-const bod1 = {
-  "adminId": `633a0695b149556c00bfc720`
-}
-
-  const res = await fetch(url, {method: 'PATCH',
-   body: JSON.stringify(bod1), 
-      headers: {
-    'Content-Type': 'application/json'
-  }, });
-  const data = await res.json();
-  alert("APPROVED!")
-  console.log("IMPPPPPPPPPPPPP:",data);
-  return data;
-};
-
-const decline = async (request) => {
-  let url = `/requests/${request._id}/decline`;
-  const bod1 = {
-    "adminId": `633a0695b149556c00bfc720`
-  }
-  const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
-    'Content-Type': 'application/json'
-  }, });
-  const data = await res.json();
-  alert("DECLINED!")
-
-  console.log("IMPPPPPPPPPPPPP:",data);
-  return data;
-};
-
 const updateStudentNotes = async (request, newNote) => {
   let url = `/request/${request.requestedStudent._id}`;
   const bod1 = {
@@ -102,12 +66,11 @@ const Viewprofile = () => {
 
 
       <h4>Req Id: {params.id}</h4>
-      {/* <div>
+      { <div>
       <Accept/>
       <Decline/>
-      </div> */}
-      { (!request.isApproved) && <button onClick={(e) => { approve(request)} }>Approve</button> }
-     { (!request.isRejected) && <button onClick={(e) => { decline(request)} }>Decline</button> }
+      </div> }
+
     </div>
     </>
 
