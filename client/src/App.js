@@ -74,7 +74,7 @@ let count = 1;
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
-      <Route path="/travel-order/profile" element={ <Viewprofile/> } />
+      <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>
       {/* <Route path='/search' element={<Search/>}/> */}

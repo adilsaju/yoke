@@ -92,7 +92,7 @@ let count = 1;
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
                 <td>{student.requestedDate}</td>
-                <td><Link to='/travel-order/profile'>View Profile</Link></td>
+                <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
               </tbody>
             </table>

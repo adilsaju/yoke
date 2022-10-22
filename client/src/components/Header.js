@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div>
         <header>
-        <img src={require('./yoke-logo.png')} />
+        <img src={require('../yoke-logo.png')} />
         </header>
     </div>
   )
