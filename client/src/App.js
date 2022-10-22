@@ -70,7 +70,7 @@ let count = 1;
 
     <Header/>
     <button > <Link to='/'>Admin Dashboard</Link></button>
-    <button > <Link to='/student-account-status'>Student Dasboard</Link></button>
+    <button > <Link to='/student-account-status'>Student Dashboard</Link></button>
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
