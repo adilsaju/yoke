@@ -31,7 +31,7 @@ const bod1 = {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
-
+  alert("APPROVED!")
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
@@ -45,6 +45,7 @@ const decline = async (students) => {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
+  alert("DECLINED!")
 
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;

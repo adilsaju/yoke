@@ -16,7 +16,7 @@ const bod1 = {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
-
+  alert(`Booking Submitted for date: ${flightDate}`)
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
