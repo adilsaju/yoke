@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import StudentUpload from './studentUpload';
 import { Link } from "react-router-dom";
-
+import SideMenu from '../Navbar/SideMenu';
 
 
 //Fetch Data using API
@@ -40,10 +40,19 @@ const StudentAccountStatus = () => {
     <>
     <div>
       
-      {students.map((student,id)=> {
-        <h1>{student.requestedStudent.name}</h1>
-      })}
-           </div> 
+       
+      <h1>{students.name}</h1>
+      {/* use javascript for image  {students.photo} */}
+      <img src= 'https://picsum.photos/200/300'/> 
+      {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements.flownHours}</h2>  }
+      <h2>Student ID : {students.studentNumber}</h2>
+      <h2>Course : {students.program}</h2>
+      {students.length===0? console.log("Nothing") : <h2>Account Balance : {students.studentRequirements.balance}</h2>  }
+      {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.requests[0].isApproved? students.requests[0].isApproved : "No upcoming flights"}</h2>  }
+      {students.length===0? console.log("Nothing") : <StudentUpload starry = {students} />  }
+      
+        
+     </div> 
     </>
   )
   
