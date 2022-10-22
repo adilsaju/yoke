@@ -37,20 +37,7 @@ let count = 1;
     <SideMenuAdmin/>
     <div>
   <div>
-   <table>
-    <tbody>
-    <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th className='three'>Student Id</th>
-                <th className='four'>Travel Date</th>
-                <th className='five'>Action</th>
-              </tr>
-    </tbody>
-  
-   </table>
-   </div>
-   <div className="search-wrapper">
+  <div className="search-wrapper">
                         <label htmlFor="search-form">
                             <input
                                 type="search"
@@ -65,9 +52,21 @@ let count = 1;
                                 />
                                 </label>
                                 </div>
-                                
+   <table>
+    <tbody>
+    <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th className='three'>Student Id</th>
+                <th className='four'>Travel Date</th>
+                <th className='five'>Action</th>
+              </tr>
+    </tbody>
+  
+   </table>
+   </div>                                
       {students.map((student,id)=> {
-        if ( 'requestedStudent' in student )
+        if ( 'requestedStudent' in student && student.isApproved === false)
         {
         return (
           <div key={id}>

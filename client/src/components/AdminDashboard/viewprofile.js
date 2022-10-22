@@ -15,8 +15,8 @@ const fetchTasks = async (request_id) => {
   return data;
 };
 
-const approve = async (students) => {
-  let url = `/requests/${students._id}/approve`;
+const approve = async (request) => {
+  let url = `/requests/${request._id}/approve`;
 //   const bod1 = {
 //     "adminId": `${adminId}`
 // }
@@ -36,8 +36,8 @@ const bod1 = {
   return data;
 };
 
-const decline = async (students) => {
-  let url = `/requests/${students._id}/decline`;
+const decline = async (request) => {
+  let url = `/requests/${request._id}/decline`;
   const bod1 = {
     "adminId": `633a0695b149556c00bfc720`
   }
@@ -51,8 +51,8 @@ const decline = async (students) => {
   return data;
 };
 
-const updateStudentNotes = async (students, newNote) => {
-  let url = `/students/${students.requestedStudent._id}`;
+const updateStudentNotes = async (request, newNote) => {
+  let url = `/request/${request.requestedStudent._id}`;
   const bod1 = {
     "notes": "asdsadasdsaads asdkldjalks"
     }
@@ -68,7 +68,7 @@ const updateStudentNotes = async (students, newNote) => {
 };
 
 const Viewprofile = () => {
-  const [students,setStudents] = useState([]);
+  const [request,setStudents] = useState([]);
   let params = useParams();
 
   useEffect(() => {
@@ -83,22 +83,22 @@ const Viewprofile = () => {
     <>
       <SideMenuAdmin/>
     <div className='box'>
-      <h3>{students.requestedStudent && students.requestedStudent.name}</h3>
+      <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
-      <h4>student number: {students.requestedStudent && students.requestedStudent.studentNumber}</h4>
-      {/* <h4>student id: {students.requestedStudent && students.requestedStudent._id}</h4> */}
+      <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
+      {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
 
-      <h4>travel date: {students.requestedStudent && students.requestedStudent.flightDate}</h4>
+      <h4>travel date: {request.requestedStudent && request.requestedStudent.flightDate}</h4>
 
-      <h4>current license: {students.requestedStudent && students.requestedStudent.studentRequirements.licenseType}</h4>
-      <h4>current program: {students.requestedStudent && students.requestedStudent.program}</h4>
+      <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
+      <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
 
-      <h4>Hours flown: {students.requestedStudent && students.requestedStudent.studentRequirements.flownHours}</h4>
+      <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
 
       <h4>License images will be shown here......</h4>
 
-      <textarea name="" id="" cols="30" rows="10" value={students.requestedStudent && students.requestedStudent.notes}></textarea> <br />
-      <button onClick={(e) => { updateStudentNotes(students, e.target.value)} }>Update Notes</button>
+      <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}></textarea> <br />
+      <button onClick={(e) => { updateStudentNotes(request, e.target.value)} }>Update Notes</button>
 
 
       <h4>Req Id: {params.id}</h4>
@@ -106,8 +106,8 @@ const Viewprofile = () => {
       <Accept/>
       <Decline/>
       </div> */}
-      { (!students.isApproved) && <button onClick={(e) => { approve(students)} }>Approve</button> }
-     { (!students.isRejected) && <button onClick={(e) => { decline(students)} }>Decline</button> }
+      { (!request.isApproved) && <button onClick={(e) => { approve(request)} }>Approve</button> }
+     { (!request.isRejected) && <button onClick={(e) => { decline(request)} }>Decline</button> }
     </div>
     </>
 
