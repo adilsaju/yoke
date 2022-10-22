@@ -49,24 +49,28 @@ const Viewprofile = () => {
     <div className='box'>
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
-      <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
-      {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-
-      <h4>travel date: {request.requestedStudent && request.requestedStudent.flightDate}</h4>
-
-      <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
-      <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
-
-      <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
+      <div className='studentimage'>
+      <img src= 'https://picsum.photos/200/300'/>
+      <div className='studentviews'>
+        <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
+        {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
+        <h4>travel date: {request.requestedStudent && request.requestedStudent.flightDate}</h4>
+        <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
+          <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
+          <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
+        </div>
+      </div>
 
       <h4>License images will be shown here......</h4>
-
-      <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}></textarea> <br />
+      <div className='notes'>
+        <h4>Notes</h4>
+        <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}></textarea> <br />
+      
       <button onClick={(e) => { updateStudentNotes(request, e.target.value)} }>Update Notes</button>
-
+      </div>
 
       <h4>Req Id: {params.id}</h4>
-      { <div>
+      { <div className='approveDecline'>
       <Accept/>
       <Decline/>
       </div> }

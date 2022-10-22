@@ -32,7 +32,7 @@ const StudentAccountStatus = () => {
       
         <div className='studentimage'>
           <img src= 'https://picsum.photos/200/300'/>
-          <div className='studentview'>
+          <div className='studentviews'>
           {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements.flownHours}</h2>  }
           
           <h2>Student ID : {students.studentNumber}</h2>

@@ -38,7 +38,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && <button onClick={(e) => { decline(request)} }>Decline</button> }
+      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request)} }>Decline</button> }
     </div>
   )
 }

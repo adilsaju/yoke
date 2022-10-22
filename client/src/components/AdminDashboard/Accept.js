@@ -48,7 +48,7 @@ const Accept = () => {
 
   return (
     <div>
-    { (!request.isApproved) && <button onClick={(e) => { approve(request)} }>Approve</button> }
+    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request)} }>Approve</button> }
     </div>
   )
 }
