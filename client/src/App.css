@@ -13,14 +13,24 @@
   }
 }
 
+table {
+  display:table;
+  width:80%;
+  margin: auto;
+  table-layout:fixed;
+}
+
 table td {
 
   margin: 2rem;
   padding: 2rem;
+  border: 1px solid grey;
 }
 
 table th {
   padding: 1.5rem;
+  border: 1px solid grey;
+
 }
 
 .three {
@@ -106,4 +116,10 @@ a{
 footer{
   background-color: lightgray;
   padding: 2rem;
+}
+
+body {
+  background:linear-gradient(0deg, rgba(254, 254, 254, 0.952), rgba(141, 150, 181, 0.634)), url("p1.jpg");
+
+
 }

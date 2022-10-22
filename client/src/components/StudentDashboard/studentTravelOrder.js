@@ -45,7 +45,7 @@ const StudentTravelOrder = () => {
            < SearchStudent/>
             </>
             <>
-            <button > <Link to='/student-travel-order'>Request Travel Order</Link></button>
+            <button > <Link to='/request'>Request Travel Order</Link></button>
             </>
           
    {students.map((student,id)=> {

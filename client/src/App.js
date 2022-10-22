@@ -70,16 +70,18 @@ let count = 1;
 
     <Header/>
     <button > <Link to='/'>Admin Dashboard</Link></button>
-    <button > <Link to='/student-account-status'>Student Dasboard</Link></button>
+    <button > <Link to='/student-account-status'>Student Dashboard</Link></button>
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
-      <Route path="/travel-order/profile" element={ <Viewprofile/> } />
+      <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>
       {/* <Route path='/search' element={<Search/>}/> */}
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
       <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
+      <Route path="/request" element={<RequestTravelOrder/>}/>
+
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
 
     </Routes>

@@ -43,7 +43,7 @@ const StudentAccountStatus = () => {
        
       <h1>{students.name}</h1>
       {/* use javascript for image  {students.photo} */}
-      <img src= 'https://picsum.photos/200/300'/> 
+      <img src= 'https://firebasestorage.googleapis.com/v0/b/yoke-e05d7.appspot.com/o/ab4.JPG?alt=media&token=e2636432-e8ef-4a47-9ca3-88489a15b10a'/> 
       {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements.flownHours}</h2>  }
       <h2>Student ID : {students.studentNumber}</h2>
       <h2>Course : {students.program}</h2>
