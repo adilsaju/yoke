@@ -78,9 +78,9 @@ body{
   
 }
 button{
-  background-color: darkgray;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  margin: 1rem;
   font-size: larger;
   text-align: center;
 

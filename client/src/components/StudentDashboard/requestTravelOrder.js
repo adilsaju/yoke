@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 const req = async (flightDate) => {
   console.log("VERYYY KKKKKK: ", flightDate);
   let url = `/requests`;
