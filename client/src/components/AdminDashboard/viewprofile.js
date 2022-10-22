@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import Accept from './Accept';
 import Decline from './Decline';
-
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 
 
 const fetchTasks = async () => {
@@ -31,7 +31,9 @@ const Viewprofile = () => {
   }, []);
 
   return (
+    
     <div>
+      <SideMenuAdmin/>
       <h3>{students.name}</h3>
       <h4>{students.email}</h4>
       <div>

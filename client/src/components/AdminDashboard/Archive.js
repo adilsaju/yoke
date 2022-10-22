@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
-
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 const fetchTasks = async () => {
     let url1 = `/archives`;
     const res = await fetch(url1);
@@ -32,6 +32,7 @@ let count = 1;
 
 return (
     <>
+    <SideMenuAdmin/>
     <div>
   <div>
    <table>

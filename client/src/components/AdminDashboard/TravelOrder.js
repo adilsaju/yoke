@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
-
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 
 const fetchTasks = async () => {
   let url1 = `/pendingRequests`;
@@ -47,6 +47,7 @@ let count = 1;
 
   return (
     <>
+    <SideMenuAdmin/>
     <div>
   <div>
    <table>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SearchStudent from './Search'
-
+import SideMenu from '../Navbar/SideMenu';
 
 //Fetch Data using API
 const fetchTasks = async () => {
@@ -40,6 +40,7 @@ const StudentTravelOrder = () => {
             return (
                
         <div>
+            <SideMenu/>
             <>
            < SearchStudent/>
             </>

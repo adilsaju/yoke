@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
-
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -80,8 +80,9 @@ const Home = () => {
   }, []);
 
   return ( <>
+  <SideMenuAdmin/>
   {
-
+    
  data && <Bar options={options} data={data} />
   } 
   </>)

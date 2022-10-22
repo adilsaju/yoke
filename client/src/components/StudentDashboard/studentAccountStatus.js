@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import StudentUpload from './studentUpload';
 import { Link } from "react-router-dom";
-
+import SideMenu from '../Navbar/SideMenu';
 
 
 //Fetch Data using API
@@ -39,7 +39,7 @@ const StudentAccountStatus = () => {
   return (
     
     <div>
-      
+      <SideMenu/>
        
       <h1>{students.name}</h1>
       {/* use javascript for image  {students.photo} */}
