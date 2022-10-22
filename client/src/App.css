@@ -120,6 +120,37 @@ footer{
 
 body {
   background:linear-gradient(0deg, rgba(254, 254, 254, 0.952), rgba(141, 150, 181, 0.634)), url("p1.jpg");
+}
 
+.studentAccountName {
+  text-align: left;
+  background-color: gray;
+}
 
+.studentimage {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.studentview {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.studentupload {
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.imageupload {
+  display: flex;
+  justify-content: space-evenly;
+}
+.maindiv {
+  padding: 1rem;
 }

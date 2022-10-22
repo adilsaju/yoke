@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
-import Search from './Search';
+
 
 const fetchTasks = async () => {
   let url1 = `/pendingRequests`;
@@ -37,6 +37,17 @@ let count = 1;
     <SideMenuAdmin/>
     <div>
   <div>
+  <div className="search-wrapper">
+                        <label htmlFor="search-form">
+                            <input
+                                type="search"
+                                name="search-form"
+                                id="search-form"
+                                className="search-input"
+                                placeholder="Search for..."
+                                />
+                                </label>
+                                </div>
    <table>
     <tbody>
     <tr>
@@ -49,25 +60,9 @@ let count = 1;
     </tbody>
   
    </table>
-   </div>
-   <div className="search-wrapper">
-                        <label htmlFor="search-form">
-                            <input
-                                type="search"
-                                name="search-form"
-                                id="search-form"
-                                className="search-input"
-                                placeholder="Search for..."
-                                /*
-                                // set the value of our useState q
-                                //  anytime the user types in the search box
-                                */
-                                />
-                                </label>
-                                </div>
-                                
+   </div>                                
       {students.map((student,id)=> {
-        if ( 'requestedStudent' in student )
+        if ( 'requestedStudent' in student && student.isApproved === false)
         {
         return (
           <div key={id}>
