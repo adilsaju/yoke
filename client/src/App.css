@@ -13,14 +13,24 @@
   }
 }
 
+table {
+  display:table;
+  width:80%;
+  margin: auto;
+  table-layout:fixed;
+}
+
 table td {
 
   margin: 2rem;
   padding: 2rem;
+  border: 1px solid grey;
 }
 
 table th {
   padding: 1.5rem;
+  border: 1px solid grey;
+
 }
 
 .three {

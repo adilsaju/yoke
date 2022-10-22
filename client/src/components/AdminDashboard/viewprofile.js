@@ -4,7 +4,7 @@ import Accept from './Accept';
 import Decline from './Decline';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { useParams } from "react-router-dom";
-
+import "./viewprofile.css"
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -60,12 +60,14 @@ const Viewprofile = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <SideMenuAdmin/>
+    <div className='box'>
       <h3>{students.requestedStudent && students.requestedStudent.name}</h3>
-      {/* <h4>{students.requestedStudent && students.requestedStudent.email}</h4> */}
 
       <h4>student number: {students.requestedStudent && students.requestedStudent.studentNumber}</h4>
+      {/* <h4>student id: {students.requestedStudent && students.requestedStudent._id}</h4> */}
+
       <h4>travel date: {students.requestedStudent && students.requestedStudent.flightDate}</h4>
 
       <h4>current license: {students.requestedStudent && students.requestedStudent.studentRequirements.licenseType}</h4>
@@ -79,7 +81,7 @@ const Viewprofile = () => {
       <button onClick={(e) => { updateStudentNotes(students, e.target.value)} }>Update Notes</button>
 
 
-      <h4>{params.id}</h4>
+      <h4>Req Id: {params.id}</h4>
       {/* <div>
       <Accept/>
       <Decline/>
@@ -87,6 +89,8 @@ const Viewprofile = () => {
       <button onClick={approve}>Approve</button>
       <button onClick={decline}>Decline</button>
     </div>
+    </>
+
   )
 }
 
