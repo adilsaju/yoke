@@ -80,6 +80,8 @@ let count = 1;
       {/* <Route path='/search' element={<Search/>}/> */}
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
       <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
+      <Route path="/request" element={<RequestTravelOrder/>}/>
+
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
 
     </Routes>

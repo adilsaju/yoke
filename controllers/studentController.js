@@ -12,7 +12,7 @@ const studentRequirementsCutoff = {
   englishProficiency: true,
 };
 
-const max_request_quota = 10;
+const max_request_quota = 1000;
 const daysBeforeHecanBook = 7;
 
 //================
