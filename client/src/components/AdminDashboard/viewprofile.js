@@ -6,7 +6,7 @@ import Decline from './Decline';
 
 
 const fetchTasks = async () => {
-  let url = `/students/634c84017abbf81281febf50`;
+  let url = `/requests/634c84a03120a384503e8adb`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -17,9 +17,7 @@ const fetchTasks = async () => {
 const Viewprofile = () => {
   const [students,setStudents] = useState([]);
 
-  useEffect(() => {
-
-      
+  useEffect(() => { 
     const getTasks = async () => {
       const tfs = await fetchTasks();
       setStudents(tfs);
@@ -31,15 +29,17 @@ const Viewprofile = () => {
   }, []);
 
   return (
+    <>
     <div>
-      <h3>{students.name}</h3>
-      <h4>{students.email}</h4>
+        <h3>{students.length===0? console.log("Nothing") : students.requestedStudent.name}</h3>
+
+        <h4>{students.length===0? console.log("Nothing") :students.requestedStudent.email}</h4>
+        </div>
       <div>
       <Accept/>
       <Decline/>
       </div>
-      
-    </div>
+    </>
   )
 }
 
