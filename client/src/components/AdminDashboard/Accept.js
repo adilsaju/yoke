@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 
 
 const fetchTasks = async () => {
-    let url = `/students/634c84017abbf81281febf50`;
+    let url = `/requests/634c84a03120a384503e8adb`;
     const res = await fetch(url);
     const data = await res.json();
   
@@ -14,6 +14,7 @@ const fetchTasks = async () => {
 
 const Accept = () => {
     const [students,setStudents] = useState([]);
+    const [tasks, setTasks] = useState([]);
     useEffect(() => {
 
       
@@ -27,22 +28,31 @@ const Accept = () => {
       
       }, []);
 
-  const onCheck = async (studenti) => {
-    const res= await fetch(`/students/634c84017abbf81281febf50`, {
-        method: 'PUT',
+  const onCheck = async () => {
+    const res= await fetch(`/requests/634c84a03120a384503e8adb/approve`, {
+        method: 'PATCH',
         headers: {
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify(studenti),
+          'Content-type': 'text/plain',
+        },    
+        body: {
+          "adminId": "633a0695b149556c00bfc720"
+      },
       });
       const data = await res.json();
       console.log(data);
+    
+   
+let st = null;
+setTasks(
+  tasks.map((task) => {
+    if(task.isAccepted === false) {
+      task.isAccepted = true;
     }
-
-    onCheck()
+  }))
+}
 
   return (
-    <button>Accept</button>
+    <button onClick={() => onCheck()}>Accept</button>
   )
 }
 

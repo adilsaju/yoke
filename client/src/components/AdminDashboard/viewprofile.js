@@ -25,7 +25,9 @@ const bod1 = {
   "adminId": `633a0695b149556c00bfc720`
 }
 
-  const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
+  const res = await fetch(url, {method: 'PATCH',
+   body: JSON.stringify(bod1), 
+      headers: {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
@@ -54,7 +56,9 @@ const updateStudentNotes = async (students, newNote) => {
   const bod1 = {
     "notes": "asdsadasdsaads asdkldjalks"
     }
-  const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
+  const res = await fetch(url, {method: 'PATCH',
+   body: JSON.stringify(bod1),  
+     headers: {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
