@@ -17,8 +17,6 @@ const TravelOrder = () => {
 
 
   const [students,setStudents] = useState([]);
-  const [q, setQ] = useState("");
-    // const [searchParam] = useState(["name"]);
 
     useEffect(() => {
 
@@ -33,18 +31,6 @@ const TravelOrder = () => {
 
     }, []);
 let count = 1;
-// function search(student) {
-//   return student.filter((student) => {
-//       return searchParam.some((newItem) => {
-//           return (
-//               student[newItem]
-//                   .toString()
-//                   .toLowerCase()
-//                   .indexOf(q.toLowerCase()) > -1
-//           );
-//       });
-//   });
-// }
 
   return (
     <>
@@ -72,15 +58,14 @@ let count = 1;
                                 id="search-form"
                                 className="search-input"
                                 placeholder="Search for..."
-                                value={q}
                                 /*
                                 // set the value of our useState q
                                 //  anytime the user types in the search box
                                 */
-                                onChange={(e) => setQ(e.target.value)} 
                                 />
                                 </label>
                                 </div>
+                                
       {students.map((student,id)=> {
         if ( 'requestedStudent' in student )
         {
