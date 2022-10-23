@@ -49,15 +49,25 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).single('image1');
 
 router
   .route('/uploadLicenses/:id')
   //patch notes field api
-  .post(
-    upload.single('image1'),
-    uploadLicensesByStudentId()
-  );
+  .post( upload, (req, res) => {
+
+       upload( req, res, (success)=> {
+        if(success){
+          console.log("fileeee",req.file);
+          res.json({message: "scc"})
+          return
+        }else{
+          
+          res.send('error')
+        }
+      })
+
+    });
 
 //getting all requests
 // router.get('/requests',getRequests())
