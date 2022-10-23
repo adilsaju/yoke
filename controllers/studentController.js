@@ -11,7 +11,6 @@ const nodemailer = require("nodemailer");
 const studentRequirementsCutoff = {
   flownHours: 100,
   balance: 50,
-  englishProficiency: true,
 };
 
 const max_request_quota = 10;
@@ -274,15 +273,6 @@ const getRequestsByStudentIdValidated = () => {
     //       //NOT OK
 
     //   }
-
-    //   if (obj1.requestedStudent.studentRequirements.englishProficiency === true) {
-    //     //Ok
-    // }
-    // else{
-    //     //NOT OK
-
-    // }
-
 
 
 
