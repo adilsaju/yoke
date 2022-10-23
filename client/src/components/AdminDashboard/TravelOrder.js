@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
+import Search from './Search';
 
 
 const fetchTasks = async () => {
@@ -12,6 +13,33 @@ const fetchTasks = async () => {
   console.log(data);
   return data;
 };
+
+
+const myFunction = () => {
+  console.log("getting calledddddddddddddddddddddd");
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  
+  
+  table = document.getElementById("myTable");
+  console.log(table);
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 
 const TravelOrder = () => {
 
@@ -36,8 +64,9 @@ let count = 1;
     <>
     <SideMenuAdmin/>
     <div>
+      {/* <Search/> */}
   <div>
-  <div className="search-wrapper">
+  {/* <div className="search-wrapper">
                         <label htmlFor="search-form">
                             <input
                                 type="search"
@@ -47,7 +76,10 @@ let count = 1;
                                 placeholder="Search for..."
                                 />
                                 </label>
-                                </div>
+                                </div> */}
+
+<input type="text" id="myInput" onKeyUp={(e) => { myFunction()} }  placeholder="Search for names.." />
+
    <table>
     <tbody>
     <tr>
@@ -61,25 +93,25 @@ let count = 1;
   
    </table>
    </div>                                
-      {students.map((student,id)=> {
+            <table id="myTable" >
+             <tbody>
+             {students.map((student,id) => {
         if ( 'requestedStudent' in student && student.isApproved === false)
         {
-        return (
-          <div key={id}>
-            <table>
-             <tbody>
-              <tr>
+          return(
+              <tr key={id}>
                 <td>{count++}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
                 <td>{student.requestedDate}</td>
                 <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
+              ) }
+      })
+    }
               </tbody>
+            
             </table>
-            </div>
-        )
-}})}
     </div>
     </>
   )
