@@ -54,7 +54,7 @@ const upload = multer({ storage: storage });
 router
   .route('/uploadLicenses/:id')
   //patch notes field api
-  .patch(
+  .post(
     upload.single('image1'),
     uploadLicensesByStudentId()
   );
