@@ -348,7 +348,7 @@ const postRequestByStudentId = () => {
 
       // if student  request early date, return error
       requestsOfAStudent.map((reqDBObj) => {
-        var after10Days = new Date();
+        let after10Days = new Date();
         after10Days.setDate(after10Days.getDate()+ daysBeforeHecanBook);
 
         if (
