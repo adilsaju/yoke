@@ -16,9 +16,9 @@ const fetchTasks = async (request_id) => {
 };
 
 const updateStudentNotes = async (request, newNote) => {
-  let url = `/request/${request.requestedStudent._id}`;
+  let url = `/students/${request.requestedStudent._id}`;
   const bod1 = {
-    "notes": "asdsadasdsaads asdkldjalks"
+    "notes": `${newNote}`
     }
   const res = await fetch(url, {method: 'PATCH',
    body: JSON.stringify(bod1),  
@@ -27,12 +27,17 @@ const updateStudentNotes = async (request, newNote) => {
   }, });
   const data = await res.json();
 
+  //TODO: update request table also (backend code change actually)
+
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
 
 const Viewprofile = () => {
   const [request,setStudents] = useState([]);
+  const [notes,setNotes] = useState("");
+
+
   let params = useParams();
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const Viewprofile = () => {
       <div className='studentviews'>
         <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
         {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-        <h4>travel date: {request.requestedStudent && request.requestedStudent.flightDate}</h4>
+        <h4>travel date: {request.requestedStudent && request.flightDate}</h4>
         <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
           <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
           <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
@@ -64,9 +69,9 @@ const Viewprofile = () => {
       <h4>License images will be shown here......</h4>
       <div className='notes'>
         <h4>Notes</h4>
-        <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}></textarea> <br />
+        <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
       
-      <button onClick={(e) => { updateStudentNotes(request, e.target.value)}}  >Update Notes</button>
+      <button onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
       </div>
 
       <h4>Req Id: {params.id}</h4>
