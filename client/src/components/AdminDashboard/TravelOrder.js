@@ -20,6 +20,8 @@ const myFunction = () => {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
+  const msg = document.getElementById("msg");
+
   filter = input.value.toUpperCase();
   
   
@@ -28,6 +30,8 @@ const myFunction = () => {
   tr = table.getElementsByTagName("tr");
 
   // Loop through all table rows, and hide those who don't match the search query
+  const  tLen = tr.length
+  let emptyCnt = 0
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {
@@ -36,8 +40,18 @@ const myFunction = () => {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
+        emptyCnt ++;
+
       }
     }
+  }
+
+  if (emptyCnt === tLen){
+    msg.style.display = "";
+
+  }else {
+    msg.style.display = "none";
+
   }
 }
 
@@ -112,6 +126,7 @@ let count = 1;
               </tbody>
             
             </table>
+            <div id="msg" style={ { display: "none" } }>Wow Such Empty</div>
     </div>
     </>
   )
