@@ -18,7 +18,7 @@ const fetchTasks = async () => {
 const myFunction = () => {
   console.log("getting calledddddddddddddddddddddd");
   // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
+  let input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   const msg = document.getElementById("msg");
 
