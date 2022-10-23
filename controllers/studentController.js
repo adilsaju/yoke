@@ -57,7 +57,15 @@ const updateStudentNotesById = () => {
       particularStudent.notes = req.body.notes;
       particularStudent.save();
       // const sas = await Student.studentModel.findById(req.body.studentId)
-
+      //update all req with this student id as well
+      const allReqsOfSameStudent =
+      await Request.requestModel.find({
+        'requestedStudent._id': req.params.id,
+      })
+      allReqsOfSameStudent.forEach((requestObj)=>{
+        requestObj.requestedStudent = particularStudent
+        requestObj.save();
+      })
       res.json(particularStudent);
     } catch (error) {
       res.status(500).json({ message: error.message });
