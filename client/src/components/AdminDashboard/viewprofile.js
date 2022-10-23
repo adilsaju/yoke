@@ -66,7 +66,7 @@ const Viewprofile = () => {
         <h4>Notes</h4>
         <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}></textarea> <br />
       
-      <button onClick={(e) => { updateStudentNotes(request, e.target.value)} }>Update Notes</button>
+      <button onClick={(e) => { updateStudentNotes(request, e.target.value)}}  >Update Notes</button>
       </div>
 
       <h4>Req Id: {params.id}</h4>

@@ -17,7 +17,17 @@ const fetchTasks = async () => {
   
   };
   
-  
+const sentEmail = async () => {
+  let url = `/sentemail`;
+
+  const res = await fetch(url, {method: 'POST' });
+  const data = await res.json();
+
+  console.log("IMPPPPPPPPPPPPP:",data);
+  return data;
+};
+
+
   const FinalList = () => {
       
               const [students,setStudents] = useState([]);
@@ -43,7 +53,7 @@ const fetchTasks = async () => {
             <SideMenuAdmin/>
      
             <>
-            <button > <Link to='/student-travel-order'>Send to Flight Coordinator</Link></button>
+            <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
           
    {students.map((student,id)=> {
