@@ -44,6 +44,7 @@ const Viewprofile = () => {
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
       setStudents(tfs);
+      setNotes(tfs.requestedStudent.notes)
     };
     getTasks();
   }, []);
@@ -69,7 +70,7 @@ const Viewprofile = () => {
       <h4>License images will be shown here......</h4>
       <div className='notes'>
         <h4>Notes</h4>
-        <textarea name="" id="" cols="30" rows="10" value={request.requestedStudent && request.requestedStudent.notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
+        <textarea name="" id="" cols="30" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
       
       <button onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
       </div>
