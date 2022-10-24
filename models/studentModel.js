@@ -35,10 +35,7 @@ const studentSchema = new mongoose.Schema({
    },
    program: String,
    studentRequirements: studentRequirementsSchema,
-   isRequirementsOk: {
-      type: Boolean,
-      default: false
-   }
+
    // requests: [requestSchema],
    // requests: [ mongoose.Schema.Types.ObjectId],
 })
