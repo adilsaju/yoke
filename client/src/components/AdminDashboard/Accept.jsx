@@ -4,7 +4,6 @@ import { useState,useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 
-
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
   const res = await fetch(url);
@@ -16,9 +15,6 @@ const fetchTasks = async (request_id) => {
 
 const approve = async (request, loggedInUserAdmin) => {
   let url = `/requests/${request._id}/approve`;
-//   const bod1 = {
-//     "adminId": `${adminId}`
-// }
 
 const bod1 = {
   "adminId": `${loggedInUserAdmin}`
@@ -38,7 +34,7 @@ const bod1 = {
 const Accept = () => {
 
   const {loggedInUserAdmin} = useContext(UserContext)
-
+console.log(loggedInUserAdmin.id);
   const [request,setStudents] = useState([]);
   let params = useParams();
 
