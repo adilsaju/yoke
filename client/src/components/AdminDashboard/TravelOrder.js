@@ -14,47 +14,6 @@ const fetchTasks = async () => {
   return data;
 };
 
-
-const myFunction = () => {
-  console.log("getting calledddddddddddddddddddddd");
-  // Declare variables
-  let input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  const msg = document.getElementById("msg");
-
-  filter = input.value.toUpperCase();
-  
-  
-  table = document.getElementById("myTable");
-  console.log(table);
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  const  tLen = tr.length
-  let emptyCnt = 0
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-        emptyCnt ++;
-
-      }
-    }
-  }
-
-  if (emptyCnt === tLen){
-    msg.style.display = "";
-
-  }else {
-    msg.style.display = "none";
-
-  }
-}
-
 const TravelOrder = () => {
 
 
@@ -79,7 +38,7 @@ let count = 1;
     <SideMenuAdmin/>
     <div>
   <div>
-<input type="text" id="myInput" onKeyUp={(e) => { myFunction()} }  placeholder="Search for names.." />
+<Search/>
 
    <table>
     <tbody>
@@ -94,13 +53,13 @@ let count = 1;
   
    </table>
    </div>                                
-            <table id="myTable" >
+            <table className="myTable" >
              <tbody>
              {students.map((student,id) => {
         if ( 'requestedStudent' in student && student.isApproved === false)
         {
           return(
-              <tr key={id}>
+              <tr className='tay' key={id}>
                 <td>{count++}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
@@ -113,7 +72,7 @@ let count = 1;
               </tbody>
             
             </table>
-            <div id="msg" style={ { display: "none" } }>Wow Such Empty</div>
+            <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.</div>
     </div>
     </>
   )
