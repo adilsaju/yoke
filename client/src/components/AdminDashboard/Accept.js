@@ -1,7 +1,9 @@
 import { async } from '@firebase/util';
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
+import {UserContext} from '../../Contexts/UserContext'
+
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -12,14 +14,14 @@ const fetchTasks = async (request_id) => {
   return data;
 };
 
-const approve = async (request) => {
+const approve = async (request, loggedInUserAdmin) => {
   let url = `/requests/${request._id}/approve`;
 //   const bod1 = {
 //     "adminId": `${adminId}`
 // }
 
 const bod1 = {
-  "adminId": `633a0695b149556c00bfc720`
+  "adminId": `${loggedInUserAdmin}`
 }
 
   const res = await fetch(url, {method: 'PATCH',
@@ -34,6 +36,9 @@ const bod1 = {
 };
 
 const Accept = () => {
+
+  const {loggedInUserAdmin} = useContext(UserContext)
+
   const [request,setStudents] = useState([]);
   let params = useParams();
 
@@ -48,7 +53,7 @@ const Accept = () => {
 
   return (
     <div>
-    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request)} }>Approve</button> }
+    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loggedInUserAdmin)} }>Approve</button> }
     </div>
   )
 }

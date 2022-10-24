@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import { useParams } from "react-router-dom";
+import {UserContext} from '../../Contexts/UserContext'
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -10,10 +11,10 @@ const fetchTasks = async (request_id) => {
   console.log("PARTICULAR REQ: ",data);
   return data;
 };
-const decline = async (request) => {
+const decline = async (request, loggedInUserAdmin) => {
   let url = `/requests/${request._id}/decline`;
   const bod1 = {
-    "adminId": `633a0695b149556c00bfc720`
+    "adminId": `${loggedInUserAdmin}`
   }
   const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
     'Content-Type': 'application/json'
@@ -27,6 +28,8 @@ const decline = async (request) => {
 
 const Decline = () => {
   const [request,setStudents] = useState([]);
+  const {loggedInUserAdmin} = useContext(UserContext)
+
   let params = useParams();
   useEffect(() => {
     const getTasks = async () => {
@@ -38,7 +41,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request)} }>Decline</button> }
+      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loggedInUserAdmin)} }>Decline</button> }
     </div>
   )
 }

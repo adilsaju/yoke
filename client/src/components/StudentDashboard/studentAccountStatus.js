@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useContext } from 'react';
 import StudentUpload from './studentUpload';
 import { Link } from "react-router-dom";
 import SideMenu from '../Navbar/SideMenu';
+import {UserContext} from '../../Contexts/UserContext'
 //Fetch Data using API
-const fetchTasks = async () => {
-  let url = `/students/633a0695b149556c00bfc725`;
+const fetchTasks = async (loggedInUser) => {
+  let url = `/students/${loggedInUser.id}`;
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
@@ -13,10 +14,12 @@ const fetchTasks = async () => {
   return data;
 };
 const StudentAccountStatus = () => {
+  const {loggedInUser} = useContext(UserContext)
+
             const [students,setStudents] = useState([]);
             useEffect(() => {
                 const getTasks = async () => {
-                const tfs = await fetchTasks();
+                const tfs = await fetchTasks(loggedInUser);
                 setStudents(tfs);
                 };
                 getTasks();

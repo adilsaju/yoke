@@ -20,6 +20,7 @@ import { useState,useEffect } from 'react';
 import TravelOrder from './components/AdminDashboard/TravelOrder';
 import Archive from './components/AdminDashboard/Archive';
 import Search from './components/AdminDashboard/Search';
+import {UserContext} from './Contexts/UserContext'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -47,11 +48,22 @@ export const db = getFirestore(app);
 };
 
 function App() {
-  localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
-  const found = localStorage.getItem("loggedInUserId");
+  // localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
+  // const found = localStorage.getItem("loggedInUserId");
+  // console.log(found)
  
   const [students,setStudents] = useState([])  
-  console.log(found)
+  const [loggedInUser,setLoggedInUser] = useState({
+    id: "633a0695b149556c00bfc725",
+    name: "Tharun Thakur",
+    userType: "student"
+  })  
+  const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
+    id: "633a0695b149556c00bfc720",
+    name: "Claire Simbulan",
+    userType: "admin"
+  })  
+
     useEffect(() => {
 
       
@@ -67,7 +79,9 @@ let count = 1;
   return (
     
     <>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin}}>
 
+      {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>
     <button > <Link to='/'>Admin Dashboard</Link></button>
     <button > <Link to='/student-account-status'>Student Dashboard</Link></button>
@@ -87,6 +101,8 @@ let count = 1;
     </Routes>
     
       <Footer/>
+    </UserContext.Provider>
+
     </>
   );
 }

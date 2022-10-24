@@ -1,12 +1,16 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import SearchStudent from './Search'
 import SideMenu from '../Navbar/SideMenu';
+import {UserContext} from '../../Contexts/UserContext'
+
+
+
 
 //Fetch Data using API
-const fetchTasks = async () => {
-    let url = `/requests?student=633a0695b149556c00bfc725`;
+const fetchTasks = async (loggedInUser) => {
+    let url = `/requests?student=${loggedInUser.id}`;
     const res = await fetch(url);
     const data = await res.json();
   
@@ -19,13 +23,14 @@ const fetchTasks = async () => {
   
 
 const StudentTravelOrder = () => {
+    const {loggedInUser} = useContext(UserContext)
       
                 const [students,setStudents] = useState([]);
 
                 useEffect(() => {
                     
                     const getTasks = async () => {
-                    const tfs = await fetchTasks();
+                    const tfs = await fetchTasks(loggedInUser);
                     setStudents(tfs);
                     };
                 
