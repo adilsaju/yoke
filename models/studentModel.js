@@ -21,6 +21,13 @@ const studentSchema = new mongoose.Schema({
    },
    notes: String,
    studentNumber: Number,
+   // photo: {
+   //    name: String,
+   //    image: {
+   //       data: Buffer,
+   //       contentType: String
+   //    }
+   // },
    photo: String,
    dateJoined: {
       type: Date,

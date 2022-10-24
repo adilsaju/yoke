@@ -4,6 +4,8 @@ const app = express();
 const mongoose = require('mongoose')
 const {addData} = require("./scripts/data-create");
 const studentRoute = require('./routes/studentRoute')
+// const bodyParser = require('body-parser')
+
 // const login = require('./routes/login')
 const errorHandler = require('./middlewares/errorMiddleware')
 
@@ -27,6 +29,9 @@ app.use("/", studentRoute)
 
 //error handler middleware
 app.use(errorHandler)
+// app.use(bodyParser()) // support encoded bodies
+// bodyParser.json([])
+
 
 app.listen(port, ()=>{
     console.log('server started');

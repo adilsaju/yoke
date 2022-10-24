@@ -7,7 +7,7 @@ const app = require("../firebase")
 
 // console.log(str.name);
 //FIXME: file object
-process.exit()
+// process.exit()
 
 
 const storage = getStorage();

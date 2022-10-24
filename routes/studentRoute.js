@@ -6,6 +6,9 @@ const path = require('path');
 const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
+
+const storage = require('./multer-firebase');
+
 const {
   getStudents,
   getStudentById,
@@ -25,7 +28,9 @@ const {
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  sentEmail
+  sentEmail,
+  updateStudentPhoto,
+  uploadLicByStudentId,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -37,37 +42,103 @@ router
   .get(getStudentById())
   //patch notes field api
   .patch(updateStudentNotesById());
-//TODO: upload license PUT api
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'Images');
-  },
-  filename: (req, file, cb) => {
-    console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+const uploadPhoto = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).single('image1');
 
-const upload = multer({ storage: storage }).single('image1');
+const uploadL1 = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).single('l1');
 
-router
-  .route('/uploadLicenses/:id')
-  //patch notes field api
-  .post( upload, (req, res) => {
+const uploadL2 = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).single('l2');
 
-       upload( req, res, (success)=> {
-        if(success){
-          console.log("fileeee",req.file);
-          res.json({message: "scc"})
-          return
-        }else{
-          
-          res.send('error')
-        }
-      })
+const uploadL3 = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).single('l3');
 
-    });
+const uploadL4 = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).single('l4');
+
+const uploadArray = multer({ storage: storage,
+  // limits: { fieldSize: 10 * 1024 * 1024 },
+  // limits: {fileSize: 10},
+  fileFilter: function(req, file, cb){
+    checkFileType(file,cb)
+  }
+}).array('licenses', 4);
+
+function checkFileType(file, cb){
+  // allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  //check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  //check mime
+  const mimetype = filetypes.test(file.mimetype)
+
+  if (mimetype && extname) {
+    return cb(null, true)
+  }else {
+    cb('Error: images only')
+  }
+}
+
+
+// router
+//   .route('/uploadLicenses/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadLicensesByStudentId(uploadArray));
+
+// router
+//   .route('/uploadEnglish/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadEnglishByStudentId(uploadL1))  ;
+
+//   router
+//   .route('/uploadMedicalLicense/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadMedicalLicByStudentId(uploadL2))  ;
+
+//   router
+//   .route('/uploadRadioLicense/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadRadioLicByStudentId(uploadL3))  ;
+
+  router
+  .route('/uploadLicense/:id')
+  //patch license, privatelicense, medicallicense, englishprof field api
+  .post( uploadLicByStudentId(uploadL4))  ;
+
+
+// ======== INTERNAL API ==========
+    router
+    .route('/updateStudentPhoto/:id')
+    //patch license, privatelicense, medicallicense, englishprof field api
+    .post( updateStudentPhoto(uploadPhoto) );
+// =======================
 
 //getting all requests
 // router.get('/requests',getRequests())
