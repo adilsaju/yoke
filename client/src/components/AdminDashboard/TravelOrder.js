@@ -78,20 +78,7 @@ let count = 1;
     <>
     <SideMenuAdmin/>
     <div>
-      {/* <Search/> */}
   <div>
-  {/* <div className="search-wrapper">
-                        <label htmlFor="search-form">
-                            <input
-                                type="search"
-                                name="search-form"
-                                id="search-form"
-                                className="search-input"
-                                placeholder="Search for..."
-                                />
-                                </label>
-                                </div> */}
-
 <input type="text" id="myInput" onKeyUp={(e) => { myFunction()} }  placeholder="Search for names.." />
 
    <table>
