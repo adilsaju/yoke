@@ -8,6 +8,7 @@ const studentRoute = require('./routes/studentRoute')
 
 // const login = require('./routes/login')
 const errorHandler = require('./middlewares/errorMiddleware')
+const jwt = require('jsonwebtoken')
 
 const port = process.env.PORT || 5001
 

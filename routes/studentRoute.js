@@ -8,6 +8,8 @@ const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
 
 const storage = require('./multer-firebase');
+const jwt = require('jsonwebtoken')
+const {uploadPhoto,uploadL1,uploadL2,uploadL3,uploadL4, uploadArray, checkFileType} = require('./multer-utils')
 
 const {
   getStudents,
@@ -32,9 +34,10 @@ const {
   updateStudentPhoto,
   uploadLicByStudentId,
 } = require('../controllers/studentController.js');
+const { verify } = require('crypto');
 
 //getting all students
-router.route('/students').get(getStudents());
+router.route('/students').get( verifyToken , getStudents());
 
 //getting particular student by id
 router
@@ -43,68 +46,6 @@ router
   //patch notes field api
   .patch(updateStudentNotesById());
 
-const uploadPhoto = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).single('image1');
-
-const uploadL1 = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).single('l1');
-
-const uploadL2 = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).single('l2');
-
-const uploadL3 = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).single('l3');
-
-const uploadL4 = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).single('l4');
-
-const uploadArray = multer({ storage: storage,
-  // limits: { fieldSize: 10 * 1024 * 1024 },
-  // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
-}).array('licenses', 4);
-
-function checkFileType(file, cb){
-  // allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
-  //check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  //check mime
-  const mimetype = filetypes.test(file.mimetype)
-
-  if (mimetype && extname) {
-    return cb(null, true)
-  }else {
-    cb('Error: images only')
-  }
-}
 
 
 // router
@@ -181,4 +122,31 @@ router.route('/todaysDecisions').get(getChartOne());
 router.route('/sentEmail').post(sentEmail());
 
 
+router.route('/login').post((req, res)=>{
+  console.log('login()');
+  user = req.body.user
+  jwt.sign({user}, 'secretkey' , {expiresIn: '300m' },  (err, token)=>{
+    res.json({ token })
+  })
+});
+
+//FORMAT
+// Authorization: Bearer <access_token>
+//verfify token
+function verifyToken(req,res,next){
+  //get auth header
+  const bearerHeader = req.headers['authorization'];
+  if (typeof bearerHeader !== 'undefined')
+  {
+    const bearer = bearerHeader.split(' ')
+    const bearerToken = bearer[1]
+
+    req.token = bearerToken
+
+    next();
+  }else{
+    //Forbidden
+    res.sendStatus(403)
+  }
+}
 module.exports = router;
