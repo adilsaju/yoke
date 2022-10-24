@@ -22,6 +22,10 @@ const studentRequirementsSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
      },
+     isRequirementsOk: {
+      type: Boolean,
+      default: false
+   }
     // student: studentSchema,
 
  

@@ -1,4 +1,6 @@
 import React from 'react'
+import { useState,useEffect } from 'react';
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -22,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -30,43 +32,60 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Last 30 days Requests',
     },
   },
 };
 
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
+
+const fetchTasks = async () => {
+  let url = `/past30daysRequests`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  console.log("hahaha",data);
+
+// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels1 = data.map((a)=>a._id)
+const labels = labels1.sort()
+ 
+  const data2 = {
+    labels,
+    datasets: [
+      {
+        label: 'Number of students',
+        data: data.map((a)=>a.count),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      }
+    ],
+  };
+
+
+  return data2;
 };
 
 
 const Home = () => {
-  // return (
-  //   <>
-  //   <div>Charts Display Here</div>
-    
-    
+  const [data, setData] = useState(false);
 
-  //   <Doughnut data={...} />
-  //   </>
-  // )
+  useEffect(() => {
+    
+    const getTasks = async () => {
+      const tfs = await fetchTasks();
+      setData(tfs);
+    };
+    getTasks();
+  }, []);
 
-  return <Bar options={options} data={data} />;
+  return ( <>
+  <SideMenuAdmin/>
+  {
+    
+ data && <Bar options={options} data={data} />
+  } 
+  </>)
 
 }
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
+import Search from './Search';
 
 
 const fetchTasks = async () => {
-  let url1 = `http://localhost:5001/pendingRequest`;
+  let url1 = `/pendingRequests`;
   const res = await fetch(url1);
   const data = await res.json();
 
@@ -15,7 +17,7 @@ const fetchTasks = async () => {
 const TravelOrder = () => {
 
 
-  const [students,setStudents] = useState([])
+  const [students,setStudents] = useState([]);
 
     useEffect(() => {
 
@@ -33,8 +35,11 @@ let count = 1;
 
   return (
     <>
+    <SideMenuAdmin/>
     <div>
   <div>
+<Search/>
+
    <table>
     <tbody>
     <tr>
@@ -47,24 +52,27 @@ let count = 1;
     </tbody>
   
    </table>
-   </div>
-      {students.map((student,id)=> {
-        return (
-          <div key={id}>
-            <table>
+   </div>                                
+            <table className="myTable" >
              <tbody>
-              <tr>
+             {students.map((student,id) => {
+        if ( 'requestedStudent' in student && student.isApproved === false)
+        {
+          return(
+              <tr className='tay' key={id}>
                 <td>{count++}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
                 <td>{student.requestedDate}</td>
-                <td><Link to='/travel-order/profile'>View Profile</Link></td>
+                <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
+              ) }
+      })
+    }
               </tbody>
+            
             </table>
-            </div>
-        )
-      })}
+            <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.</div>
     </div>
     </>
   )

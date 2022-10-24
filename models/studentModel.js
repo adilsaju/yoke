@@ -21,6 +21,13 @@ const studentSchema = new mongoose.Schema({
    },
    notes: String,
    studentNumber: Number,
+   // photo: {
+   //    name: String,
+   //    image: {
+   //       data: Buffer,
+   //       contentType: String
+   //    }
+   // },
    photo: String,
    dateJoined: {
       type: Date,
@@ -28,10 +35,7 @@ const studentSchema = new mongoose.Schema({
    },
    program: String,
    studentRequirements: studentRequirementsSchema,
-   isRequirementsOk: {
-      type: Boolean,
-      default: false
-   }
+
    // requests: [requestSchema],
    // requests: [ mongoose.Schema.Types.ObjectId],
 })
