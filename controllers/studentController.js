@@ -266,7 +266,9 @@ const getRequestsByStudentIdValidated = () => {
       // const request2 = await Request.requestModel.create(
       //   newRequestsDBArr
       // );
-      
+
+      // =============================
+      //IMP!!!!!!!!!!!!!!!!!      NOW ITS RETURNING NEW JSON, NOT UPDATING THE DB
       res.json(newRequestsDBArr);
       return
     } catch (error) {
