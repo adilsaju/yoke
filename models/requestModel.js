@@ -32,6 +32,10 @@ const requestSchema = new mongoose.Schema({
       type: Boolean,
       default: false
    },
+   reason: {
+      type: String,
+      default: "NA"
+   },
 
    // requestedStudent:  mongoose.Schema.Types.ObjectId,
    // approvedAdmin:  mongoose.Schema.Types.ObjectId,
