@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
+import moment from "moment";
 
 
 const fetchTasks = async () => {
@@ -20,8 +21,6 @@ const TravelOrder = () => {
   const [students,setStudents] = useState([]);
 
     useEffect(() => {
-
-      
       const getTasks = async () => {
         const tfs = await fetchTasks();
         setStudents(tfs);
@@ -63,7 +62,7 @@ let count = 1;
                 <td>{count++}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
-                <td>{student.requestedDate}</td>
+                <td>{moment(student.requestedDate).format("MMMM Do , YYYY")}</td>
                 <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
               ) }
