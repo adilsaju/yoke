@@ -11,6 +11,10 @@ const SideMenu = () => {
         <li>
           <Link to="/student-travel-order">Student Travel Order</Link>
         </li>
+
+        <li>
+        <Link to="/settingStudent">Setting</Link>
+        </li>
         
       </ul>
       </nav>

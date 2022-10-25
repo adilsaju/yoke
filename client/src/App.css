@@ -15,7 +15,7 @@
 
 table {
   display:table;
-  width:80%;
+  width:90%;
   margin: auto;
   table-layout:fixed;
 }
@@ -118,9 +118,9 @@ footer{
   padding: 2rem;
 }
 
-body {
+/* body {
   background:linear-gradient(0deg, rgba(254, 254, 254, 0.952), rgba(141, 150, 181, 0.634)), url("p1.jpg");
-}
+} */
 
 .studentAccountName {
   text-align: left;

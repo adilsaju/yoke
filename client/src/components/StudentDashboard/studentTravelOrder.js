@@ -15,8 +15,6 @@ const fetchTasks = async (loggedInUser) => {
     const data = await res.json();
   
     console.log(data);
-    console.log("In Mohit2 code");
-    
     return data;
   
   };
