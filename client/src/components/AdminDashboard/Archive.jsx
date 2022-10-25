@@ -41,6 +41,7 @@ return (
     <tbody>
     <tr>
                 <th>No.</th>
+                <th>Requested ID</th>
                 <th>Name</th>
                 <th className='three'>Student Id</th>
                 <th className='four'>Travel Date</th>
@@ -64,6 +65,7 @@ return (
           <td>
             {count++}
           </td>
+          <td>{student._id}</td>
           <td>{student.requestedStudent.name}</td>
           <td>{student.requestedStudent.studentNumber}</td>
           <td>{student.flightDate}</td>
@@ -83,6 +85,7 @@ return (
     <tbody>
     <tr className='tay'>
     <td>{count++}</td>
+    <td>{student._id}</td>
     <td>{student.requestedStudent.name}</td>
     <td>{student.requestedStudent.studentNumber}</td>
     <td>{student.flightDate}</td>

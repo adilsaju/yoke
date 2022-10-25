@@ -32,6 +32,9 @@ const SettingStudent = () => {
     <div>
      { <><h2>{student.email}</h2>
      <h3>{student.password}</h3></> }
+     <div>
+     <button>Forgot Password</button>
+     </div>
    </div>
    </>
   )

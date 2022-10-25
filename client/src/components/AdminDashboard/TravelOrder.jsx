@@ -31,7 +31,6 @@ const TravelOrder = () => {
 
     }, []);
 let count = 1;
-
   return (
     <>
     <SideMenuAdmin/>
@@ -43,6 +42,7 @@ let count = 1;
     <tbody>
     <tr>
                 <th>No.</th>
+                <th>Requested ID</th>
                 <th>Name</th>
                 <th className='three'>Student Id</th>
                 <th className='four'>Travel Date</th>
@@ -60,6 +60,7 @@ let count = 1;
           return(
               <tr className='tay' key={id}>
                 <td>{count++}</td>
+                <td>{student._id}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
                 <td>{moment(student.requestedDate).format("MMMM Do , YYYY")}</td>
@@ -69,7 +70,6 @@ let count = 1;
       })
     }
               </tbody>
-            
             </table>
             <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.</div>
     </div>
