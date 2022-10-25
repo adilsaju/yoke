@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
+import Search from './Search';
 const fetchTasks = async () => {
     let url1 = `/archives`;
     const res = await fetch(url1);
@@ -35,6 +36,7 @@ return (
     <SideMenuAdmin/>
     <div>
   <div>
+    <Search/>
    <table>
     <tbody>
     <tr>
@@ -56,9 +58,9 @@ return (
            if(student.isApproved === false ) {
           return(
             <div key={id}>
-        <table>
+        <table className="myTable">
         <tbody>
-        <tr>
+        <tr className='tay'>
           <td>
             {count++}
           </td>
@@ -77,9 +79,9 @@ return (
     else {
       return(
         <div key={id}>
-  <table>
+  <table className="myTable">
     <tbody>
-    <tr>
+    <tr className='tay'>
     <td>{count++}</td>
     <td>{student.requestedStudent.name}</td>
     <td>{student.requestedStudent.studentNumber}</td>

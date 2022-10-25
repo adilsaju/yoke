@@ -63,6 +63,7 @@ const StudentTravelOrder = () => {
              <tbody>
               <tr>
                 <td>{(count++)}</td>
+                <td>{student.requestedStudent.name}</td>
                 <td>{ student.flightDate}</td>
                 <td>{  
                         (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
