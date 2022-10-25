@@ -34,7 +34,7 @@ const updateStudentNotes = async (request, newNote) => {
 };
 
 const Viewprofile = () => {
-  const [request,setStudents] = useState([]);
+  const [request,requestStudent] = useState([]);
   const [notes,setNotes] = useState("");
 
 
@@ -43,7 +43,7 @@ const Viewprofile = () => {
   useEffect(() => {
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
-      setStudents(tfs);
+      requestStudent(tfs);
       setNotes(tfs.requestedStudent.notes)
     };
     getTasks();

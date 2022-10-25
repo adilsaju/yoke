@@ -21,9 +21,13 @@ const SideMenuAdmin = () => {
         <li>
           <Link to="/archive">Archive</Link>
         </li>
-        {/* <li>
-          <Link to="/search">Search</Link>
-        </li> */}
+        {<div>
+          <li>
+        <Link to="/setting">Setting</Link>
+        </li>
+        </div> 
+          
+         }
       </ul>
        
     </nav>

@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import SideMenu from './components/Navbar/SideMenu';
 import Home from './components/AdminDashboard/Home'
 import Viewprofile from './components/AdminDashboard/viewprofile'
-
+import Setting from './components/AdminDashboard/Setting';
 import StudentAccountStatus from './components/StudentDashboard/studentAccountStatus'
 import RequestTravelOrder from './components/StudentDashboard/requestTravelOrder'
 import UploadDocument from './components/StudentDashboard/UploadDocument'
@@ -21,6 +21,7 @@ import TravelOrder from './components/AdminDashboard/TravelOrder';
 import Archive from './components/AdminDashboard/Archive';
 import Search from './components/AdminDashboard/Search';
 import {UserContext} from './Contexts/UserContext'
+import SettingStudent from './components/StudentDashboard/SettingStudent';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -76,7 +77,7 @@ function App() {
       getTasks();
 
     }, []);
-let count = 1;
+
   return (
     
     <>
@@ -92,11 +93,12 @@ let count = 1;
       <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>
+      <Route path="/setting" element={<Setting/>}/>
       {/* <Route path='/search' element={<Search/>}/> */}
       <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
       <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
       <Route path="/request" element={<RequestTravelOrder/>}/>
-
+       <Route path='/settingStudent' element={<SettingStudent/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
 
     </Routes>

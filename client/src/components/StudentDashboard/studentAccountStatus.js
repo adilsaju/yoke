@@ -10,7 +10,6 @@ const fetchTasks = async (loggedInUser) => {
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
-  console.log("In Mohit Code");
   return data;
 };
 const StudentAccountStatus = () => {
