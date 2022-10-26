@@ -31,6 +31,7 @@ const {
   sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
+  loginUser,
 } = require('../controllers/studentController.js');
 
 //getting all students
@@ -43,69 +44,76 @@ router
   //patch notes field api
   .patch(updateStudentNotesById());
 
-const uploadPhoto = multer({ storage: storage,
+const uploadPhoto = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single('image1');
 
-const uploadL1 = multer({ storage: storage,
+const uploadL1 = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single('l1');
 
-const uploadL2 = multer({ storage: storage,
+const uploadL2 = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single('l2');
 
-const uploadL3 = multer({ storage: storage,
+const uploadL3 = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single('l3');
 
-const uploadL4 = multer({ storage: storage,
+const uploadL4 = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).single('l4');
 
-const uploadArray = multer({ storage: storage,
+const uploadArray = multer({
+  storage: storage,
   // limits: { fieldSize: 10 * 1024 * 1024 },
   // limits: {fileSize: 10},
-  fileFilter: function(req, file, cb){
-    checkFileType(file,cb)
-  }
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 }).array('licenses', 4);
 
-function checkFileType(file, cb){
+function checkFileType(file, cb) {
   // allowed ext
   const filetypes = /jpeg|jpg|png|gif/;
   //check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const extname = filetypes.test(
+    path.extname(file.originalname).toLowerCase()
+  );
   //check mime
-  const mimetype = filetypes.test(file.mimetype)
+  const mimetype = filetypes.test(file.mimetype);
 
   if (mimetype && extname) {
-    return cb(null, true)
-  }else {
-    cb('Error: images only')
+    return cb(null, true);
+  } else {
+    cb('Error: images only');
   }
 }
-
 
 // router
 //   .route('/uploadLicenses/:id')
@@ -127,17 +135,16 @@ function checkFileType(file, cb){
 //   //patch license, privatelicense, medicallicense, englishprof field api
 //   .post( uploadRadioLicByStudentId(uploadL3))  ;
 
-  router
+router
   .route('/uploadLicense/:id')
   //patch license, privatelicense, medicallicense, englishprof field api
-  .post( uploadLicByStudentId(uploadL4))  ;
-
+  .post(uploadLicByStudentId(uploadL4));
 
 // ======== INTERNAL API ==========
-    router
-    .route('/updateStudentPhoto/:id')
-    //patch license, privatelicense, medicallicense, englishprof field api
-    .post( updateStudentPhoto(uploadPhoto) );
+router
+  .route('/updateStudentPhoto/:id')
+  //patch license, privatelicense, medicallicense, englishprof field api
+  .post(updateStudentPhoto(uploadPhoto));
 // =======================
 
 //getting all requests
@@ -180,5 +187,8 @@ router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
 
+//login route
+router.route('/login').post(loginUser());
+router.route('/login').get(loginUser());
 
 module.exports = router;

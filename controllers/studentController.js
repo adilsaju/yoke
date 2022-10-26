@@ -5,8 +5,8 @@ const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
 const studentRequirements = require('../models/checklistModel.js');
 const { request } = require('express');
-const nodemailer = require("nodemailer");
-
+const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt');
 
 //===============
 const studentRequirementsCutoff = {
@@ -59,20 +59,19 @@ const updateStudentNotesById = () => {
       // const sas = await Student.studentModel.findById(req.body.studentId)
       //update all req with this student id as well
       const allReqsOfSameStudent =
-      await Request.requestModel.find({
-        'requestedStudent._id': req.params.id,
-      })
-      allReqsOfSameStudent.forEach((requestObj)=>{
-        requestObj.requestedStudent = particularStudent
+        await Request.requestModel.find({
+          'requestedStudent._id': req.params.id,
+        });
+      allReqsOfSameStudent.forEach((requestObj) => {
+        requestObj.requestedStudent = particularStudent;
         requestObj.save();
-      })
+      });
       res.json(particularStudent);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   };
 };
-
 
 //patch
 const approveRequestById = () => {
@@ -203,7 +202,7 @@ const getRequestsByStudentId = () => {
 //MACHINE VALIDATION OF CHECKLIST LOGIC
 const getRequestsByStudentIdValidated = () => {
   return async (req, res, next) => {
-    console.log("getRequestsByStudentIdValidated")
+    console.log('getRequestsByStudentIdValidated');
     try {
       const studentId = req.query.student;
 
@@ -222,44 +221,57 @@ const getRequestsByStudentIdValidated = () => {
       //get requests column from student
       // const abc=await Student.studentModel.findById(studentId).select('requests')
       console.log('rrrr');
-      const requestsDBArr = await Request.requestModel.find({
-        'requestedStudent._id': studentId,
-      });
+      const requestsDBArr = await Request.requestModel.find(
+        {
+          'requestedStudent._id': studentId,
+        }
+      );
 
-      const newRequestsDBArr = JSON.parse(JSON.stringify(requestsDBArr))
+      const newRequestsDBArr = JSON.parse(
+        JSON.stringify(requestsDBArr)
+      );
 
       // validate
-      for ( let i =0  ; i< requestsDBArr.length ; i++ )
-      {
-
-        let obj1 = requestsDBArr[i]
+      for (let i = 0; i < requestsDBArr.length; i++) {
+        let obj1 = requestsDBArr[i];
         // console.log(obj1.requestedStudent.studentRequirements.flownHours)
-        if (obj1.requestedStudent.studentRequirements.flownHours >= studentRequirementsCutoff.flownHours) {
-            //Ok
-          console.log("first", "ok")
-          newRequestsDBArr[i].requestedStudent.studentRequirements.flownHours = {
-            value : obj1.requestedStudent.studentRequirements.flownHours,
-            isOk: true
-          }
+        if (
+          obj1.requestedStudent.studentRequirements
+            .flownHours >=
+          studentRequirementsCutoff.flownHours
+        ) {
+          //Ok
+          console.log('first', 'ok');
+          newRequestsDBArr[
+            i
+          ].requestedStudent.studentRequirements.flownHours =
+            {
+              value:
+                obj1.requestedStudent.studentRequirements
+                  .flownHours,
+              isOk: true,
+            };
+        } else {
+          console.log('first', 'ok');
+          newRequestsDBArr[
+            i
+          ].requestedStudent.studentRequirements.flownHours =
+            {
+              value:
+                obj1.requestedStudent.studentRequirements
+                  .flownHours,
+              isOk: false,
+            };
         }
-        else{
-            console.log("first", "ok")
-            newRequestsDBArr[i].requestedStudent.studentRequirements.flownHours = {
-            value : obj1.requestedStudent.studentRequirements.flownHours,
-              isOk: false
-            }
       }
-    }
       //TODO:
-    //     if (obj1.requestedStudent.studentRequirements.balance > studentRequirementsCutoff.balance) {
-    //       //Ok
-    //   }
-    //   else{
-    //       //NOT OK
+      //     if (obj1.requestedStudent.studentRequirements.balance > studentRequirementsCutoff.balance) {
+      //       //Ok
+      //   }
+      //   else{
+      //       //NOT OK
 
-    //   }
-
-
+      //   }
 
       //Also set isRequirementsOk based on validator:
 
@@ -270,7 +282,7 @@ const getRequestsByStudentIdValidated = () => {
       // =============================
       //IMP!!!!!!!!!!!!!!!!!      NOW ITS RETURNING NEW JSON, NOT UPDATING THE DB
       res.json(newRequestsDBArr);
-      return
+      return;
     } catch (error) {
       res
         .status(500)
@@ -291,7 +303,7 @@ const postRequestByStudentId = () => {
         );
 
       console.log('particularStudent', particularStudent);
-          console.log("cp1")
+      console.log('cp1');
       //date validation
       try {
         let d = new Date(req.body.flightDate).toISOString();
@@ -303,15 +315,17 @@ const postRequestByStudentId = () => {
         return;
       }
 
-      if ( new Date(req.body.flightDate).toISOString() == "Invalid Date"){
+      if (
+        new Date(req.body.flightDate).toISOString() ==
+        'Invalid Date'
+      ) {
         res.status(500).json({
           error: true,
           message: 'invalid flightDate',
         });
         return;
-
       }
-      console.log("cp2")
+      console.log('cp2');
 
       //return all requests of given student
       const requestsOfAStudent =
@@ -326,19 +340,23 @@ const postRequestByStudentId = () => {
           reqDBObj.flightDate.toLocaleDateString() ===
           new Date(req.body.flightDate).toLocaleDateString()
         ) {
-         throw new Error('already requested same travel day')
-
+          throw new Error(
+            'already requested same travel day'
+          );
         }
       });
 
       // if student  request early date, return error
       requestsOfAStudent.map((reqDBObj) => {
         let after10Days = new Date();
-        after10Days.setDate(after10Days.getDate()+ daysBeforeHecanBook);
+        after10Days.setDate(
+          after10Days.getDate() + daysBeforeHecanBook
+        );
 
         if (
-          new Date(req.body.flightDate).toLocaleDateString() <
-          after10Days
+          new Date(
+            req.body.flightDate
+          ).toLocaleDateString() < after10Days
         ) {
           res.status(500).json({
             error: true,
@@ -386,10 +404,10 @@ const postRequestByStudentId = () => {
       // const abc=await  Request.requestModel.find({ "requestedStudent._id":  studentId})
 
       res.json(request1);
-      return
+      return;
     } catch (error) {
       res.json({ error: true, message: error.message });
-      return
+      return;
     }
   };
 };
@@ -679,7 +697,6 @@ const declineRequestById = () => {
   }; //end of middleware
 }; //end of declineRequest
 
-
 async function main() {
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
@@ -692,27 +709,29 @@ async function main() {
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'flightcoordinator.yoke@gmail.com',
-      pass: 'wnamljtnjzuulvva'
-    }
+      pass: 'wnamljtnjzuulvva',
+    },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"Fred Foo 👻" <adilsaju@gmail.com>', // sender address
-    to: "adilsaju@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    to: 'adilsaju@gmail.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world?', // plain text body
+    html: '<b>Hello world?</b>', // html body
   });
 
-  console.log("Message sent: %s", info.messageId);
+  console.log('Message sent: %s', info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  console.log(
+    'Preview URL: %s',
+    nodemailer.getTestMessageUrl(info)
+  );
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
-
 
 // ******** admin decline ********
 const sentEmail = () => {
@@ -720,13 +739,12 @@ const sentEmail = () => {
     // const requestInfo = await Request.requestModel.findById(
     //   req.params.id
     // );
-    let body1 = req.body.finalList
-    body1 = {}
+    let body1 = req.body.finalList;
+    body1 = {};
 
     try {
-
       main().catch(console.error);
-      res.json("sent successfull");
+      res.json('sent successfull');
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -735,162 +753,185 @@ const sentEmail = () => {
   }; //end of middleware
 }; //end of declineRequest
 
-
 const updateStudentPhoto = (upload) => {
- return upload, async (req, res) => {
-  
-    upload( req, res, async (error)=> {
-      if (error) {
+  return (
+    upload,
+    async (req, res) => {
+      upload(req, res, async (error) => {
+        if (error) {
+          if (error != 'Error: Unexpected end of form') {
+            //  console.log("fileeee",req.file);
+            console.log(error);
+            res.json({ message: error });
+            return;
+          } else if (req.file == undefined) {
+            res.json('undefined file error');
+          } else {
+            const abc = await Student.studentModel.findById(
+              req.params.id
+            );
+            abc.photo = req.file.publicUrl;
+            abc.save();
+            res.json(abc);
 
-     if( error != "Error: Unexpected end of form" ){
-      //  console.log("fileeee",req.file);
-      console.log(error);
-       res.json({message: error})
-       return
-     }
-     else if(req.file == undefined){
-      res.json('undefined file error')
+            // console.log(req.file);
+            // res.send('ok')
+          }
+        } else if (req.file == undefined) {
+          res.json('undefined file error');
+        } else {
+          const abc = await Student.studentModel.findById(
+            req.params.id
+          );
+          abc.photo = req.file.publicUrl;
+          abc.save();
+          res.json(abc);
 
+          // console.log(req.file);
+          // res.send('ok')
+        }
+      });
     }
-    else {
-
-      const abc = await Student.studentModel.findById(req.params.id);
-      abc.photo = req.file.publicUrl;
-      abc.save()
-      res.json(abc);
-
-      // console.log(req.file);
-      // res.send('ok')
-    }
-    }
-     else if(req.file == undefined){
-         res.json('undefined file error')
-
-       }
-       else {
-
-         const abc = await Student.studentModel.findById(req.params.id);
-         abc.photo = req.file.publicUrl;
-         abc.save()
-         res.json(abc);
-
-         // console.log(req.file);
-         // res.send('ok')
-       }
-     
-
-
-   })
-
- }
-}
-
-
-
-const uploadLicensesByStudentId = (uploadArray) => {
-  return uploadArray, async (req, res) => {
-
-    upload( req, res, async (error)=> {
-     // console.log("sc",error instanceof storageErrors);
-
-     // console.log(error == "Error: Unexpected end of form");
-
-     if( error != "Error: Unexpected end of form" ){
-       console.log("fileeee",req.file);
-       res.json({message: error})
-       return
-     }else{
-       if(req.file == undefined){
-         res.json('undefined file error')
-
-       }
-       else {
-
-         // const abc = await Student.studentModel.findById(req.params.id);
-         // abc.photo = {
-         //   name: req.file.filename,
-         //   image: {
-         //     data: req.file.filename,
-         //     contentType: 'image/png'
-         //   }
-         // }
-         // abc.save()
-         // res.json(abc);
-
-         const abc = await Student.studentModel.findById(req.params.id);
-         abc.photo = req.file.publicUrl;
-         abc.save()
-         res.json(abc);
-
-
-         // console.log(req.file);
-         // res.send('ok')
-       }
-     }
-
-
-   })
-
- }
+  );
 };
 
+const uploadLicensesByStudentId = (uploadArray) => {
+  return (
+    uploadArray,
+    async (req, res) => {
+      upload(req, res, async (error) => {
+        // console.log("sc",error instanceof storageErrors);
+
+        // console.log(error == "Error: Unexpected end of form");
+
+        if (error != 'Error: Unexpected end of form') {
+          console.log('fileeee', req.file);
+          res.json({ message: error });
+          return;
+        } else {
+          if (req.file == undefined) {
+            res.json('undefined file error');
+          } else {
+            // const abc = await Student.studentModel.findById(req.params.id);
+            // abc.photo = {
+            //   name: req.file.filename,
+            //   image: {
+            //     data: req.file.filename,
+            //     contentType: 'image/png'
+            //   }
+            // }
+            // abc.save()
+            // res.json(abc);
+
+            const abc = await Student.studentModel.findById(
+              req.params.id
+            );
+            abc.photo = req.file.publicUrl;
+            abc.save();
+            res.json(abc);
+
+            // console.log(req.file);
+            // res.send('ok')
+          }
+        }
+      });
+    }
+  );
+};
 
 const uploadLicByStudentId = (upload) => {
-  return upload, async (req, res) => {
-  
-    upload( req, res, async (error)=> {
-      if (error) {
+  return (
+    upload,
+    async (req, res) => {
+      upload(req, res, async (error) => {
+        if (error) {
+          if (error != 'Error: Unexpected end of form') {
+            //  console.log("fileeee",req.file);
+            console.log(error);
+            res.json({ message: error });
+            return;
+          } else if (req.file == undefined) {
+            res.json('undefined file error');
+          } else {
+            const student1 =
+              await Student.studentModel.findById(
+                req.params.id
+              );
+            const student_requirements1_id =
+              student1.studentRequirements._id;
+            const student_requirements1 =
+              await studentRequirements.studentRequirementsModel.findById(
+                student_requirements1_id
+              );
+            student_requirements1.englishProficiency =
+              req.file.publicUrl;
+            student_requirements1.uploadedDate = new Date();
+            student_requirements1.save();
+            student1.studentRequirements =
+              student_requirements1;
+            student1.save();
 
-     if( error != "Error: Unexpected end of form" ){
-      //  console.log("fileeee",req.file);
-      console.log(error);
-       res.json({message: error})
-       return
-     }
-     else if(req.file == undefined){
-      res.json('undefined file error')
+            res.json(student1);
+          }
+        } else if (req.file == undefined) {
+          res.json('undefined file error');
+        } else {
+          const student1 =
+            await Student.studentModel.findById(
+              req.params.id
+            );
+          const student_requirements1_id =
+            student1.studentRequirements._id;
+          const student_requirements1 =
+            await studentRequirements.studentRequirementsModel.findById(
+              student_requirements1_id
+            );
+          student_requirements1.englishProficiency =
+            req.file.publicUrl;
+          student_requirements1.uploadedDate = new Date();
+          student_requirements1.save();
+          student1.studentRequirements =
+            student_requirements1;
+          student1.save();
 
+          res.json(student1);
+        }
+      });
     }
-    else {
+  );
+};
 
-      const student1 = await Student.studentModel.findById(req.params.id);
-      const student_requirements1_id = student1.studentRequirements._id
-      const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
-      student_requirements1.englishProficiency = req.file.publicUrl;
-      student_requirements1.uploadedDate = new Date()
-      student_requirements1.save()
-      student1.studentRequirements = student_requirements1
-      student1.save()
-  
-      res.json(student1);
+// ***** salt users *****
+const loginUser = () => {
+  return async (req, res) => {
+    // const { email, password } = req.body;
+
+    try {
+      // const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(
+        req.body.password,
+        10
+      );
+      // console.log(salt);
+      console.log(hashedPassword);
+
+      const user = await Student.studentModel.findById({
+        email: req.body.email,
+        password: hashedPassword,
+      });
+      user.push(user);
+
+      //create a token
+      // const token = createToken(user._id);
+
+      res.status(200).json({ email, token });
+
+      // hash('password');
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    }
-     else if(req.file == undefined){
-         res.json('undefined file error')
-
-       }
-       else {
-
-        const student1 = await Student.studentModel.findById(req.params.id);
-        const student_requirements1_id = student1.studentRequirements._id
-        const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
-        student_requirements1.englishProficiency = req.file.publicUrl;
-        student_requirements1.uploadedDate = new Date()
-        student_requirements1.save()
-        student1.studentRequirements = student_requirements1
-        student1.save()
-    
-        res.json(student1);
-       }
-     
-
-
-   })
-
- }
-}
-
-
+  };
+};
 
 module.exports = {
   getStudents: getStudents,
@@ -912,8 +953,10 @@ module.exports = {
   declineRequestById,
   getChartTwo,
   getChartOne,
-  getRequestsByStudentIdValidated: getRequestsByStudentIdValidated,
+  getRequestsByStudentIdValidated:
+    getRequestsByStudentIdValidated,
   sentEmail,
   updateStudentPhoto,
-  uploadLicByStudentId
+  uploadLicByStudentId,
+  loginUser,
 };
