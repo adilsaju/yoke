@@ -2,29 +2,26 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
-const fetchTasks = async () => {
-    let url1 = `/archives`;
-    const res = await fetch(url1);
-    const data = await res.json();
-  
-    console.log(data);
-    return data;
-  };
- 
  
 const Archive = () => {
     const [Archivestudent,ArchiveStudents] = useState([]);
+    const [error, setError] = useState(null);
 
-    useEffect(() => {
-
-      
-      const getTasks = async () => {
-        const tfs = await fetchTasks();
-        ArchiveStudents(tfs);
-      };
-
-      getTasks();
-
+      useEffect(() => {
+        setTimeout(() => {
+         fetch(`/archives`).then(res => {
+           if(!res.ok) {
+             throw Error('could not fetch the data for that resource');
+           }
+           return res.json();
+         })
+         .then(data => {
+           ArchiveStudents(data);
+           setError(null);
+         }).catch(err => {
+           setError(err.message)
+         })
+        },1000)
 
     }, []);
  
@@ -47,6 +44,7 @@ return (
                 <th className='four'>Travel Date</th>
                 <th className='five'>Action</th>
               </tr>
+              { error && <div>{ error }</div> }
     </tbody>
   
    </table>

@@ -10,6 +10,7 @@ import RequestTravelOrder from './components/StudentDashboard/requestTravelOrder
 import UploadDocument from './components/StudentDashboard/UploadDocument'
 import  StudentTravelOrder from './components/StudentDashboard/studentTravelOrder'
 import FinalList from './components/AdminDashboard/FinalList'
+import NotFound from './components/AdminDashboard/NotFound';
 
 import { Routes, Route, Link } from "react-router-dom";
 import { initializeApp } from 'firebase/app';
@@ -22,6 +23,7 @@ import Archive from './components/AdminDashboard/Archive';
 import Search from './components/AdminDashboard/Search';
 import {UserContext} from './Contexts/UserContext'
 import SettingStudent from './components/StudentDashboard/SettingStudent';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -91,6 +93,7 @@ function App() {
       <Route path="/" element={ <Home/> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
+      <Route path='*' element={<NotFound/>}/>
       <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>
       <Route path="/setting" element={<Setting/>}/>
@@ -100,7 +103,7 @@ function App() {
       <Route path="/request" element={<RequestTravelOrder/>}/>
        <Route path='/settingStudent' element={<SettingStudent/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
-
+      
     </Routes>
     
       <Footer/>
