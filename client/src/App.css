@@ -25,6 +25,7 @@ table td {
   margin: 2rem;
   padding: 2rem;
   border: 1px solid grey;
+  overflow-wrap:break-word;
 }
 
 table th {

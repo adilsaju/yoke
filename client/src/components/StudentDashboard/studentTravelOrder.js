@@ -11,6 +11,7 @@ import moment from "moment";
 //Fetch Data using API
 const fetchTasks = async (loggedInUser) => {
     let url = `/requests?student=${loggedInUser.id}`;
+   
     const res = await fetch(url);
     const data = await res.json();
   
@@ -18,13 +19,25 @@ const fetchTasks = async (loggedInUser) => {
     return data;
   
   };
+
+  const fetchStudent = async (loggedInUser) => {
+    let url = `/students/${loggedInUser.id}`;
+
+    const res = await fetch(url);
+    const studentData = await res.json();
+  
+    console.log(studentData);
+    return studentData;
+  
+  };
   
 
 const StudentTravelOrder = () => {
-    const {loggedInUser} = useContext(UserContext)
+
+                const {loggedInUser} = useContext(UserContext)
       
                 const [students,setStudents] = useState([]);
-
+                const [studentsInfo,setStudentsInfo] = useState([]);
                 useEffect(() => {
                     
                     const getTasks = async () => {
@@ -39,6 +52,16 @@ const StudentTravelOrder = () => {
                 const isEmpty = Object.keys(students).length === 0;
                 console.log(isEmpty);
                 
+                useEffect(() => {
+                    
+                    const getTasks = async () => {
+                    const tts = await fetchStudent(loggedInUser);
+                    setStudentsInfo(tts);
+                    };
+                
+                    getTasks();
+
+                }, []);
                 
             return (
                
@@ -48,7 +71,8 @@ const StudentTravelOrder = () => {
            < SearchStudent/>
             </>
             <>
-            <button > <Link to='/request'>Request Travel Order</Link></button>
+            {console.log(studentsInfo)}
+            {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
             </>
             <table>
     <tbody>
