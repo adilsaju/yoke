@@ -53,9 +53,6 @@ return (
   {
   Archivestudent.map((student,id) => 
     {
-      if ( 'requestedStudent' in student )
-      {
-           if(student.isApproved === false ) {
           return(
             <div key={id}>
         <table className="myTable">
@@ -78,27 +75,10 @@ return (
         </table>
         </div>
           )
-    }
-    else {
-      return(
-        <div key={id}>
-  <table className="myTable">
-    <tbody>
-    <tr className='tay'>
-    <td>{count++}</td>
-    <td>{student._id}</td>
-    <td>{student.requestedStudent.name}</td>
-    <td>{student.requestedStudent.studentNumber}</td>
-    <td>{student.flightDate}</td>
-    <td>{'Declined'}</td>
-    </tr>
-    </tbody>
-   </table>
-   </div>
-    )}
+       
+    
           
- }
-} )
+ },[])
 }
 </div>
     </>
