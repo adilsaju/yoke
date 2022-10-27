@@ -80,7 +80,7 @@ let count = 1;
                 <td>{student._id}</td>
                 <td>{student.requestedStudent.name}</td>
                 <td>{student.requestedStudent.studentNumber}</td>
-                <td>{moment(student.requestedDate).format("MMMM Do , YYYY")}</td>
+                <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                 <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
               ) }

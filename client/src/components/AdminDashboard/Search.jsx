@@ -35,7 +35,7 @@ const Search = () => {
         }
   return (
     <>
-   <input type="text" id="myInput" onKeyUp={(e) => { searchSname()} }  placeholder="Search for names.." />
+   <input type="text" id="myInput" onKeyUp={(e) => { searchSname()} }  placeholder="Search " />
 
     </>
   

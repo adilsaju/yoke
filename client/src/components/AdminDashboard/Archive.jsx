@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
+import moment from 'moment';
  
 const Archive = () => {
     const [Archivestudent,ArchiveStudents] = useState([]);
@@ -66,10 +67,12 @@ return (
           <td>{student._id}</td>
           <td>{student.requestedStudent.name}</td>
           <td>{student.requestedStudent.studentNumber}</td>
-          <td>{student.flightDate}</td>
-        <td>
-          {'Approved'}
-        </td>
+          <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+          <td>{  
+                        (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
+                       
+                        // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
+                    }</td>
         </tr>
         </tbody>
         </table>
