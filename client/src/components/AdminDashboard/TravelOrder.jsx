@@ -6,27 +6,43 @@ import Search from './Search';
 import moment from "moment";
 
 
-const fetchTasks = async () => {
-  let url1 = `/pendingRequests`;
-  const res = await fetch(url1);
-  const data = await res.json();
+// const fetchTasks = async () => {
+//   let url1 = `/pendingRequest`;
+//   const res = await fetch(url1);
+//   const data = await res.json();
 
-  console.log(data);
-  return data;
-};
+//   console.log(data);
+//   return data;
+// };
 
 const TravelOrder = () => {
 
 
   const [students,setStudents] = useState([]);
+  const [error, setError] = useState(null);
 
     useEffect(() => {
-      const getTasks = async () => {
-        const tfs = await fetchTasks();
-        setStudents(tfs);
-      };
+ setTimeout(() => {
+  fetch(`/pendingRequests`).then(res => {
+    if(!res.ok) {
+      throw Error('could not fetch the data for that resource');
+    }
+    return res.json();
+  })
+  .then(data => {
+    setStudents(data);
+    setError(null);
+  }).catch(err => {
+    setError(err.message)
+  })
+ },1000)
 
-      getTasks();
+      // const getTasks = async () => {
+      //   const tfs = await fetchTasks();
+      //   setStudents(tfs);
+      // };
+
+      // getTasks();
 
 
     }, []);
@@ -40,6 +56,7 @@ let count = 1;
 
    <table>
     <tbody>
+    { error && <div>{ error }</div> }
     <tr>
                 <th>No.</th>
                 <th>Requested ID</th>
