@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken')
 
 //===============
 const studentRequirementsCutoff = {
-  flownHours: 100,
+  flownHours: 200,
   balance: 50,
 };
 

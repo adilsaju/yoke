@@ -129,6 +129,12 @@ router.route('/login').post((req, res)=>{
     res.json({ token })
   })
 });
+//TODO: Fn
+// function generateAccessToken (user) {
+//   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
+//   "15s
+//   })
+//   }
 
 //FORMAT
 // Authorization: Bearer <access_token>
