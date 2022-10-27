@@ -25,6 +25,8 @@ import Search from './components/AdminDashboard/Search';
 import {UserContext} from './Contexts/UserContext'
 import SettingStudent from './components/StudentDashboard/SettingStudent';
 import LoginPage from './components/LoginPage';
+import RejectionReason from './components/AdminDashboard/RejectionReason';
+import Decline from './components/AdminDashboard/Decline';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -106,7 +108,8 @@ function App() {
       <Route path="/request" element={<RequestTravelOrder/>}/>
        <Route path='/settingStudent' element={<SettingStudent/>}/>
       <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
-      
+      <Route path='/travel-order/profile/decline/reason' element={<RejectionReason/>}/>
+      <Route path='/travel-order/profile/decline' element={<Decline/>}/>
     </Routes>
     
       <Footer/>
