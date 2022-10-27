@@ -2,7 +2,8 @@ import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer';
 import SideMenu from './components/Navbar/SideMenu';
-import Home from './components/AdminDashboard/Home'
+import Home from './components/AdminDashboard/Home';
+ 
 import Viewprofile from './components/AdminDashboard/viewprofile'
 import Setting from './components/AdminDashboard/Setting';
 import StudentAccountStatus from './components/StudentDashboard/studentAccountStatus'
@@ -23,7 +24,7 @@ import Archive from './components/AdminDashboard/Archive';
 import Search from './components/AdminDashboard/Search';
 import {UserContext} from './Contexts/UserContext'
 import SettingStudent from './components/StudentDashboard/SettingStudent';
-
+import LoginPage from './components/LoginPage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -57,9 +58,9 @@ function App() {
  
   const [students,setStudents] = useState([])  
   const [loggedInUser,setLoggedInUser] = useState({
-    id: "633a07f18e54c3b88bd83f38",
+    id: "635a119174347903bea368e4",
     // id:"633a08d5dcc833764b361dc3",
-    name: "Adill",
+    name: "Jane",
     userType: "student"
   })  
   const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
@@ -87,10 +88,12 @@ function App() {
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>
+    <button > <Link to='/login'>Login Page</Link></button>
     <button > <Link to='/'>Admin Dashboard</Link></button>
     <button > <Link to='/student-account-status'>Student Dashboard</Link></button>
     <Routes>
       <Route path="/" element={ <Home/> } /> 
+      <Route path="/login" element={ <LoginPage /> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path='*' element={<NotFound/>}/>

@@ -154,3 +154,7 @@ footer{
 .maindiv {
   padding: 1rem;
 }
+
+img{
+  max-width: 10rem;
+}
