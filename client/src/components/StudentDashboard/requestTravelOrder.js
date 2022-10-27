@@ -1,37 +1,54 @@
 import React from 'react'
 import { useState,useEffect, useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
+import SideMenu from '../Navbar/SideMenu';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import moment from "moment";
 
 const req = async (flightDate, loggedInUser) => {
   console.log("VERYYY KKKKKK: ", flightDate);
   let url = `/requests`;
-//   const bod1 = {
-//     "studentId": `${studentId}`
-// }
 
+  let flightDate2 = moment(flightDate).format("MMMM Do , YYYY")
+  console.log(flightDate2)
 const bod1 = {
   "flightDate" : new Date(flightDate),
   "studentId": `${loggedInUser.id}`
 }
 
-  const res = await fetch(url, {method: 'POST', body: JSON.stringify(bod1),     headers: {
-    'Content-Type': 'application/json'
-  }, });
+  const res = await fetch(url, 
+    {
+      method: 'POST', 
+     body: JSON.stringify(bod1),  
+     headers: { 'Content-Type': 'application/json'}, 
+    }
+    );
+
   const data = await res.json();
-  alert(`Booking Submitted for date: ${flightDate}`)
-  console.log("IMPPPPPPPPPPPPP:",data);
+
+  alert(`Booking Submitted for date: ${flightDate2}`);
+
+   console.log("IMPPPPPPPPPPPPP:",data);
+
   return data;
 };
 
 const RequestTravelOrder = () => {
   const {loggedInUser} = useContext(UserContext)
+  const [value, onChange] = useState(new Date());
 
   return (
     <>
+    <SideMenu />  
     <h2>Request Travel Order</h2>
     <div>
-    <input type="date" /> <br />
-    <button onClick={(e) => { req(e.target.parentElement.firstChild.value, loggedInUser)} } >Submit</button>
+    <div className='Clendr'>
+    <Calendar onChange={onChange} value={value} />
+    {console.log(value)}
+    </div>
+    {/* <input type="date" /> <br /> */}
+    <button onClick={() => { req(value, loggedInUser)} } >Submit</button>
     </div>
     </>
 

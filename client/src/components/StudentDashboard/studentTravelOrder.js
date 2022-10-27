@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchStudent from './Search'
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
-
+import moment from "moment";
 
 
 
@@ -50,19 +50,32 @@ const StudentTravelOrder = () => {
             <>
             <button > <Link to='/request'>Request Travel Order</Link></button>
             </>
+            <table>
+    <tbody>
+    
+    <tr>
+                <th>No.</th>
+                <th>Request ID</th>
+                <th className='three'>Travel Date</th>
+                <th className='four'>Status</th>
           
+              </tr>
+    </tbody>
+  
+   </table>
    {students.map((student,id)=> {
       
       
       return (
         
         <div key={id}>
+       
          <table>
              <tbody>
               <tr>
                 <td>{(count++)}</td>
-                <td>{student.requestedStudent.name}</td>
-                <td>{ student.flightDate}</td>
+                <td>{ student._id}</td>
+                <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                 <td>{  
                         (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
                        
@@ -75,11 +88,8 @@ const StudentTravelOrder = () => {
     )
    } ,[])
 
-   
-   
         }
-    
-        
+            
         </div> 
         
             )

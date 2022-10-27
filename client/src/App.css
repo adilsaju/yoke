@@ -158,3 +158,19 @@ footer{
 img{
   max-width: 10rem;
 }
+
+.Clendr{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-calendar__tile--now{
+  background: skyblue !important;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #4d43dd;
+}
