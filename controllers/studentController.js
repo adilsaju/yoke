@@ -22,17 +22,18 @@ const daysBeforeHecanBook = 7;
 
 const getStudents = () => {
   return async (req, res, next) => {
-    jwt.verify(req.token, 'secretkey', (err, authData)=>{
-      if(err){
-        res.sendStatus(403);
+    // jwt.verify(req.token, 'secretkey', (err, authData)=>{
+    //   if(err){
+    //     res.sendStatus(403);
 
-      }else{
-        res.json({
-          message: "get students worked",
-          authData
-        })
-      }
-    })
+    //   }
+    //   // else{
+    //   //   res.json({
+    //   //     message: "get students worked",
+    //   //     authData
+    //   //   })
+    //   // }
+    // })
     console.log('getStudents()');
     try {
       const abc = await Student.studentModel.find();

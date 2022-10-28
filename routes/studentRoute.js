@@ -140,6 +140,7 @@ router.route('/login').post((req, res)=>{
 // Authorization: Bearer <access_token>
 //verfify token
 function verifyToken(req,res,next){
+  console.log("verifyToken()");
   //get auth header
   const bearerHeader = req.headers['authorization'];
   if (typeof bearerHeader !== 'undefined')
