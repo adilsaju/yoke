@@ -80,11 +80,15 @@ const Home = () => {
   }, []);
 
   return ( <>
-  <SideMenuAdmin/>
+  <div className='fullpage'>
+      <SideMenuAdmin/>
+      <div className='division'>
   {
     
  data && <Bar options={options} data={data} />
   } 
+  </div>
+  </div>
   </>)
 
 }
