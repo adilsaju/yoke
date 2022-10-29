@@ -51,7 +51,9 @@ const Viewprofile = () => {
 
   return (
     <>
+    <div className='fullpage'>
       <SideMenuAdmin/>
+      <div className='division'>
     <div className='box'>
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
@@ -80,7 +82,8 @@ const Viewprofile = () => {
       <Accept/>
       <Decline/>
       </div> }
-
+    </div>
+    </div>
     </div>
     </>
 

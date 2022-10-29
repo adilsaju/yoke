@@ -38,14 +38,6 @@ const TravelOrder = () => {
   })
  },1000)
 
-      // const getTasks = async () => {
-      //   const tfs = await fetchTasks();
-      //   setStudents(tfs);
-      // };
-
-      // getTasks();
-
-
     }, []);
 let count = 1;
 //Sort By Name
@@ -68,46 +60,50 @@ let count = 1;
 
   return (
     <>
+  <div className='fullpage'>
     <SideMenuAdmin/>
-    <div>
-  <div>
-<Search/>
-<Filters/>
-   <table>
-    <tbody>
-    { error && <div>{ error }</div> }
-    <tr>
-                <th>No.</th>
-                <th>Requested ID</th>
-                <th>Name</th>
-                <th className='three'>Student Id</th>
-                <th className='four'>Travel Date</th>
-                <th className='five'>Action</th>
-              </tr>
-    </tbody>
-  
-   </table>
-   </div>                                
-            <table className="myTable" >
-             <tbody>
-             {students.map((student,id) => {
-        if ( 'requestedStudent' in student && student.isApproved === false)
-        {
-          return(
-              <tr className='tay' key={id}>
-                <td>{count++}</td>
-                <td>{student._id}</td>
-                <td>{student.requestedStudent.name}</td>
-                <td>{student.requestedStudent.studentNumber}</td>
-                <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
-              </tr>
-              ) }
-      })
-    }
-              </tbody>
-            </table>
-            <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.</div>
+    <div className='division'>
+
+                      <div>
+                            <Search/>
+
+                          <table>
+                            <tbody>
+                            { error && <div>{ error }</div> }
+                            <tr>
+                                        <th>No.</th>
+                                        <th>Requested ID</th>
+                                        <th>Name</th>
+                                        <th className=''>Student Id</th>
+                                        <th className=''>Travel Date</th>
+                                        <th className=''>Action</th>
+                                      </tr>
+                            </tbody>
+                          
+                          </table>
+                          </div>                                
+                          <table className="myTable" >
+                          <tbody>
+                          {students.map((student,id) => {
+                      if ( 'requestedStudent' in student && student.isApproved === false)
+                      {
+                        return(
+                            <tr className='tay' key={id}>
+                              <td>{count++}</td>
+                              <td>{student._id}</td>
+                              <td>{student.requestedStudent.name}</td>
+                              <td>{student.requestedStudent.studentNumber}</td>
+                              <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                              <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
+                            </tr>
+                            ) }
+                    })
+                  }
+                            </tbody>
+                          </table>
+                          <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+                          </div>
+    </div>
     </div>
     </>
   )

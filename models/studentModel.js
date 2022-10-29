@@ -13,7 +13,10 @@ const studentSchema = new mongoose.Schema({
    },
    email: {
       type: String,
-      required: true
+      required: true,
+      unique: true,
+      dropDups: true,
+      index: true,
    },
    password: {
       type: String,
@@ -39,6 +42,7 @@ const studentSchema = new mongoose.Schema({
    // requests: [requestSchema],
    // requests: [ mongoose.Schema.Types.ObjectId],
 })
+studentSchema.index({ 'email' : 1 }, { unique: true });
 
 
 module.exports = {

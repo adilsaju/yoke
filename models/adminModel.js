@@ -10,7 +10,10 @@ const adminSchema = new mongoose.Schema({
     },
     email: {
        type: String,
-       required: true
+       required: true,
+       unique: true,
+       dropDups: true,
+       index: true,
     },
     password: {
        type: String,
@@ -20,6 +23,8 @@ const adminSchema = new mongoose.Schema({
    // approvedRequests: [ mongoose.Schema.Types.ObjectId ]
  
  })
+
+ adminSchema.index({ 'email' : 1 }, { unique: true });
 
 
  module.exports = {

@@ -23,7 +23,7 @@ table {
 table td {
 
   margin: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid grey;
   overflow-wrap:break-word;
 }
@@ -96,10 +96,11 @@ button{
 }
 
 img{
-  max-width: 400px;
+  max-width: 600px;
 }
 nav{
-  background-color: lightgray;
+  background-color: #00284E;
+
 
 }
 nav ul li{
@@ -110,13 +111,19 @@ nav ul li{
 }
 
 a{
-  color: black;
+  color: white;
 
 }
 
 footer{
-  background-color: lightgray;
+  background-color: #00284E;
   padding: 2rem;
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+ 
+   text-align: center;
 }
 
 /* body {
@@ -125,7 +132,9 @@ footer{
 
 .studentAccountName {
   text-align: left;
-  background-color: gray;
+  background-color: #5cb0ff;;
+  padding: 1rem;
+  color: #00284E;
 }
 
 .studentimage {
@@ -133,6 +142,10 @@ footer{
   justify-content: space-evenly;
 
 }
+header img{
+  margin-top: 0.5rem;
+}
+
 
 .studentview {
   display: grid;
@@ -157,7 +170,7 @@ footer{
 }
 
 img{
-  max-width: 10rem;
+  max-width: 12rem;
 }
 
 .Clendr{
@@ -174,4 +187,104 @@ img{
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background: #4d43dd;
+}
+
+nav{
+  display: flex;
+  flex-flow: column;
+  height: 50rem;
+}
+
+nav a{
+  text-decoration: none;
+  
+}
+
+nav ul li{
+  padding: 2rem 2rem;
+  border-bottom: 2px solid #5cb0ff;
+  margin: 0  5px 0 5px;
+}
+
+nav ul{
+  margin: 0;
+  padding: 0;
+}
+.Nav-menu{
+  background-color: #00284E;
+  width: 18rem;
+}
+.fullpage{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 0;
+}
+
+
+header img{
+  padding-left: 3rem;
+}
+
+header{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  text-align: left;
+  height: 5rem;
+  background-color: #00284E;
+}
+header h3,footer p{
+  color: white;
+}
+nav li:hover{
+  background-color: #5cb0ff;
+  color: #00284E;
+}
+
+td a,.studentupload a{
+  color: black;
+
+ 
+}
+footer{
+  height: 1rem;
+  padding: 1rem;
+  
+
+}
+
+footer p{
+  padding: 0;
+  margin: 0;
+}
+.page-name{
+  padding-left: 1rem;
+  
+ margin: 0;
+}
+.page-name button{
+  margin: 0 0.5rem;
+  background-color: #00284E;;
+  border: 2px solid #5cb0ff;
+
+}
+ 
+.Searchbar{
+  width: 50%;
+  height: 3rem;
+}
+
+.division{
+  margin: 1rem;
+}
+
+.logoo{
+ 
+  margin-bottom:5px ;
+  
+ height: 2rem ;
+ width: 18rem;
+}
+
+body{
+  font-size: smaller;
 }

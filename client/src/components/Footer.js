@@ -2,10 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
-        <footer>Copyright Sirius Inc.
+    
+        <footer>
+          <p>Copyright Sirius Inc.</p>
         </footer>
-        </div>
+       
   )
 }
 
