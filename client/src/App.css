@@ -23,7 +23,7 @@ table {
 table td {
 
   margin: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid grey;
   overflow-wrap:break-word;
 }
@@ -201,7 +201,7 @@ nav a{
 
 nav ul li{
   padding: 2rem 2rem;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #5cb0ff;;
 }
 
 nav ul{
@@ -240,6 +240,8 @@ nav li:hover{
 
 td a,.studentupload a{
   color: black;
+
+ 
 }
 footer{
   height: 1rem;
@@ -260,7 +262,7 @@ footer p{
 .page-name button{
   margin: 0 1rem;
   background-color: #00284E;;
-  border: 2px solid white;
+  border: 2px solid #5cb0ff;
 
 }
  
