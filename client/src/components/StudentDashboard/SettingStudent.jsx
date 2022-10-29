@@ -30,13 +30,18 @@ const SettingStudent = () => {
 
   return (
     <>
-    <SideMenu />
+    <div className='fullpage'>
+       <SideMenu/>
+      <div className='division'>
+    
     <div>
      { <><h2>{student.email}</h2>
      <h3>{student.password}</h3></> }
      <div>
      <button>Forgot Password</button>
      </div>
+   </div>
+   </div>
    </div>
    </>
   )

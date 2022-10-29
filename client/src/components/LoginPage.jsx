@@ -4,7 +4,10 @@ const LoginPage = () => {
   return (
 
     <div>
-        <SideMenuAdmin />
+      <div className='fullpage'>
+      <SideMenuAdmin />
+      <div className='division'>
+        
        <br />
         <form action="none">
             <label htmlFor="LoginId">Username :  </label>
@@ -18,6 +21,8 @@ const LoginPage = () => {
             <input type="submit" />
         </form>
         <br />
+        </div>
+        </div>
     </div>
   )
 }

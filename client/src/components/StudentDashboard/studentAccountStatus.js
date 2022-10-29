@@ -29,7 +29,10 @@ const StudentAccountStatus = () => {
             // console.log(isEmpty);
   return (
     <div>
-      <SideMenu/>
+       <div className='fullpage'>
+       <SideMenu/>
+      <div className='division'>
+      
       <div className='maindiv'>
       <h1 className='studentAccountName'>{students.name}</h1>
      
@@ -45,6 +48,8 @@ const StudentAccountStatus = () => {
           </div>
         </div>
       {students.length===0? console.log("Nothing") : <StudentUpload starry = {students} />  }
+      </div>
+      </div>
       </div>
       </div>
   )

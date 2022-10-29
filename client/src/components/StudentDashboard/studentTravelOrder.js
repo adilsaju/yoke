@@ -66,7 +66,9 @@ const StudentTravelOrder = () => {
             return (
                
         <div>
-            <SideMenu/>
+           <div className='fullpage'>
+       <SideMenu/>
+      <div className='division'>
             <>
            < SearchStudent/>
             </>
@@ -75,45 +77,46 @@ const StudentTravelOrder = () => {
             {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
             </>
             <table>
-    <tbody>
-    
-    <tr>
-                <th>No.</th>
-                <th>Request ID</th>
-                <th className='three'>Travel Date</th>
-                <th className='four'>Status</th>
-          
-              </tr>
-    </tbody>
-  
-   </table>
-   {students.map((student,id)=> {
-      
-      
-      return (
-        
-        <div key={id}>
-       
-         <table>
-             <tbody>
+              <tbody>
+              
               <tr>
-                <td>{(count++)}</td>
-                <td>{ student._id}</td>
-                <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                <td>{  
-                        (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
-                       
-                        // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
-                    }</td>
-              </tr>
+                          <th>No.</th>
+                          <th>Request ID</th>
+                          <th className='three'>Travel Date</th>
+                          <th className='four'>Status</th>
+                    
+                        </tr>
               </tbody>
-            </table>
-        </div>
-    )
-   } ,[])
-
-        }
             
+            </table>
+                  {students.map((student,id)=> {
+                      
+                      
+                      return (
+                        
+                        <div key={id}>
+                      
+                        <table>
+                            <tbody>
+                              <tr>
+                                <td>{(count++)}</td>
+                                <td>{ student._id}</td>
+                                <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                                <td>{  
+                                        (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
+                                      
+                                        // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
+                                    }</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    )
+                  } ,[])
+
+                        }
+            </div>
+            </div>
         </div> 
         
             )

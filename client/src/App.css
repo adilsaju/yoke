@@ -222,5 +222,7 @@ header{
 
 .page-name{
   border-left: 2px solid black;
+  padding-left: 2rem;
+  padding-top: 0.5rem;
 }
  
