@@ -8,7 +8,7 @@ const fetchTasks = async (admin_id) => {
   const res = await fetch(url);
 
   const data = await res.json();
-  console.log(data)
+  console.log("zdata",data)
   return data;
 };
 
@@ -34,8 +34,8 @@ const Setting = () => {
       <SideMenuAdmin/>
       <div className='division'>
      <div>
-      {/* { <><h2>{admin.email}</h2>
-      <h3>{admin.password}</h3></> } */}
+      { <><h2>{admin.email}</h2>
+      <h3>{admin.password}</h3></> }
    <div>
     <button>Forgot Password</button>
    </div>

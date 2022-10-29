@@ -1,9 +1,3 @@
 
-final list api - table needed???
-
-
+final list api - table needed??? and email content
 if the request is approved/denied, sent an email to student
-
-
-
-studen reqruirements ids are same for each student FIXXXXXXXX (took a screenshot on MON)
