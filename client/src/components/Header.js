@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <div >
         <header>
+          <div className='logoo'>
         <img src={require('../yokelg.png')} />
+        </div>
         <div className='page-name'>
         <h3>Travel Order
         <button > <Link to='/login'>Login Page</Link></button>

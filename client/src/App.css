@@ -143,8 +143,9 @@ footer{
 
 }
 header img{
-  color: white;
+  margin-top: 0.5rem;
 }
+
 
 .studentview {
   display: grid;
@@ -201,7 +202,8 @@ nav a{
 
 nav ul li{
   padding: 2rem 2rem;
-  border-bottom: 2px solid #5cb0ff;;
+  border-bottom: 2px solid #5cb0ff;
+  margin: 0  5px 0 5px;
 }
 
 nav ul{
@@ -227,7 +229,7 @@ header{
   display: grid;
   grid-template-columns: 1fr 3fr;
   text-align: left;
-  height: 6rem;
+  height: 5rem;
   background-color: #00284E;
 }
 header h3,footer p{
@@ -256,11 +258,11 @@ footer p{
 }
 .page-name{
   padding-left: 1rem;
-
+  
  margin: 0;
 }
 .page-name button{
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   background-color: #00284E;;
   border: 2px solid #5cb0ff;
 
@@ -273,4 +275,16 @@ footer p{
 
 .division{
   margin: 1rem;
+}
+
+.logoo{
+ 
+  margin-bottom:5px ;
+  
+ height: 2rem ;
+  width: 20rem;
+}
+
+body{
+  font-size: smaller;
 }

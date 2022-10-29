@@ -82,8 +82,8 @@ const StudentTravelOrder = () => {
               <tr>
                           <th>No.</th>
                           <th>Request ID</th>
-                          <th className='three'>Travel Date</th>
-                          <th className='four'>Status</th>
+                          <th className=''>Travel Date</th>
+                          <th className=''>Status</th>
                     
                         </tr>
               </tbody>

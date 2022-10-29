@@ -43,9 +43,9 @@ return (
                 <th>No.</th>
                 <th>Requested ID</th>
                 <th>Name</th>
-                <th className='three'>Student Id</th>
-                <th className='four'>Travel Date</th>
-                <th className='five'>Action</th>
+                <th className=''>Student Id</th>
+                <th className=''>Travel Date</th>
+                <th className=''>Action</th>
               </tr>
               { error && <div>{ error }</div> }
     </tbody>
