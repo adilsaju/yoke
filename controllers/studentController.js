@@ -568,14 +568,15 @@ const claireFn = () => {
 };
 
 const getFinalList = () => {
+  
   return async (req, res) => {
     try {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-
+        
       const tomorrow = new Date(today);
       tomorrow.setDate(tomorrow.getDate() + 1);
-
+      
       const requestsInToday = await Request.requestModel
         .find({
           isApproved: true,
@@ -587,7 +588,7 @@ const getFinalList = () => {
           //   $eq: Date.now,
           // },
 
-          flightDate: { $gte: today, $lt: tomorrow },
+          // flightDate: { $gte: today, $lt: tomorrow },
 
           //TODO:
 
@@ -604,6 +605,7 @@ const getFinalList = () => {
 };
 // ******** admin archive ********
 const archive = () => {
+  
   return async (req, res) => {
     try {
       const archivedRequests = await Request.requestModel

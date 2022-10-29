@@ -35,7 +35,7 @@ const Search = () => {
         }
   return (
     <>
-   <input type="text" id="myInput" onKeyUp={(e) => { searchSname()} }  placeholder="Search " />
+   <input className='Searchbar' type="text" id="myInput" onKeyUp={(e) => { searchSname()} }  placeholder="Search " />
 
     </>
   

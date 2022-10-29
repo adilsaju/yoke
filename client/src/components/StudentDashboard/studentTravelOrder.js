@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
-import SearchStudent from './Search'
+import Search from '../AdminDashboard/Search';
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
@@ -70,7 +70,7 @@ const StudentTravelOrder = () => {
        <SideMenu/>
       <div className='division'>
             <>
-           < SearchStudent/>
+           < Search/>
             </>
             <>
             {console.log(studentsInfo)}

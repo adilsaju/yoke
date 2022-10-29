@@ -5,17 +5,18 @@ const SideMenu = () => {
     <div className='Nav-menu'>
   <nav>
       <ul>
+      <Link to="/student-account-status">
       <li>
-          <Link to="/student-account-status">Account Status</Link>
-        </li>
+          Account Status
+        </li></Link>
 
-        <li>
-          <Link to="/student-travel-order">Student Travel Order</Link>
-        </li>
+        <Link to="/student-travel-order"> <li>
+          Student Travel Order
+        </li></Link>
 
-        <li>
-        <Link to="/settingStudent">Setting</Link>
-        </li>
+        <Link to="/settingStudent"> <li>
+        Setting
+        </li></Link>
         
       </ul>
       </nav>

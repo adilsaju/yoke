@@ -7,26 +7,29 @@ const SideMenuAdmin = () => {
   
         <nav>
       <ul>
-      <li>
-          <Link to="/">Home</Link>
-        </li>
+      <Link to="/"><li>
+          Home
+        </li></Link>
         
-        <li>
-          <Link to="/travel-order">Travel Order</Link>
-        </li>
+        <Link to="/travel-order"> <li>
+          Travel Order
+        </li></Link>
         {/* <li>
         <Link to="/login">Login</Link>
         </li> */}
-        <li>
-          <Link to="/final-list">Final list</Link>
-        </li>
-        <li>
-          <Link to="/archive">Archive</Link>
-        </li>
+       
+       <Link to="/final-list"> <li>
+          Final list
+        </li></Link>
+
+
+        <Link to="/archive"> <li>
+          Archive
+        </li></Link>
         {<div>
-          <li>
-        <Link to="/setting">Setting</Link>
-        </li>
+          <Link to="/setting"><li>
+        Setting
+        </li></Link>
         </div> 
           
          }

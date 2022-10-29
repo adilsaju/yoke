@@ -92,9 +92,7 @@ function App() {
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>
-    <button > <Link to='/login'>Login Page</Link></button>
-    <button > <Link to='/'>Admin Dashboard</Link></button>
-    <button > <Link to='/student-account-status'>Student Dashboard</Link></button>
+    
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/login" element={ <LoginPage /> } /> 
