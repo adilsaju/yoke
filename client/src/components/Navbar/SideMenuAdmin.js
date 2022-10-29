@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+
 const SideMenuAdmin = () => {
   return (
-    <div>
+    <div className='Nav-menu'>
+  
         <nav>
       <ul>
       <li>

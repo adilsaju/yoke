@@ -175,3 +175,52 @@ img{
 .react-calendar__tile--now:enabled:focus {
   background: #4d43dd;
 }
+
+nav{
+  display: flex;
+  flex-flow: column;
+  
+}
+
+nav a{
+  text-decoration: none;
+  
+}
+
+nav ul li{
+  padding: 2rem 2rem;
+  border-bottom: 2px solid black;
+}
+
+nav ul{
+  margin: 0;
+  padding: 0;
+}
+.Nav-menu{
+  background-color: lightgray;
+}
+.fullpage{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 0;
+}
+
+
+header img{
+  padding-left: 5rem;
+}
+
+header{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  text-align: left;
+  
+  
+  background-color: lightgray;
+}
+
+
+.page-name{
+  border-left: 2px solid black;
+}
+ 
