@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import moment from "moment";
+import Filters from './Filters';
 
 
 // const fetchTasks = async () => {
@@ -47,13 +48,31 @@ const TravelOrder = () => {
 
     }, []);
 let count = 1;
+//Sort By Name
+// let keyword =  students.sort((a,b) => {
+//  if (a.requestedStudent.name < b.requestedStudent.name) 
+//  {
+//   return -1;
+//  }
+//  if(a.requestedStudent.name > b.requestedStudent.name)
+//  return 1;
+//  return 0 ;
+// })
+//Sort By Date
+// let keyword =  students.sort((a,b)=> {
+//   var date = new Date(a.flightDate);
+//   var dates = new Date(b.flightDate);
+//   return date - dates;
+// })
+
+
   return (
     <>
     <SideMenuAdmin/>
     <div>
   <div>
 <Search/>
-
+<Filters/>
    <table>
     <tbody>
     { error && <div>{ error }</div> }

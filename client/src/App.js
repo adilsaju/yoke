@@ -44,14 +44,14 @@ export const db = getFirestore(app);
  const storage = getStorage(app);
  export {auth,storage,app};
 
- const fetchTasks = async () => {
-  let url1 = `/students/`;
-  const res = await fetch(url1);
-  const data = await res.json();
+//  const fetchTasks = async () => {
+//   let url1 = `/students`;
+//   const res = await fetch(url1);
+//   const data = await res.json();
 
-  console.log(data);
-  return data;
-};
+//   console.log(data);
+//   return data;
+// };
 
 function App() {
   // localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
@@ -66,22 +66,22 @@ function App() {
     userType: "student"
   })  
   const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
-    id: "633a0695b149556c00bfc720",
+    id: "635a119174347903bea368e2",
     name: "Claire Simbulan",
     userType: "admin"
   })  
 
-    useEffect(() => {
+    // useEffect(() => {
 
       
-      const getTasks = async () => {
-        const tfs = await fetchTasks();
-        setStudents(tfs);
-      };
+    //   const getTasks = async () => {
+    //     const tfs = await fetchTasks();
+    //     setStudents(tfs);
+    //   };
 
-      getTasks();
+    //   getTasks();
 
-    }, []);
+    // }, []);
 
   return (
     
