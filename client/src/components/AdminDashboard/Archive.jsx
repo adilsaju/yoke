@@ -31,7 +31,9 @@ let count = 1;
 
 return (
     <>
-    <SideMenuAdmin/>
+    <div className='fullpage'>
+      <SideMenuAdmin/>
+      <div className='division'>
     <div>
   <div>
     <Search/>
@@ -50,6 +52,7 @@ return (
   
    </table>
    </div>
+   
   {
   Archivestudent.map((student,id) => 
     {
@@ -66,7 +69,7 @@ return (
           <td>{student.requestedStudent.studentNumber}</td>
           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
           <td>{  
-                        (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
+                        (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
                        
                         // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
                     }</td>
@@ -80,6 +83,8 @@ return (
           
  },[])
 }
+</div>
+</div>
 </div>
     </>
   )
