@@ -4,6 +4,8 @@ import StudentUpload from './studentUpload';
 import { Link } from "react-router-dom";
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
+import { useNavigate } from "react-router-dom";
+
 //Fetch Data using API
 
 const fetchTasks = async (loggedInUser) => {
@@ -15,7 +17,21 @@ const fetchTasks = async (loggedInUser) => {
   return data;
 };
 const StudentAccountStatus = () => {
-  const {loggedInUser} = useContext(UserContext)
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
+
+useEffect(() => {
+  // let isLoggedIn  = true
+  
+  if (!isLoggedIn){
+    handleClick();
+  }
+
+}, []);
+
+  const {loggedInUser, isLoggedIn} = useContext(UserContext)
 
             const [students,setStudents] = useState([]);
             useEffect(() => {

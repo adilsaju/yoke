@@ -69,7 +69,9 @@ function App() {
     id: "635cc7967007ac4c3cc1aab8",
     name: "Claire Simbulan",
     userType: "admin"
-  })  
+  })
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     useEffect(() => {
 
@@ -86,7 +88,7 @@ function App() {
   return (
     
     <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin}}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn}}>
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>

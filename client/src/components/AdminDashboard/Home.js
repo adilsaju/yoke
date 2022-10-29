@@ -2,6 +2,10 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { Doughnut } from 'react-chartjs-2';
+import { useNavigate } from "react-router-dom";
+import {  useContext } from 'react';
+import {UserContext} from '../../Contexts/UserContext'
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -68,6 +72,23 @@ const labels = labels1.sort()
 
 
 const Home = () => {
+  const {loggedInUser, isLoggedIn} = useContext(UserContext)
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
+
+useEffect(() => {
+  // let isLoggedIn  = true
+  
+  if (!isLoggedIn){
+    handleClick();
+  }
+
+}, []);
+
+
   const [data, setData] = useState(false);
 
   useEffect(() => {
