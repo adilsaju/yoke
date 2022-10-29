@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
 
+
 const req = async (flightDate, loggedInUser) => {
   console.log("VERYYY KKKKKK: ", flightDate);
   let url = `/requests`;
@@ -40,7 +41,10 @@ const RequestTravelOrder = () => {
 
   return (
     <>
-    <SideMenu />  
+      <div className='fullpage'>
+      <SideMenu />  
+      <div className='division'>
+    
     <h2>Request Travel Order</h2>
     <div>
     <div className='Clendr'>
@@ -49,6 +53,8 @@ const RequestTravelOrder = () => {
     </div>
     {/* <input type="date" /> <br /> */}
     <button onClick={() => { req(value, loggedInUser)} } >Submit</button>
+    </div>
+    </div>
     </div>
     </>
 

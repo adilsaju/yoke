@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 const SideMenu = () => {
   return (
+    <div className='Nav-menu'>
   <nav>
       <ul>
       <li>
@@ -18,6 +19,7 @@ const SideMenu = () => {
         
       </ul>
       </nav>
+      </div>
   )
 }
 

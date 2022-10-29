@@ -30,13 +30,17 @@ const Setting = () => {
         }, []);
   return (
     <>
-    <SideMenuAdmin />
+    <div className='fullpage'>
+      <SideMenuAdmin/>
+      <div className='division'>
      <div>
       {/* { <><h2>{admin.email}</h2>
       <h3>{admin.password}</h3></> } */}
    <div>
     <button>Forgot Password</button>
    </div>
+    </div>
+    </div>
     </div>
     </>
   )

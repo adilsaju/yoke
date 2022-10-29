@@ -50,18 +50,20 @@ const sentEmail = async () => {
     return (
                
         <div>
-            <SideMenuAdmin/>
+            <div className='fullpage'>
+      <SideMenuAdmin/>
+      <div className='division'>
      
             <>
             <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
           
-   {students.map((student,id)=> {
+          {students.map((student,id)=> {
       
       
-      return (
+          return (
         
-        <div key={id}>
+           <div key={id}>
          <table>
              <tbody>
               <tr>
@@ -73,15 +75,15 @@ const sentEmail = async () => {
               </tr>
               </tbody>
             </table>
-        </div>
-    )
-   } ,[])
+           </div>
+                )
+              } ,[])
 
    
    
-        }
-    
-        
+              }
+        </div>
+        </div>
         </div> 
         
             )
