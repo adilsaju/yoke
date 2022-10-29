@@ -212,7 +212,7 @@ nav ul{
 }
 .Nav-menu{
   background-color: #00284E;
-  width: 20rem;
+  width: 18rem;
 }
 .fullpage{
   display: grid;
@@ -222,7 +222,7 @@ nav ul{
 
 
 header img{
-  padding-left: 5rem;
+  padding-left: 3rem;
 }
 
 header{
@@ -282,7 +282,7 @@ footer p{
   margin-bottom:5px ;
   
  height: 2rem ;
-  width: 20rem;
+ width: 18rem;
 }
 
 body{
