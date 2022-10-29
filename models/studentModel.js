@@ -45,30 +45,12 @@ const studentSchema = new mongoose.Schema({
   // requests: [ mongoose.Schema.Types.ObjectId],
 });
 
-//*** static login method ***
-// studentSchema.statics.login = async function (
-//   email,
-//   password
-// ) {
-//   if (!email || !password) {
-//     throw Error('All fields must be filled');
-//   }
-
-//   const user = await this.findOne({ email });
-//   if (!user) {
-//     throw Error('Incorrect Email');
-//   }
-
-//   const match = await bcrypt.compare(
-//     password,
-//     user.password
-//   );
-//   if (!match) {
-//     throw Error('Incorrect Password');
-//   }
-
-//   return user;
-// };
+studentSchema.methods.comparePassword = (
+  password,
+  hashPassword
+) => {
+  return bcrypt.compareSync(password, hashPassword);
+};
 
 module.exports = {
   studentSchema: studentSchema,

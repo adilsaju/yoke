@@ -7,6 +7,11 @@ const studentRequirements = require('../models/checklistModel.js');
 const { request } = require('express');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const {
+  studentSchema,
+} = require('../models/StudentModel.js');
 
 //===============
 const studentRequirementsCutoff = {
@@ -902,17 +907,18 @@ const uploadLicByStudentId = (upload) => {
 };
 
 // ***** salt users *****
-const loginUser = () => {
+const saltPassword = () => {
   return async (req, res) => {
     // const { email, password } = req.body;
 
     try {
-      // const salt = await bcrypt.genSalt(10);
+      const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(
         req.body.password,
         10
       );
-      // console.log(salt);
+
+      console.log(salt);
       console.log(hashedPassword);
 
       const user = await Student.studentModel.findById({
@@ -932,6 +938,152 @@ const loginUser = () => {
     }
   };
 };
+//****end of salt user
+
+//**login from webdevSimplified */
+const studentLogin = () => {
+  return async (req, res) => {
+    const studentUser = Student.studentModel.findOne({
+      email: req.body.email,
+    });
+
+    if (studentUser == null) {
+      return res.status(400).send('Cannot find email');
+    }
+    try {
+      if (
+        await bcrypt.compare(
+          request.body.password,
+          studentUser.password
+        )
+      ) {
+        res.send('Success');
+      } else {
+        res.send('Not allowed');
+      }
+    } catch {
+      return res.status(500).send();
+    }
+  };
+};
+
+//** middleware */
+const authenticateToken = () => {
+  return async (req, res, next) => {
+    const studentEmail = Student.studentModel.findOne({
+      email: req.body.email,
+    });
+    const studentUser = { email: studentEmail };
+
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(
+      token,
+      process.env.ACCESS_TOKEN_SECRET,
+      (err, studentUser) => {
+        if (err) return res.sendStatus(403);
+        req.studentUser = studentUser;
+        next();
+      }
+    );
+
+    res.json(
+      posts.filter(
+        (post) =>
+          post.studentEmail === req.studentEmail.email
+      )
+    );
+  };
+};
+
+//***login required */
+// const loginRequired = () => {
+//   return async (req, res, next) => {
+//     try {
+//       const adminUser = await Admin.adminModel.findById(
+//         req.params.id
+//       );
+//     } catch (error) {
+//       res
+//         .status(401)
+//         .json({ message: 'Unauthorized user!' });
+//     }
+//     next();
+
+//**from linkedin */
+// if (req.studentUser) {
+//   next();
+// } else {
+// return res
+//   .status(401)
+//   .json({ message: 'Unauthorized user!' });
+//   };
+// };
+//};
+
+/**register the user */
+// const register = () => {
+//   return async (req, res) => {
+//     const newStudentUser =
+//       await Student.studentModel.findById(req.body);
+
+//     newStudentUser.hashPassword = bcrypt.hashSync(
+//       req.body.password,
+//       10
+//     );
+//     newStudentUser.save((err, studentUser) => {
+//       if (err) {
+//         return res.status(400).send({ message: err });
+//       } else {
+//         studentUser.hashPassword = undefined;
+//         return res.json(newStudentUser);
+//       }
+//     });
+//   };
+// };
+
+/**login to api */
+// const studentLogin = () => {
+//   return async (req, res) => {
+//     Student.studentModel.findOne(
+//       {
+//         email: req.body.email,
+//       },
+//       (err, studentUser) => {
+//         if (err) throw err;
+//         if (!studentUser) {
+//           res.status(401).json({
+//             message:
+//               'Authentication failed. No user found.',
+//           });
+//         } else if (studentUser) {
+//           if (
+//             !studentUser.comparePassword(
+//               req.body.password,
+//               user.hashPassword
+//             )
+//           )
+//             res.status(401).json({
+//               message:
+//                 'Authentication failed. Wrong Password',
+//             });
+//         } else {
+//           return res.json({
+//             token: jwt.sign(
+//               {
+//                 email: studentUser.email,
+//                 _id: studentUser.id,
+//               },
+//               'RESTFULAPIs'
+//             ),
+//           });
+//         }
+//       }
+//     );
+//   };
+// };
 
 module.exports = {
   getStudents: getStudents,
@@ -958,5 +1110,9 @@ module.exports = {
   sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
-  loginUser,
+  //loginRequired,
+  //register,
+  studentLogin,
+  saltPassword,
+  authenticateToken,
 };

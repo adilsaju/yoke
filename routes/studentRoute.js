@@ -31,18 +31,26 @@ const {
   sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
-  loginUser,
+  loginRequired,
+  register,
+  studentLogin,
+  saltPassword,
+  authenticateToken,
 } = require('../controllers/studentController.js');
 
 //getting all students
-router.route('/students').get(getStudents());
+router
+  .route('/students')
+  .get(getStudents(), saltPassword())
+  .post(saltPassword());
 
 //getting particular student by id
 router
   .route('/students/:id')
   .get(getStudentById())
   //patch notes field api
-  .patch(updateStudentNotesById());
+  .patch(updateStudentNotesById())
+  .post(authenticateToken());
 
 const uploadPhoto = multer({
   storage: storage,
@@ -187,8 +195,14 @@ router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
 
-//login route
-router.route('/login').post(loginUser());
-router.route('/login').get(loginUser());
+//registration route
+//router.route('/auth/register').post(register());
+
+//studentLogin route
+router.route('/student/login').post(studentLogin());
+
+//salt - test
+// router.route('/student/checklogin').post(saltPassword());
+// router.route('/student/checklogin').get(saltPassword());
 
 module.exports = router;
