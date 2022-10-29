@@ -9,7 +9,10 @@ const studentRoute = require('./routes/studentRoute');
 const jwt = require('jsonwebtoken');
 
 // const bodyParser = require('body-parser')
-
+const Student = require('./models/StudentModel');
+const Checklist = require('./models/checklistModel');
+const Request = require('./models/requestModel');
+const Admin = require('./models/adminModel');
 // const login = require('./routes/login')
 const errorHandler = require('./middlewares/errorMiddleware');
 
@@ -17,6 +20,7 @@ const port = process.env.PORT || 5001;
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
+  useCreateIndex: true,
 });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));

@@ -17,7 +17,7 @@ const approve = async (request, loggedInUserAdmin) => {
   let url = `/requests/${request._id}/approve`;
 
 const bod1 = {
-  "adminId": `${loggedInUserAdmin}`
+  "adminId": `${loggedInUserAdmin.id}`
 }
 
   const res = await fetch(url, {method: 'PATCH',

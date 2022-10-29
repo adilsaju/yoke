@@ -11,6 +11,9 @@ const adminSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
+    dropDups: true,
+    index: true,
   },
   password: {
     type: String,
@@ -20,12 +23,7 @@ const adminSchema = new mongoose.Schema({
   // approvedRequests: [ mongoose.Schema.Types.ObjectId ]
 });
 
-adminSchema.methods.comparePassword = (
-  password,
-  hashPassword
-) => {
-  return bcrypt.compareSync(password, hashPassword);
-};
+adminSchema.index({ email: 1 }, { unique: true });
 
 module.exports = {
   adminSchema: adminSchema,

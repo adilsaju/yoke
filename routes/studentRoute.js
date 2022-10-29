@@ -8,6 +8,16 @@ const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
 
 const storage = require('./multer-firebase');
+const jwt = require('jsonwebtoken');
+const {
+  uploadPhoto,
+  uploadL1,
+  uploadL2,
+  uploadL3,
+  uploadL4,
+  uploadArray,
+  checkFileType,
+} = require('./multer-utils');
 
 const {
   getStudents,
@@ -37,11 +47,12 @@ const {
   saltPassword,
   authenticateToken,
 } = require('../controllers/studentController.js');
+const { verify } = require('crypto');
 
 //getting all students
 router
   .route('/students')
-  .get(getStudents(), saltPassword())
+  .get(verifyToken, getStudents(), saltPassword())
   .post(saltPassword());
 
 //getting particular student by id
@@ -194,15 +205,5 @@ router.route('/studentsInEachProgram').get(getChartTwo());
 router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
-
-//registration route
-//router.route('/auth/register').post(register());
-
-//studentLogin route
-router.route('/student/login').post(studentLogin());
-
-//salt - test
-// router.route('/student/checklogin').post(saltPassword());
-// router.route('/student/checklogin').get(saltPassword());
 
 module.exports = router;

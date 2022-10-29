@@ -14,7 +14,7 @@ const fetchTasks = async (request_id) => {
 const decline = async (request, loggedInUserAdmin) => {
   let url = `/requests/${request._id}/decline`;
   const bod1 = {
-    "adminId": `${loggedInUserAdmin}`
+    "adminId": `${loggedInUserAdmin.id}`
   }
   const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
     'Content-Type': 'application/json'

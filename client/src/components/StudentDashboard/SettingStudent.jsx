@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect,useContext } from 'react';
 import { UserContext } from '../../Contexts/UserContext'; 
+import SideMenu from '../Navbar/SideMenu';
 
 
 const fetchTasks = async (student_id) => {
@@ -29,12 +30,18 @@ const SettingStudent = () => {
 
   return (
     <>
+    <div className='fullpage'>
+       <SideMenu/>
+      <div className='division'>
+    
     <div>
      { <><h2>{student.email}</h2>
      <h3>{student.password}</h3></> }
      <div>
      <button>Forgot Password</button>
      </div>
+   </div>
+   </div>
    </div>
    </>
   )

@@ -15,7 +15,7 @@ const {
 
 //===============
 const studentRequirementsCutoff = {
-  flownHours: 100,
+  flownHours: 200,
   balance: 50,
 };
 
@@ -26,6 +26,18 @@ const daysBeforeHecanBook = 7;
 
 const getStudents = () => {
   return async (req, res, next) => {
+    // jwt.verify(req.token, 'secretkey', (err, authData)=>{
+    //   if(err){
+    //     res.sendStatus(403);
+
+    //   }
+    //   // else{
+    //   //   res.json({
+    //   //     message: "get students worked",
+    //   //     authData
+    //   //   })
+    //   // }
+    // })
     console.log('getStudents()');
     try {
       const abc = await Student.studentModel.find();
@@ -578,14 +590,15 @@ const claireFn = () => {
 };
 
 const getFinalList = () => {
+  
   return async (req, res) => {
     try {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-
+        
       const tomorrow = new Date(today);
       tomorrow.setDate(tomorrow.getDate() + 1);
-
+      
       const requestsInToday = await Request.requestModel
         .find({
           isApproved: true,
@@ -597,7 +610,7 @@ const getFinalList = () => {
           //   $eq: Date.now,
           // },
 
-          flightDate: { $gte: today, $lt: tomorrow },
+          // flightDate: { $gte: today, $lt: tomorrow },
 
           //TODO:
 
@@ -614,6 +627,7 @@ const getFinalList = () => {
 };
 // ******** admin archive ********
 const archive = () => {
+  
   return async (req, res) => {
     try {
       const archivedRequests = await Request.requestModel
