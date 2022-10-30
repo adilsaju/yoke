@@ -1,5 +1,11 @@
-import React from 'react';
+import React from 'react'
+import { useState,useEffect } from 'react';
+import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { Doughnut } from 'react-chartjs-2';
+import { useNavigate } from "react-router-dom";
+import {  useContext } from 'react';
+import {UserContext} from '../../Contexts/UserContext'
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +29,7 @@ ChartJS.register(
   ArcElement
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -31,88 +37,80 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Last 30 days Requests',
     },
   },
 };
 
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() =>
-        faker.datatype.number({ min: 0, max: 1000 })
-      ),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() =>
-        faker.datatype.number({ min: 0, max: 1000 })
-      ),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
+
+
+const fetchTasks = async () => {
+  let url = `/past30daysRequests`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  console.log("hahaha",data);
+
+// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels1 = data.map((a)=>a._id)
+const labels = labels1.sort()
+ 
+  const data2 = {
+    labels,
+    datasets: [
+      {
+        label: 'Number of students',
+        data: data.map((a)=>a.count),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      }
+    ],
+  };
+
+
+  return data2;
 };
 
-//doughnut - students per course
-export const optionsDougnut = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'No. of Students per Course',
-    },
-  },
-};
-
-export const dataDougnut = {
-  labels: [
-    'Private Pilot, Commercial Pilot, Instrument Rating',
-  ],
-  datasets: [
-    {
-      label: 'Private Pilot',
-      data: labels.map(() =>
-        faker.datatype.number({ min: 0, max: 1000 })
-      ),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-  ],
-};
 
 const Home = () => {
-  // return (
-  //   <>
-  //   <div>Charts Display Here</div>
+  const {loggedInUser, isLoggedIn} = useContext(UserContext)
 
-  //   <Doughnut data={...} />
-  //   </>
-  // )
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
 
-  return (
-    <>
-      <Bar options={options} data={data} />;
-      <Doughnut
-        options={optionsDougnut}
-        data={dataDougnut}
-      />
-    </>
-  );
-};
+useEffect(() => {
+  // let isLoggedIn  = true
+  
+  if (!isLoggedIn){
+    handleClick();
+  }
+
+}, []);
+
+
+  const [data, setData] = useState(false);
+
+  useEffect(() => {
+    
+    const getTasks = async () => {
+      const tfs = await fetchTasks();
+      setData(tfs);
+    };
+    getTasks();
+  }, []);
+
+  return ( <>
+  <div className='fullpage'>
+      <SideMenuAdmin/>
+      <div className='division'>
+  {
+    
+ data && <Bar options={options} data={data} />
+  } 
+  </div>
+  </div>
+  </>)
 
 export default Home;

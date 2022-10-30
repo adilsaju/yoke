@@ -13,7 +13,10 @@ const studentSchema = new mongoose.Schema({
    },
    email: {
       type: String,
-      required: true
+      required: true,
+      unique: true,
+      dropDups: true,
+      index: true,
    },
    password: {
       type: String,
@@ -21,6 +24,13 @@ const studentSchema = new mongoose.Schema({
    },
    notes: String,
    studentNumber: Number,
+   // photo: {
+   //    name: String,
+   //    image: {
+   //       data: Buffer,
+   //       contentType: String
+   //    }
+   // },
    photo: String,
    dateJoined: {
       type: Date,
@@ -28,13 +38,11 @@ const studentSchema = new mongoose.Schema({
    },
    program: String,
    studentRequirements: studentRequirementsSchema,
-   isRequirementsOk: {
-      type: Boolean,
-      default: false
-   }
+
    // requests: [requestSchema],
    // requests: [ mongoose.Schema.Types.ObjectId],
 })
+studentSchema.index({ 'email' : 1 }, { unique: true });
 
 
 module.exports = {

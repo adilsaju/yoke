@@ -1,12 +1,19 @@
 import './App.css';
+import Header from './components/Header'
+import Footer from './components/Footer';
 import SideMenu from './components/Navbar/SideMenu';
-import Home from './components/AdminDashboard/Home'
+import Home from './components/AdminDashboard/Home';
+ 
 import Viewprofile from './components/AdminDashboard/viewprofile'
+import Setting from './components/AdminDashboard/Setting';
+import StudentAccountStatus from './components/StudentDashboard/studentAccountStatus'
+import RequestTravelOrder from './components/StudentDashboard/requestTravelOrder'
+import UploadDocument from './components/StudentDashboard/UploadDocument'
+import  StudentTravelOrder from './components/StudentDashboard/studentTravelOrder'
+import FinalList from './components/AdminDashboard/FinalList'
+import NotFound from './components/AdminDashboard/NotFound';
 
 import { Routes, Route, Link } from "react-router-dom";
-
-
-// import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { collection, getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
@@ -14,6 +21,12 @@ import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
 import TravelOrder from './components/AdminDashboard/TravelOrder';
 import Archive from './components/AdminDashboard/Archive';
+import Search from './components/AdminDashboard/Search';
+import {UserContext} from './Contexts/UserContext'
+import SettingStudent from './components/StudentDashboard/SettingStudent';
+import LoginPage from './components/LoginPage';
+import RejectionReason from './components/AdminDashboard/RejectionReason';
+import Decline from './components/AdminDashboard/Decline';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -31,67 +44,77 @@ export const db = getFirestore(app);
  const storage = getStorage(app);
  export {auth,storage,app};
 
- const fetchTasks = async () => {
-  let url1 = `http://localhost:5001/students/`;
-  const res = await fetch(url1);
-  const data = await res.json();
+//  const fetchTasks = async () => {
+//   let url1 = `/students`;
+//   const res = await fetch(url1);
+//   const data = await res.json();
 
-  console.log(data);
-  return data;
-};
+//   console.log(data);
+//   return data;
+// };
 
 function App() {
-  localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
-  const found = localStorage.getItem("loggedInUserId");
+  // localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
+  // const found = localStorage.getItem("loggedInUserId");
+  // console.log(found)
  
-  const [students,setStudents] = useState([])
+  const [students,setStudents] = useState([])  
+  const [loggedInUser,setLoggedInUser] = useState({
+    id: "635cc7967007ac4c3cc1aabb",
+    // id:"633a08d5dcc833764b361dc3",
+    name: "Jane",
+    userType: "student"
+  })  
+  const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
+    id: "635cc7967007ac4c3cc1aab8",
+    name: "Claire Simbulan",
+    userType: "admin"
+  })
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-
-  console.log(found)
-    useEffect(() => {
+    // useEffect(() => {
 
       
-      const getTasks = async () => {
-        const tfs = await fetchTasks();
-        setStudents(tfs);
-      };
+    //   const getTasks = async () => {
+    //     const tfs = await fetchTasks();
+    //     setStudents(tfs);
+    //   };
 
-      getTasks();
+    //   getTasks();
 
-    }, []);
-let count = 1;
+    // }, []);
+
   return (
     
     <>
-    <nav>
-      <ul>
-      <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/travel-order">Travel Order</Link>
-        </li>
-        {/* <li>
-        <Link to="/login">Login</Link>
-        </li> */}
-        <li>
-          <Link to="/final-list">Final list</Link>
-        </li>
-        <li>
-          <Link to="/archive">Archive</Link>
-        </li>
-      </ul>
-    </nav>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn}}>
 
+      {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
+    <Header/>
+    
     <Routes>
       <Route path="/" element={ <Home/> } /> 
+      <Route path="/login" element={ <LoginPage /> } /> 
       <Route path="/travel-order" element={ <TravelOrder/> } />
-      <Route path="/travel-order/profile" element={ <Viewprofile/> } />
-      <Route path="/final-list" element={<SideMenu/>}/>
+      <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
+      <Route path='*' element={<NotFound/>}/>
+      <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>
+      <Route path="/setting" element={<Setting/>}/>
+      {/* <Route path='/search' element={<Search/>}/> */}
+      <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
+      <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
+      <Route path="/request" element={<RequestTravelOrder/>}/>
+       <Route path='/settingStudent' element={<SettingStudent/>}/>
+      <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
+      <Route path='/travel-order/profile/decline/reason' element={<RejectionReason/>}/>
+      <Route path='/travel-order/profile/decline' element={<Decline/>}/>
     </Routes>
     
-    
+      <Footer/>
+    </UserContext.Provider>
+
     </>
   );
 }

@@ -1,11 +1,16 @@
 const express = require('express');
 
-const multer = require('multer')
+const multer = require('multer');
 const path = require('path');
 
 const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
+
+const storage = require('./multer-firebase');
+const jwt = require('jsonwebtoken')
+const {uploadPhoto,uploadL1,uploadL2,uploadL3,uploadL4, uploadArray, checkFileType} = require('./multer-utils')
+
 const {
   getStudents,
   getStudentById,
@@ -13,44 +18,70 @@ const {
   postRequestByStudentId,
   getRequests,
   getRequestById,
-  putStudentById,
+  updateStudentNotesById,
   claireFn,
   getFinalList,
   archive,
   getAdminById,
   approveRequestById,
   uploadLicensesByStudentId,
-  declineRequest,
+  getChartThree,
+  declineRequestById,
+  getChartTwo,
+  getChartOne,
+  getRequestsByStudentIdValidated,
+  sentEmail,
+  updateStudentPhoto,
+  uploadLicByStudentId,
+  sentEmailStudentApproved,
+  sentEmailStudentDeclined,
 } = require('../controllers/studentController.js');
+const { verify } = require('crypto');
 
 //getting all students
-router.route('/students').get(getStudents());
+router.route('/students').get( verifyToken , getStudents());
 
 //getting particular student by id
 router
   .route('/students/:id')
   .get(getStudentById())
   //patch notes field api
-  .patch(putStudentById());
-//TODO: upload license PUT api
+  .patch(updateStudentNotesById());
 
-const storage = multer.diskStorage({
-  destination: (req,file,cb)=>{
-    cb(null,'Images')
-  },
-  filename: (req,file,cb)=>{
-    console.log(file)
-    cb( null, Date.now() + path.extname(file.originalname) )
-  }
 
-})
 
-const upload = multer({storage: storage})
+// router
+//   .route('/uploadLicenses/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadLicensesByStudentId(uploadArray));
 
-router
-  .route('/uploadLicenses/:id')
-  //patch notes field api
-  .patch(upload.single("image1"), uploadLicensesByStudentId());
+// router
+//   .route('/uploadEnglish/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadEnglishByStudentId(uploadL1))  ;
+
+//   router
+//   .route('/uploadMedicalLicense/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadMedicalLicByStudentId(uploadL2))  ;
+
+//   router
+//   .route('/uploadRadioLicense/:id')
+//   //patch license, privatelicense, medicallicense, englishprof field api
+//   .post( uploadRadioLicByStudentId(uploadL3))  ;
+
+  router
+  .route('/uploadLicense/:id')
+  //patch license, privatelicense, medicallicense, englishprof field api
+  .post( uploadLicByStudentId(uploadL4))  ;
+
+
+// ======== INTERNAL API ==========
+    router
+    .route('/updateStudentPhoto/:id')
+    //patch license, privatelicense, medicallicense, englishprof field api
+    .post( updateStudentPhoto(uploadPhoto) );
+// =======================
 
 //getting all requests
 // router.get('/requests',getRequests())
@@ -60,7 +91,8 @@ router
 //FOR travel order page in student UI
 router
   .route('/requests')
-  .get(getRequestsByStudentId())
+  // .get(getRequestsByStudentId())
+  .get(getRequestsByStudentIdValidated())
   .post(postRequestByStudentId());
 
 //getting request by id (used for student profile page as well)
@@ -81,6 +113,54 @@ router.route('/admins/:id').get(getAdminById());
 
 router
   .route('/requests/:id/decline')
-  .patch(declineRequest());
+  .patch(declineRequestById());
 
+router.route('/past30daysRequests').get(getChartThree());
+
+router.route('/studentsInEachProgram').get(getChartTwo());
+
+router.route('/todaysDecisions').get(getChartOne());
+
+router.route('/sentEmail').post(sentEmail());
+router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
+router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
+
+
+sentEmailStudentApproved,
+sentEmailStudentDeclined,
+
+router.route('/login').post((req, res)=>{
+  console.log('login()');
+  user = req.body.user
+  jwt.sign({user}, 'secretkey' , {expiresIn: '300m' },  (err, token)=>{
+    res.json({ token })
+  })
+});
+//TODO: Fn
+// function generateAccessToken (user) {
+//   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
+//   "15s
+//   })
+//   }
+
+//FORMAT
+// Authorization: Bearer <access_token>
+//verfify token
+function verifyToken(req,res,next){
+  console.log("verifyToken()");
+  //get auth header
+  const bearerHeader = req.headers['authorization'];
+  if (typeof bearerHeader !== 'undefined')
+  {
+    const bearer = bearerHeader.split(' ')
+    const bearerToken = bearer[1]
+
+    req.token = bearerToken
+
+    next();
+  }else{
+    //Forbidden
+    res.sendStatus(403)
+  }
+}
 module.exports = router;

@@ -1,0 +1,44 @@
+.box h3 {
+    text-align: left;
+}
+
+.studentviews {
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin: 1rem; */
+    /* padding: 1rem; */
+    align-content: space-evenly;
+    text-align: center;
+  }
+
+  .studentimage {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.notes {
+    padding-left: 3rem;
+    text-align: left;
+}
+
+.approveDecline {
+    display: flex;
+    flex-direction: row-reverse;
+   justify-content: center;
+}
+
+.accept {
+    padding: 1rem 2rem;
+    border-radius: 27.5px;
+    background-color: lightgreen;
+}
+
+.decline {
+    padding: 1rem 2rem;
+    border-radius: 27.5px;
+    background-color: red;
+}

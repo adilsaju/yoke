@@ -4,13 +4,20 @@ const app = express();
 const mongoose = require('mongoose');
 const { addData } = require('./scripts/data-create');
 const studentRoute = require('./routes/studentRoute');
+// const bodyParser = require('body-parser')
+const Student = require('./models/StudentModel');
+const Checklist = require('./models/checklistModel');
+const Request = require('./models/requestModel');
+const Admin = require('./models/adminModel');
 // const login = require('./routes/login')
 const errorHandler = require('./middlewares/errorMiddleware');
+const jwt = require('jsonwebtoken');
 
 const port = process.env.PORT || 5001;
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
+  useCreateIndex: true,
 });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
@@ -18,6 +25,12 @@ db.once('open', () =>
   console.error('connected to database')
 );
 
+Request.requestModel.collection.dropIndexes(function (
+  err,
+  results
+) {
+  // Handle errors
+});
 // addData()
 
 //middleware
