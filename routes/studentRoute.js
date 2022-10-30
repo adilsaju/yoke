@@ -30,12 +30,25 @@ const {
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
+} = require('../controllers/studentController.js');
+
+const {
+
+  createStudent,
+  studentLogin
+} = require  ('../controllers/authController.js') ;
+
+
+const {
+  sentEmail,
   sentEmailStudentApproved,
   sentEmailStudentDeclined,
-} = require('../controllers/studentController.js');
+
+}= require  ('../controllers/emailController.js') ;
+
+
 const { verify } = require('crypto');
 
 //getting all students
@@ -129,13 +142,10 @@ router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 sentEmailStudentApproved,
 sentEmailStudentDeclined,
 
-router.route('/login').post((req, res)=>{
-  console.log('login()');
-  user = req.body.user
-  jwt.sign({user}, 'secretkey' , {expiresIn: '300m' },  (err, token)=>{
-    res.json({ token })
-  })
-});
+router.route('/login').post(studentLogin());
+
+
+router.route('/addStudent').post(createStudent());
 //TODO: Fn
 // function generateAccessToken (user) {
 //   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
@@ -163,4 +173,10 @@ function verifyToken(req,res,next){
     res.sendStatus(403)
   }
 }
+
+
+
+
+
+
 module.exports = router;
