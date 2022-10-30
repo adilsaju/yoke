@@ -34,11 +34,19 @@ const createStudent = ()=>{
   };
 }
 
-const createAdmin = async (password)=>{
-  return async (req, res, next) => {
-
-  };
-}
+const createAdmin = async (req, res, next) => {
+  try {
+    const email = req.body.email
+    const password = req.body.password
+ 
+    const hashPassword = await createHashPassword(password)
+     //save student to db
+     const adm1 = await Admin.adminModel.create({name: req.body.name || "abc" , email: email, password: hashPassword })
+     res.status(201).json({error:false, message: "user added success", data: adm1})
+  } catch (error) {
+    res.status(500).json({error: true, message: "failed", data: error})
+  }
+};
 
 //**login from webdevSimplified */
 const studentLogin = () => {
@@ -58,9 +66,12 @@ const studentLogin = () => {
       email: req.body.email,
     });
 
-    if (studentUser == null) {
-      return res.status(400).send({error: true, message: 'cannot find email' });
-    }
+    const adminUser = await Admin.adminModel.findOne({
+      email: req.body.email,
+    });
+
+    if (studentUser != null) {
+
     try {
       if (
         await bcrypt.compare(
@@ -69,7 +80,7 @@ const studentLogin = () => {
         )
       ) {
         console.log("scc");
-        res.send({error: false, message: 'login success' , data: studentUser, token: token });
+        res.send({error: false, message: 'login success' , data: studentUser, token: token, isAdmin: false });
       } else {
         console.log("pwd incorrect");
         res.json({error: true, message: 'Not allowed. Password incorrect' });
@@ -78,6 +89,33 @@ const studentLogin = () => {
       return res.status(500).json(error);
     }
 
+  }else if  (adminUser != null) 
+  {
+
+    try {
+      if (
+        await bcrypt.compare(
+          req.body.password,
+          adminUser.password
+        )
+      ) {
+        console.log("scc");
+        res.send({error: false, message: 'login success' , data: adminUser, token: token, isAdmin: true });
+      } else {
+        console.log("pwd incorrect");
+        res.json({error: true, message: 'Not allowed. Password incorrect' });
+      }
+    } catch(error) {
+      return res.status(500).json(error);
+    }
+
+
+
+
+  }else {
+      return res.status(400).send({error: true, message: 'cannot find email' });
+
+  }
 
     
   };
@@ -216,6 +254,7 @@ module.exports = {
 
     createHashPassword,
     createStudent,
-    studentLogin
+    studentLogin,
+    createAdmin
   };
   

@@ -176,9 +176,12 @@ const Home = () => {
 useEffect(() => {
   // let isLoggedIn  = true
   
-  if (!isLoggedIn){
+  // if (!isLoggedIn){
+  //   handleClick();
+  // }
+    if(localStorage.getItem("isLoggedIn") !== "true"){
     handleClick();
-  }
+    }
 
 }, []);
 
