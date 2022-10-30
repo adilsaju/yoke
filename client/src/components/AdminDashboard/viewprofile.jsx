@@ -42,7 +42,7 @@ const Viewprofile = () => {
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
       requestStudent(tfs);
-      setNotes(tfs.requestedStudent.notes)
+      tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
     };
     getTasks();
   }, []);
