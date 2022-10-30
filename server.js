@@ -39,7 +39,13 @@ app.use("/", studentRoute)
 app.use(errorHandler)
 // app.use(bodyParser()) // support encoded bodies
 // bodyParser.json([])
-
+// app.use(errorHandler)
+app.use((req, res, next) => {
+  res.status(404);
+  res.send({
+    error: '404 Page: Not found',
+  });
+});
 
 app.listen(port, ()=>{
     console.log('server started');
