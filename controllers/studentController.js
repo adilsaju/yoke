@@ -751,6 +751,34 @@ const sentEmail = () => {
 }; //end of declineRequest
 
 
+const sentEmailStudentApproved = () => {
+  return async (req, res, next) => {
+    let body1 = req.body.finalList
+    body1 = {}
+    try {
+      main().catch(console.error);
+      res.json("sent successfull");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+    next();
+  }; //end of middleware
+}; //end of declineRequest
+
+const sentEmailStudentDeclined = () => {
+  return async (req, res, next) => {
+    let body1 = req.body.finalList
+    body1 = {}
+    try {
+      main().catch(console.error);
+      res.json("sent successfull");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+    next();
+  }; //end of middleware
+}; //end of declineRequest
+
 const updateStudentPhoto = (upload) => {
  return upload, async (req, res) => {
   
@@ -929,6 +957,8 @@ module.exports = {
   getChartOne,
   getRequestsByStudentIdValidated: getRequestsByStudentIdValidated,
   sentEmail,
+  sentEmailStudentApproved,
+  sentEmailStudentDeclined,
   updateStudentPhoto,
   uploadLicByStudentId
 };

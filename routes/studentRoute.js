@@ -33,6 +33,8 @@ const {
   sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
+  sentEmailStudentApproved,
+  sentEmailStudentDeclined,
 } = require('../controllers/studentController.js');
 const { verify } = require('crypto');
 
@@ -120,7 +122,12 @@ router.route('/studentsInEachProgram').get(getChartTwo());
 router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
+router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
+router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 
+
+sentEmailStudentApproved,
+sentEmailStudentDeclined,
 
 router.route('/login').post((req, res)=>{
   console.log('login()');
