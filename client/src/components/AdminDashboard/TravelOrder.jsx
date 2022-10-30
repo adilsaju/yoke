@@ -19,7 +19,7 @@ import Filters from './Filters';
 const TravelOrder = () => {
 
 
-  const [students,setStudents] = useState([]);
+  const [requests,setRequests] = useState([]);
   const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -31,7 +31,8 @@ const TravelOrder = () => {
     return res.json();
   })
   .then(data => {
-    setStudents(data);
+    console.log("TOOO: data");
+    setRequests(data);
     setError(null);
   }).catch(err => {
     setError(err.message)
@@ -41,7 +42,7 @@ const TravelOrder = () => {
     }, []);
 let count = 1;
 //Sort By Name
-// let keyword =  students.sort((a,b) => {
+// let keyword =  requests.sort((a,b) => {
 //  if (a.requestedStudent.name < b.requestedStudent.name) 
 //  {
 //   return -1;
@@ -51,7 +52,7 @@ let count = 1;
 //  return 0 ;
 // })
 //Sort By Date
-// let keyword =  students.sort((a,b)=> {
+// let keyword =  requests.sort((a,b)=> {
 //   var date = new Date(a.flightDate);
 //   var dates = new Date(b.flightDate);
 //   return date - dates;
@@ -84,17 +85,17 @@ let count = 1;
                           </div>                                
                           <table className="myTable" >
                           <tbody>
-                          {students.map((student,id) => {
-                      if ( 'requestedStudent' in student && student.isApproved === false)
+                          {requests.map((request,id) => {
+                      if ( 'requestedStudent' in request && request.isApproved === false)
                       {
                         return(
                             <tr className='tay' key={id}>
                               <td>{count++}</td>
-                              <td>{student._id}</td>
-                              <td>{student.requestedStudent.name}</td>
-                              <td>{student.requestedStudent.studentNumber}</td>
-                              <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                              <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
+                              <td>{request._id}</td>
+                              <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                              <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
+                              <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                              <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
                             </tr>
                             ) }
                     })

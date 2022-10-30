@@ -20,6 +20,10 @@ table {
   table-layout:fixed;
 }
 
+tbody tr:nth-child(even){
+  background-color: #4c8af534;
+}
+
 table td {
 
   margin: 2rem;
