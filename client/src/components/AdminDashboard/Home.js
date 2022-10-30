@@ -6,7 +6,7 @@ import { Pie } from 'react-chartjs-2';
 import { useNavigate } from "react-router-dom";
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-
+import "./Home.css"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -224,17 +224,31 @@ useEffect(() => {
       <SideMenuAdmin/>
       <div className='division'>
 
+        <div className='graph-grid'>
+
+<div>
+
   {
-  dataPie && <Pie options={optionsPie} data={dataPie} />
+    dataPie && <Pie options={optionsPie} data={dataPie} />
   } 
+  </div>
+
+<div>
+
   {
-  dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
+    dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
   } 
+  </div>
+
+<div>
+
   {
     
- data && <Bar options={options} data={data} />
+    data && <Bar options={options} data={data} />
   } 
+  </div>
 
+</div>
   
   </div>
   </div>
