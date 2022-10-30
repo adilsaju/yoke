@@ -27,8 +27,6 @@ const updateStudentNotes = async (request, newNote) => {
   }, });
   const data = await res.json();
 
-  //TODO: update request table also (backend code change actually)
-
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
@@ -58,7 +56,8 @@ const Viewprofile = () => {
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
       <div className='studentimage'>
-      <img src= 'https://picsum.photos/200/300'/>
+      <img src= {request.requestedStudent && request.requestedStudent.photo}/>
+
       <div className='studentviews'>
         <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
         {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
