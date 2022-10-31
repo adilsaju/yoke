@@ -65,38 +65,34 @@ const sentEmail = async () => {
           {students.map((student,id)=> {
       
       
-          return (
-        
-           <div key={id}>
-             <table>
-                            <tbody>
-                          
-                            <tr>
-                                        <th>No.</th>
-                                        <th>Requested ID</th>
-                                        <th>Name</th>
-                                        <th className=''>Student Id</th>
-                                        <th className=''>Travel Date</th>
-                                        <th className=''>Action</th>
-                                      </tr>
-                            </tbody>
-                          
-                          </table>
-         <table>
-             <tbody>
-              <tr>
-                <td>{count++}</td>
-                <td>{ student._id}</td>
-                <td>{ student.requestedStudent.name}</td>
-                <td>{ student.requestedStudent.studentNumber}</td>
-                <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
-              </tr>
-              </tbody>
-            </table>
-           </div>
-                )
-              } ,[])
+            return (
+          
+              <div key={id}>
+                <table>
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Requested ID</th>
+                        <th>Name</th>
+                        <th className=''>Student Id</th>
+                        <th className=''>Travel Date</th>
+                        <th className=''>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{count++}</td>
+                        <td>{ student._id}</td>
+                        <td>{ student.requestedStudent.name}</td>
+                        <td>{ student.requestedStudent.studentNumber}</td>
+                        <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                        <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            )
+          } ,[])
 
    
    

@@ -71,7 +71,7 @@ let count = 1;
 
                           
                             <table>
-                              <tbody>
+                              <thead>
                               { error && <div>{ error }</div> }
                               <tr className="heading">
                                           <th>No.</th>
@@ -81,12 +81,12 @@ let count = 1;
                                           <th className=''>Travel Date</th>
                                           <th className=''>Action</th>
                                         </tr>
-                              {/* </tbody> */}
+                              </thead>
                               
                               {/* </table> */}
                               
                               {/* <table className="myTable" > */}
-                              {/* <tbody> */}
+                              <tbody>
                               {requests.map((request,id) => {
                                                     if ( 'requestedStudent' in request && request.isApproved === false)
                                                     {

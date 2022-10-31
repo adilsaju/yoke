@@ -28,7 +28,7 @@ th, td {
     
 }
 
-tbody tr:nth-child(odd){
+tbody tr:nth-child(even){
 background-color: rgba(200, 288, 255, 0.15);
 }
 
