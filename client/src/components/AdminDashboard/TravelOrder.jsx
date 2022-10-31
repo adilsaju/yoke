@@ -5,6 +5,7 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import moment from "moment";
 import Filters from './Filters';
+import "./TravelOrder.css"
 
 
 // const fetchTasks = async () => {
@@ -68,40 +69,43 @@ let count = 1;
                       <div>
                             <Search/>
 
-                          <table>
-                            <tbody>
-                            { error && <div>{ error }</div> }
-                            <tr>
-                                        <th>No.</th>
-                                        <th>Requested ID</th>
-                                        <th>Name</th>
-                                        <th className=''>Student Id</th>
-                                        <th className=''>Travel Date</th>
-                                        <th className=''>Action</th>
-                                      </tr>
-                            </tbody>
                           
-                          </table>
-                          </div>                                
-                          <table className="myTable" >
-                          <tbody>
-                          {requests.map((request,id) => {
-                      if ( 'requestedStudent' in request && request.isApproved === false)
-                      {
-                        return(
-                            <tr className='tay' key={id}>
-                              <td>{count++}</td>
-                              <td>{request._id}</td>
-                              <td>{request.requestedStudent && request.requestedStudent.name}</td>
-                              <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
-                              <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
-                              <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
-                            </tr>
-                            ) }
-                    })
-                  }
+                            <table>
+                              <tbody>
+                              { error && <div>{ error }</div> }
+                              <tr className="heading">
+                                          <th>No.</th>
+                                          <th>Requested ID</th>
+                                          <th>Name</th>
+                                          <th className=''>Student Id</th>
+                                          <th className=''>Travel Date</th>
+                                          <th className=''>Action</th>
+                                        </tr>
+                              {/* </tbody> */}
+                              
+                              {/* </table> */}
+                              
+                              {/* <table className="myTable" > */}
+                              {/* <tbody> */}
+                              {requests.map((request,id) => {
+                                                    if ( 'requestedStudent' in request && request.isApproved === false)
+                                                    {
+                                                      return(
+                              <tr className='tay' key={id}>
+                                <td>{count++}</td>
+                                <td>{request._id}</td>
+                                <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                                <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
+                                <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                                <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
+                              </tr>
+                              ) }
+                                                })
+                                              }
                             </tbody>
                           </table>
+                    
+                      </div>
                           <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                           </div>
     </div>

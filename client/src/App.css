@@ -13,29 +13,11 @@
   }
 }
 
-table {
-  display:table;
-  width:90%;
-  margin: auto;
-  table-layout:fixed;
-}
-
-tbody tr:nth-child(even){
-  background-color: #4c8af534;
-}
-
-table td {
-
-  margin: 2rem;
-  padding: 1rem;
-  border: 1px solid grey;
-  overflow-wrap:break-word;
-}
-
-table th {
-  padding: 1.5rem;
-  border: 1px solid grey;
-
+body{
+  text-align: center;
+  font-size: smaller;
+  margin: 0;
+  padding: 0;
 }
 
 .three {
@@ -78,10 +60,7 @@ table th {
   }
 }
 
-body{
-  text-align: center;
-  
-}
+
 button{
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -272,10 +251,7 @@ footer p{
 
 }
  
-.Searchbar{
-  width: 50%;
-  height: 3rem;
-}
+
 
 .division{
   margin: 1rem;
@@ -287,8 +263,4 @@ footer p{
   
  height: 2rem ;
  width: 18rem;
-}
-
-body{
-  font-size: smaller;
 }

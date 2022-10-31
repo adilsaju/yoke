@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Search = () => {
    
       function searchSname() {
@@ -35,7 +36,7 @@ const Search = () => {
         }
   return (
     <>
-   <input className='Searchbar' type="text" id="myInput" onKeyUp={(e) => { searchSname()} }  placeholder="Search " />
+   <input className='Searchbar' type="text" id="myInput" onKeyUp={(e) => { searchSname()} }   />
 
     </>
   
