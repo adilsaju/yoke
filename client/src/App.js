@@ -54,9 +54,6 @@ export const db = getFirestore(app);
 // };
 
 function App() {
-  // localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
-  // const found = localStorage.getItem("loggedInUserId");
-  // console.log(found)
  
   const [students,setStudents] = useState([])  
   const [loggedInUser,setLoggedInUser] = useState({
@@ -65,14 +62,10 @@ function App() {
     name: "Jane",
     userType: "student"
   })  
-  const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
-    id: "635cc7967007ac4c3cc1aab8",
-    name: "Claire Simbulan",
-    userType: "admin"
-  })
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(true);
+
+  const [loginCredentials, setLoginCredentials] = useState({});
 
 
     useEffect(() => {
@@ -84,18 +77,31 @@ function App() {
       // };
 
       // getTasks();
-      if (! localStorage.getItem("isLoggedIn"))
-        localStorage.setItem("isLoggedIn", false)
-      if (! localStorage.getItem("isAdmin"))
-        localStorage.setItem("isAdmin", true)
+      if (!JSON.parse(localStorage.getItem("loginCredentials"))){
+        localStorage.setItem("loginCredentials", null)
+      }else {
 
+        let isLoggedIn  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+        let loggedInUser  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
+        let isAdmin  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+
+        //set states based on local storage
+        setLoginCredentials({
+          isLoggedIn: isLoggedIn,
+          loggedInUser: {
+            id: loggedInUser.id,
+            name: loggedInUser.name
+          },
+          isAdmin: isAdmin
+        })
+      }
 
     }, []);
 
   return (
     
     <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin   }}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials  }}>
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>

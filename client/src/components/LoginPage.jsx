@@ -12,7 +12,7 @@ import {UserContext} from '../Contexts/UserContext'
 
 const LoginPage = () => {
   // const [request,setStudents] = useState([]);
-  const {setIsLoggedIn, setIsAdmin} = useContext(UserContext)
+  const { loginCredentials, setLoginCredentials } = useContext(UserContext)
 
 
   const navigate = useNavigate();
@@ -41,21 +41,44 @@ const LoginPage = () => {
     if (data.error === false){
       console.log("succesfooly logged in")
       //save id and token globally
-      setIsLoggedIn(true);
-      localStorage.setItem("isLoggedIn", true)
-
+      // setIsLoggedIn(true);
       console.log(data.isAdmin);
       if (data.isAdmin){
-        localStorage.setItem("isAdmin", true)
+        localStorage.setItem("loginCredentials", JSON.stringify({
+          isLoggedIn: true,
+          isAdmin: true,
+          loggedInUser: {
+            id: data.data._id,
+            name: data.data.name
+          }
+        }))
+        setLoginCredentials({
+          isLoggedIn: JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn,
+          isAdmin: JSON.parse(localStorage.getItem("loginCredentials")).isAdmin,
+          loggedInUser: JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser,
+        })
+        // setIsAdmin(true)
         navigate("/");
       }
       else {
-        setIsAdmin(false)
-        localStorage.setItem("isAdmin", false)
+
+        localStorage.setItem("loginCredentials", JSON.stringify({
+          isLoggedIn: true,
+          isAdmin: false,
+          loggedInUser: {
+            id: data.data._id,
+            name: data.data.name
+          }
+        }))
+        setLoginCredentials({
+          isLoggedIn: JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn,
+          isAdmin: JSON.parse(localStorage.getItem("loginCredentials")).isAdmin,
+          loggedInUser: JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser,
+        })
+        // setIsAdmin(false)
         navigate("/student-account-status");
       }
-  
-  
+
     }else{
       console.log("unsuccess")
       alert("unsuccess")
@@ -74,8 +97,8 @@ const LoginPage = () => {
       // tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
     };
     // getTasks();
-    localStorage.setItem("isLoggedIn", false)
-    localStorage.setItem("isAdmin", true)
+    //logout reset basically
+    localStorage.setItem("loginCredentials", null)
 
   }, []);
 

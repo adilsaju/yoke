@@ -13,11 +13,11 @@ const fetchTasks = async (request_id) => {
   return data;
 };
 
-const approve = async (request, loggedInUserAdmin) => {
+const approve = async (request, loggedInUser) => {
   let url = `/requests/${request._id}/approve`;
 
 const bod1 = {
-  "adminId": `${loggedInUserAdmin.id}`
+  "adminId": `${loggedInUser.id}`
 }
 
   const res = await fetch(url, {method: 'PATCH',
@@ -33,8 +33,8 @@ const bod1 = {
 
 const Accept = () => {
 
-  const {loggedInUserAdmin} = useContext(UserContext)
-console.log(loggedInUserAdmin.id);
+  const {loggedInUser} = useContext(UserContext)
+console.log(loggedInUser.id);
   const [request,setStudents] = useState([]);
   let params = useParams();
 
@@ -49,7 +49,7 @@ console.log(loggedInUserAdmin.id);
 
   return (
     <div>
-    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loggedInUserAdmin)} }>Approve</button> }
+    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loggedInUser)} }>Approve</button> }
     </div>
   )
 }

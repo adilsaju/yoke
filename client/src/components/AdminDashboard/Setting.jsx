@@ -15,13 +15,13 @@ const fetchTasks = async (admin_id) => {
 const Setting = () => {
  
         const [admin,setAdmin] = useState([]);
-        const {loggedInUserAdmin} = useContext(UserContext);
-        console.log(loggedInUserAdmin);
+        const {loggedInUser} = useContext(UserContext);
+        console.log(loggedInUser);
 
         useEffect(() => {
             
             const getTasks = async () => {
-            const tfs = await fetchTasks(loggedInUserAdmin.id);
+            const tfs = await fetchTasks(loggedInUser.id);
             setAdmin(tfs);
             };
         

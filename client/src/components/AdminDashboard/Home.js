@@ -179,7 +179,7 @@ useEffect(() => {
   // if (!isLoggedIn){
   //   handleClick();
   // }
-    if(localStorage.getItem("isLoggedIn") !== "true"){
+    if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
     handleClick();
     }
 
