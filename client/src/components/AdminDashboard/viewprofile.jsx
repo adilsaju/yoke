@@ -5,6 +5,7 @@ import Decline from './Decline';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { useParams } from "react-router-dom";
 import "./viewprofile.css"
+import { Link } from "react-router-dom";
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -12,6 +13,15 @@ const fetchTasks = async (request_id) => {
   const data = await res.json();
 
   console.log("PARTICULAR REQ: ",data);
+  return data;
+};
+
+const fetchTasks2 = async () => {
+  let url = `/pendingRequests`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  console.log("reqssss: ",data);
   return data;
 };
 
@@ -31,9 +41,18 @@ const updateStudentNotes = async (request, newNote) => {
   return data;
 };
 
+
+
+
 const Viewprofile = () => {
   const [request,requestStudent] = useState([]);
   const [notes,setNotes] = useState("");
+  //list of pending requests
+  const [requests, setRequests]= useState([])
+  const [cnt, setCnt]= useState([])
+  const [prevId, setPrevId]= useState("")
+  const [nextId, setNextId]= useState("")
+
 
 
   let params = useParams();
@@ -41,11 +60,37 @@ const Viewprofile = () => {
   useEffect(() => {
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
+
+      const tfs2 = await fetchTasks2();
+      
       requestStudent(tfs);
+      setRequests(tfs2);
+
+      getCurrentPage(tfs2, tfs)
+
+
       tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
     };
     getTasks();
-  }, []);
+
+    const getCurrentPage = (requests, request) => {
+      console.log("gcp");
+      console.log(requests)
+      console.log(request)
+
+      const index = requests.map((el) => el._id).indexOf(request._id);
+      console.log("index",index)
+      setCnt(index)
+      setNextId(requests[index+1]._id)
+      setPrevId(requests[index-1]._id)
+
+      return index
+    }
+
+
+    }, []);
+    
+
 
   return (
     <>
@@ -54,6 +99,16 @@ const Viewprofile = () => {
       <div className='division'>
     <div className='box'>
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
+
+      {cnt>0 && <button>
+        <Link to={ `/travel-order/profile/${prevId}` }>left</Link>
+        </button>}
+      <span>{cnt}</span>
+      {cnt<requests.length-1 && <button>
+        
+        <Link to={ `/travel-order/profile/${nextId}` }>right</Link>
+        </button>}
+      {/* {requests.length} */}
 
       <div className='studentimage'>
       <img src= {request.requestedStudent && request.requestedStudent.photo}/>
