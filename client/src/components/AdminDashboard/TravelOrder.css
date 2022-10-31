@@ -61,5 +61,21 @@ overflow-wrap:break-word;
     padding: 0.2rem 1.2rem 0.3rem 1.2rem;
 }
 
+.admin-settings {
+    text-align-last: left;
+    padding: 1rem;
+}
+
+.yellowBtn {
+    background-color: #FEC326;
+    border: 1px solid #FEC326;
+    border-radius: 2.31rem;
+}
 
 
+.dBlueBtn {
+    background-color: #00284E;
+    color: white;
+    border: 1px solid #00284E;
+    border-radius: 2.31rem;
+}

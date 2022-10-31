@@ -59,16 +59,9 @@ const sentEmail = async () => {
       <div className='division'>
             <Search />
             <>
-            <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
+            <button className="yellowBtn" onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
-          
-          {students.map((student,id)=> {
-      
-      
-            return (
-          
-              <div key={id}>
-                <table>
+            <table>
                     <thead>
                       <tr>
                         <th>No.</th>
@@ -79,6 +72,10 @@ const sentEmail = async () => {
                         <th className=''>Action</th>
                       </tr>
                     </thead>
+          {students.map((student,id)=> {
+      
+      
+            return (      
                     <tbody>
                       <tr>
                         <td>{count++}</td>
@@ -89,17 +86,15 @@ const sentEmail = async () => {
                         <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
                       </tr>
                     </tbody>
+                      ) }
+                                                )
+                                              }
+                    
                 </table>
               </div>
-            )
-          } ,[])
-
-   
-   
-              }
+      
         </div>
         </div>
-        </div> 
         
             )
 
