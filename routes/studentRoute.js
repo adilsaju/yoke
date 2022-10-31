@@ -35,7 +35,8 @@ const {
 
   createStudent,
   studentLogin,
-  createAdmin
+  createAdmin,
+  verifyToken
 } = require  ('../controllers/authController.js') ;
 
 
@@ -140,50 +141,17 @@ router.route('/studentsInEachProgram').get(getChartTwo());
 router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
+//pass student id
 router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
+//pass student id
 router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 
-
-sentEmailStudentApproved,
-sentEmailStudentDeclined,
 
 router.route('/login').post(studentLogin());
 
 
 router.route('/addStudent').post(createStudent());
 router.route('/addAdmin').post(createAdmin);
-
-//TODO: Fn
-// function generateAccessToken (user) {
-//   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
-//   "15s
-//   })
-//   }
-
-//FORMAT
-// Authorization: Bearer <access_token>
-//verfify token
-function verifyToken(req,res,next){
-  console.log("verifyToken()");
-  //get auth header
-  const bearerHeader = req.headers['authorization'];
-  if (typeof bearerHeader !== 'undefined')
-  {
-    const bearer = bearerHeader.split(' ')
-    const bearerToken = bearer[1]
-
-    req.token = bearerToken
-
-    next();
-  }else{
-    //Forbidden
-    res.sendStatus(403)
-  }
-}
-
-
-
-
 
 
 module.exports = router;

@@ -248,7 +248,33 @@ const authenticateToken = () => {
 // };
 
 
+//TODO: Fn
+// function generateAccessToken (user) {
+//   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
+//   "15s
+//   })
+//   }
 
+//FORMAT
+// Authorization: Bearer <access_token>
+//verfify token
+function verifyToken(req,res,next){
+  console.log("verifyToken()");
+  //get auth header
+  const bearerHeader = req.headers['authorization'];
+  if (typeof bearerHeader !== 'undefined')
+  {
+    const bearer = bearerHeader.split(' ')
+    const bearerToken = bearer[1]
+
+    req.token = bearerToken
+
+    next();
+  }else{
+    //Forbidden
+    res.sendStatus(403)
+  }
+}
 
 
 module.exports = {
@@ -256,6 +282,7 @@ module.exports = {
     createHashPassword,
     createStudent,
     studentLogin,
-    createAdmin
+    createAdmin,
+    verifyToken
   };
   
