@@ -64,9 +64,23 @@ function App() {
   })  
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [isAdmin, setIsAdmin] = useState(true);
-  let isLoggedIn1  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
-  let loggedInUser1  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
-  let isAdmin1  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+  let isLoggedIn1  = JSON.parse(localStorage.getItem("loginCredentials")) && JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+  let loggedInUser1  = JSON.parse(localStorage.getItem("loginCredentials")) &&  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser 
+  let isAdmin1  =  JSON.parse(localStorage.getItem("loginCredentials")) && JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+
+  if (! JSON.parse(localStorage.getItem("loginCredentials"))){
+
+    isLoggedIn1  = false
+    loggedInUser1 = {}
+    isAdmin1 = true
+
+    localStorage.setItem("loginCredentials", JSON.stringify({
+      isLoggedIn: isLoggedIn1,
+      loggedInUser: loggedInUser1,
+      isAdmin: true,
+    }))
+  }
+
   const [loginCredentials, setLoginCredentials] = useState({
     isLoggedIn: isLoggedIn1,
     loggedInUser: {
