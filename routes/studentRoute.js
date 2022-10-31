@@ -37,7 +37,8 @@ const {
 const {
 
   createStudent,
-  studentLogin
+  studentLogin,
+  createAdmin
 } = require  ('../controllers/authController.js') ;
 
 
@@ -146,6 +147,8 @@ router.route('/login').post(studentLogin());
 
 
 router.route('/addStudent').post(createStudent());
+router.route('/addAdmin').post(createAdmin);
+
 //TODO: Fn
 // function generateAccessToken (user) {
 //   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:

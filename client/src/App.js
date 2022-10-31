@@ -71,24 +71,31 @@ function App() {
     userType: "admin"
   })
   
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
-    // useEffect(() => {
+
+    useEffect(() => {
 
       
-    //   const getTasks = async () => {
-    //     const tfs = await fetchTasks();
-    //     setStudents(tfs);
-    //   };
+      // const getTasks = async () => {
+      //   const tfs = await fetchTasks();
+      //   setStudents(tfs);
+      // };
 
-    //   getTasks();
+      // getTasks();
+      if (! localStorage.getItem("isLoggedIn"))
+        localStorage.setItem("isLoggedIn", false)
+      if (! localStorage.getItem("isAdmin"))
+        localStorage.setItem("isAdmin", true)
 
-    // }, []);
+
+    }, []);
 
   return (
     
     <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn}}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin   }}>
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>
@@ -96,6 +103,8 @@ function App() {
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/login" element={ <LoginPage /> } /> 
+      <Route path="/logout" element={ <LoginPage /> } /> 
+
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path='*' element={<NotFound/>}/>
