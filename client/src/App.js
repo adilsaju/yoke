@@ -64,37 +64,46 @@ function App() {
   })  
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [isAdmin, setIsAdmin] = useState(true);
-
-  const [loginCredentials, setLoginCredentials] = useState({});
+  let isLoggedIn1  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+  let loggedInUser1  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
+  let isAdmin1  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+  const [loginCredentials, setLoginCredentials] = useState({
+    isLoggedIn: isLoggedIn1,
+    loggedInUser: {
+      id: loggedInUser1.id,
+      name: loggedInUser1.name
+    },
+    isAdmin: isAdmin1
+  });
 
 
     useEffect(() => {
-
+      console.log("APPPJS USEFFFF  RANNNNNNNN");
       
-      // const getTasks = async () => {
-      //   const tfs = await fetchTasks();
-      //   setStudents(tfs);
-      // };
 
-      // getTasks();
-      if (!JSON.parse(localStorage.getItem("loginCredentials"))){
-        localStorage.setItem("loginCredentials", null)
-      }else {
+      // if (!JSON.parse(localStorage.getItem("loginCredentials"))){
+      //   localStorage.setItem("loginCredentials", null)
+      // }else {
 
-        let isLoggedIn  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
-        let loggedInUser  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
-        let isAdmin  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+      //   let isLoggedIn  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+      //   let loggedInUser  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
+      //   let isAdmin  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
 
-        //set states based on local storage
-        setLoginCredentials({
-          isLoggedIn: isLoggedIn,
-          loggedInUser: {
-            id: loggedInUser.id,
-            name: loggedInUser.name
-          },
-          isAdmin: isAdmin
-        })
-      }
+      //   //set states based on local storage
+      //   setLoginCredentials({
+      //     isLoggedIn: isLoggedIn,
+      //     loggedInUser: {
+      //       id: loggedInUser.id,
+      //       name: loggedInUser.name
+      //     },
+      //     isAdmin: isAdmin
+      //   })
+      // }
+
+
+      // setLoginCredentials({abc:"haha"})
+
+      console.log("ESEFF", loginCredentials);
 
     }, []);
 

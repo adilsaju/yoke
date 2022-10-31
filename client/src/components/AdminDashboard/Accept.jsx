@@ -33,8 +33,8 @@ const bod1 = {
 
 const Accept = () => {
 
-  const {loggedInUser} = useContext(UserContext)
-console.log(loggedInUser.id);
+  const {loggedInUser, loginCredentials} = useContext(UserContext)
+console.log(loginCredentials.loggedInUser.id);
   const [request,setStudents] = useState([]);
   let params = useParams();
 
@@ -49,7 +49,7 @@ console.log(loggedInUser.id);
 
   return (
     <div>
-    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loggedInUser)} }>Approve</button> }
+    { (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loginCredentials.loggedInUser)} }>Approve</button> }
     </div>
   )
 }

@@ -166,7 +166,7 @@ const labelsPie = labelsPie1.sort()
 
 
 const Home = () => {
-  const {loggedInUser, isLoggedIn} = useContext(UserContext)
+  const {} = useContext(UserContext)
 
   const navigate = useNavigate();
   const handleClick = () => {

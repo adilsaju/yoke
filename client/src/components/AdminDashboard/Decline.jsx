@@ -28,7 +28,7 @@ const decline = async (request, loggedInUser) => {
 
 const Decline = () => {
   const [request,setStudents] = useState([]);
-  const {loggedInUser} = useContext(UserContext)
+  const {loggedInUser, loginCredentials} = useContext(UserContext)
 
   let params = useParams();
   useEffect(() => {
@@ -41,7 +41,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loggedInUser)} }>Decline</button> }
+      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
     </div>
   )
 }

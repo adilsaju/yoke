@@ -34,14 +34,14 @@ const fetchTasks = async (loggedInUser) => {
 
 const StudentTravelOrder = () => {
 
-                const {loggedInUser} = useContext(UserContext)
+                const {loggedInUser, loginCredentials} = useContext(UserContext)
       
                 const [students,setStudents] = useState([]);
                 const [studentsInfo,setStudentsInfo] = useState([]);
                 useEffect(() => {
                     
                     const getTasks = async () => {
-                    const tfs = await fetchTasks(loggedInUser);
+                    const tfs = await fetchTasks(loginCredentials.loggedInUser);
                     setStudents(tfs);
                     };
                 
@@ -55,7 +55,7 @@ const StudentTravelOrder = () => {
                 useEffect(() => {
                     
                     const getTasks = async () => {
-                    const tts = await fetchStudent(loggedInUser);
+                    const tts = await fetchStudent(loginCredentials.loggedInUser);
                     setStudentsInfo(tts);
                     };
                 

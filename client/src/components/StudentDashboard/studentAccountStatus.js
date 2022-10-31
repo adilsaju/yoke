@@ -34,12 +34,12 @@ useEffect(() => {
 
 }, []);
 
-  const {loggedInUser, isLoggedIn} = useContext(UserContext)
+  const {loggedInUser, loginCredentials} = useContext(UserContext)
 
             const [students,setStudents] = useState([]);
             useEffect(() => {
                 const getTasks = async () => {
-                const tfs = await fetchTasks(loggedInUser);
+                const tfs = await fetchTasks(loginCredentials.loggedInUser);
                 setStudents(tfs);
                 };
                 getTasks();
@@ -58,11 +58,11 @@ useEffect(() => {
         <div className='studentimage'>
           <img src= {students.photo}/>
           <div className='studentviews'>
-          {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements.flownHours}</h2>  }
+          {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements && students.studentRequirements.flownHours}</h2>  }
           
           <h2>Student ID : {students.studentNumber}</h2>
           <h2>Course : {students.program}</h2>
-          {students.length===0? console.log("Nothing") : <h2>Account Balance : {students.studentRequirements.balance}</h2>  }
+          {students.length===0? console.log("Nothing") : <h2>Account Balance : {students.studentRequirements && students.studentRequirements.balance}</h2>  }
           {/* {students.length===0 ? console.log("Nothing") : <h2>Hours Flown : {students.requests[0].isApproved? students.requests[0].isApproved : "No upcoming flights"}</h2>  } */}
           </div>
         </div>

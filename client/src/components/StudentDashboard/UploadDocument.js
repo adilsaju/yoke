@@ -16,12 +16,12 @@ const fetchTasks = async (loggedInUser) => {
 };
 
   const UploadDocument = () => {
-    const {loggedInUser} = useContext(UserContext)
+    const {loggedInUser,loginCredentials} = useContext(UserContext)
   
               const [students,setStudents] = useState([]);
               useEffect(() => {
                   const getTasks = async () => {
-                  const tfs = await fetchTasks(loggedInUser);
+                  const tfs = await fetchTasks(loginCredentials.loggedInUser);
                   setStudents(tfs);
                   };
                   getTasks();
@@ -44,7 +44,7 @@ const fetchTasks = async (loggedInUser) => {
                 for (var pair of formData.entries()) {
                   console.log(pair[0]+ ', ' + pair[1]);  }
                
-                  let url2 = `/updateStudentPhoto/${loggedInUser.id}`;
+                  let url2 = `/updateStudentPhoto/${loginCredentials.loggedInUser.id}`;
                   const res = await fetch(url2, 
                     {
                       method: 'POST', 
