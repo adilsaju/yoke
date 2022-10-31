@@ -67,7 +67,6 @@ return (
   <div className='fullpage'>
     <SideMenuAdmin/>
     <div className='division'>
-
                       <div>
                             <Search/>
        <Filters FilterValueSelected={onFilterValueSelected}/>
