@@ -30,10 +30,26 @@ const {
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  sentEmail,
   updateStudentPhoto,
   uploadLicByStudentId,
 } = require('../controllers/studentController.js');
+
+const {
+
+  createStudent,
+  studentLogin,
+  createAdmin
+} = require  ('../controllers/authController.js') ;
+
+
+const {
+  sentEmail,
+  sentEmailStudentApproved,
+  sentEmailStudentDeclined,
+
+}= require  ('../controllers/emailController.js') ;
+
+
 const { verify } = require('crypto');
 
 //getting all students
@@ -120,15 +136,19 @@ router.route('/studentsInEachProgram').get(getChartTwo());
 router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
+router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
+router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 
 
-router.route('/login').post((req, res)=>{
-  console.log('login()');
-  user = req.body.user
-  jwt.sign({user}, 'secretkey' , {expiresIn: '300m' },  (err, token)=>{
-    res.json({ token })
-  })
-});
+sentEmailStudentApproved,
+sentEmailStudentDeclined,
+
+router.route('/login').post(studentLogin());
+
+
+router.route('/addStudent').post(createStudent());
+router.route('/addAdmin').post(createAdmin);
+
 //TODO: Fn
 // function generateAccessToken (user) {
 //   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
@@ -156,4 +176,10 @@ function verifyToken(req,res,next){
     res.sendStatus(403)
   }
 }
+
+
+
+
+
+
 module.exports = router;

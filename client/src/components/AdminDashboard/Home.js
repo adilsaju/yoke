@@ -2,10 +2,11 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { useNavigate } from "react-router-dom";
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-
+import "./Home.css"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +15,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 const { faker } = require('@faker-js/faker');
@@ -25,7 +27,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const options = {
@@ -71,8 +74,99 @@ const labels = labels1.sort()
 };
 
 
+
+
+// *** dougnut chart - no. of students per course
+const optionsDoughnut = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'No. of Students per Course',
+    },
+  },
+};
+
+const fetchDoughnut = async () => {
+  let url = `/studentsInEachProgram`;
+  const res = await fetch(url);
+  const dataDoughnut = await res.json();
+
+  
+
+
+const labelsDoughnut1 = dataDoughnut.map((a)=>a._id)
+const labelsDoughnut = labelsDoughnut1.sort()
+ 
+  const dataDoughnut2 = {
+    labelsDoughnut,
+    datasets: [
+      {
+        label: 'Number of students',
+        data: dataDoughnut.map((a)=>a.count),
+        backgroundColor: ['rgba(0, 40, 78, 0.5)',
+        'rgba(151, 205, 255, 0.5)',
+        'rgba(254, 195, 38, 0.5)'],
+      }
+    ],
+  };
+
+
+  return dataDoughnut2;
+};
+// end of doughnut chart
+
+
+// *** pie chart - Travel Order Status
+const optionsPie = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Travel Order Status',
+    },
+  },
+};
+
+const fetchPie = async () => {
+  let url = `/todaysDecisions`;
+  const res = await fetch(url);
+  const dataPie = await res.json();
+
+  
+
+
+const labelsPie1 = dataPie.map((a)=>a._id)
+const labelsPie = labelsPie1.sort()
+ 
+  const dataPie2 = {
+    labelsPie,
+    datasets: [
+      {
+        label: 'Number of students',
+        data: dataPie.map((a)=>a.count),
+        backgroundColor: ['rgba(0, 40, 78, 0.5)',
+        'rgba(254, 195, 38, 0.5)'],
+      }
+    ],
+  };
+
+
+  return dataPie2;
+};
+// end of doughnut pie
+
+
+
+
 const Home = () => {
-  const {loggedInUser, isLoggedIn} = useContext(UserContext)
+  const {} = useContext(UserContext)
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -82,9 +176,12 @@ const Home = () => {
 useEffect(() => {
   // let isLoggedIn  = true
   
-  if (!isLoggedIn){
+  // if (!isLoggedIn){
+  //   handleClick();
+  // }
+    if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
     handleClick();
-  }
+    }
 
 }, []);
 
@@ -100,14 +197,62 @@ useEffect(() => {
     getTasks();
   }, []);
 
+
+  //*** doughnut
+  const [dataDoughnut, setDataDoughnut] = useState(false);
+
+  useEffect(() => {
+    
+    const getDoughnut = async () => {
+      const tfs = await fetchDoughnut();
+      setDataDoughnut(tfs);
+    };
+    getDoughnut();
+  }, []);
+
+  //*** pie
+  const [dataPie, setDataPie] = useState(false);
+
+  useEffect(() => {
+    
+    const getPie = async () => {
+      const tfs = await fetchPie();
+      setDataPie(tfs);
+    };
+    getPie();
+  }, []);
+
   return ( <>
   <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
+
+        <div className='graph-grid'>
+
+<div>
+
+  {
+    dataPie && <Pie options={optionsPie} data={dataPie} />
+  } 
+  </div>
+
+<div>
+
+  {
+    dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
+  } 
+  </div>
+
+<div>
+
   {
     
- data && <Bar options={options} data={data} />
+    data && <Bar options={options} data={data} />
   } 
+  </div>
+
+</div>
+  
   </div>
   </div>
   </>)

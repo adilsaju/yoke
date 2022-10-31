@@ -54,9 +54,6 @@ export const db = getFirestore(app);
 // };
 
 function App() {
-  // localStorage.setItem("loggedInUserId",'633a0695b149556c00bfc725')
-  // const found = localStorage.getItem("loggedInUserId");
-  // console.log(found)
  
   const [students,setStudents] = useState([])  
   const [loggedInUser,setLoggedInUser] = useState({
@@ -65,30 +62,55 @@ function App() {
     name: "Jane",
     userType: "student"
   })  
-  const [loggedInUserAdmin,setLoggedInUserAdmin] = useState({
-    id: "635cc7967007ac4c3cc1aab8",
-    name: "Claire Simbulan",
-    userType: "admin"
-  })
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(true);
+  let isLoggedIn1  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+  let loggedInUser1  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
+  let isAdmin1  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+  const [loginCredentials, setLoginCredentials] = useState({
+    isLoggedIn: isLoggedIn1,
+    loggedInUser: {
+      id: loggedInUser1.id,
+      name: loggedInUser1.name
+    },
+    isAdmin: isAdmin1
+  });
 
-    // useEffect(() => {
 
+    useEffect(() => {
+      console.log("APPPJS USEFFFF  RANNNNNNNN");
       
-    //   const getTasks = async () => {
-    //     const tfs = await fetchTasks();
-    //     setStudents(tfs);
-    //   };
 
-    //   getTasks();
+      // if (!JSON.parse(localStorage.getItem("loginCredentials"))){
+      //   localStorage.setItem("loginCredentials", null)
+      // }else {
 
-    // }, []);
+      //   let isLoggedIn  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
+      //   let loggedInUser  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
+      //   let isAdmin  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
+
+      //   //set states based on local storage
+      //   setLoginCredentials({
+      //     isLoggedIn: isLoggedIn,
+      //     loggedInUser: {
+      //       id: loggedInUser.id,
+      //       name: loggedInUser.name
+      //     },
+      //     isAdmin: isAdmin
+      //   })
+      // }
+
+
+      // setLoginCredentials({abc:"haha"})
+
+      console.log("ESEFF", loginCredentials);
+
+    }, []);
 
   return (
     
     <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loggedInUserAdmin, setLoggedInUserAdmin, isLoggedIn}}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials  }}>
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>
@@ -96,6 +118,8 @@ function App() {
     <Routes>
       <Route path="/" element={ <Home/> } /> 
       <Route path="/login" element={ <LoginPage /> } /> 
+      <Route path="/logout" element={ <LoginPage /> } /> 
+
       <Route path="/travel-order" element={ <TravelOrder/> } />
       <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
       <Route path='*' element={<NotFound/>}/>

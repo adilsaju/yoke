@@ -1,0 +1,16 @@
+.graph-grid {
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    display: flex;
+}
+
+/* .content {
+    grid-area: c;
+    background: rgb(60, 255, 0);
+    position: relative;
+} */
+
+canvas {
+    height: 100%;
+    width: 100%;
+}

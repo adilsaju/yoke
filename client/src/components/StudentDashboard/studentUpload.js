@@ -15,14 +15,14 @@ const StudentUpload = (props) => {
         <div className='imageupload'>
           <h2>
               Medical License: <br></br>
-              <img src={props.starry.studentRequirements.medicalLicense}></img>
+              <img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense}></img>
           </h2>
           
           <br>
           </br>
           <h2>
               Private License: <br></br>
-              <img src= {props.starry.studentRequirements.license}></img>
+              <img src= {props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.license}></img>
           
                {/* {props.starry.studentDocumentVerification.license} */}
           </h2>
@@ -31,7 +31,7 @@ const StudentUpload = (props) => {
           <h2>
               Radio License:<br></br>
           
-              <img src={props.starry.studentRequirements.radioLicense}></img>
+              <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.radioLicense}></img>
                {/* {props.starry.studentDocumentVerification.radioLicense} */}
           </h2>
           
@@ -41,7 +41,7 @@ const StudentUpload = (props) => {
           <h2>
               English Proficiency :
               <br></br>
-              <img src={props.starry.studentRequirements.englishProficiency}></img>
+              <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.englishProficiency}></img>
           </h2>
         </div>
        <br></br>

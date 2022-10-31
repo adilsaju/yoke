@@ -18,6 +18,10 @@ const SideMenu = () => {
         Setting
         </li></Link>
         
+        <Link to="/logout"> <li>
+        Logout
+        </li></Link>
+  
       </ul>
       </nav>
       </div>

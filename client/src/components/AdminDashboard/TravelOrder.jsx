@@ -5,11 +5,12 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import moment from "moment";
 import Filters from './Filters';
+import "./TravelOrder.css"
 
 const TravelOrder = () => {
 
 
-  const [students,setStudents] = useState([]);
+  const [requests,setRequests] = useState([]);
   const [error, setError] = useState(null);
   const [filterTextvalue,updatefilterText] = useState('SelectFilter')
   
@@ -22,7 +23,8 @@ const TravelOrder = () => {
     return res.json();
   })
   .then(data => {
-    setStudents(data);
+    console.log("TOOO: data");
+    setRequests(data);
     setError(null);
   }).catch(err => {
     setError(err.message)
@@ -68,40 +70,42 @@ return (
                       <div>
                             <Search/>
        <Filters FilterValueSelected={onFilterValueSelected}/>
-                         <table>
-                            <tbody>
-                            { error && <div>{ error }</div> }
-                            <tr>
-                                        <th>No.</th>
-                                        <th>Requested ID</th>
-                                        <th>Name</th>
-                                        <th className=''>Student Id</th>
-                                        <th className=''>Travel Date</th>
-                                        <th className=''>Action</th>
-                                      </tr>
+                            <table>
+                              <tbody>
+                              { error && <div>{ error }</div> }
+                              <tr className="heading">
+                                          <th>No.</th>
+                                          <th>Requested ID</th>
+                                          <th>Name</th>
+                                          <th className=''>Student Id</th>
+                                          <th className=''>Travel Date</th>
+                                          <th className=''>Action</th>
+                                        </tr>
+                              {/* </tbody> */}
+                              
+                              {/* </table> */}
+                              
+                              {/* <table className="myTable" > */}
+                              {/* <tbody> */}
+                              {requests.map((request,id) => {
+                                                    if ( 'requestedStudent' in request && request.isApproved === false)
+                                                    {
+                                                      return(
+                              <tr className='tay' key={id}>
+                                <td>{count++}</td>
+                                <td>{request._id}</td>
+                                <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                                <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
+                                <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                                <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
+                              </tr>
+                              ) }
+                                                })
+                                              }
                             </tbody>
-                          
                           </table>
-                          </div>                                
-                          <table className="myTable" >
-                          <tbody>
-                          {students.map((student,id) => {
-                      if ( 'requestedStudent' in student && student.isApproved === false)
-                      {
-                        return(
-                            <tr className='tay' key={id}>
-                              <td>{count++}</td>
-                              <td>{student._id}</td>
-                              <td>{student.requestedStudent.name}</td>
-                              <td>{student.requestedStudent.studentNumber}</td>
-                              <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                              <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
-                            </tr>
-                            ) }
-                    })
-                  }
-                            </tbody>
-                          </table>
+                    
+                      </div>
                           <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                           </div>
     </div>

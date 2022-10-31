@@ -36,7 +36,7 @@ const bod1 = {
 };
 
 const RequestTravelOrder = () => {
-  const {loggedInUser} = useContext(UserContext)
+  const {loggedInUser, loginCredentials} = useContext(UserContext)
   const [value, onChange] = useState(new Date());
 
   return (
@@ -52,7 +52,7 @@ const RequestTravelOrder = () => {
     {console.log(value)}
     </div>
     {/* <input type="date" /> <br /> */}
-    <button onClick={() => { req(value, loggedInUser)} } >Submit</button>
+    <button onClick={() => { req(value, loginCredentials.loggedInUser)} } >Submit</button>
     </div>
     </div>
     </div>

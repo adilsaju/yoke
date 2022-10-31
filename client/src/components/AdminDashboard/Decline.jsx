@@ -11,10 +11,10 @@ const fetchTasks = async (request_id) => {
   console.log("PARTICULAR REQ: ",data);
   return data;
 };
-const decline = async (request, loggedInUserAdmin) => {
+const decline = async (request, loggedInUser) => {
   let url = `/requests/${request._id}/decline`;
   const bod1 = {
-    "adminId": `${loggedInUserAdmin.id}`
+    "adminId": `${loggedInUser.id}`
   }
   const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
     'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const decline = async (request, loggedInUserAdmin) => {
 
 const Decline = () => {
   const [request,setStudents] = useState([]);
-  const {loggedInUserAdmin} = useContext(UserContext)
+  const {loggedInUser, loginCredentials} = useContext(UserContext)
 
   let params = useParams();
   useEffect(() => {
@@ -41,7 +41,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loggedInUserAdmin)} }>Decline</button> }
+      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
     </div>
   )
 }

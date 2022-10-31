@@ -30,6 +30,11 @@ const SideMenuAdmin = () => {
           <Link to="/setting"><li>
         Setting
         </li></Link>
+
+        <Link to="/logout"> <li>
+        Logout
+        </li></Link>
+  
         </div> 
           
          }

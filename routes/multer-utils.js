@@ -66,3 +66,13 @@ const uploadPhoto = multer({ storage: storage,
     }
   }
   
+
+module.exports = {
+  uploadPhoto,
+uploadL1,
+uploadL2,
+uploadL3,
+uploadL4,
+uploadArray,
+checkFileType
+}
