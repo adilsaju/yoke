@@ -52,7 +52,7 @@ const sentEmail = async () => {
       <div className='division'>
             <Search />
             <>
-            <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
+            <button className="yellowBtn" onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
             <table className='myTable'>
                             <thead>
