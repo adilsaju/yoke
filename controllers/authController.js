@@ -3,7 +3,7 @@ const router = express.Router();
 const Student = require('../models/StudentModel.js');
 const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
-const studentRequirements = require('../models/checklistModel.js');
+const Checklist = require('../models/checklistModel.js');
 const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
@@ -26,7 +26,8 @@ const createStudent = ()=>{
    
       const hashPassword = await createHashPassword(password)
        //save student to db
-       const student1 = await Student.studentModel.create({name: "abc" , email: email, password: hashPassword })
+    const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
+       const student1 = await Student.studentModel.create({name: req.body.name || "abc" , email: email, password: hashPassword , studentRequirements: studentRequirements1  })
        res.status(201).json({error:false, message: "user added success", data: student1})
     } catch (error) {
       res.status(500).json({error: true, message: "failed", data: error})

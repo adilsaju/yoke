@@ -24,14 +24,11 @@ const {
   archive,
   getAdminById,
   approveRequestById,
-  uploadLicensesByStudentId,
   getChartThree,
   declineRequestById,
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  updateStudentPhoto,
-  uploadLicByStudentId,
 } = require('../controllers/studentController.js');
 
 const {
@@ -49,6 +46,15 @@ const {
 
 }= require  ('../controllers/emailController.js') ;
 
+const {
+  uploadLicensesByStudentId,
+  updateStudentPhoto,
+  uploadLicByStudentId,
+  uploadEnglishByStudentId,
+  uploadMedicalLicByStudentId,
+  uploadRadioLicByStudentId
+
+}= require  ('../controllers/imageController.js') ;
 
 const { verify } = require('crypto');
 
@@ -62,38 +68,36 @@ router
   //patch notes field api
   .patch(updateStudentNotesById());
 
+//UPLOAD =====================================================
 
 
-// router
-//   .route('/uploadLicenses/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadLicensesByStudentId(uploadArray));
 
-// router
-//   .route('/uploadEnglish/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadEnglishByStudentId(uploadL1))  ;
+router
+  .route('/uploadEnglish/:id')
+  .post( uploadEnglishByStudentId(uploadL1))  ;
 
-//   router
-//   .route('/uploadMedicalLicense/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadMedicalLicByStudentId(uploadL2))  ;
+  router
+  .route('/uploadMedicalLicense/:id')
+  .post( uploadMedicalLicByStudentId(uploadL2))  ;
 
-//   router
-//   .route('/uploadRadioLicense/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadRadioLicByStudentId(uploadL3))  ;
+  router
+  .route('/uploadRadioLicense/:id')
+  .post( uploadRadioLicByStudentId(uploadL3))  ;
 
   router
   .route('/uploadLicense/:id')
-  //patch license, privatelicense, medicallicense, englishprof field api
   .post( uploadLicByStudentId(uploadL4))  ;
+
+
+  router
+  .route('/uploadLicenses/:id')
+  //patch license, privatelicense, medicallicense, englishprof field api
+  .post( uploadLicensesByStudentId(uploadArray));
 
 
 // ======== INTERNAL API ==========
     router
     .route('/updateStudentPhoto/:id')
-    //patch license, privatelicense, medicallicense, englishprof field api
     .post( updateStudentPhoto(uploadPhoto) );
 // =======================
 
