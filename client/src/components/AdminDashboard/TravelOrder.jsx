@@ -6,27 +6,18 @@ import Search from './Search';
 import moment from "moment";
 import Filters from './Filters';
 
-
-// const fetchTasks = async () => {
-//   let url1 = `/pendingRequest`;
-//   const res = await fetch(url1);
-//   const data = await res.json();
-
-//   console.log(data);
-//   return data;
-// };
-
 const TravelOrder = () => {
 
 
   const [students,setStudents] = useState([]);
   const [error, setError] = useState(null);
-
+  const [filterTextvalue,updatefilterText] = useState('SelectFilter')
+  
     useEffect(() => {
  setTimeout(() => {
   fetch(`/pendingRequests`).then(res => {
     if(!res.ok) {
-      throw Error('could not fetch the data for that resource');
+      throw Error(res.statusText);
     }
     return res.json();
   })
@@ -40,25 +31,35 @@ const TravelOrder = () => {
 
     }, []);
 let count = 1;
-//Sort By Name
-// let keyword =  students.sort((a,b) => {
-//  if (a.requestedStudent.name < b.requestedStudent.name) 
-//  {
-//   return -1;
-//  }
-//  if(a.requestedStudent.name > b.requestedStudent.name)
-//  return 1;
-//  return 0 ;
-// })
-//Sort By Date
-// let keyword =  students.sort((a,b)=> {
-//   var date = new Date(a.flightDate);
-//   var dates = new Date(b.flightDate);
-//   return date - dates;
-// })
+
+ students.sort((a,b) => {
+  if(filterTextvalue === 'NameASC')
+  {
+    // console.log(new Date(a.flightDate).getTime())
+    // console.log(new Date(b.flightDate).setHours(0,0,0,0))
+    return a.requestedStudent.name > b.requestedStudent.name ?1:-1
+  }
+  if(filterTextvalue === 'NameDES')
+  {
+    return a.requestedStudent.name < b.requestedStudent.name ?1:-1
+  }
+  if(filterTextvalue === 'DateASC')
+  {
+    return new Date(a.flightDate).getTime() - new Date(b.flightDate).getTime() ;
+  }
+  if(filterTextvalue === 'DateDES')
+  {
+    return new Date(b.flightDate).getTime() - new Date(a.flightDate).getTime() ;
+  }
+})
+
+function onFilterValueSelected(filterValue) {
+updatefilterText(filterValue);
+}
 
 
-  return (
+
+return (
     <>
   <div className='fullpage'>
     <SideMenuAdmin/>
@@ -66,8 +67,8 @@ let count = 1;
 
                       <div>
                             <Search/>
-
-                          <table>
+       <Filters FilterValueSelected={onFilterValueSelected}/>
+                         <table>
                             <tbody>
                             { error && <div>{ error }</div> }
                             <tr>

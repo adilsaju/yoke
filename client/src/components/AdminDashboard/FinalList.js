@@ -5,21 +5,6 @@ import Search from './Search';
 import { Link } from "react-router-dom";
 import moment from 'moment';
 
-//Fetch Data using API
-const fetchTasks = async () => {
-    let url = `/finalList`;
-   
-    
-    const res = await fetch(url);
-    const data = await res.json();
-  
-    console.log(data);
-    console.log("In Mohit Code");
-    
-    return data;
-  
-  };
-  
 const sentEmail = async () => {
   let url = `/sentemail`;
 
@@ -33,22 +18,30 @@ const sentEmail = async () => {
 
   const FinalList = () => {
       
-              const [students,setStudents] = useState([]);
+              const [finalstudents,FinalStudents] = useState([]);
   
+              const [error, setError] = useState(null);
+
               useEffect(() => {
-                  
-                  const getTasks = async () => {
-                  const tfs = await fetchTasks();
-                  console.log("jojojojo")
-                  setStudents(tfs);
-                  };
+                setTimeout(() => {
+                 fetch(`/finalList`).then(res => {
+                   if(!res.ok) {
+                     throw Error(res.statusText);
+                   }
+                   return res.json();
+                 })
+                 .then(data => {
+                   FinalStudents(data);
+                   setError(null);
+                 }).catch(err => {
+                   setError(err.message)
+                 })
+                },1000)
+        
+            }, []);
               
-                  getTasks();
-  
-              }, []);
-              
-              const isEmpty = Object.keys(students).length === 0;
-              console.log(isEmpty);
+              // const isEmpty = Object.keys(finalstudents).length === 0;
+              // console.log(isEmpty);
   
               let count = 1;
     return (
@@ -62,7 +55,7 @@ const sentEmail = async () => {
             <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
           
-          {students.map((student,id)=> {
+          {finalstudents.map((student,id)=> {
       
       
           return (

@@ -12,7 +12,7 @@ const Archive = () => {
         setTimeout(() => {
          fetch(`/archives`).then(res => {
            if(!res.ok) {
-             throw Error('could not fetch the data for that resource');
+             throw Error(res.statusText);
            }
            return res.json();
          })

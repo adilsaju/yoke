@@ -29,18 +29,18 @@ console.log("rannnn data addd()")
 async function addData() {
 
 
-    // const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
+    const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
 
-    // const studentRequirements2 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "ppl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
+    const studentRequirements2 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "ppl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
 
     
-    // const admin1 = await Admin.adminModel.create({name: "Claire" , email: "claire77@gmail.com", password: "12345678" })
+    const admin1 = await Admin.adminModel.create({name: "Claire" , email: "tt77@gmail.com", password: "12345678" })
     
-    // const student1 = await Student.studentModel.create({name: "Mohit" , email: "adilsaju77@gmail.com", password: "12345678", studentNumber: 35209583920, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements1 })
-    // const request1 = await Request.requestModel.create({requestedStudent: student1,approvedAdmin: admin1})
+    const student1 = await Student.studentModel.create({name: "Mohit" , email: "as@gmail.com", password: "12345678", studentNumber: 35209583920, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements1 })
+    const request1 = await Request.requestModel.create({requestedStudent: student1,approvedAdmin: admin1})
     
-    // const student2 = await Student.studentModel.create({name: "Tarun" , email: "adilsaju66@gmail.com", password: "12345678", studentNumber: 35209583921, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements2 })
-    // const request2 =await Request.requestModel.create({requestedStudent: student2,approvedAdmin: null})
+    const student2 = await Student.studentModel.create({name: "Tarun" , email: "mw66@gmail.com", password: "12345678", studentNumber: 35209583921, photo: "assffsafsafsa", program: "cpl", studentRequirements: studentRequirements2 })
+    const request2 =await Request.requestModel.create({requestedStudent: student2,approvedAdmin: null})
     
     // user.name = ""
     // await user.save()
