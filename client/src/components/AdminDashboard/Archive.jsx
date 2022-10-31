@@ -37,8 +37,9 @@ return (
     <div>
   <div>
     <Search/>
-   <table>
-    <tbody>
+   <table className='myTable'>
+    <thead>
+    { error && <div>{ error }</div> }
     <tr>
                 <th>No.</th>
                 <th>Requested ID</th>
@@ -47,20 +48,13 @@ return (
                 <th className=''>Travel Date</th>
                 <th className=''>Action</th>
               </tr>
-              { error && <div>{ error }</div> }
-    </tbody>
-  
-   </table>
-   </div>
-   
+   </thead>
   {
   Archivestudent.map((student,id) => 
     {
           return(
-            <div key={id}>
-        <table className="myTable">
-        <tbody>
-        <tr className='tay'>
+            <tbody>
+        <tr className='tay' key={id}>
           <td>
             {count++}
           </td>
@@ -75,15 +69,16 @@ return (
                     }</td>
         </tr>
         </tbody>
+          ) }
+        )
+      }
         </table>
+        <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+                          </div>
         </div>
-          )
-       
-    
-          
- },[])
-}
+
 </div>
+
 </div>
 </div>
     </>

@@ -71,7 +71,7 @@ return (
                       <div>
                             <Search/>
        <Filters FilterValueSelected={onFilterValueSelected}/>
-                            <table>
+                            <table className="myTable">
                               <tbody>
                               { error && <div>{ error }</div> }
                               <tr className="heading">
