@@ -69,8 +69,8 @@ const sentEmail = async () => {
           {finalstudents.map((student,id)=> {
       
           return (    
-             <tbody>
-              <tr className='tay' key={id}>
+             <tbody key={id}>
+              <tr className='tay' >
                 <td>{count++}</td>
                 <td>{ student._id}</td>
                 <td>{ student.requestedStudent.name}</td>
@@ -82,6 +82,8 @@ const sentEmail = async () => {
           )}
           )}
           </table>
+          <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+                          </div>
         </div>
         </div> 
         </div>

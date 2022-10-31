@@ -53,8 +53,8 @@ return (
   Archivestudent.map((student,id) => 
     {
           return(
-            <tbody>
-        <tr className='tay' key={id}>
+            <tbody key={id}>
+        <tr className='tay'>
           <td>
             {count++}
           </td>
