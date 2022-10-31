@@ -82,12 +82,7 @@ return (
                                           <th className=''>Action</th>
                                         </tr>
                                         </thead>
-                              {/* </tbody> */}
-                              
-                              {/* </table> */}
-                              
-                              {/* <table className="myTable" > */}
-                              {/* <tbody> */}
+                                        
                               {requests.map((request,id) => {
                                                     if ( 'requestedStudent' in request && request.isApproved === false)
                                                     {
