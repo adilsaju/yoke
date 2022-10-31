@@ -76,9 +76,8 @@ const StudentTravelOrder = () => {
             {console.log(studentsInfo)}
             {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
             </>
-            <table>
-              <tbody>
-              
+            <table className='myTable'>
+              <thead>
               <tr>
                           <th>No.</th>
                           <th>Request ID</th>
@@ -86,19 +85,11 @@ const StudentTravelOrder = () => {
                           <th className=''>Status</th>
                     
                         </tr>
-              </tbody>
-            
-            </table>
+              </thead>
                   {students.map((student,id)=> {
-                      
-                      
                       return (
-                        
-                        <div key={id}>
-                      
-                        <table>
-                            <tbody>
-                              <tr>
+                              <tbody key={id}>
+                              <tr className='tay'>
                                 <td>{(count++)}</td>
                                 <td>{ student._id}</td>
                                 <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
@@ -108,17 +99,19 @@ const StudentTravelOrder = () => {
                                         // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
                                     }</td>
                               </tr>
+                              
                               </tbody>
+                                ) }
+                                )
+                              }
                             </table>
+                            <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+                          </div>
                         </div>
-                    )
-                  } ,[])
-
-                        }
+                     
             </div>
+            
             </div>
-        </div> 
-        
             )
 }
 

@@ -67,12 +67,11 @@ return (
   <div className='fullpage'>
     <SideMenuAdmin/>
     <div className='division'>
-
                       <div>
                             <Search/>
        <Filters FilterValueSelected={onFilterValueSelected}/>
-                            <table>
-                              <tbody>
+                            <table className="myTable">
+                              <thead>
                               { error && <div>{ error }</div> }
                               <tr className="heading">
                                           <th>No.</th>
@@ -82,17 +81,19 @@ return (
                                           <th className=''>Travel Date</th>
                                           <th className=''>Action</th>
                                         </tr>
+                                        </thead>
                               {/* </tbody> */}
                               
                               {/* </table> */}
                               
                               {/* <table className="myTable" > */}
-                              {/* <tbody> */}
+                            
                               {requests.map((request,id) => {
                                                     if ( 'requestedStudent' in request && request.isApproved === false)
                                                     {
                                                       return(
-                              <tr className='tay' key={id}>
+                                                        <tbody key={id}>
+                              <tr className='tay'>
                                 <td>{count++}</td>
                                 <td>{request._id}</td>
                                 <td>{request.requestedStudent && request.requestedStudent.name}</td>
@@ -100,10 +101,11 @@ return (
                                 <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
                                 <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
                               </tr>
+                              </tbody>
                               ) }
                                                 })
                                               }
-                            </tbody>
+                           
                           </table>
                     
                       </div>

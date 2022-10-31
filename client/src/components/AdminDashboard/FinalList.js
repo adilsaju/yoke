@@ -52,17 +52,10 @@ const sentEmail = async () => {
       <div className='division'>
             <Search />
             <>
-            <button  onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
+            <button className="yellowBtn" onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
             </>
-          
-          {finalstudents.map((student,id)=> {
-      
-      
-          return (
-        
-           <div key={id}>
-             <table>
-                            <tbody>
+            <table className='myTable'>
+                            <thead>
                           
                             <tr>
                                         <th>No.</th>
@@ -72,12 +65,12 @@ const sentEmail = async () => {
                                         <th className=''>Travel Date</th>
                                         <th className=''>Action</th>
                                       </tr>
-                            </tbody>
-                          
-                          </table>
-         <table>
-             <tbody>
-              <tr>
+                            </thead>
+          {finalstudents.map((student,id)=> {
+      
+          return (    
+             <tbody key={id}>
+              <tr className='tay' >
                 <td>{count++}</td>
                 <td>{ student._id}</td>
                 <td>{ student.requestedStudent.name}</td>
@@ -86,18 +79,14 @@ const sentEmail = async () => {
                 <td><Link to={ `/travel-order/profile/${student._id}` }>View Profile</Link></td>
               </tr>
               </tbody>
-            </table>
-           </div>
-                )
-              } ,[])
-
-   
-   
-              }
-        </div>
+          )}
+          )}
+          </table>
+          <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+                          </div>
         </div>
         </div> 
-        
+        </div>
             )
 
 }
