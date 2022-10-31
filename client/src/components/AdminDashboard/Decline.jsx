@@ -41,7 +41,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && <button className='decline' onClick={(e) => { decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
+      {console.log("Request approved")}
     </div>
   )
 }
