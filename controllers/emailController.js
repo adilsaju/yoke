@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt')
 
 
 
-async function main() {
+async function main(recipient, body) {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
     let testAccount = await nodemailer.createTestAccount();
@@ -31,10 +31,10 @@ async function main() {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: '"Fred Foo 👻" <adilsaju@gmail.com>', // sender address
-      to: "adilsaju@gmail.com", // list of receivers
+      to: `${recipient}`, // list of receivers
       subject: "Hello ✔", // Subject line
       text: "Hello world?", // plain text body
-      html: "<b>Hello world?</b>", // html body
+      html: `${body}`, // html body
     });
   
     console.log("Message sent: %s", info.messageId);
@@ -54,10 +54,13 @@ async function main() {
       // );
       let body1 = req.body.finalList
       body1 = {}
-  
+      body1=JSON.stringify(body1)
+      //TODO: get final list
+
+      const email = "flightcoordinator.yoke@gmail.com"
       try {
   
-        main().catch(console.error);
+        main(email, body1).catch(console.error);
         res.json("sent successfull");
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -70,10 +73,14 @@ async function main() {
   
   const sentEmailStudentApproved = () => {
     return async (req, res, next) => {
-      let body1 = req.body.finalList
-      body1 = {}
+      let studentId = req.body.studentId
+      // let studentId = req.body.studentEmail
+
+      const studentEmail = Student.studentModel.findById(studentId).select(email);
+
       try {
-        main().catch(console.error);
+        body=`<b>Hello world?</b>`
+        main(studentEmail, body).catch(console.error);
         res.json("sent successfull");
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -81,18 +88,11 @@ async function main() {
       next();
     }; //end of middleware
   }; //end of declineRequest
-  
+
+
   const sentEmailStudentDeclined = () => {
     return async (req, res, next) => {
-      let body1 = req.body.finalList
-      body1 = {}
-      try {
-        main().catch(console.error);
-        res.json("sent successfull");
-      } catch (error) {
-        res.status(500).json({ message: error.message });
-      }
-      next();
+
     }; //end of middleware
   }; //end of declineRequest
 

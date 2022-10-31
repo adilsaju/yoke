@@ -24,21 +24,19 @@ const {
   archive,
   getAdminById,
   approveRequestById,
-  uploadLicensesByStudentId,
   getChartThree,
   declineRequestById,
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  updateStudentPhoto,
-  uploadLicByStudentId,
 } = require('../controllers/studentController.js');
 
 const {
 
   createStudent,
   studentLogin,
-  createAdmin
+  createAdmin,
+  verifyToken
 } = require  ('../controllers/authController.js') ;
 
 
@@ -49,6 +47,15 @@ const {
 
 }= require  ('../controllers/emailController.js') ;
 
+const {
+  uploadLicensesByStudentId,
+  updateStudentPhoto,
+  uploadLicByStudentId,
+  uploadEnglishByStudentId,
+  uploadMedicalLicByStudentId,
+  uploadRadioLicByStudentId
+
+}= require  ('../controllers/imageController.js') ;
 
 const { verify } = require('crypto');
 
@@ -62,38 +69,36 @@ router
   //patch notes field api
   .patch(updateStudentNotesById());
 
+//UPLOAD =====================================================
 
 
-// router
-//   .route('/uploadLicenses/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadLicensesByStudentId(uploadArray));
 
-// router
-//   .route('/uploadEnglish/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadEnglishByStudentId(uploadL1))  ;
+router
+  .route('/uploadEnglish/:id')
+  .post( uploadEnglishByStudentId(uploadL1))  ;
 
-//   router
-//   .route('/uploadMedicalLicense/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadMedicalLicByStudentId(uploadL2))  ;
+  router
+  .route('/uploadMedicalLicense/:id')
+  .post( uploadMedicalLicByStudentId(uploadL2))  ;
 
-//   router
-//   .route('/uploadRadioLicense/:id')
-//   //patch license, privatelicense, medicallicense, englishprof field api
-//   .post( uploadRadioLicByStudentId(uploadL3))  ;
+  router
+  .route('/uploadRadioLicense/:id')
+  .post( uploadRadioLicByStudentId(uploadL3))  ;
 
   router
   .route('/uploadLicense/:id')
-  //patch license, privatelicense, medicallicense, englishprof field api
   .post( uploadLicByStudentId(uploadL4))  ;
+
+
+  router
+  .route('/uploadLicenses/:id')
+  //patch license, privatelicense, medicallicense, englishprof field api
+  .post( uploadLicensesByStudentId(uploadArray));
 
 
 // ======== INTERNAL API ==========
     router
     .route('/updateStudentPhoto/:id')
-    //patch license, privatelicense, medicallicense, englishprof field api
     .post( updateStudentPhoto(uploadPhoto) );
 // =======================
 
@@ -136,50 +141,17 @@ router.route('/studentsInEachProgram').get(getChartTwo());
 router.route('/todaysDecisions').get(getChartOne());
 
 router.route('/sentEmail').post(sentEmail());
+//pass student id
 router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
+//pass student id
 router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 
-
-sentEmailStudentApproved,
-sentEmailStudentDeclined,
 
 router.route('/login').post(studentLogin());
 
 
 router.route('/addStudent').post(createStudent());
 router.route('/addAdmin').post(createAdmin);
-
-//TODO: Fn
-// function generateAccessToken (user) {
-//   return jwt.sign(user, process.env.ACCESS TOKEN SECRET, { expiresIn:
-//   "15s
-//   })
-//   }
-
-//FORMAT
-// Authorization: Bearer <access_token>
-//verfify token
-function verifyToken(req,res,next){
-  console.log("verifyToken()");
-  //get auth header
-  const bearerHeader = req.headers['authorization'];
-  if (typeof bearerHeader !== 'undefined')
-  {
-    const bearer = bearerHeader.split(' ')
-    const bearerToken = bearer[1]
-
-    req.token = bearerToken
-
-    next();
-  }else{
-    //Forbidden
-    res.sendStatus(403)
-  }
-}
-
-
-
-
 
 
 module.exports = router;

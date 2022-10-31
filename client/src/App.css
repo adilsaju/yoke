@@ -62,12 +62,10 @@ body{
 
 
 button{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin: 1rem;
-  font-size: larger;
+  padding: 0.5rem 0.5rem;
+  /* margin: .2rem; */
+  /* font-size: larger; */
   text-align: center;
-
   
 }
 .react-calendar__viewContainer{
