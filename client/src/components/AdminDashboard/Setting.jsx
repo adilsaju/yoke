@@ -33,11 +33,12 @@ const Setting = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
-     <div>
-      { <><h2>{admin.email}</h2>
-      <h3>{admin.password}</h3></> }
+     <div className="admin-settings">
+      <h2>Admin Info</h2>
+      { <><h3>{admin.email}</h3>
+      <h4>{admin.password}</h4></> }
    <div>
-    <button>Forgot Password</button>
+    <button className="dBlueBtn">Forgot Password</button>
    </div>
     </div>
     </div>
