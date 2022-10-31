@@ -1,0 +1,65 @@
+
+.Searchbar {
+    border: 1px solid #50ABFF;
+    border-radius: 2.31rem;
+    margin-bottom: 1rem;
+    background-image: url(../images/search.svg);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    padding-left: 1.80rem;
+    background-position: .4rem 0.15rem;
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
+}
+
+table {
+    min-width:90%;
+    margin: auto;
+    table-layout:fixed;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+
+th, td {
+    border-collapse: collapse;
+    border: 0 solid;
+    
+}
+
+tbody tr:nth-child(odd){
+background-color: rgba(200, 288, 255, 0.15);
+}
+
+table th {
+    padding: 1.5rem;
+    background-color: rgba(200, 288, 255, 0.3);
+}
+
+tr.heading th:first-child {
+    border-radius: 20px 0 0 0;
+}
+
+tr.heading th:last-child {
+    border-radius: 0 20px 0 0;
+}
+
+table td {
+
+margin: 2rem;
+padding: 1rem;
+/* border: 1px solid grey; */
+overflow-wrap:break-word;
+}
+
+.tay td:last-child a {
+    border: 1px solid #00284E;
+    border-radius: 18px;
+    color: #FFFFFF;
+    background-color: #00284E;
+    padding: 0.2rem 1.2rem 0.3rem 1.2rem;
+}
+
+
+
