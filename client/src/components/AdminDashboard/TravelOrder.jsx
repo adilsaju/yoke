@@ -34,11 +34,9 @@ const TravelOrder = () => {
     }, []);
 let count = 1;
 
- students.sort((a,b) => {
+ requests.sort((a,b) => {
   if(filterTextvalue === 'NameASC')
   {
-    // console.log(new Date(a.flightDate).getTime())
-    // console.log(new Date(b.flightDate).setHours(0,0,0,0))
     return a.requestedStudent.name > b.requestedStudent.name ?1:-1
   }
   if(filterTextvalue === 'NameDES')
