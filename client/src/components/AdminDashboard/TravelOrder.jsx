@@ -35,6 +35,9 @@ const TravelOrder = () => {
 let count = 1;
 
  requests.sort((a,b) => {
+  if(filterTextvalue === 'SelectFilter') {
+    return new Date(a.flightDate).getTime() - new Date(b.flightDate).getTime() ;
+  }
   if(filterTextvalue === 'NameASC')
   {
     return a.requestedStudent.name > b.requestedStudent.name ?1:-1
