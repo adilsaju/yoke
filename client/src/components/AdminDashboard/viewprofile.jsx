@@ -6,6 +6,7 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import { useParams } from "react-router-dom";
 import "./viewprofile.css"
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -116,14 +117,38 @@ const Viewprofile = () => {
       <div className='studentviews'>
         <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
         {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-        <h4>travel date: {request.requestedStudent && request.flightDate}</h4>
+        <h4>travel date: {moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</h4>
+        
         <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
           <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
           <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
         </div>
       </div>
 
-      <h4>License images will be shown here......</h4>
+      <h3>License Documents :</h3>
+      <div className='studentimage'>
+        <div>
+        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
+        <p>Pilot License</p>
+        </div>
+
+        <div>
+        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
+        <p>Medical License</p>
+        </div>
+
+        <div>
+        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
+        <p>Radio License</p>
+        </div>
+
+        <div>
+        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
+        <p>English Proficiency</p>
+        </div>
+
+
+      </div>
       <div className='notes'>
         <h4>Notes</h4>
         <textarea name="" id="" cols="30" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
