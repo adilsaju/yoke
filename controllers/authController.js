@@ -26,7 +26,7 @@ const createStudent = ()=>{
    
       const hashPassword = await createHashPassword(password)
        //save student to db
-    const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz"})
+    const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz", isRequirementsOk: true })
        const student1 = await Student.studentModel.create({name: req.body.name || "abc" , email: email, password: hashPassword , studentRequirements: studentRequirements1  })
        res.status(201).json({error:false, message: "user added success", data: student1})
     } catch (error) {
