@@ -1,0 +1,92 @@
+nav img {
+    max-width: 1.25rem;
+    padding-right: 1rem;
+}
+
+nav {
+    text-align-last: left;
+    background-color: #00284E;
+}
+
+.Nav-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li{
+    font-size: larger;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 1.5rem 5.5rem;
+    background-size: 1.25rem; 
+    background-repeat: no-repeat;
+    background-position: 3rem 1.5rem;
+    
+
+}
+
+.dashboard {
+    background-image: url(../images/dashboard.svg);
+    
+}
+
+.travelOrder {
+    background-image: url(../images/travelOrder.svg);
+}
+
+.finalList {
+    background-image: url(../images/finalList.svg);
+    background-position: 3rem 1.7rem;
+}
+
+.archive {
+    background-image: url(../images/archive.svg);
+    background-position: 3rem 1.6rem;
+}
+
+.settings {
+    background-image: url(../images/settings.svg);
+}
+
+.logout {
+    background-image: url(../images/logoutBtn.svg);
+}
+
+/*** HOVER - CHANGE ICON ***/
+nav li:hover{
+    background-color: #5cb0ff;
+    color: #00284E;
+    background-size: 1.20rem; 
+    background-repeat: no-repeat;
+    background-position: 3rem 1.5rem;
+    
+}
+
+.dashboard:hover {
+    background-image: url(../images/dashboardDrk.svg);
+    
+}
+
+.travelOrder:hover {
+    background-image: url(../images/travelOrderDrk.svg);
+}
+
+.finalList:hover {
+    background-image: url(../images/finalListDrk.svg);
+    background-position: 3rem 1.7rem;
+}
+
+.archive:hover {
+    background-image: url(../images/archiveDrk.svg);
+    background-position: 3rem 1.6rem;
+}
+
+.settings:hover {
+    background-image: url(../images/settingsDrk.svg);
+}
+
+.logout:hover {
+    background-image: url(../images/logoutDrk.svg);
+}
+
+

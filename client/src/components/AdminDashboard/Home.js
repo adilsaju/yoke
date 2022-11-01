@@ -6,7 +6,7 @@ import { Pie } from 'react-chartjs-2';
 import { useNavigate } from "react-router-dom";
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-import "./Home.css"
+import './Home.css'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -173,7 +173,7 @@ const Home = () => {
 }
 
 useEffect(() => {
-  setPageTitle("Home")
+  setPageTitle("Dashboard")
   // let isLoggedIn  = true
   
   // if (!isLoggedIn){

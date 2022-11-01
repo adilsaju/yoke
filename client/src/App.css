@@ -79,25 +79,7 @@ button{
 img{
   max-width: 600px;
 }
-nav{
-  background-color: #00284E;
 
-
-}
-nav ul li{
-  font-size: larger;
-  text-decoration: none;
-  list-style-type: none;
-  
-}
-
-/* a{
-  color: white;
-
-} */
-.Nav-menu a {
-  color: white;
-}
 footer{
   background-color: #00284E;
   padding: 2rem;
@@ -178,10 +160,6 @@ nav{
   height: 50rem;
 }
 
-nav a{
-  text-decoration: none;
-  
-}
 
 nav ul li{
   padding: 2rem 2rem;
@@ -218,10 +196,7 @@ header{
 header h3,footer p{
   color: white;
 }
-nav li:hover{
-  background-color: #5cb0ff;
-  color: #00284E;
-}
+
 
 td a,.studentupload a{
   color: black;

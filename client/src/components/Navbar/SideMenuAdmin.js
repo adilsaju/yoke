@@ -1,46 +1,49 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import './sideMenu.css';
+
 
 const SideMenuAdmin = () => {
+
+  // const dashboardSvg = require('../images/dashboard.svg');
   return (
     <div className='Nav-menu'>
   
-        <nav>
+      <nav>
       <ul>
-      <Link to="/"><li>
-          Home
-        </li></Link>
+      <Link to="/"><li className='dashboard'>
+          Dashboard
+      </li></Link>
         
-        <Link to="/travel-order"> <li>
+      <Link to="/travel-order"><li className='travelOrder'>
           Travel Order
-        </li></Link>
+      </li></Link>
+
         {/* <li>
         <Link to="/login">Login</Link>
         </li> */}
        
-       <Link to="/final-list"> <li>
+      <Link to="/final-list"> <li className='finalList'>
           Final list
-        </li></Link>
+      </li></Link>
 
 
-        <Link to="/archive"> <li>
+      <Link to="/archive"><li className='archive'>
           Archive
-        </li></Link>
-        {<div>
-          <Link to="/setting"><li>
-        Setting
-        </li></Link>
+      </li></Link>
 
-        <Link to="/logout"> <li>
-        Logout
-        </li></Link>
+        {<div>
+      <Link to="/setting"><li className='settings'>
+          Setting
+      </li></Link>
+
+      <Link to="/logout"><li className='logout'>
+          Logout
+      </li></Link>
   
-        </div> 
-          
-         }
+        </div>}
       </ul>
-       
-    </nav>
+      </nav>
 
 
     </div>
