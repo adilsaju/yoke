@@ -35,6 +35,14 @@
     font-family: 'Fira Sans', Helvetica, sans-serif;
 }
 
+.maskPw {
+    -webkit-text-security: disc !important;
+}
+
+.fontFira {
+    font-family: 'Fira Sans', Helvetica, sans-serif;
+}
+
 .division {
     margin: 1rem;
 }
