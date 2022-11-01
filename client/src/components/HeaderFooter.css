@@ -24,3 +24,17 @@ header img{
     padding-left: 2.8rem;
     max-width: 50%;
 }
+
+
+ /* **** FOOTER ****  */
+ footer{
+    height: 1rem;
+    padding: 1rem;
+    width: calc(100% - 18rem);
+    left: 18rem;
+  }
+  
+  footer p{
+    padding: 0;
+    margin: 0;
+  }

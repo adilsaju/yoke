@@ -1,3 +1,10 @@
+
+.Nav-menu{
+    background-color: #00284E;
+    width: 18rem;
+    z-index: 1;
+  }
+
 nav img {
     max-width: 1.25rem;
     padding-right: 1rem;
