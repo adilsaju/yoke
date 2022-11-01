@@ -42,7 +42,7 @@ const Decline = () => {
   return (
     <div>
       {(!request.isRejected) && (!request.isApproved) && <button className='decline' onClick={(e) => { decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
-      <h3>The request is already approved!</h3>
+      {(request.isApproved) ? <h3>The request is already approved!</h3> : console.log("nothing")}
     </div>
   )
 }
