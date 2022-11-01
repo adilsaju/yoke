@@ -3,12 +3,18 @@ import { useState,useEffect } from 'react';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import moment from 'moment';
- 
+import {  useContext } from 'react';
+import {UserContext} from '../../Contexts/UserContext'
+
 const Archive = () => {
+  const {pageTitle, setPageTitle} = useContext(UserContext)
+
     const [Archivestudent,ArchiveStudents] = useState([]);
     const [error, setError] = useState(null);
 
       useEffect(() => {
+  setPageTitle("Archive")
+        
         setTimeout(() => {
          fetch(`/archives`).then(res => {
            if(!res.ok) {

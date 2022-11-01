@@ -6,8 +6,12 @@ import Search from './Search';
 import moment from "moment";
 import Filters from './Filters';
 import "./TravelOrder.css"
+import {  useContext } from 'react';
+import {UserContext} from '../../Contexts/UserContext'
+
 
 const TravelOrder = () => {
+  const {pageTitle, setPageTitle} = useContext(UserContext)
 
 
   const [requests,setRequests] = useState([]);
@@ -15,6 +19,8 @@ const TravelOrder = () => {
   const [filterTextvalue,updatefilterText] = useState('SelectFilter')
   
     useEffect(() => {
+  setPageTitle("Travel Order")
+
  setTimeout(() => {
   fetch(`/pendingRequests`).then(res => {
     if(!res.ok) {

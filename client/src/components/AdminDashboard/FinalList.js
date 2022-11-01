@@ -4,6 +4,9 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import {  useContext } from 'react';
+import {UserContext} from '../../Contexts/UserContext'
+
 
 const sentEmail = async () => {
   let url = `/sentemail`;
@@ -17,12 +20,15 @@ const sentEmail = async () => {
 
 
   const FinalList = () => {
+  const {pageTitle, setPageTitle} = useContext(UserContext)
       
               const [finalstudents,FinalStudents] = useState([]);
   
               const [error, setError] = useState(null);
 
               useEffect(() => {
+                setPageTitle("Final List")
+
                 setTimeout(() => {
                  fetch(`/finalList`).then(res => {
                    if(!res.ok) {
