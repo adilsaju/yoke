@@ -138,6 +138,7 @@ const fetchPie = async () => {
   let url = `/todaysDecisions`;
   const res = await fetch(url);
   const dataPie = await res.json();
+  console.log(dataPie);
 
   
 
@@ -150,13 +151,13 @@ const labelsPie = labelsPie1.sort()
     datasets: [
       {
         label: 'Number of students',
-        data: dataPie.map((a)=>a.count),
+        data: [dataPie[0].isApproved, dataPie[0].isRejected],
         backgroundColor: ['rgba(0, 40, 78, 0.5)',
         'rgba(254, 195, 38, 0.5)'],
       }
     ],
   };
-
+console.log("dataPie2",dataPie2);
 
   return dataPie2;
 };
