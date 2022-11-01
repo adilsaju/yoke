@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import "./viewprofile.css"
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import { useNavigate } from "react-router-dom";
+
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -53,6 +55,8 @@ const Viewprofile = () => {
   const [cnt, setCnt]= useState([])
   const [prevId, setPrevId]= useState("")
   const [nextId, setNextId]= useState("")
+  // const history = useHistory()
+  const navigate = useNavigate();
 
 
 
@@ -98,6 +102,7 @@ const Viewprofile = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
+        <button  onClick={(e) => { navigate("/travel-order")  }}  >BACK </button>
     <div className='box'>
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
