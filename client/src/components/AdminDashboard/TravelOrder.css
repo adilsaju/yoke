@@ -1,19 +1,72 @@
-
 .Searchbar {
     border: 1px solid #50ABFF;
     border-radius: 2.31rem;
-    margin-bottom: 1rem;
     background-image: url(../images/search.svg);
     background-size: 16px 16px;
     background-repeat: no-repeat;
     padding-left: 1.80rem;
-    background-position: .4rem 0.15rem;
-    padding-bottom: 0.2rem;
-    padding-top: 0.2rem;
+    background-position: 0.5rem 0.45rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
 }
 
+.sortSelector {
+    background-color: #97CDFF;
+    font-family: 'Fira Sans', Helvetica, sans-serif;
+    border: 1px solid #97CDFF;
+    border-radius: 2.31rem;
+    padding: 0.5rem 1.5rem;
+    width: 10rem;
+
+    /** for the dropdown indicator */
+    appearance: none;
+    background-image: url("../images/dropDownBtnDrk.svg");
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 0.95em;
+}
+
+#msg {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    font-family: 'Fira Sans', Helvetica, sans-serif;
+}
+
+.maskPw {
+    -webkit-text-security: disc !important;
+}
+
+.division {
+    margin: 1rem;
+}
+
+.subDivision {
+    margin: auto;
+}
+
+.topDivision {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    margin: 1rem 0;
+}
+
+.topDivision .Searchbar {
+    flex-grow: 1;
+}
+
+.topDivision .leftBorder {
+    border-left: 1px solid #50ABFF;
+    padding-left: 3rem;
+}
+
+
 table {
-    min-width:90%;
+    min-width:100%;
     margin: auto;
     table-layout:fixed;
     background-color: #FFFFFF;
@@ -28,13 +81,17 @@ th, td {
     
 }
 
-tbody tr:nth-child(even){
+tbody {
+    font-family: 'Fira Sans', Helvetica, sans-serif;
+}
+
+tbody:nth-child(odd){
 background-color: rgba(200, 288, 255, 0.15);
 }
 
 table th {
     padding: 1.5rem;
-    background-color: rgba(200, 288, 255, 0.3);
+    background-color: rgba(200, 288, 255, 0.5);
 }
 
 tr.heading th:first-child {
@@ -46,14 +103,13 @@ tr.heading th:last-child {
 }
 
 table td {
-
 margin: 2rem;
 padding: 1rem;
 /* border: 1px solid grey; */
 overflow-wrap:break-word;
 }
 
-.tay td:last-child a {
+.viewProfileBtn {
     border: 1px solid #00284E;
     border-radius: 18px;
     color: #FFFFFF;

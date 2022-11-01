@@ -1,8 +1,4 @@
-.graph-grid {
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
-    display: flex;
-}
+
 
 /* .content {
     grid-area: c;
@@ -11,6 +7,21 @@
 } */
 
 canvas {
-    height: 100%;
-    width: 100%;
+    min-width: 100%;
+    font-family: 'Bai Jamjuree', Helvetica, sans-serif;
+}
+
+@media screen and (min-width: 760px) {
+    .graphGrid {
+        /* display: flex;
+        flex-flow: row wrap; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .barGraph {
+        flex-basis: 100%;
+        flex-grow: 1;
+    grid-column: 1 / -1;
+    }
 }

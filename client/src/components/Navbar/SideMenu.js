@@ -1,5 +1,7 @@
 import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
+import './sideMenu.css';
+
 const SideMenu = () => {
   return (
     <div className='Nav-menu'>
