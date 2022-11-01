@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { useState,useEffect, useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext'
-
+import "./Header.css"
 const Header = () => {
   const {pageTitle} = useContext(UserContext)
 
