@@ -91,11 +91,13 @@ nav ul li{
   
 }
 
-a{
+/* a{
   color: white;
 
+} */
+.Nav-menu a {
+  color: white;
 }
-
 footer{
   background-color: #00284E;
   padding: 2rem;

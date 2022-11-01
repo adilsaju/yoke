@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState,useEffect,useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext'
 
-
+import "./LoginPage.css"
 
 
 
@@ -105,28 +105,53 @@ const LoginPage = () => {
 
   }, []);
 
-  return (
+  const show = () => {
+    // console.log("hah")
+    const el = document.querySelector("#password")
+    el.type === "password" ? el.type = "text" : el.type = "password"
+  }
 
-    <div>
+  return (
+<div className="parent">
+
+    <div className="dummy">
+
+    </div>
+
+    <div className='form1'>
       {/* <div className='fullpage'> */}
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
 
       <br />
+      <div className="label-input-wrapper">
+
         <label htmlFor="loginid">email :  </label>
-        <input type="text" name="email" id="loginid" />
+        <input type="email" name="email" id="loginid" />
+      </div>
         <br />
-        <br />
+      <div className="label-input-wrapper">
+
         <label htmlFor="password">Password :  </label>
-        <input type="text" name="password" id="password" />
+        <div className="ii-wrapper"  >
+
+            <input type="password" name="password" id="password" />
+            <button onClick={(e)=>{show()}} >show</button>
+        </div>
+      </div>
+
         <br />
         <br />
+      <a href="daasa">Forgot Password?</a>
       <button onClick={(e) => { login()}} >loginnn</button>
+
         {/* <input type="submit" /> */}
       <br />
       {/* </div> */}
       {/* </div> */}
     </div>
+</div>
+
   )
 }
 
