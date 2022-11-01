@@ -13,11 +13,14 @@ const fetchTasks = async (student_id) => {
   };
   
 const SettingStudent = () => {
+  const {pageTitle, setPageTitle} = useContext(UserContext)
+
     const [student,setStudent] = useState([]);
     const {loggedInUser, loginCredentials} = useContext(UserContext);
     console.log(loginCredentials.loggedInUser);
 
     useEffect(() => {
+  setPageTitle("Setting")
             
         const getTasks = async () => {
         const tfs = await fetchTasks(loginCredentials.loggedInUser.id);

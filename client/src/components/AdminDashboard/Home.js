@@ -167,7 +167,8 @@ console.log("dataPie2",dataPie2);
 
 
 const Home = () => {
-  const {} = useContext(UserContext)
+
+  const {pageTitle, setPageTitle} = useContext(UserContext)
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -175,6 +176,7 @@ const Home = () => {
 }
 
 useEffect(() => {
+  setPageTitle("Home")
   // let isLoggedIn  = true
   
   // if (!isLoggedIn){

@@ -13,6 +13,7 @@ import {UserContext} from '../Contexts/UserContext'
 const LoginPage = () => {
   // const [request,setStudents] = useState([]);
   const { loginCredentials, setLoginCredentials } = useContext(UserContext)
+  const {pageTitle, setPageTitle} = useContext(UserContext)
 
 
   const navigate = useNavigate();
@@ -89,6 +90,8 @@ const LoginPage = () => {
 
 
   useEffect(() => {
+  setPageTitle("")
+
     // let isLoggedIn  = true
 
     const getTasks = async () => {

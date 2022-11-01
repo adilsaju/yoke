@@ -17,12 +17,16 @@ const fetchTasks = async (loggedInUser) => {
   return data;
 };
 const StudentAccountStatus = () => {
+  const {pageTitle, setPageTitle} = useContext(UserContext)
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/login");
 }
 
 useEffect(() => {
+  setPageTitle("Account Status")
+
   // let isLoggedIn  = true
   
   // if (!isLoggedIn){

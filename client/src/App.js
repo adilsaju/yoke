@@ -90,6 +90,8 @@ function App() {
     isAdmin: isAdmin1
   });
 
+  const [pageTitle, setPageTitle] = useState("Travel Order")
+
 
     useEffect(() => {
       console.log("APPPJS USEFFFF  RANNNNNNNN");
@@ -124,7 +126,7 @@ function App() {
   return (
     
     <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials  }}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials, pageTitle, setPageTitle  }}>
 
       {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
     <Header/>

@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import "./viewprofile.css"
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import { useNavigate } from "react-router-dom";
+
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -53,6 +55,11 @@ const Viewprofile = () => {
   const [cnt, setCnt]= useState([])
   const [prevId, setPrevId]= useState("")
   const [nextId, setNextId]= useState("")
+  console.log("previd",prevId);
+  console.log("nextId",nextId);
+
+  // const history = useHistory()
+  const navigate = useNavigate();
 
 
 
@@ -67,14 +74,19 @@ const Viewprofile = () => {
       requestStudent(tfs);
       setRequests(tfs2);
 
-      // getCurrentPage(tfs2, tfs)
+      setCurrentPage(tfs2, tfs)
 
 
       tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
     };
     getTasks();
 
-    const getCurrentPage = (requests, request) => {
+
+
+    }, []);
+    
+    const setCurrentPage = (requests, request) => {
+      console.log("setCurrentPage raan");
       console.log("gcp");
       console.log(requests)
       console.log(request)
@@ -82,15 +94,14 @@ const Viewprofile = () => {
       const index = requests.map((el) => el._id).indexOf(request._id);
       console.log("index",index)
       setCnt(index)
-      setNextId(requests[index+1]._id)
-      setPrevId(requests[index-1]._id)
+      console.log("hoooo", requests, index)
+      index < requests.length-1 && setNextId(requests[index+1]._id)
+      index > 0 && setPrevId(requests[index-1]._id)
+      console.log("prevId", prevId);
+
 
       return index
     }
-
-
-    }, []);
-    
 
 
   return (
@@ -98,16 +109,17 @@ const Viewprofile = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
+        <button  onClick={(e) => { navigate("/travel-order")  }}  >BACK </button>
     <div className='box'>
       <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
       {cnt>0 && <button>
-        <Link to={ `/travel-order/profile/${prevId}` }>left</Link>
+        <Link to={ `/travel-order/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  >left</Link>
         </button>}
       <span>{cnt}</span>
       {cnt<requests.length-1 && <button>
         
-        <Link to={ `/travel-order/profile/${nextId}` }>right</Link>
+        <Link to={ `/travel-order/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >right</Link>
         </button>}
       {/* {requests.length} */}
 
