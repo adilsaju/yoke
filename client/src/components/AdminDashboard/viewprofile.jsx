@@ -67,7 +67,7 @@ const Viewprofile = () => {
       requestStudent(tfs);
       setRequests(tfs2);
 
-      getCurrentPage(tfs2, tfs)
+      // getCurrentPage(tfs2, tfs)
 
 
       tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
