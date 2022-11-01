@@ -95,9 +95,9 @@ return (
               </thead>
                         
               {requests.map((request,id) => {
-                                    if ( 'requestedStudent' in request && request.isApproved === false)
-                                    {
-                                      return(
+                if ( 'requestedStudent' in request && request.isApproved === false)
+                {
+                  return(
               <tbody key={id}>
                 <tr className='tay'>
                   <td>{count++}</td>
