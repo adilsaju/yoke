@@ -16,5 +16,10 @@ code {
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Fira+Sans&display=swap');
 
 body {
-  font-family: 'Bai Jamjuree', 'Fira Sans', sans-serif;
+  font-family: 'Bai Jamjuree', 'Fira Sans', Helvetica, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

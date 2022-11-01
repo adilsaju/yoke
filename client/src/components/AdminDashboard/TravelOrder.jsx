@@ -72,48 +72,55 @@ return (
     <>
   <div className='fullpage'>
     <SideMenuAdmin/>
-    <div className='division'>
-                      <div>
-                            <Search/>
-       <Filters FilterValueSelected={onFilterValueSelected}/>
-                            <table className="myTable">
-                              <thead>
-                              { error && <div>{ error }</div> }
-                              <tr className="heading">
-                                          <th>No.</th>
-                                          <th>Requested ID</th>
-                                          <th>Name</th>
-                                          <th className=''>Student Id</th>
-                                          <th className=''>Travel Date</th>
-                                          <th className=''>Action</th>
-                                        </tr>
-                                        </thead>
-                                        
-                              {requests.map((request,id) => {
-                                                    if ( 'requestedStudent' in request && request.isApproved === false)
-                                                    {
-                                                      return(
-                                                        <tbody key={id}>
-                              <tr className='tay'>
-                                <td>{count++}</td>
-                                <td>{request._id}</td>
-                                <td>{request.requestedStudent && request.requestedStudent.name}</td>
-                                <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
-                                <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
-                                <td><Link to={ `/travel-order/profile/${request._id}` }>View Profile</Link></td>
-                              </tr>
-                              </tbody>
-                              ) }
-                                                })
-                                              }
-                           
-                          </table>
-                    
-                      </div>
-                          <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
-                          </div>
-    </div>
-    </div>
+      <div className='division'>
+          <div className="subDivision">
+            <div className="topDivision">
+              <Search/>
+              <div className="leftBorder">
+                <Filters FilterValueSelected={onFilterValueSelected}/>
+              </div>
+            </div>
+
+            <table className="myTable">
+              <thead>
+              { error && <div>{ error }</div> }
+                <tr className="heading">
+                  <th>No.</th>
+                  <th>Requested ID</th>
+                  <th>Name</th>
+                  <th className=''>Student Id</th>
+                  <th className=''>Travel Date</th>
+                  <th className=''>Action</th>
+                </tr>
+              </thead>
+                        
+              {requests.map((request,id) => {
+                if ( 'requestedStudent' in request && request.isApproved === false)
+                {
+                  return(
+              <tbody key={id}>
+                <tr className='tay'>
+                  <td>{count++}</td>
+                  <td>{request._id}</td>
+                  <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                  <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
+                  <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                  <td><Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
+                </tr>
+              </tbody>
+              ) }
+                                })
+                              }
+            
+            </table>
+                        
+          </div>
+          {/* end of subDivision */}
+              <div id="msg" style={ { display: "none" } }>Oops! It did not match any results. Maybe try searching for something different.
+              </div>
+      </div>
+      {/* end of division  */}
+    </div> 
     </>
   )
 }

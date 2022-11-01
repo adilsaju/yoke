@@ -6,16 +6,16 @@ const Filters = (props) => {
     }
 
   return (
-    <div className='filter-area'>
-<select name='isAvailable' onChange={onFilterValueChanged}>
-    <option value="SelectFilter">Select Filter</option>
-    <option value="NameASC"  >Name(Asc)</option>
-    <option value="NameDES">Name(Des)</option>
-    <option value="DateASC">Date(Asc)</option>
-    <option value="DateDES">Date(DES)</option>
+    // <div className='filter-area'>
+<select className="sortSelector" name='isAvailable' onChange={onFilterValueChanged}>
+    <option value="SelectFilter">Sort</option>
+    <option value="NameASC"  >Name (Asc)</option>
+    <option value="NameDES">Name (Desc)</option>
+    <option value="DateASC">Date (Asc)</option>
+    <option value="DateDES">Date (Desc)</option>
 
 </select>
-    </div>
+    // </div>
     
   )
 }
