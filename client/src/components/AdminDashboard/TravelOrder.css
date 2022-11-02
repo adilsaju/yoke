@@ -127,3 +127,14 @@ overflow-wrap:break-word;
 }
 
 
+
+.dBlueBtn {
+    background-color: #00284E;
+    color: white;
+    border: 1px solid #00284E;
+    border-radius: 2.31rem;
+}
+
+.viewProfileBtn {
+    cursor: pointer;
+}

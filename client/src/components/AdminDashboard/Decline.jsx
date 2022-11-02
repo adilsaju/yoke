@@ -26,6 +26,10 @@ const decline = async (request, loggedInUser) => {
   return data;
 };
 
+function Openform() {
+  document.getElementById('form1').style.display = 'block';
+}
+
 const Decline = () => {
   const [request,setStudents] = useState([]);
   const {loggedInUser, loginCredentials} = useContext(UserContext)
@@ -41,9 +45,20 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
+      {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { Openform();decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
       {(request.isApproved) ? <h3>The request is already approved!</h3> : console.log("nothing")}
+      <form id="form1" method="post" style={{display:"none"}}>
+      <label htmlFor="reason for denial">Reason for Rejection:  </label>
+        <select name="rod" id="rod">
+          <option value="low balance">Balance insufficient</option>
+          <option value="fly hours less">Flight hours insufficient</option>
+          <option value="License not approved">License not valid</option>
+          <option value="No spots left">No spots left</option>
+        </select>
+        <input type="submit" value="Submit"></input>
+        </form>
     </div>
+    
   )
 }
 
