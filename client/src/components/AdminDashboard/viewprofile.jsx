@@ -10,7 +10,8 @@ import moment from 'moment';
 import { useNavigate } from "react-router-dom";
 import leftArrowBtn from '../images/leftArrow.svg';
 import rightArrowBtn from '../images/rightArrow.svg';
-
+import toast, { Toaster } from 'react-hot-toast';
+const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
 
 
 const fetchTasks = async (request_id) => {
@@ -42,7 +43,10 @@ const updateStudentNotes = async (request, newNote) => {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
-
+  if (data)
+  {
+    notify1(request.requestedStudent.name)
+  }
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
@@ -219,6 +223,7 @@ const Viewprofile = () => {
 
     </div>
     {/* end of full page */}
+    <Toaster />
     </>
 
   )
