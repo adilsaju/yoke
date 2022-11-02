@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./Filters.css"
 const Filters = (props) => {
     function onFilterValueChanged(e) {
         props.FilterValueSelected(e.target.value)

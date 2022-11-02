@@ -64,6 +64,10 @@
     padding-left: 3rem;
 }
 
+.leftBorder .yellowBtn {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
 
 table {
     min-width:100%;
@@ -114,7 +118,7 @@ overflow-wrap:break-word;
     border-radius: 18px;
     color: #FFFFFF;
     background-color: #00284E;
-    padding: 0.2rem 1.2rem 0.3rem 1.2rem;
+    padding: 0.3rem 1.2rem;
 }
 
 .admin-settings {
@@ -122,12 +126,6 @@ overflow-wrap:break-word;
     padding: 1rem;
 }
 
-.yellowBtn {
-    background-color: #FEC326;
-    border: 1px solid #FEC326;
-    border-radius: 2.31rem;
-    cursor: pointer;
-}
 
 
 .dBlueBtn {
@@ -135,4 +133,8 @@ overflow-wrap:break-word;
     color: white;
     border: 1px solid #00284E;
     border-radius: 2.31rem;
+}
+
+.viewProfileBtn {
+    cursor: pointer;
 }

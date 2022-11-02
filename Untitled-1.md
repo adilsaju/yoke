@@ -20,4 +20,10 @@ license image full screen
 
 dark mode
 
+camera upload feature
+
 google lens
+
+
+BUGGGG - student getting updated, but request obj not updating/reflecting ( check admin student profile page)
+BUGGGG - Final list view profile page has bug (-1 because the list is different compared to /pendingRequests)

@@ -2,6 +2,7 @@ import React from 'react'
 import {UserContext} from '../../Contexts/UserContext'
 import { useState,useEffect, useContext } from 'react';
 import SideMenu from '../Navbar/SideMenu';
+import { useNavigate } from "react-router-dom";
 
 
 const formData2 = new FormData();
@@ -76,6 +77,8 @@ const fetchTasks = async (loggedInUser) => {
 };
 
   const UploadDocument = () => {
+  const navigate = useNavigate();
+
     const {loginCredentials} = useContext(UserContext)
   
               const [students,setStudents] = useState([]);
@@ -125,7 +128,12 @@ const fetchTasks = async (loggedInUser) => {
      <div className='fullpage'>
        <SideMenu/>
       <div className='division'>
-    
+      <div className="backBar">
+          <button  onClick={(e) => { navigate(-1)  }}  >
+            Back 
+          </button>
+        </div>
+
     <h2>Upload Documents</h2>
     {console.log(students)}
     {console.log("wah")}

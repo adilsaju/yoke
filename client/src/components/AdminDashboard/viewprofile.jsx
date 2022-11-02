@@ -8,6 +8,14 @@ import "./viewprofile.css"
 import { Link } from "react-router-dom";
 import moment from 'moment';
 import { useNavigate } from "react-router-dom";
+import leftArrowBtn from '../images/leftArrow.svg';
+import rightArrowBtn from '../images/rightArrow.svg';
+// import toast, { Toaster } from 'react-hot-toast';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
 
 
 const fetchTasks = async (request_id) => {
@@ -39,12 +47,13 @@ const updateStudentNotes = async (request, newNote) => {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
-
+  if (data)
+  {
+    notify1(request.requestedStudent.name)
+  }
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
-
-
 
 
 const Viewprofile = () => {
@@ -109,73 +118,116 @@ const Viewprofile = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
-        <button  onClick={(e) => { navigate("/travel-order")  }}  >BACK </button>
-    <div className='box'>
-      <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
-
-      {cnt>0 && <button>
-        <Link to={ `/travel-order/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  >left</Link>
-        </button>}
-      <span>{cnt}</span>
-      {cnt<requests.length-1 && <button>
-        
-        <Link to={ `/travel-order/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >right</Link>
-        </button>}
-      {/* {requests.length} */}
-
-      <div className='studentimage'>
-      <img src= {request.requestedStudent && request.requestedStudent.photo}/>
-
-      <div className='studentviews'>
-        <h4>student number: {request.requestedStudent && request.requestedStudent.studentNumber}</h4>
-        {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-        <h4>travel date: {moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</h4>
-        
-        <h4>current license: {request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</h4>
-          <h4>current program: {request.requestedStudent && request.requestedStudent.program}</h4>
-          <h4>Hours flown: {request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</h4>
+        <div className="backBar">
+          <button  onClick={(e) => { navigate(-1)  }}  >
+            Back 
+          </button>
         </div>
+
+
+        <div className='box'>
+          <div className="topOfTheBox">
+            <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
+
+            <div className="pagination">
+              
+              {cnt>0 &&
+                <Link to={ `/travel-order/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  ><button className="leftBtn">
+                  <img src={leftArrowBtn} alt='left-button' /></button>
+                </Link>}
+              <span className="fontFira">{cnt}</span>
+              {cnt<requests.length-1 &&
+              
+                <Link to={ `/travel-order/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >
+                  <button className="rightBtn"><img src={rightArrowBtn} alt='right-button' /></button>
+                  </Link>}
+              {/* {requests.length} */}
+            </div>
+          </div>
+
+          <div className='studentimage'>
+            <img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' />
+
+            <div className='studentviews'>
+              <div>
+                <h4>Student Number:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.studentNumber}</span>
+              </div>
+
+              {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
+
+              <div>
+                <h4>Travel Date:&nbsp;</h4>
+                <span>{moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</span>
+              </div>
+              
+              <div>
+                <h4>Current License:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</span>
+              </div>
+                
+              <div>
+                <h4>Current Program:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.program}</span>
+              </div>
+                
+              <div>
+                <h4>Hours Flown:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
+              </div>
+            </div>
+            {/* end of studentimage */}
+
+          </div>
+          {/* end of studentimage */}
+
+          
+          <div className='licenseimage'>
+            <h3>License Documents</h3>
+            <div className="studentimage">
+              <div>
+                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
+                <p>Pilot License</p>
+              </div>
+              <div>
+                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
+                <p>Medical License</p>
+              </div>
+              <div>
+                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
+                <p>Radio License</p>
+              </div>
+              <div>
+                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
+                <p>English Proficiency</p>
+              </div>
+            </div>
+          </div>
+
+          <div className='notes'>
+            <h4>Notes</h4>
+            <div className="noteWrapper">
+              <textarea name="" id="" cols="40" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
+              <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
+            </div>
+            {/* end of noteWrapper */}
+          </div>
+          {/* end of notes */}
+
+          <h4 className="visually-hidden">Req Id: {params.id}</h4>
+            { <div className='approveDecline'>
+            <Accept/>
+            <Decline/>
+            </div> }
+        </div>
+        {/* end of box */}
+
       </div>
+      {/* end of division */}
 
-      <h3>License Documents :</h3>
-      <div className='studentimage'>
-        <div>
-        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
-        <p>Pilot License</p>
-        </div>
-
-        <div>
-        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
-        <p>Medical License</p>
-        </div>
-
-        <div>
-        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
-        <p>Radio License</p>
-        </div>
-
-        <div>
-        <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
-        <p>English Proficiency</p>
-        </div>
-
-
-      </div>
-      <div className='notes'>
-        <h4>Notes</h4>
-        <textarea name="" id="" cols="30" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
-      
-      <button onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
-      </div>
-
-      <h4>Req Id: {params.id}</h4>
-      { <div className='approveDecline'>
-      <Accept/>
-      <Decline/>
-      </div> }
     </div>
-    </div>
-    </div>
+    {/* end of full page */}
+    <ToastContainer />
     </>
 
   )
