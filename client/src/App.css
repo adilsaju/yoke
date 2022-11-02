@@ -53,6 +53,14 @@ width: 1px;
   padding: 0.3rem 1.2rem;
 }
 
+/* VIEW PROFILE OF STUDENT (admin & student) */
+
+.division {
+  margin: 1rem;
+  padding-bottom: 2rem;
+}
+
+
 .three {
   padding-left: 2.5rem;
 }
@@ -116,17 +124,10 @@ footer{
   background:linear-gradient(0deg, rgba(254, 254, 254, 0.952), rgba(141, 150, 181, 0.634)), url("p1.jpg");
 } */
 
-.studentAccountName {
-  text-align: left;
-  background-color: #5cb0ff;;
-  padding: 1rem;
-  color: #00284E;
-}
-
-.studentimage {
+/* .studentimage {
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
 .studentview {
   display: grid;
@@ -135,21 +136,17 @@ footer{
   padding: 1rem;
 }
 
-.studentupload {
+/* .studentupload {
   border-top: 1px solid gray;
   display: flex;
   justify-content: space-between;
   margin: 1rem;
-}
+} */
 
-.imageupload {
+/* .imageupload {
   display: flex;
   justify-content: space-evenly;
-}
-.maindiv {
-  padding: 1rem;
-}
-
+} */
 
 .Clendr{
   text-align: center;
@@ -210,11 +207,6 @@ td a,.studentupload a{
 }
  
 
-
-.division{
-  padding-bottom: 2rem;
-  
-}
 
 button {
   cursor: pointer;

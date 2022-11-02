@@ -40,9 +40,9 @@
 }
 
 .box h3 {
-    /* text-align: left;
+    text-align: left;
     padding: 1rem;
-    margin: 0; */
+    margin: 0;
 }
 
 .pagination {
@@ -84,7 +84,7 @@
     padding: .5rem 0;
 }
 
-.studentimage {
+.studentimage, .imageupload {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -101,12 +101,12 @@
     padding: 0 1rem;
 }
 
-.licenseimage {
+.licenseimage, .studentupload {
     background-color: #ffffff;
     padding: 0 1rem;
 }
 
-.licenseimage h3 {
+.licenseimage h3, .studentupload {
     flex: 1 0 100%;
     text-align-last: left;
     margin: 0;
@@ -114,7 +114,7 @@
     border-top: 2px solid #C8E4FF;
 }
 
-.licenseimage .studentimage  {
+.licenseimage .studentimage   {
     border-bottom: 2px solid #C8E4FF;
 }
 
@@ -182,4 +182,24 @@
     width: 8rem;
     height: 2.5rem;
     border: none;
+}
+
+
+/**** STUDENT PROFILE ****/
+.studentAccountName {
+    text-align-last: left;
+    margin: 0;
+}
+
+.studentupload {
+    background-color: #ffffff;
+    margin: 0 1rem;
+}
+
+.topOfTheBox .yellowBtn a {
+    text-decoration: none;
+    }
+
+.whiteBg {
+    background-color: #ffffff;
 }
