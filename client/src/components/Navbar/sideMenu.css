@@ -2,7 +2,8 @@
 .Nav-menu{
     background-color: #00284E;
     width: 18rem;
-    z-index: 1;
+    /* z-index: 1;  */
+    /* COMMENTED FOR MODAL WORKING IN SETTINGS PAGE  */
   }
 
 nav img {
