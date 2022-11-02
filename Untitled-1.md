@@ -23,3 +23,6 @@ dark mode
 camera upload feature
 
 google lens
+
+
+BUGGGG - student getting updated, but request obj not updating/reflecting ( check admin student profile page)
