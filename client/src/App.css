@@ -216,4 +216,6 @@ td a,.studentupload a{
   
 }
 
-
+button {
+  cursor: pointer;
+}
