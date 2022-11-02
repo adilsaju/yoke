@@ -30,6 +30,10 @@ function Openform() {
   document.getElementById('form1').style.display = 'block';
 }
 
+function Closeform() {
+  document.getElementById('form1').style.display = 'none';
+}
+
 const Decline = () => {
   const [request,setStudents] = useState([]);
   const {loggedInUser, loginCredentials} = useContext(UserContext)
