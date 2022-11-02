@@ -6,7 +6,7 @@ const SideMenu = () => {
   return (
     <div className='Nav-menu'>
   <nav>
-      <ul>
+      <ul className="studentMenu">
         <Link to="/student-account-status">
           <li className='studentAcct'>
             Account Status

@@ -1,9 +1,8 @@
 
 .Nav-menu{
     background-color: #00284E;
-    width: 20rem;
-    /* z-index: 1;  */
-    /* COMMENTED FOR MODAL WORKING IN SETTINGS PAGE  */
+    width: 18rem;
+    z-index: 1;  
 }
 
 nav img {
@@ -25,7 +24,7 @@ nav ul li{
     font-size: larger;
     text-decoration: none;
     list-style-type: none;
-    padding: 1.5rem 5.5rem;
+    padding: 1.5rem 1rem 1.5rem 5.5rem;
     background-size: 1.25rem; 
     background-repeat: no-repeat;
     background-position: 3rem 1.5rem;
@@ -116,8 +115,4 @@ nav li:hover{
     justify-content: center;
     align-items: center;
     align-content: center;
-}
-
-.studentMenu .travelOrder {
-    padding-right: 1rem;
 }
