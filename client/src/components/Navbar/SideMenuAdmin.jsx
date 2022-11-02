@@ -55,7 +55,7 @@ const SideMenuAdmin = () => {
           Dashboard
       </li></Link>
         
-        <Link to="/travel-order"> <li>
+        <Link to="/travel-order"> <li className="travelOrder">
           Travel Order
           ({(requests.length)})
         </li></Link>
@@ -63,7 +63,7 @@ const SideMenuAdmin = () => {
         <Link to="/login">Login</Link>
         </li> */}
        
-       <Link to="/final-list"> <li>
+       <Link to="/final-list"> <li className="finalList">
           Final list({finalstudents.length})
         </li></Link>
 
