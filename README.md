@@ -15,6 +15,12 @@ OR
 DB URL: mongodb+srv://root:abcdefgh@cluster0.pukcq1u.mongodb.net/travel-order-app
 app url: https://yoke-sirius.netlify.app/
 
+To add more data for test: ```node scripts/data-create.js```
+
 BUILD
 ====================
 Pending to add
+
+PRODUCTION
+====================
+URL: https://yokeaviation.ca/
