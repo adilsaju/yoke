@@ -20,4 +20,6 @@ license image full screen
 
 dark mode
 
+camera upload feature
+
 google lens
