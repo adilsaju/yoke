@@ -22,6 +22,7 @@
     background-size: 0.95em;
     background-position: 0.6rem 0.8rem;
     background-size: 1em;
+    cursor: pointer;
 }
 
 .box {
