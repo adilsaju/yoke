@@ -20,8 +20,37 @@ body{
   padding: 0;
 }
 
+.visually-hidden {
+clip: rect(0 0 0 0);
+clip-path: inset(50%);
+height: 1px;
+overflow: hidden;
+position: absolute;
+white-space: nowrap;
+width: 1px;
+}
+
 .fontFira {
   font-family: 'Fira Sans', Helvetica, sans-serif;
+}
+
+.yellowBtn {
+  background-color: #FEC326;
+  border: 1px solid #FEC326;
+  border-radius: 2.31rem;
+  cursor: pointer;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  padding: 0.3rem 1.2rem;
+}
+
+
+.dBlueBtn {
+  background-color: #00284E;
+  color: white;
+  border: 1px solid #00284E;
+  border-radius: 2.31rem;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  padding: 0.3rem 1.2rem;
 }
 
 .three {
@@ -64,14 +93,6 @@ body{
   }
 }
 
-
-button{
-  padding: 0.5rem 0.5rem;
-  /* margin: .2rem; */
-  /* font-size: larger; */
-  text-align: center;
-  
-}
 .react-calendar__viewContainer{
   max-width: 100rem;
   display: flex;
@@ -167,7 +188,7 @@ nav ul{
 
 .fullpage{
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 3.5fr;
   grid-gap: 0;
 }
 
@@ -191,8 +212,8 @@ td a,.studentupload a{
 
 
 .division{
-  margin-bottom: 5rem;
   padding-bottom: 2rem;
+  
 }
 
 
