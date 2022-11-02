@@ -136,3 +136,7 @@ overflow-wrap:break-word;
     border: 1px solid #00284E;
     border-radius: 2.31rem;
 }
+
+.viewProfileBtn {
+    cursor: pointer;
+}
