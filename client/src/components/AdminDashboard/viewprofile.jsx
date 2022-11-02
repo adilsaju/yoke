@@ -10,7 +10,11 @@ import moment from 'moment';
 import { useNavigate } from "react-router-dom";
 import leftArrowBtn from '../images/leftArrow.svg';
 import rightArrowBtn from '../images/rightArrow.svg';
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
 
 
@@ -223,7 +227,7 @@ const Viewprofile = () => {
 
     </div>
     {/* end of full page */}
-    <Toaster />
+    <ToastContainer />
     </>
 
   )
