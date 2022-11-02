@@ -5,6 +5,7 @@ import SideMenu from '../Navbar/SideMenu';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 
 const req = async (flightDate, loggedInUser) => {
@@ -36,6 +37,8 @@ const bod1 = {
 };
 
 const RequestTravelOrder = () => {
+  const navigate = useNavigate();
+
   const {loggedInUser, loginCredentials} = useContext(UserContext)
   const [value, onChange] = useState(new Date());
 
@@ -44,7 +47,12 @@ const RequestTravelOrder = () => {
       <div className='fullpage'>
       <SideMenu />  
       <div className='division'>
-    
+      <div className="backBar">
+          <button  onClick={(e) => { navigate(-1)  }}  >
+            Back 
+          </button>
+        </div>
+
     <h2>Request Travel Order</h2>
     <div>
     <div className='Clendr'>
