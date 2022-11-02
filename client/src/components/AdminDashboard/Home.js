@@ -6,7 +6,7 @@ import { Pie } from 'react-chartjs-2';
 import { useNavigate } from "react-router-dom";
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-import "./Home.css"
+import './Home.css'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -64,7 +64,7 @@ const labels = labels1.sort()
       {
         label: 'Number of students',
         data: data.map((a)=>a.count),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(151, 205, 255)',
       }
     ],
   };
@@ -99,17 +99,17 @@ const fetchDoughnut = async () => {
 
 
 const labelsDoughnut1 = dataDoughnut.map((a)=>a._id)
-const labelsDoughnut = labelsDoughnut1.sort()
+const labels = labelsDoughnut1.sort()
  
   const dataDoughnut2 = {
-    labelsDoughnut,
+    labels,
     datasets: [
       {
         label: 'Number of students',
         data: dataDoughnut.map((a)=>a.count),
-        backgroundColor: ['rgba(0, 40, 78, 0.5)',
-        'rgba(151, 205, 255, 0.5)',
-        'rgba(254, 195, 38, 0.5)'],
+        backgroundColor: ['rgba(0, 40, 78)',
+        'rgba(151, 205, 255)',
+        'rgba(254, 195, 38)'],
       }
     ],
   };
@@ -140,20 +140,17 @@ const fetchPie = async () => {
   const dataPie = await res.json();
   console.log(dataPie);
 
-  
-
-
-const labelsPie1 = dataPie.map((a)=>a._id)
-const labelsPie = labelsPie1.sort()
+// const labelsPie1 = dataPie.map((a)=>a._id)
+// const labelsPie = labelsPie1.sort()
  
   const dataPie2 = {
-    labelsPie,
+    labels: ['Approved Requests', 'Pending Requests'],
     datasets: [
       {
         label: 'Number of students',
         data: [dataPie[0].isApproved, dataPie[0].isRejected],
-        backgroundColor: ['rgba(0, 40, 78, 0.5)',
-        'rgba(254, 195, 38, 0.5)'],
+        backgroundColor: ['rgba(0, 40, 78)',
+        'rgba(254, 195, 38)'],
       }
     ],
   };
@@ -176,7 +173,7 @@ const Home = () => {
 }
 
 useEffect(() => {
-  setPageTitle("Home")
+  setPageTitle("Dashboard")
   // let isLoggedIn  = true
   
   // if (!isLoggedIn){
@@ -230,33 +227,29 @@ useEffect(() => {
       <SideMenuAdmin/>
       <div className='division'>
 
-        <div className='graph-grid'>
+        <div className='graphGrid'>
 
-<div>
+          <div className="pieChart">
+          {
+            dataPie && <Pie options={optionsPie} data={dataPie} />
+          } 
+          </div>
 
-  {
-    dataPie && <Pie options={optionsPie} data={dataPie} />
-  } 
-  </div>
+          <div className="doughutChart">
+          {
+            dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
+          } 
+          </div>
 
-<div>
+          <div className="barGraph">
+          {
+            data && <Bar options={options} data={data} />
+          } 
+          </div>
 
-  {
-    dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
-  } 
-  </div>
-
-<div>
-
-  {
-    
-    data && <Bar options={options} data={data} />
-  } 
-  </div>
-
-</div>
+        </div>
   
-  </div>
+      </div>
   </div>
   </>)
 

@@ -20,6 +20,10 @@ body{
   padding: 0;
 }
 
+.fontFira {
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+}
+
 .three {
   padding-left: 2.5rem;
 }
@@ -76,28 +80,8 @@ button{
   text-align: center;
 }
 
-img{
-  max-width: 600px;
-}
-nav{
-  background-color: #00284E;
-
-
-}
-nav ul li{
-  font-size: larger;
-  text-decoration: none;
-  list-style-type: none;
-  
-}
-
-a{
-  color: white;
-
-}
-
 footer{
-  background-color: #00284E;
+  background-color: #202020;
   padding: 2rem;
   position: fixed;
    left: 0;
@@ -121,12 +105,7 @@ footer{
 .studentimage {
   display: flex;
   justify-content: space-evenly;
-
 }
-header img{
-  margin-top: 0.5rem;
-}
-
 
 .studentview {
   display: grid;
@@ -150,9 +129,6 @@ header img{
   padding: 1rem;
 }
 
-img{
-  max-width: 12rem;
-}
 
 .Clendr{
   text-align: center;
@@ -176,10 +152,6 @@ nav{
   height: 50rem;
 }
 
-nav a{
-  text-decoration: none;
-  
-}
 
 nav ul li{
   padding: 2rem 2rem;
@@ -191,10 +163,8 @@ nav ul{
   margin: 0;
   padding: 0;
 }
-.Nav-menu{
-  background-color: #00284E;
-  width: 18rem;
-}
+
+
 .fullpage{
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -202,41 +172,10 @@ nav ul{
 }
 
 
-header img{
-  padding-left: 3rem;
-}
-
-header{
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  text-align: left;
-  height: 5rem;
-  background-color: #00284E;
-}
-header h3,footer p{
-  color: white;
-}
-nav li:hover{
-  background-color: #5cb0ff;
-  color: #00284E;
-}
-
 td a,.studentupload a{
   color: black;
-
- 
-}
-footer{
-  height: 1rem;
-  padding: 1rem;
-  
-
 }
 
-footer p{
-  padding: 0;
-  margin: 0;
-}
 .page-name{
   padding-left: 1rem;
   
@@ -256,10 +195,4 @@ footer p{
   padding-bottom: 2rem;
 }
 
-.logoo{
- 
-  margin-bottom:5px ;
-  
- height: 2rem ;
- width: 18rem;
-}
+

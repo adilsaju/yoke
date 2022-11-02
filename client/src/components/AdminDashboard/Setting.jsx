@@ -32,19 +32,19 @@ const Setting = () => {
         }, []);
   return (
     <>
-    <div className='fullpage'>
-      <SideMenuAdmin/>
-      <div className='division'>
-     <div className="admin-settings">
-      <h2>Admin Info</h2>
-      { <><h3>{admin.email}</h3>
-      <h4>{admin.password}</h4></> }
-   <div>
-    <button className="dBlueBtn">Forgot Password</button>
-   </div>
-    </div>
-    </div>
-    </div>
+      <div className='fullpage'>
+        <SideMenuAdmin/>
+          <div className='division'>
+            <div className="admin-settings">
+              <h2>Admin Info</h2>
+              { <><h3>Email: <span className="fontFira">{admin.email}</span></h3>
+              <h4>Password: <span className="maskPw">{admin.password}</span></h4></> }
+              <div>
+                <button className="dBlueBtn">Forgot Password</button>
+              </div>
+            </div>
+        </div>
+      </div>
     </>
   )
 }

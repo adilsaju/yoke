@@ -11,3 +11,13 @@ decline email api
 sent final list to flight coordinator
 
 undo
+
+
+
+global search
+
+license image full screen
+
+dark mode
+
+google lens
