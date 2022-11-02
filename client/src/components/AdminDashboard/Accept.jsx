@@ -49,7 +49,7 @@ console.log(loginCredentials.loggedInUser.id);
 
   return (
     <div>
-    { (!request.isRejected) && (!request.isApproved) && <button className='accept' onClick={(e) => { approve(request, loginCredentials.loggedInUser)} }>Approve</button> }
+    { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira' onClick={(e) => { approve(request, loginCredentials.loggedInUser)} }>Approve</button> }
     </div>
   )
 }

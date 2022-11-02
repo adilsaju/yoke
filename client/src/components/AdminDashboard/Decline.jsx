@@ -45,7 +45,7 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && (!request.isApproved) && <button className='decline' onClick={(e) => { Openform();decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
+      {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { Openform();decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
       {(request.isApproved) ? <h3>The request is already approved!</h3> : console.log("nothing")}
       <form id="form1" method="post" style={{display:"none"}}>
       <label htmlFor="reason for denial">Reason for Rejection:  </label>
