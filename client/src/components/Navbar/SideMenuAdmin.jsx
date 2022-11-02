@@ -56,15 +56,16 @@ const SideMenuAdmin = () => {
       </li></Link>
         
         <Link to="/travel-order"> <li className="travelOrder">
-          Travel Order
-          ({(requests.length)})
+          Travel Order&nbsp;
+          <button className='countInd'><span>{(requests.length)}</span></button>
         </li></Link>
         {/* <li>
         <Link to="/login">Login</Link>
         </li> */}
        
        <Link to="/final-list"> <li className="finalList">
-          Final list({finalstudents.length})
+          Final list&nbsp;
+          <button className='countInd'><span>{finalstudents.length}</span></button>
         </li></Link>
 
 
