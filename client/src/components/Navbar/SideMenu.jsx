@@ -7,22 +7,29 @@ const SideMenu = () => {
     <div className='Nav-menu'>
   <nav>
       <ul>
-      <Link to="/student-account-status">
-      <li>
-          Account Status
-        </li></Link>
+        <Link to="/student-account-status">
+          <li className='studentAcct'>
+            Account Status
+          </li>
+        </Link>
 
-        <Link to="/student-travel-order"> <li>
-          Student Travel Order
-        </li></Link>
+        <Link to="/student-travel-order"> 
+          <li className="travelOrder">
+            Student Travel Order
+          </li>
+        </Link>
 
-        <Link to="/settingStudent"> <li>
-        Setting
-        </li></Link>
+        <Link to="/settingStudent"> 
+          <li className='settings'>
+          Setting
+          </li>
+        </Link>
         
-        <Link to="/logout"> <li>
-        Logout
-        </li></Link>
+        <Link to="/logout"> 
+          <li className='logout'>
+          Logout
+          </li>
+        </Link>
   
       </ul>
       </nav>

@@ -60,6 +60,10 @@ nav ul li{
     background-image: url(../images/logoutBtn.svg);
 }
 
+.studentAcct {
+    background-image: url(../images/acctStatus.svg);
+}
+
 /*** HOVER - CHANGE ICON ***/
 nav li:hover{
     background-color: #5cb0ff;
@@ -97,6 +101,10 @@ nav li:hover{
     background-image: url(../images/logoutDrk.svg);
 }
 
+.studentAcct:hover {
+    background-image: url(../images/acctStatusDrk.svg);
+}
+
 .countInd {
     background-color: #FEC326;
     border: none;
@@ -108,4 +116,8 @@ nav li:hover{
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.studentMenu .travelOrder {
+    padding-right: 1rem;
 }
