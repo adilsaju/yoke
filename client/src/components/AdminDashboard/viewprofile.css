@@ -71,13 +71,15 @@
 }
 
 .studentviews div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* flex-direction: row; */
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     padding-right: 2rem;
-    justify-content: space-between;
+    justify-content: flex-start;
     justify-items: start;
+    align-content: flex-start;
 }
 
 .studentviews h4 {
@@ -96,11 +98,14 @@
     background-color: #ffffff;
 }
 
-
 .studentImg {
     border-radius: 50%;
     max-width: 20%;
     padding: 0 1rem;
+}
+
+.studentImg img {
+    max-width: 12.5rem;
 }
 
 .licenseimage, .studentupload {
@@ -118,8 +123,23 @@
 
 .licenseimage .studentimage   {
     border-bottom: 2px solid #C8E4FF;
+    gap: 2rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
+.studentimage .uploaded {
+    width: 12.5rem;
+    height: 9.37rem;
+    float: left;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.uploaded img {
+    object-fit: cover;
+    height: 100%;
+}
 .notes {
     text-align: left;
     background-color: #ffffff;
