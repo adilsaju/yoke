@@ -24,9 +24,18 @@ const fetchTasks = async (request_id) => {
   const data = await res.json();
 
   console.log("PARTICULAR REQ: ",data);
+  
   return data;
 };
-
+const fetchTasks3 = async (id) => {
+  let url = `/students/${id}`;
+  const res = await fetch(url);
+  const studentData = await res.json();
+  console.log("fetch works")
+  console.log(studentData);
+  
+  return studentData;
+};
 const fetchTasks2 = async () => {
   let url = `/pendingRequests`;
   const res = await fetch(url);
@@ -61,6 +70,8 @@ const Viewprofile = () => {
   const [notes,setNotes] = useState("");
   //list of pending requests
   const [requests, setRequests]= useState([])
+  const [studentDataa, setstudentData]= useState([])
+  
   const [cnt, setCnt]= useState([])
   const [prevId, setPrevId]= useState("")
   const [nextId, setNextId]= useState("")
@@ -70,7 +81,7 @@ const Viewprofile = () => {
   // const history = useHistory()
   const navigate = useNavigate();
 
-
+  
 
   let params = useParams();
 
@@ -79,14 +90,18 @@ const Viewprofile = () => {
       const tfs = await fetchTasks(params.id);
 
       const tfs2 = await fetchTasks2();
-      
+
+      const tfs3 = await fetchTasks3(tfs.requestedStudent._id);
+
       requestStudent(tfs);
       setRequests(tfs2);
+      setstudentData(tfs3);
 
       setCurrentPage(tfs2, tfs)
 
 
       tfs.requestedStudent && setNotes(tfs.requestedStudent.notes)
+      
     };
     getTasks();
 
@@ -144,7 +159,7 @@ const Viewprofile = () => {
               {/* {requests.length} */}
             </div>
           </div>
-
+          
           <div className='studentimage'>
             <img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' />
 
@@ -186,19 +201,19 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
+                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img>
                 <p>Pilot License</p>
               </div>
               <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
+                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense}></img>
                 <p>Medical License</p>
               </div>
               <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
+                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense}></img>
                 <p>Radio License</p>
               </div>
               <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
+                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency}></img>
                 <p>English Proficiency</p>
               </div>
             </div>

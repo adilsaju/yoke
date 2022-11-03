@@ -2,6 +2,9 @@ import React from 'react'
 import { useState,useEffect,useContext } from 'react';
 import { useParams } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
+import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
+
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -11,16 +14,41 @@ const fetchTasks = async (request_id) => {
   console.log("PARTICULAR REQ: ",data);
   return data;
 };
+
+const sentEmail = async () => {
+  let url = `/sentemail`;
+
+  const res = await fetch(url, {method: 'POST' });
+  const data = await res.json();
+
+  console.log("IMPPPPPPPPPPPPP:",data);
+  return data;
+};
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2
+  },
+};
+
+
 const decline = async (request, loggedInUser) => {
   let url = `/requests/${request._id}/decline`;
   const bod1 = {
-    "adminId": `${loggedInUser.id}`
+    "adminId": `${loggedInUser.id}`,
+    "reason"  : "tumse na hopayega"
   }
   const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
     'Content-Type': 'application/json'
   }, });
   const data = await res.json();
-  alert("DECLINED!")
+  
 
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
@@ -38,6 +66,35 @@ const Decline = () => {
   const [request,setStudents] = useState([]);
   const {loggedInUser, loginCredentials} = useContext(UserContext)
 
+  //---------------------- modal begin ---------------------------
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+ 
+  const [modalIsOpenalso, setIsOpenalso] = React.useState(false);
+  function openModalalso() {
+    setIsOpenalso(true);
+  }
+  function afterOpenModalalso() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+  function closeModalalso() {
+    setIsOpenalso(false);
+  }
+  // ---------------------- modal end ----------------------
+
+
   let params = useParams();
   useEffect(() => {
     const getTasks = async () => {
@@ -49,18 +106,42 @@ const Decline = () => {
 
   return (
     <div>
-      {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { Openform();decline(request, loginCredentials.loggedInUser)} }>Decline</button> }
+      {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { openModal()} }>Decline</button> }
       {(request.isApproved) ? <h3>The request is already approved!</h3> : console.log("nothing")}
-      <form id="form1" method="post" style={{display:"none"}}>
-      <label htmlFor="reason for denial">Reason for Rejection:  </label>
-        <select name="rod" id="rod">
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+          <form id="form1" >
+          <label htmlFor="reason for denial"><h2>Reason for Rejection:  </h2></label>
+          <select name="rod" id="rod">
           <option value="low balance">Balance insufficient</option>
           <option value="fly hours less">Flight hours insufficient</option>
           <option value="License not approved">License not valid</option>
           <option value="No spots left">No spots left</option>
-        </select>
-        <input type="submit" value="Submit"></input>
+        </select><br></br>
+        <br></br>
+        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser);closeModal();sentEmail();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
         </form>
+       
+      </Modal> 
+
+      <Modal
+        isOpen={modalIsOpenalso}
+        onAfterOpen={afterOpenModalalso}
+        onRequestClose={closeModalalso}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <img className='tick2' src={require('../images/verified.gif')} alt='' />
+        <div><h2>Request declined successfully</h2></div>
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={closeModalalso}>OK</button></Link>
+        
+      </Modal> 
+      
     </div>
     
   )

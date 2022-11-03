@@ -211,3 +211,15 @@ td a,.studentupload a{
 button {
   cursor: pointer;
 }
+
+
+.tick{
+  max-width: 30%;
+  border-radius: 50% 50%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.tick2{
+  max-width: 30%;
+  border-radius: 50% 50%;
+}
