@@ -201,19 +201,19 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div>
-                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img>
+                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img></div>
                 <p>Pilot License</p>
               </div>
               <div>
-                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense}></img>
+                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense}></img></div>
                 <p>Medical License</p>
               </div>
               <div>
-                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense}></img>
+                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense}></img></div>
                 <p>Radio License</p>
               </div>
               <div>
-                <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency}></img>
+                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency}></img></div>
                 <p>English Proficiency</p>
               </div>
             </div>

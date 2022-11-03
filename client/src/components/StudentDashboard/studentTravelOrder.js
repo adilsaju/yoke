@@ -104,7 +104,7 @@ const StudentTravelOrder = () => {
                             <td>{ student._id}</td>
                             <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{
-                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
+                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
               
                                   // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
                             }</td>

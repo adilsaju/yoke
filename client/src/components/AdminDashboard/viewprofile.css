@@ -39,7 +39,7 @@
     padding: 0 1rem;
 }
 
-.box h3 {
+.topOfTheBox h3, .studentAccountName {
     text-align: left;
     padding: 1rem;
     margin: 0;
@@ -67,17 +67,19 @@
     /* margin: 1rem; */
     /* padding: 1rem; */
     align-content: space-evenly;
-    text-align: center;
+    text-align: center;;
 }
 
 .studentviews div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* flex-direction: row; */
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     padding-right: 2rem;
-    justify-content: space-between;
+    justify-content: flex-start;
     justify-items: start;
+    align-content: flex-start;
 }
 
 .studentviews h4 {
@@ -96,11 +98,14 @@
     background-color: #ffffff;
 }
 
-
 .studentImg {
     border-radius: 50%;
     max-width: 20%;
     padding: 0 1rem;
+}
+
+.studentImg img {
+    max-width: 12.5rem;
 }
 
 .licenseimage, .studentupload {
@@ -108,7 +113,7 @@
     padding: 0 1rem;
 }
 
-.licenseimage h3, .studentupload {
+.licenseimage h3 {
     flex: 1 0 100%;
     text-align-last: left;
     margin: 0;
@@ -116,10 +121,25 @@
     border-top: 2px solid #C8E4FF;
 }
 
-.licenseimage .studentimage   {
+.licenseimage .studentimage, .imageupload {
     border-bottom: 2px solid #C8E4FF;
+    gap: 2rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
+.uploaded {
+    width: 12.5rem;
+    height: 9.37rem;
+    float: left;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.uploaded img {
+    object-fit: cover;
+    height: 100%;
+}
 .notes {
     text-align: left;
     background-color: #ffffff;
@@ -196,6 +216,24 @@
 .studentupload {
     background-color: #ffffff;
     margin: 0 1rem;
+    border-top: 2px solid #C8E4FF;
+    padding: 1rem 0 0 0;
+}
+
+.studentupload .topOfTheBox {
+    padding: 0;
+}
+
+.topOfTheBox h3 {
+padding: 0;    
+}
+
+.imageupload {
+    border-bottom: none;
+}
+
+.imageupload p {
+    text-align: center;
 }
 
 .topOfTheBox .yellowBtn a {
@@ -226,17 +264,19 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     align-content: center;
     
 }
 
 .uploadDocs .imageupload h3 {
     padding: 0 0 1rem 0;
+    margin: 0;
 }
 
 .uploadDocs label {
     padding-bottom: .5rem;
+    padding-top: 1rem;
 
     background: #00284E;
     border-radius: 40px;
@@ -248,6 +288,16 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+.fitImg {
+    padding-bottom: 1rem;
+}
+
+.uploadDocs img {
+    object-fit: cover;
+    width: 225px;
+    height: 120px;
 }
 
 .uploadDocs .imageupload div input {

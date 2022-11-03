@@ -17,30 +17,30 @@ const StudentUpload = (props) => {
 
             <div className='imageupload'>
               <div>
-                <h3>Medical License</h3>
-                  <img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense} />
+                  <div className="uploaded"><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense} /></div>
+                  <p>Medical License</p>
               </div>
               
               
                 
                 <div>
-                  <h3>Private License</h3>
-                    <img src= {props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.license} />
+                    <div className="uploaded"><img src= {props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.license} /></div>
+                    <p>Private License</p>
                 </div>
                 
                     {/* {props.starry.studentDocumentVerification.license} */}
                 
 
                 <div>
-                  <h3>Radio License</h3>
-                    <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.radioLicense} />
+                    <div className="uploaded"><img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.radioLicense} /></div>
+                    <p>Radio License</p>
                 </div>
                     {/* {props.starry.studentDocumentVerification.radioLicense} */}
                 
                 
                 <div>
-                  <h3>English Proficiency </h3>
-                    <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.englishProficiency} />
+                    <div className="uploaded"><img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.englishProficiency} /></div>
+                    <p>English Proficiency </p>
                 </div>
                 
             </div>

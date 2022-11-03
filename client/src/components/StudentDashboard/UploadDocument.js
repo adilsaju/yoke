@@ -150,38 +150,36 @@ const fetchTasks = async (loggedInUser) => {
             <div className="imageupload">
               <div>
                 <h3>Medical License</h3>
-                <label htmlFor="l2">Upload 
-                  <img src={students.studentRequirements && students.studentRequirements.medicalLicense} />
-                
+                  
+                  <div className="fitImg"><img src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
+                  <label htmlFor="l2">Upload </label>
                   <input type="file" name="l2" id="l2"   onChange={ (e) => { updateMedicalLic(loginCredentials.loggedInUser)}  }   />
-                </label>  
+                
               </div>
 
               <div>
                 <h3>Radio License</h3>
-                <label htmlFor="l3">Upload
-                  <img src={students.studentRequirements && students.studentRequirements.radioLicense} />
-                
+                  <div className="fitImg"><img src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
+                  <label htmlFor="l3">Upload</label>
                   <input type="file" name="l3" id="l3"  onChange={ (e) => { updateRadioLic(loginCredentials.loggedInUser)}  }  />
-                </label>
+                
               </div>
 
               <div>
                 <h3>Pilot's License</h3>
-                <label htmlFor="l4">Upload
-                  <img src={students.studentRequirements && students.studentRequirements.license}/>
                 
+                  <div className="fitImg"><img src={students.studentRequirements && students.studentRequirements.license}/></div>
+                  <label htmlFor="l4">Upload</label>
                   <input type="file" name="l4" id="l4" onChange={ (e) => { updateLic(loginCredentials.loggedInUser)}  }   />
-                </label>
+                
               </div>
 
               <div>
                 <h3>English Proficiency</h3>
-                <label htmlFor="l1">Upload
-                  <img src={students.studentRequirements && students.studentRequirements.englishProficiency} />
                 
+                  <div className="fitImg"><img src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
+                  <label htmlFor="l1">Upload</label>
                   <input type="file" name="l1" id="l1"   onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }   />
-                </label> 
               </div>
               
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
