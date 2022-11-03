@@ -65,7 +65,7 @@ width: 1px;
 /* VIEW PROFILE OF STUDENT (admin & student) */
 
 .division {
-  margin: 1rem;
+  margin: 1rem auto;
   padding-bottom: 2rem;
 }
 
@@ -185,8 +185,9 @@ nav ul{
 
 .fullpage{
   display: grid;
-  grid-template-columns: 1fr 3.5fr;
+  grid-template-columns: .5fr 3.5fr;
   grid-gap: 0;
+  height: 100vh;
 }
 
 
