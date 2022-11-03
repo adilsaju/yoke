@@ -264,17 +264,19 @@ padding: 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     align-content: center;
     
 }
 
 .uploadDocs .imageupload h3 {
     padding: 0 0 1rem 0;
+    margin: 0;
 }
 
 .uploadDocs label {
     padding-bottom: .5rem;
+    padding-top: 1rem;
 
     background: #00284E;
     border-radius: 40px;
@@ -286,6 +288,16 @@ padding: 0;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+.fitImg {
+    padding-bottom: 1rem;
+}
+
+.uploadDocs img {
+    object-fit: cover;
+    width: 225px;
+    height: 120px;
 }
 
 .uploadDocs .imageupload div input {
