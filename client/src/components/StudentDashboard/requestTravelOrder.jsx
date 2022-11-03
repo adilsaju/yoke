@@ -6,8 +6,13 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-const maxDate = new Date();
-maxDate.setDate(maxDate.getDate()+30);
+const maximDate = new Date();
+maximDate.setDate(maximDate.getDate()+30);
+
+const minimDate = new Date();
+minimDate.setDate(minimDate.getDate()+2);
+
+
 
 
 const req = async (flightDate, loggedInUser) => {
@@ -58,7 +63,7 @@ const RequestTravelOrder = () => {
     <h2>Request Travel Order</h2>
     <div>
     <div className='Clendr'>
-    <Calendar onChange={onChange} minDate={new Date()} maxDate={maxDate} value={value} />
+    <Calendar onChange={onChange} minDate={minimDate} maxDate={maximDate} value={value} />
     {console.log(value)}
     </div>
     {/* <input type="date" /> <br /> */}
