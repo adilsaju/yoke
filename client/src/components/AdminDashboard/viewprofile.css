@@ -39,7 +39,7 @@
     padding: 0 1rem;
 }
 
-.box h3 {
+.topOfTheBox h3, .studentAccountName {
     text-align: left;
     padding: 1rem;
     margin: 0;
@@ -67,7 +67,7 @@
     /* margin: 1rem; */
     /* padding: 1rem; */
     align-content: space-evenly;
-    text-align: center;
+    text-align: center;;
 }
 
 .studentviews div {
@@ -113,7 +113,7 @@
     padding: 0 1rem;
 }
 
-.licenseimage h3, .studentupload {
+.licenseimage h3 {
     flex: 1 0 100%;
     text-align-last: left;
     margin: 0;
@@ -121,14 +121,14 @@
     border-top: 2px solid #C8E4FF;
 }
 
-.licenseimage .studentimage   {
+.licenseimage .studentimage, .imageupload {
     border-bottom: 2px solid #C8E4FF;
     gap: 2rem;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.studentimage .uploaded {
+.uploaded {
     width: 12.5rem;
     height: 9.37rem;
     float: left;
@@ -216,6 +216,24 @@
 .studentupload {
     background-color: #ffffff;
     margin: 0 1rem;
+    border-top: 2px solid #C8E4FF;
+    padding: 1rem 0 0 0;
+}
+
+.studentupload .topOfTheBox {
+    padding: 0;
+}
+
+.topOfTheBox h3 {
+padding: 0;    
+}
+
+.imageupload {
+    border-bottom: none;
+}
+
+.imageupload p {
+    text-align: center;
 }
 
 .topOfTheBox .yellowBtn a {
