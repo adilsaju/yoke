@@ -11,28 +11,11 @@ import { useNavigate } from "react-router-dom";
 import leftArrowBtn from '../images/leftArrow.svg';
 import rightArrowBtn from '../images/rightArrow.svg';
 // import toast, { Toaster } from 'react-hot-toast';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
-
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-];
-
 
 
 const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
@@ -222,7 +205,7 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div>
-                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img></div>
+                <div className="uploaded"><a class="button" href="#popup2"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img></a></div>
                 <p>Pilot License</p>
               </div>
               <div>
@@ -238,6 +221,19 @@ const Viewprofile = () => {
                 <p>English Proficiency</p>
               </div>
             </div>
+
+
+
+            <div id="popup2" class="overlay light">
+              <a class="cancel" href="#"></a>
+              <div class="popup">
+                <h2>What the what?</h2>
+                <div class="content">
+                  <p>Click outside the popup to close.</p>
+                </div>
+              </div>
+            </div>
+
 
             {/* gallery library */}
             {/* <ImageGallery items={images} /> */}
