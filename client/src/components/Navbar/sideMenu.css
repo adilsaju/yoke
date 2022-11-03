@@ -2,9 +2,8 @@
 .Nav-menu{
     background-color: #00284E;
     width: 18rem;
-    /* z-index: 1;  */
-    /* COMMENTED FOR MODAL WORKING IN SETTINGS PAGE  */
-  }
+    z-index: 1;  
+}
 
 nav img {
     max-width: 1.25rem;
@@ -25,11 +24,11 @@ nav ul li{
     font-size: larger;
     text-decoration: none;
     list-style-type: none;
-    padding: 1.5rem 5.5rem;
+    padding: 1.5rem 1rem 1.5rem 5.5rem;
     background-size: 1.25rem; 
     background-repeat: no-repeat;
     background-position: 3rem 1.5rem;
-    
+    display: flex;
 
 }
 
@@ -58,6 +57,10 @@ nav ul li{
 
 .logout {
     background-image: url(../images/logoutBtn.svg);
+}
+
+.studentAcct {
+    background-image: url(../images/acctStatus.svg);
 }
 
 /*** HOVER - CHANGE ICON ***/
@@ -97,4 +100,19 @@ nav li:hover{
     background-image: url(../images/logoutDrk.svg);
 }
 
+.studentAcct:hover {
+    background-image: url(../images/acctStatusDrk.svg);
+}
 
+.countInd {
+    background-color: #FEC326;
+    border: none;
+    border-radius: 13.3px;
+    width: 2.6rem;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

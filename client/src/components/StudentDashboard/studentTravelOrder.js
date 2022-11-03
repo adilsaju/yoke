@@ -5,6 +5,7 @@ import Search from '../AdminDashboard/Search';
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
+import '../../App.css'
 
 
 
@@ -65,56 +66,67 @@ const StudentTravelOrder = () => {
 
                 }, []);
                 
-            return (
-               
-        <div>
-           <div className='fullpage'>
-       <SideMenu/>
-      <div className='division'>
-            <>
-           < Search/>
-            </>
-            <>
-            {console.log(studentsInfo)}
-            {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
-            </>
-            <table className='myTable'>
-              <thead>
-              <tr>
-                          <th>No.</th>
-                          <th>Request ID</th>
-                          <th className=''>Travel Date</th>
-                          <th className=''>Status</th>
-                    
-                        </tr>
-              </thead>
-                  {students.map((student,id)=> {
-                      return (
-                              <tbody key={id}>
-                              <tr className='tay'>
-                                <td>{(count++)}</td>
-                                <td>{ student._id}</td>
-                                <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                                <td>{  
-                                        (student.isApproved ?  <h2>Approved</h2>: student.isRejected ?  <h2>Rejected</h2>: student.isExpired ?  <h2>Expired</h2>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
-                                      
-                                        // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
-                                    }</td>
-                              </tr>
-                              
-                              </tbody>
-                                ) }
-                                )
-                              }
-                            </table>
-                            <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
-                          </div>
-                        </div>
-                     
-            </div>
+  return (
+    <div>
+      <div className='fullpage'>
+        <SideMenu/>
+        
+          <div className='division'>
             
+            
+            <div className="subDivision studentTO">
+              <div className="topDivision">
+                < Search/>
+              
+              {console.log(studentsInfo)}
+              {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?
+                <Link to='/request'>
+                  <button className="yellowBtn" > Request Travel Order</button>
+                </Link> : <Link to='/request'>
+                  <button className="yellowBtn" type="button" disabled> Request Travel Order</button>
+                </Link>}
+              </div>
+              
+              <table className='myTable'>
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Request ID</th>
+                    <th className=''>Travel Date</th>
+                    <th className=''>Status</th>
+                  </tr>
+                </thead>
+                    {students.map((student,id)=> {
+                      return (
+                        <tbody key={id}>
+                          <tr className='tay'>
+                            <td>{(count++)}</td>
+                            <td>{ student._id}</td>
+                            <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                            <td>{
+                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Pending</h2>: console.log("nothing"))
+              
+                                  // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
+                            }</td>
+                          </tr>
+                        </tbody>
+                        ) }
+                      )
+                    }
+              </table>
+              
+              <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
+              </div>
             </div>
-            )
+          
+          </div>
+          {/* end of division */}
+          
+      </div>
+      {/* end of fullpage */}
+
+    </div>
+  )
 }
 
 export default StudentTravelOrder

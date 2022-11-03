@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 const fetchTasks = async (admin_id) => {
   let url = `/admins/${admin_id}`;
   const res = await fetch(url);
-
   const data = await res.json();
   console.log("zdata",data)
   return data;

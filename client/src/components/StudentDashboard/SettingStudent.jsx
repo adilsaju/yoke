@@ -37,11 +37,11 @@ const SettingStudent = () => {
        <SideMenu/>
       <div className='division'>
     
-    <div>
-     { <><h2>{student.email}</h2>
-     <h3>{student.password}</h3></> }
+    <div className="admin-settings">
+     { <><h3>Email: <span className="fontFira">{student.email}</span></h3>
+     <h4>Password: Password: <span className="maskPw">{student.password}</span></h4></> }
      <div>
-     <button>Forgot Password</button>
+     <button className="dBlueBtn">Forgot Password</button>
      </div>
    </div>
    </div>

@@ -40,9 +40,9 @@
 }
 
 .box h3 {
-    /* text-align: left;
+    text-align: left;
     padding: 1rem;
-    margin: 0; */
+    margin: 0;
 }
 
 .pagination {
@@ -73,10 +73,11 @@
 .studentviews div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    flex-direction: row;
+    /* flex-direction: row; */
     align-items: center;
     padding-right: 2rem;
     justify-content: space-between;
+    justify-items: start;
 }
 
 .studentviews h4 {
@@ -84,16 +85,17 @@
     padding: .5rem 0;
 }
 
-.studentimage {
+.studentimage, .imageupload {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-start;
     padding: 1rem;
-    text-align-last: left;
+    text-align: center;
     gap: 4rem;
     background-color: #ffffff;
 }
+
 
 .studentImg {
     border-radius: 50%;
@@ -101,12 +103,12 @@
     padding: 0 1rem;
 }
 
-.licenseimage {
+.licenseimage, .studentupload {
     background-color: #ffffff;
     padding: 0 1rem;
 }
 
-.licenseimage h3 {
+.licenseimage h3, .studentupload {
     flex: 1 0 100%;
     text-align-last: left;
     margin: 0;
@@ -114,7 +116,7 @@
     border-top: 2px solid #C8E4FF;
 }
 
-.licenseimage .studentimage  {
+.licenseimage .studentimage   {
     border-bottom: 2px solid #C8E4FF;
 }
 
@@ -182,4 +184,76 @@
     width: 8rem;
     height: 2.5rem;
     border: none;
+}
+
+
+/**** STUDENT PROFILE ****/
+.studentAccountName {
+    text-align-last: left;
+    margin: 0;
+}
+
+.studentupload {
+    background-color: #ffffff;
+    margin: 0 1rem;
+}
+
+.topOfTheBox .yellowBtn a {
+    text-decoration: none;
+    }
+
+.whiteBg {
+    background-color: #ffffff;
+}
+
+/***** UploadDocument.js *****/
+/* .uploadDocs .topOfTheBox h2 {
+    margin: 0;
+}  */
+
+.uploadDocs .imageupload {
+    /* display: grid;
+    grid-template-columns: repeat(2,1fr); */
+
+    display: flex;
+    justify-content: space-evenly;
+
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.uploadDocs .imageupload div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.uploadDocs .imageupload h3 {
+    padding: 0 0 1rem 0;
+}
+
+.uploadDocs label {
+    padding-bottom: .5rem;
+
+    background: #00284E;
+    border-radius: 40px;
+    color: #ffffff;
+    width: 5rem;
+    height: 1.5rem;
+
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.uploadDocs .imageupload div input {
+    width: fit-content;
+}
+
+.uploadDocs input[type="file"] {
+    display: none;
 }
