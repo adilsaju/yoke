@@ -150,7 +150,7 @@ const Viewprofile = () => {
 
   return (
     <>
-    <ImageGallery items={images} />;
+    
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
@@ -212,7 +212,7 @@ const Viewprofile = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
             </div>
-            {/* end of studentimage */}
+            {/* end of studentviews */}
 
           </div>
           {/* end of studentimage */}
@@ -238,6 +238,9 @@ const Viewprofile = () => {
                 <p>English Proficiency</p>
               </div>
             </div>
+
+            {/* gallery library */}
+            {/* <ImageGallery items={images} /> */}
           </div>
 
           <div className='notes'>
