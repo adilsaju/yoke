@@ -46,7 +46,16 @@ width: 1px;
 
 .dBlueBtn {
   background-color: #00284E;
-  color: white;
+  color: #ffffff;
+  border: 1px solid #00284E;
+  border-radius: 2.31rem;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  padding: 0.3rem 1.2rem;
+}
+
+.transparentBtn {
+  background-color: #ffffff;
+  color: #00284E;
   border: 1px solid #00284E;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;

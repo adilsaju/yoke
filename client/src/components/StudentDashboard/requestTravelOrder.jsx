@@ -65,11 +65,12 @@ const RequestTravelOrder = () => {
               {console.log(value)}
             </div>
             {/* <input type="date" /> <br /> */}
-            <button  onClick={(e) => { navigate(-1)  }}  >
-                Cancel
-            </button>
-          
-            <button onClick={() => { req(value, loginCredentials.loggedInUser)} } >Submit</button>
+            <div className="buttonWrapper">
+              <button className="transparentBtn"  onClick={(e) => { navigate(-1)  }}  >
+                  Cancel
+              </button>
+              <button className="yellowBtn" onClick={() => { req(value, loginCredentials.loggedInUser)} } >Submit</button>
+            </div>
           </div>
         </div>
         

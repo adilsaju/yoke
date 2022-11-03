@@ -1,5 +1,6 @@
 .sectionWrapper {
     width: fit-content;
+    margin: auto;
 }
 
 .sectionWrapper h2 {
@@ -128,4 +129,10 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
 .react-calendar__century-view__decades__decade:enabled:hover,
 .react-calendar__century-view__decades__decade:enabled:focus {
     border-radius: 27.5px;
+}
+
+.buttonWrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
 }
