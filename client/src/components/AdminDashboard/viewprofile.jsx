@@ -65,6 +65,54 @@ const updateStudentNotes = async (request, newNote) => {
 };
 
 
+// ********* MODAL *********
+// Open the Modal
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+// ********* END OF MODAL *********
+
+
+
+
+
 const Viewprofile = () => {
   const [request,requestStudent] = useState([]);
   const [notes,setNotes] = useState("");
@@ -200,24 +248,83 @@ const Viewprofile = () => {
           <div className='licenseimage'>
             <h3>License Documents</h3>
             <div className="studentimage">
-              <div>
-                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}></img></div>
+              <div className="row">
+                <div className="uploaded column"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license}  onclick="openModal();currentSlide(1)" class="hover-shadow"></img></div>
                 <p>Pilot License</p>
               </div>
               <div>
-                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense}></img></div>
+                <div className="uploaded column"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense}  onclick="openModal();currentSlide(2)" class="hover-shadow"></img></div>
                 <p>Medical License</p>
               </div>
               <div>
-                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense}></img></div>
+                <div className="uploaded column"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense}  onclick="openModal();currentSlide(3)" class="hover-shadow"></img></div>
                 <p>Radio License</p>
               </div>
               <div>
-                <div className="uploaded"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency}></img></div>
+                <div className="uploaded column"><img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency}  onclick="openModal();currentSlide(4)" class="hover-shadow"></img></div>
                 <p>English Proficiency</p>
               </div>
             </div>
+            {/* **** */}
+
+            {/* *** The Modal/Lightbox *** */}
+            <div id="myModal" class="modal">
+              <span class="close cursor" onclick="closeModal()">&times;</span>
+              <div class="modal-content">
+
+                <div class="mySlides">
+                  <div class="numbertext">1 / 4</div>
+                  <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.license} />
+                  
+                </div>
+
+                <div class="mySlides">
+                  <div class="numbertext">2 / 4</div>
+                  <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense} />
+                </div>
+
+                <div class="mySlides">
+                  <div class="numbertext">3 / 4</div>
+                  <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense} />
+                </div>
+
+                <div class="mySlides">
+                  <div class="numbertext">4 / 4</div>
+                  <img src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency} />
+                </div>
+
+                {/* *** Next/previous controls *** */}
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                {/* *** Caption text *** */}
+                <div class="caption-container">
+                  <p id="caption"></p>
+                </div>
+
+                {/* *** Thumbnail image controls *** */}
+                <div class="column">
+                  <img class="demo" src={studentDataa.studentRequirements && studentDataa.studentRequirements.license} onclick="currentSlide(1)" alt="Nature" />
+                </div>
+
+                <div class="column">
+                  <img class="demo" src={studentDataa.studentRequirements && studentDataa.studentRequirements.medicalLicense} onclick="currentSlide(2)" alt="Snow" />
+                </div>
+
+                <div class="column">
+                  <img class="demo" src={studentDataa.studentRequirements && studentDataa.studentRequirements.radioLicense} onclick="currentSlide(3)" alt="Mountains" />
+                </div>
+
+                <div class="column">
+                  <img class="demo" src={studentDataa.studentRequirements && studentDataa.studentRequirements.englishProficiency} onclick="currentSlide(4)" alt="Lights" />
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
+          {/* end of studentimage */}
 
           <div className='notes'>
             <h4>Notes</h4>
