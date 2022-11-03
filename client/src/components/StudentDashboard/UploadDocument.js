@@ -3,7 +3,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useState,useEffect, useContext } from 'react';
 import SideMenu from '../Navbar/SideMenu';
 import { useNavigate } from "react-router-dom";
-
+import '../../App.css'
 
 const formData2 = new FormData();
 
@@ -125,38 +125,79 @@ const fetchTasks = async (loggedInUser) => {
   return (
     <>
 
-     <div className='fullpage'>
+    <div className='fullpage'>
        <SideMenu/>
-      <div className='division'>
-      <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
+      <div className='division uploadDocs'>
+        <div className="backBar">
+            <button  onClick={(e) => { navigate(-1)  }}  >
+              Back 
+            </button>
         </div>
 
-    <h2>Upload Documents</h2>
-    {console.log(students)}
-    {console.log("wah")}
-    {/* <form>
-    <div><label htmlFor="l1">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l1" id="l1" /></div><br />
-    <div><label htmlFor="l2">Private License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l2" id="l2" /></div><br />
-    <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3" /></div><br />
-    <div><label htmlFor="l4">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l4" id="l4" /></div><br />
-    <button>Submit</button> */}
+          <div className="box">
+            <div className="topOfTheBox">
+              <h2>Upload Documents</h2>
+            </div>
+                {console.log(students)}
+                {console.log("wah")}
+                {/* <form>
+                <div><label htmlFor="l1">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l1" id="l1" /></div><br />
+                <div><label htmlFor="l2">Private License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l2" id="l2" /></div><br />
+                <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3" /></div><br />
+                <div><label htmlFor="l4">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l4" id="l4" /></div><br />
+                <button>Submit</button> */}
+            
+            <div className="imageupload">
+              <div>
+                <h3>Medical License</h3>
+                <label htmlFor="l2">Upload 
+                  <img src={students.studentRequirements && students.studentRequirements.medicalLicense} />
+                
+                  <input type="file" name="l2" id="l2"   onChange={ (e) => { updateMedicalLic(loginCredentials.loggedInUser)}  }   />
+                </label>  
+              </div>
 
+              <div>
+                <h3>Radio License</h3>
+                <label htmlFor="l3">Upload
+                  <img src={students.studentRequirements && students.studentRequirements.radioLicense} />
+                
+                  <input type="file" name="l3" id="l3"  onChange={ (e) => { updateRadioLic(loginCredentials.loggedInUser)}  }  />
+                </label>
+              </div>
 
-      <div><label htmlFor="l2">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l2" id="l2"   onChange={ (e) => { updateMedicalLic(loginCredentials.loggedInUser)}  }   /></div><br />
-    <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3"  onChange={ (e) => { updateRadioLic(loginCredentials.loggedInUser)}  }  /></div><br />
-    <div><label htmlFor="l4">License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l4" id="l4" onChange={ (e) => { updateLic(loginCredentials.loggedInUser)}  }   /></div><br />
-    <div><label htmlFor="l1">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l1" id="l1"   onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }   /></div><br />
-    <br></br>
-      <br></br>
-    {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
+              <div>
+                <h3>Pilot's License</h3>
+                <label htmlFor="l4">Upload
+                  <img src={students.studentRequirements && students.studentRequirements.license}/>
+                
+                  <input type="file" name="l4" id="l4" onChange={ (e) => { updateLic(loginCredentials.loggedInUser)}  }   />
+                </label>
+              </div>
 
-    <br></br>
-    {/* </form> */}
+              <div>
+                <h3>English Proficiency</h3>
+                <label htmlFor="l1">Upload
+                  <img src={students.studentRequirements && students.studentRequirements.englishProficiency} />
+                
+                  <input type="file" name="l1" id="l1"   onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }   />
+                </label> 
+              </div>
+              
+                {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
+              
+                {/* </form> */}
+            </div>
+            {/* end of imageupload */}
+            
+          </div>
+          {/* end of box */}
+
+      </div>
+      {/* end of division */}
+    
     </div>
-    </div>
+    {/* end of fullpage */}
     </>
     
   )
