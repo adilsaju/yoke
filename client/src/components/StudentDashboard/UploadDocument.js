@@ -156,7 +156,7 @@ const fetchTasks = async (loggedInUser) => {
 
           <div className="box">
             <div className="topOfTheBox">
-              <h2>Upload Documents</h2>
+              <h3>Upload Documents</h3>
             </div>
                 {console.log(students)}
                 {console.log("wah")}
