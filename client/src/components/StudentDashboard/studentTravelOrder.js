@@ -8,6 +8,7 @@ import moment from "moment";
 
 
 
+
 //Fetch Data using API
 const fetchTasks = async (loggedInUser) => {
     let url = `/requests?student=${loggedInUser.id}`;
@@ -76,7 +77,7 @@ const StudentTravelOrder = () => {
             </>
             <>
             {console.log(studentsInfo)}
-            {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
+            {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?  <Link to='/request'><button className="yellowBtn" > Request Travel Order</button></Link> : <Link to='/request'><button type="button" disabled> Request Travel Order</button></Link>}
             </>
             <table className='myTable'>
               <thead>
