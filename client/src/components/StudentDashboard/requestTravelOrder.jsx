@@ -6,6 +6,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import './requestTravelOrder.css'
+
 const maximDate = new Date();
 maximDate.setDate(maximDate.getDate()+30);
 
@@ -54,23 +56,29 @@ const RequestTravelOrder = () => {
       <div className='fullpage'>
       <SideMenu />  
       <div className='division'>
-      <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
-        </div>
 
-    <h2>Request Travel Order</h2>
-    <div>
-    <div className='Clendr'>
-    <Calendar onChange={onChange} minDate={minimDate} maxDate={maximDate} value={value} />
-    {console.log(value)}
-    </div>
-    {/* <input type="date" /> <br /> */}
-    <button onClick={() => { req(value, loginCredentials.loggedInUser)} } >Submit</button>
-    </div>
-    </div>
-    </div>
+        <div className="sectionWrapper">
+          <h2>Select Flight Date </h2>
+          <div>
+            <div className='Clendr'>
+              <Calendar onChange={onChange} minDate={minimDate} maxDate={maximDate} value={value} />
+              {console.log(value)}
+            </div>
+            {/* <input type="date" /> <br /> */}
+            <button  onClick={(e) => { navigate(-1)  }}  >
+                Cancel
+            </button>
+          
+            <button onClick={() => { req(value, loginCredentials.loggedInUser)} } >Submit</button>
+          </div>
+        </div>
+        
+        
+      </div>
+      {/* end of division */}
+
+      </div>
+      {/* end of fullpage */}
     </>
 
   )
