@@ -275,19 +275,18 @@ padding: 0;
 }
 
 .uploadDocs label {
-    padding-bottom: .5rem;
-    padding-top: 1rem;
-
     background: #00284E;
     border-radius: 40px;
     color: #ffffff;
     width: 5rem;
-    height: 1.5rem;
+    height: 2rem;
 
     border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .fitImg {
