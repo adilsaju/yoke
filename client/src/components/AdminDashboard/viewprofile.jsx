@@ -11,9 +11,27 @@ import { useNavigate } from "react-router-dom";
 import leftArrowBtn from '../images/leftArrow.svg';
 import rightArrowBtn from '../images/rightArrow.svg';
 // import toast, { Toaster } from 'react-hot-toast';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ImageGallery from 'react-image-gallery';
+// import "react-image-gallery/styles/scss/image-gallery.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
+
+const images = [
+  {
+    original: 'https://picsum.photos/id/1018/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1018/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1015/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1015/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1019/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1019/250/150/',
+  },
+];
+
 
 const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
 
@@ -80,6 +98,27 @@ const Viewprofile = () => {
 
       const tfs2 = await fetchTasks2();
       
+      // const [images, setImages] = useState([
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.license}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+      //   },
+      // ]);
+
+
+
       requestStudent(tfs);
       setRequests(tfs2);
 
@@ -115,6 +154,7 @@ const Viewprofile = () => {
 
   return (
     <>
+    
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
@@ -176,7 +216,7 @@ const Viewprofile = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
             </div>
-            {/* end of studentimage */}
+            {/* end of studentviews */}
 
           </div>
           {/* end of studentimage */}
@@ -185,23 +225,40 @@ const Viewprofile = () => {
           <div className='licenseimage'>
             <h3>License Documents</h3>
             <div className="studentimage">
-              <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
+              <div className="uploaded">
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
-              <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
+              <div className="uploaded">
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
-              <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
+              <div className="uploaded">
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
-              <div>
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
+              <div className="uploaded">
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>
+
+
+
+            <div id="popup2" class="overlay light">
+              <a class="cancel" href="#"></a>
+              <div class="popup">
+                <h2>{request.requestedStudent && request.requestedStudent.name}</h2>
+                <div class="content">
+                  <ImageGallery items={images} />
+                  <p>Click outside the popup to close.</p>
+                </div>
+              </div>
+            </div>
+
+
+            {/* gallery library */}
+            {/* <ImageGallery items={images} /> */}
           </div>
 
           <div className='notes'>

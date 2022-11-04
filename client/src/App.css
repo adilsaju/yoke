@@ -46,12 +46,38 @@ width: 1px;
 
 .dBlueBtn {
   background-color: #00284E;
-  color: white;
+  color: #ffffff;
   border: 1px solid #00284E;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   padding: 0.3rem 1.2rem;
 }
+
+.transparentBtn {
+  background-color: #ffffff;
+  color: #00284E;
+  border: 2px solid #00284E;
+  border-radius: 2.31rem;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  padding: 0.3rem 1.2rem;
+}
+
+button.duo {
+  width: 6rem;
+  height: 2rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* VIEW PROFILE OF STUDENT (admin & student) */
+
+.division {
+  margin: 1rem auto;
+  padding-bottom: 2rem;
+}
+
 
 .three {
   padding-left: 2.5rem;
@@ -116,17 +142,10 @@ footer{
   background:linear-gradient(0deg, rgba(254, 254, 254, 0.952), rgba(141, 150, 181, 0.634)), url("p1.jpg");
 } */
 
-.studentAccountName {
-  text-align: left;
-  background-color: #5cb0ff;;
-  padding: 1rem;
-  color: #00284E;
-}
-
-.studentimage {
+/* .studentimage {
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
 .studentview {
   display: grid;
@@ -135,32 +154,19 @@ footer{
   padding: 1rem;
 }
 
-.studentupload {
+/* .studentupload {
   border-top: 1px solid gray;
   display: flex;
   justify-content: space-between;
   margin: 1rem;
-}
+} */
 
-.imageupload {
+/* .imageupload {
   display: flex;
   justify-content: space-evenly;
-}
-.maindiv {
-  padding: 1rem;
-}
+} */
 
 
-.Clendr{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.react-calendar__tile--now{
-  background: skyblue !important;
-}
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
@@ -188,8 +194,9 @@ nav ul{
 
 .fullpage{
   display: grid;
-  grid-template-columns: 1fr 3.5fr;
+  grid-template-columns: .5fr 3.5fr;
   grid-gap: 0;
+  height: 100vh;
 }
 
 
@@ -211,11 +218,18 @@ td a,.studentupload a{
  
 
 
-.division{
-  padding-bottom: 2rem;
-  
-}
-
 button {
   cursor: pointer;
+}
+
+
+.tick{
+  max-width: 30%;
+  border-radius: 50% 50%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.tick2{
+  max-width: 30%;
+  border-radius: 50% 50%;
 }

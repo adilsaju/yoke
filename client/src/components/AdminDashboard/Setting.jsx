@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 const fetchTasks = async (admin_id) => {
   let url = `/admins/${admin_id}`;
   const res = await fetch(url);
-
   const data = await res.json();
   console.log("zdata",data)
   return data;
@@ -65,7 +64,7 @@ const Setting = () => {
     <>
       <div className='fullpage'>
         <SideMenuAdmin/>
-          <div className='division'>
+          <div className='division setting'>
             <div className="admin-settings">
               <h2>Admin Info</h2>
               { <><h3>Email: <span className="fontFira">{admin.email}</span></h3>

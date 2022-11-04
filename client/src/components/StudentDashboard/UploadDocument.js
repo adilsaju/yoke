@@ -3,12 +3,12 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useState,useEffect, useContext } from 'react';
 import SideMenu from '../Navbar/SideMenu';
 import { useNavigate } from "react-router-dom";
-
+import '../../App.css'
 
 const formData2 = new FormData();
 
 
-const sendImage = async (loggedInUser,formData,url) => {
+const sendImage = async (loggedInUser,formData,url, setStudents) => {
 
   // console.log("formdata",document.querySelector("#l1").files[0])
   const res = await fetch(url, {method: 'POST',
@@ -16,11 +16,15 @@ const sendImage = async (loggedInUser,formData,url) => {
      headers: {
   }, });
   const data = await res.json();
+  //TODO: update student state also
+  setStudents(data)
+  // window.location.reload();
+
   console.log("KPPPPPPPP:",data);
   return data;
 }
 
-const updateEnglish = async (loggedInUser) => {
+const updateEnglish = async (loggedInUser, setStudents) => {
   let url = `/uploadEnglish/${loggedInUser.id}`;
   console.log("sendurl",url);
 
@@ -31,9 +35,9 @@ const updateEnglish = async (loggedInUser) => {
     // console.log("ky",files.files[i])
     formData.append("l1", files.files[i]);
 }
-  return await sendImage(loggedInUser, formData,url)
+  return await sendImage(loggedInUser, formData,url,setStudents)
 };
-const updateLic = async (loggedInUser) => {
+const updateLic = async (loggedInUser, setStudents) => {
   let url = `/uploadLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
@@ -42,9 +46,9 @@ const updateLic = async (loggedInUser) => {
   for(let i =0; i < files.files.length; i++) {
     formData.append("l4", files.files[i]);
 }
-  return await sendImage(loggedInUser,formData,url)
+  return await sendImage(loggedInUser,formData,url,setStudents)
 };
-const updateMedicalLic = async (loggedInUser) => {
+const updateMedicalLic = async (loggedInUser, setStudents) => {
   let url = `/uploadMedicalLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
@@ -53,9 +57,9 @@ const updateMedicalLic = async (loggedInUser) => {
   for(let i =0; i < files.files.length; i++) {
     formData.append("l2", files.files[i]);
 }
-  return await sendImage(loggedInUser,formData,url)
+  return await sendImage(loggedInUser,formData,url, setStudents)
 };
-const updateRadioLic = async (loggedInUser) => {
+const updateRadioLic = async (loggedInUser, setStudents) => {
   let url = `/uploadRadioLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
   
@@ -64,8 +68,16 @@ const updateRadioLic = async (loggedInUser) => {
   for(let i =0; i < files.files.length; i++) {
     formData.append("l3", files.files[i]);
 }
-  return await sendImage(loggedInUser,formData,url)
+  return await sendImage(loggedInUser,formData,url,setStudents)
 };
+
+const uploadAll = async (loggedInUser, setStudents)  => {
+  await updateRadioLic(loggedInUser, setStudents)
+  await updateMedicalLic(loggedInUser, setStudents)
+  await updateLic(loggedInUser, setStudents)
+  await updateEnglish(loggedInUser, setStudents)
+  window.location.reload();
+}
 
 const fetchTasks = async (loggedInUser) => {
   let url = `/students/${loggedInUser.id}`;
@@ -77,12 +89,20 @@ const fetchTasks = async (loggedInUser) => {
 };
 
   const UploadDocument = () => {
+
   const navigate = useNavigate();
 
     const {loginCredentials} = useContext(UserContext)
   
               const [students,setStudents] = useState([]);
+              const [pic1,setPic1] = useState([]);
+              const [l1,setL1] = useState([]);
+
+              
               useEffect(() => {
+               setPic1([document.querySelector("#pic1"),document.querySelector("#pic2"),document.querySelector("#pic3"),document.querySelector("#pic4")])
+               setL1([document.querySelector("#l1"),document.querySelector("#l2"),document.querySelector("#l3"),document.querySelector("#l4")])
+
                   const getTasks = async () => {
                   const tfs = await fetchTasks(loginCredentials.loggedInUser);
                   setStudents(tfs);
@@ -125,38 +145,83 @@ const fetchTasks = async (loggedInUser) => {
   return (
     <>
 
-     <div className='fullpage'>
+    <div className='fullpage'>
        <SideMenu/>
-      <div className='division'>
-      <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
-        </div>
+      <div className='division uploadDocs'>
+        
 
-    <h2>Upload Documents</h2>
-    {console.log(students)}
-    {console.log("wah")}
-    {/* <form>
-    <div><label htmlFor="l1">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l1" id="l1" /></div><br />
-    <div><label htmlFor="l2">Private License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l2" id="l2" /></div><br />
-    <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3" /></div><br />
-    <div><label htmlFor="l4">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l4" id="l4" /></div><br />
-    <button>Submit</button> */}
+          <div className="box">
+            <div className="topOfTheBox">
+              <h3>Upload Documents</h3>
+            </div>
+                {console.log(students)}
+                {console.log("wah")}
+                {/* <form>
+                <div><label htmlFor="l1">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l1" id="l1" /></div><br />
+                <div><label htmlFor="l2">Private License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l2" id="l2" /></div><br />
+                <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3" /></div><br />
+                <div><label htmlFor="l4">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l4" id="l4" /></div><br />
+                <button>Submit</button> */}
+            
+            <div className="imageupload">
+              {/* <div className="uploadSection"> */}
+                <div>
+                  <h3>Medical License</h3>
+                
+                    <div className="fitImg"><img id="pic2" src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
+                    <label htmlFor="l2">Upload </label>
+                    <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+                
+                </div>
+                <div>
+                  <h3>Radio License</h3>
+                    <div className="fitImg"><img id="pic3" src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
+                    <label htmlFor="l3">Upload</label>
+                    <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0])} }   accept="image/*" type="file" name="l3" id="l3"  />
+                
+                </div>
+                <div>
+                  <h3>Pilot's License</h3>
+                
+                    <div className="fitImg"><img id="pic4" src={students.studentRequirements && students.studentRequirements.license}/></div>
+                    <label htmlFor="l4">Upload</label>
+                    <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0])} }   accept="image/*" type="file" name="l4" id="l4"   />
+                
+                </div>
+                <div>
+                  <h3>English Proficiency</h3>
+                
+                    <div className="fitImg"><img id="pic1" src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
+                    <label htmlFor="l1">Upload</label>
+                    <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
+                    {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
+                </div>
+              {/* </div> */}
 
+              
+                {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
+              
+                {/* </form> */}
+            </div>
+            {/* end of imageupload */}
+            
+            <div className="whiteBg">
+              <div className="buttonWrapper">
+                  <button className="transparentBtn duo" onClick={(e) => { navigate(-1)  }}  >
+                  Cancel
+                  </button>
+                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
+                </div>
+              
+                        </div>
+            </div>
+          {/* end of box */}
 
-      <div><label htmlFor="l2">Medical License : <img src={students.studentRequirements && students.studentRequirements.medicalLicense}></img></label><input type="file" name="l2" id="l2"   onChange={ (e) => { updateMedicalLic(loginCredentials.loggedInUser)}  }   /></div><br />
-    <div><label htmlFor="l3">Radio License : <img src={students.studentRequirements && students.studentRequirements.radioLicense}></img></label><input type="file" name="l3" id="l3"  onChange={ (e) => { updateRadioLic(loginCredentials.loggedInUser)}  }  /></div><br />
-    <div><label htmlFor="l4">License : <img src={students.studentRequirements && students.studentRequirements.license}></img></label><input type="file" name="l4" id="l4" onChange={ (e) => { updateLic(loginCredentials.loggedInUser)}  }   /></div><br />
-    <div><label htmlFor="l1">English Proficiency : <img src={students.studentRequirements && students.studentRequirements.englishProficiency}></img></label><input type="file" name="l1" id="l1"   onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }   /></div><br />
-    <br></br>
-      <br></br>
-    {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
-
-    <br></br>
-    {/* </form> */}
+      </div>
+      {/* end of division */}
+    
     </div>
-    </div>
+    {/* end of fullpage */}
     </>
     
   )

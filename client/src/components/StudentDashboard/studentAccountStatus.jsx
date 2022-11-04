@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import { useNavigate } from "react-router-dom";
+// import './studentAccountStatus.css';
+// import '../../App.css';
+
 
 //Fetch Data using API
 
@@ -56,18 +59,41 @@ useEffect(() => {
        <SideMenu/>
       <div className='division'>
       
-      <div className='maindiv'>
-      <h1 className='studentAccountName'>{students.name}</h1>
+      <div className='box studentProfile'>
+      <h3 className='studentAccountName'>{students.name}</h3>
      
         <div className='studentimage'>
-          <img src= {students.photo}/>
-          <div className='studentviews'>
-          {students.length===0? console.log("Nothing") : <h2>Hours Flown : {students.studentRequirements && students.studentRequirements.flownHours}</h2>  }
+          <img 
+          className='studentImg' src={students.photo} alt='profile of student' />
           
-          <h2>Student ID : {students.studentNumber}</h2>
-          <h2>Course : {students.program}</h2>
-          {students.length===0? console.log("Nothing") : <h2>Account Balance : {students.studentRequirements && students.studentRequirements.balance}</h2>  }
-          {/* {students.length===0 ? console.log("Nothing") : <h2>Hours Flown : {students.requests[0].isApproved? students.requests[0].isApproved : "No upcoming flights"}</h2>  } */}
+          <div className='studentviews'>
+            {students.length===0? console.log("Nothing") : 
+            <div>
+              <h4>Hours Flown:&nbsp;</h4>
+              <span>{students.studentRequirements && students.studentRequirements.flownHours}  </span>
+            </div>
+            }
+          
+            <div>
+              <h4>Student ID:&nbsp;</h4>
+              <span>{students.studentNumber}</span>
+            </div>
+          
+            <div>
+              <h4>Course:&nbsp;</h4>
+              <span>{students.program}</span>
+            </div>
+            
+            {students.length===0? console.log("Nothing") : 
+            <div>
+                <h4>Account Balance:&nbsp;</h4>
+                
+                <span>{students.studentRequirements && students.studentRequirements.balance}
+                </span> 
+            </div>
+            }
+          
+              {/* {students.length===0 ? console.log("Nothing") : <h2>Hours Flown : {students.requests[0].isApproved? students.requests[0].isApproved : "No upcoming flights"}</h2>  } */}
           </div>
         </div>
       {students.length===0? console.log("Nothing") : <StudentUpload starry = {students} />  }

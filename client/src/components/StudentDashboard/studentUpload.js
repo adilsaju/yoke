@@ -1,49 +1,53 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+// import './studentAccountStatus.css';
 
 const StudentUpload = (props) => {
     
     
   return (
-    <div>
+    <div className="whiteBg">
         
         <div className='studentupload'>
-          <h1> Uploaded documents :</h1>
-          <button > <Link to='/student-account-status/upload-document'>Update</Link></button>
-        </div>
+          <div className="topOfTheBox">
+            <h3>Uploaded documents</h3>
+            <button className="yellowBtn"> <Link to='/student-account-status/upload-document'>Update</Link></button>
+          </div>
+        
 
-        <div className='imageupload'>
-          <h2>
-              Medical License: <br></br>
-              <img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense}></img>
-          </h2>
-          
-          <br>
-          </br>
-          <h2>
-              Private License: <br></br>
-              <img src= {props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.license}></img>
-          
-               {/* {props.starry.studentDocumentVerification.license} */}
-          </h2>
-          <br>
-          </br>
-          <h2>
-              Radio License:<br></br>
-          
-              <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.radioLicense}></img>
-               {/* {props.starry.studentDocumentVerification.radioLicense} */}
-          </h2>
-          
-          <br>
-          </br>
-          
-          <h2>
-              English Proficiency :
-              <br></br>
-              <img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.englishProficiency}></img>
-          </h2>
-        </div>
+            <div className='imageupload'>
+              <div>
+                  <div className="uploaded"><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense} /></div>
+                  <p>Medical License</p>
+              </div>
+              
+              
+                
+                <div>
+                    <div className="uploaded"><img src= {props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.license} /></div>
+                    <p>Private License</p>
+                </div>
+                
+                    {/* {props.starry.studentDocumentVerification.license} */}
+                
+
+                <div>
+                    <div className="uploaded"><img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.radioLicense} /></div>
+                    <p>Radio License</p>
+                </div>
+                    {/* {props.starry.studentDocumentVerification.radioLicense} */}
+                
+                
+                <div>
+                    <div className="uploaded"><img src={props.starry && props.starry.studentRequirements &&  props.starry.studentRequirements.englishProficiency} /></div>
+                    <p>English Proficiency </p>
+                </div>
+                
+            </div>
+            {/* end of imageupload */}
+        </div>   
+        {/* end of studentupload  */}
+
        <br></br>
         
    

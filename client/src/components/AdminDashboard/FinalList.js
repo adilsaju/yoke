@@ -56,7 +56,7 @@ const sentEmail = async () => {
           <div className='fullpage'>
             <SideMenuAdmin/>
               <div className='division'>
-                <div className="subdivision">
+                <div className="subDivision">
                   <div className="topDivision">
                     <Search />
                     <div className="leftBorder">
