@@ -199,10 +199,10 @@ const fetchTasks = async (loggedInUser) => {
               {/* </div> */}
 
               <div className="buttonWrapper">
-                <button className="transparentBtn" onClick={(e) => { navigate(-1)  }}  >
+                <button className="transparentBtn duo" onClick={(e) => { navigate(-1)  }}  >
                 Cancel
                 </button>
-                <button className="yellowBtn" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
+                <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
               </div>
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
               

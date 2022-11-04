@@ -56,10 +56,19 @@ width: 1px;
 .transparentBtn {
   background-color: #ffffff;
   color: #00284E;
-  border: 1px solid #00284E;
+  border: 2px solid #00284E;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   padding: 0.3rem 1.2rem;
+}
+
+button.duo {
+  width: 6rem;
+  height: 2rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* VIEW PROFILE OF STUDENT (admin & student) */
