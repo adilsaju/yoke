@@ -136,9 +136,11 @@ const Viewprofiles = () => {
       <SideMenuAdmin/>
       <div className='division'>
         <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
+          <Link to="/travel-order">
+            <button>
+              Back
+            </button>
+          </Link>
         </div>
 
 

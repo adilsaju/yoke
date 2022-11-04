@@ -102,9 +102,11 @@ const RequestTravelOrder = () => {
             </div>
             {/* <input type="date" /> <br /> */}
             <div className="buttonWrapper">
-              <button className="transparentBtn duo"  onClick={(e) => { navigate(-1)  }}  >
-                  Cancel
-              </button>
+              <Link to="/student-travel-order">
+                <button className="transparentBtn duo">
+                    Cancel
+                </button>
+              </Link>
               <button className="yellowBtn duo" onClick={(e) => { req(value, loginCredentials.loggedInUser);setTimeout( openModal,500)} } >Submit</button>
             </div>
           </div>
