@@ -149,9 +149,7 @@ const fetchTasks = async (loggedInUser) => {
        <SideMenu/>
       <div className='division uploadDocs'>
         <div className="backBar">
-            <button  onClick={(e) => { navigate(-1)  }}  >
-              Back 
-            </button>
+            
         </div>
 
           <div className="box">
@@ -202,6 +200,11 @@ const fetchTasks = async (loggedInUser) => {
                   <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
                   {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
               </div>
+
+              <button className="transparentBtn" onClick={(e) => { navigate(-1)  }}  >
+              Cancel 
+              </button>
+
               <button className="yellowBtn" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
               
