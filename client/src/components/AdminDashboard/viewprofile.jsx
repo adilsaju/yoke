@@ -82,6 +82,8 @@ const Viewprofile = () => {
   const [cnt, setCnt]= useState([])
   const [prevId, setPrevId]= useState("")
   const [nextId, setNextId]= useState("")
+  const [images, setImages]= useState([])
+
   console.log("previd",prevId);
   console.log("nextId",nextId);
 
@@ -98,24 +100,24 @@ const Viewprofile = () => {
 
       const tfs2 = await fetchTasks2();
       
-      // const [images, setImages] = useState([
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.license}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //   },
-      // ]);
+       setImages([
+        {
+          original: `${tfs.requestedStudent.studentRequirements.license}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+        },
+      ]);
 
 
 
