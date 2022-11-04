@@ -35,7 +35,7 @@ const SettingStudent = () => {
     <>
     <div className='fullpage'>
        <SideMenu/>
-      <div className='division'>
+      <div className='division setting'>
     
     <div className="admin-settings">
      { <><h3>Email: <span className="fontFira">{student.email}</span></h3>
