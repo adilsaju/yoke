@@ -136,3 +136,9 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
     gap: 1rem;
     justify-content: flex-end;
 }
+
+/***** MODALS *****/
+.ReactModal__Content.ReactModal__Content--after-open {
+    width: 20vw;
+    border-radius: 20px!important;
+}
