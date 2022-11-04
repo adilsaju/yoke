@@ -148,9 +148,7 @@ const fetchTasks = async (loggedInUser) => {
     <div className='fullpage'>
        <SideMenu/>
       <div className='division uploadDocs'>
-        <div className="backBar">
-            
-        </div>
+        
 
           <div className="box">
             <div className="topOfTheBox">
@@ -166,46 +164,46 @@ const fetchTasks = async (loggedInUser) => {
                 <button>Submit</button> */}
             
             <div className="imageupload">
-              <div>
-                <h3>Medical License</h3>
-                  
-                  <div className="fitImg"><img id="pic2" src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
-                  <label htmlFor="l2">Upload </label>
-                  <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+              {/* <div className="uploadSection"> */}
+                <div>
+                  <h3>Medical License</h3>
                 
+                    <div className="fitImg"><img id="pic2" src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
+                    <label htmlFor="l2">Upload </label>
+                    <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+                
+                </div>
+                <div>
+                  <h3>Radio License</h3>
+                    <div className="fitImg"><img id="pic3" src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
+                    <label htmlFor="l3">Upload</label>
+                    <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0])} }   accept="image/*" type="file" name="l3" id="l3"  />
+                
+                </div>
+                <div>
+                  <h3>Pilot's License</h3>
+                
+                    <div className="fitImg"><img id="pic4" src={students.studentRequirements && students.studentRequirements.license}/></div>
+                    <label htmlFor="l4">Upload</label>
+                    <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0])} }   accept="image/*" type="file" name="l4" id="l4"   />
+                
+                </div>
+                <div>
+                  <h3>English Proficiency</h3>
+                
+                    <div className="fitImg"><img id="pic1" src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
+                    <label htmlFor="l1">Upload</label>
+                    <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
+                    {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
+                </div>
+              {/* </div> */}
+
+              <div className="buttonWrapper">
+                <button className="transparentBtn" onClick={(e) => { navigate(-1)  }}  >
+                Cancel
+                </button>
+                <button className="yellowBtn" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
               </div>
-
-              <div>
-                <h3>Radio License</h3>
-                  <div className="fitImg"><img id="pic3" src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
-                  <label htmlFor="l3">Upload</label>
-                  <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0])} }   accept="image/*" type="file" name="l3" id="l3"  />
-                
-              </div>
-
-              <div>
-                <h3>Pilot's License</h3>
-                
-                  <div className="fitImg"><img id="pic4" src={students.studentRequirements && students.studentRequirements.license}/></div>
-                  <label htmlFor="l4">Upload</label>
-                  <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0])} }   accept="image/*" type="file" name="l4" id="l4"   />
-                
-              </div>
-
-              <div>
-                <h3>English Proficiency</h3>
-                
-                  <div className="fitImg"><img id="pic1" src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
-                  <label htmlFor="l1">Upload</label>
-                  <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
-                  {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
-              </div>
-
-              <button className="transparentBtn" onClick={(e) => { navigate(-1)  }}  >
-              Cancel 
-              </button>
-
-              <button className="yellowBtn" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
               
                 {/* </form> */}

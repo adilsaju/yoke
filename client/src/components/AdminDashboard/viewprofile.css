@@ -308,6 +308,13 @@ padding: 0;
     display: none;
 }
 
+.buttonWrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-direction: row!important;
+    flex: 1 0 100%;
+}
 
 /****** POP UP ******/
 .overlay {
