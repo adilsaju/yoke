@@ -307,12 +307,16 @@ padding: 0;
     display: none;
 }
 
-.buttonWrapper {
+.uploadDocs .buttonWrapper {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: flex-start!important;
     flex-direction: row!important;
     flex: 1 0 100%;
+    border-top: 2px solid #C8E4FF;
+    padding: 2rem 1rem;
+    background-color: #ffffff;
+    margin: 0 1rem;
 }
 
 /****** POP UP ******/

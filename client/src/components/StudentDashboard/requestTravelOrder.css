@@ -135,6 +135,7 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
+    
 }
 
 /***** MODALS *****/

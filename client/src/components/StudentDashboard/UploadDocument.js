@@ -198,19 +198,23 @@ const fetchTasks = async (loggedInUser) => {
                 </div>
               {/* </div> */}
 
-              <div className="buttonWrapper">
-                <button className="transparentBtn duo" onClick={(e) => { navigate(-1)  }}  >
-                Cancel
-                </button>
-                <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
-              </div>
+              
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
               
                 {/* </form> */}
             </div>
             {/* end of imageupload */}
             
-          </div>
+            <div className="whiteBg">
+              <div className="buttonWrapper">
+                  <button className="transparentBtn duo" onClick={(e) => { navigate(-1)  }}  >
+                  Cancel
+                  </button>
+                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
+                </div>
+              
+                        </div>
+            </div>
           {/* end of box */}
 
       </div>
