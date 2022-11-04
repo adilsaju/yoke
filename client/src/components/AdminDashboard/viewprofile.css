@@ -2,7 +2,7 @@
     background-color: #00284E;
     padding: 0 1rem;
     text-align-last: left;
-    margin-bottom: 1rem;
+    margin: 0 1rem 1rem 1rem;
 }
 
 .backBar button{
@@ -28,7 +28,7 @@
 .box {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    background: #C8E4FF;
+    background-image: linear-gradient(#C8E4FF 10%, #ffffff 20% 100%);
     margin: 0 1rem;
 }
 
@@ -92,7 +92,7 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    padding: 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     text-align: center;
     gap: 4rem;
     background-color: #ffffff;
@@ -122,7 +122,6 @@
 }
 
 .licenseimage .studentimage, .imageupload {
-    border-bottom: 2px solid #C8E4FF;
     gap: 2rem;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -140,10 +139,19 @@
     object-fit: cover;
     height: 100%;
 }
+
+.uploaded p {
+ margin: 0;
+ padding-bottom: 1rem;
+}
+
 .notes {
     text-align: left;
     background-color: #ffffff;
     padding: 0 1rem;
+    border-top: 2px solid #C8E4FF;
+    border-bottom: 2px solid #C8E4FF;
+    margin: 0 1rem;
 }
 
 .notes h4 {
@@ -185,7 +193,6 @@
     justify-content: space-between;
     background-color: #ffffff;
     padding: 1rem 5rem;
-    border-top: 2px solid #C8E4FF;
 }
 
 .accept {
