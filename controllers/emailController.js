@@ -75,12 +75,12 @@ async function main(recipient,reason, body) {
     return async (req, res, next) => {
       let message = req.body.text
       let fldt = req.body.travelDate
-
+      let studentmail = req.body.mailId
       body = `Hello, Your Request for ${`${fldt}`} has been approved.`
       // let studentId = req.body.studentEmail
 
       // const studentEmail = Student.studentModel.findById(studentId).select(email);
-      const studentEmail = "mohitwadhwa1233@gmail.com"
+      const studentEmail = studentmail
       try {
         // body=`<b>Hello world?</b>`
         main(studentEmail,message, body).catch(console.error);
@@ -98,10 +98,12 @@ async function main(recipient,reason, body) {
       let message = req.body.text
       let fldt = req.body.travelDate
       let ROD = req.body.declineReason
-      // let studentId = req.body.studentEmail
-      body = `Hello, Your Request for ${fldt} has been declined and the reason is : ${ROD}`
-      // const studentEmail = Student.studentModel.findById(studentId).select(email);
-      const studentEmail = "mohitwadhwa1233@gmail.com"
+      let studentmail = req.body.mailId
+
+      // const studenEmail = Student.studentModel.findById(studentId).select(email);
+     
+      body = `Hello, Your Request for ${fldt} has been declined and the reason is : ${ROD} `
+      const studentEmail = studentmail
       try {
         // body=`<b>Hello world?</b>`
         main(studentEmail,message, body).catch(console.error);

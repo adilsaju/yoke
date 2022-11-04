@@ -7,12 +7,13 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-const sentEmailStudentApproved = async (flydate) => {
+const sentEmailStudentApproved = async (flydate,mailid) => {
   let url = `/sentEmailStudentApproved`;
   let flydate2 = moment(flydate).format("MMMM Do , YYYY")
   const bod1 = {
     "text": 'Your Request has been approved',
-    "travelDate" : flydate2
+    "travelDate" : flydate2,
+    "mailId" : mailid
     }
       const res = await fetch(url, 
         {
@@ -112,7 +113,7 @@ console.log(loginCredentials.loggedInUser.id);
       >
         <img className='tick' src={require('../images/200w.gif')} alt='' />
         <div><h2>Request approved successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModal();sentEmailStudentApproved(request.flightDate)}}>OK</button></Link>
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModal();sentEmailStudentApproved(request.flightDate,request.requestedStudent.email)}}>OK</button></Link>
         {/* <form>
           <input />
           <button>tab navigation</button>

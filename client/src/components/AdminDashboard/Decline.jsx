@@ -7,15 +7,17 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 let resss = "";
-const sentEmailStudentDeclined = async (flydate,rod) => {
+const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
   let url = `/sentEmailStudentDeclined`;
 
   let flydate2 = moment(flydate).format("MMMM Do , YYYY")
-  alert(rod);
+
   const bod1 = {
     "text": 'Your Request has been declined',
     "travelDate" : flydate2,
-    "declineReason" : rod
+    "declineReason" : rod,
+    "mailId" : mailid
+    
     }
       const res = await fetch(url, 
         {
@@ -143,7 +145,8 @@ const Decline = () => {
           <form action='#' id="form1" >
           <label htmlFor="reason for denial"><h2>Reason for Rejection:  </h2></label>
           <select name="rod" id="rod">
-          <option value="Balance insufficient">Balance insufficient</option>
+          {/* <option value="null" selected disabled hidden>Please choose</option> */}
+          <option value="Balance insufficient" selected>Balance insufficient</option>
           <option value="Flight hours insufficient">Flight hours insufficient</option>
           <option value="License not valid">License not valid</option>
           <option value="No spots left">No spots left</option>
@@ -164,7 +167,7 @@ const Decline = () => {
       >
         <img className='tick2' src={require('../images/verified.gif')} alt='' />
         <div><h2>Request declined successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();sentEmailStudentDeclined(request.flightDate,resss)}}>OK</button></Link>
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email)}}>OK</button></Link>
       </Modal> 
       
     </div>
