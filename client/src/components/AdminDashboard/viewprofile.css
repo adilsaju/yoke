@@ -349,6 +349,7 @@ padding: 0;
     align-items: center;
     align-content: center;
     justify-content: center;
+    z-index: 2;
   }
 
 .popup {
@@ -433,4 +434,9 @@ padding: 0;
 .image-gallery-thumbnail+.image-gallery-thumbnail,
 .image-gallery-thumbnail {
     padding: .5rem!important;
+}
+
+/* OTHER MODALS */
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    z-index: 2;
 }
