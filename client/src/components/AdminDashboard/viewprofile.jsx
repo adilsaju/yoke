@@ -159,11 +159,13 @@ const Viewprofile = () => {
     
     <div className='fullpage'>
       <SideMenuAdmin/>
-      <div className='division'>
+      <div className='division viewProfile'>
         <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
+          <Link to="/travel-order">
+            <button>
+              Back
+            </button>
+          </Link>
         </div>
 
 
@@ -267,8 +269,10 @@ const Viewprofile = () => {
             <h4>Notes</h4>
             <div className="noteWrapper">
               <textarea name="" id="note1" cols="40" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  disabled></textarea> <br />
-              <button className="dBlueBtn" onClick={(e) => {  document.querySelector("#note1").disabled = false }}  >Edit</button>
-              <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
+              <div className="buttonWrapper">
+                <button className="transparentBtn" onClick={(e) => {  document.querySelector("#note1").disabled = false }}  >Edit</button>
+                <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes)}}  >Save</button>
+              </div>
             </div>
             {/* end of noteWrapper */}
           </div>

@@ -115,7 +115,7 @@ const LoginPage = () => {
 <div className="parent">
 
     <div className="dummy">
-
+    <img src='login_imgg.png' ></img>
     </div>
 
     <div className='form1'>
@@ -126,8 +126,10 @@ const LoginPage = () => {
       <br />
       <div className="label-input-wrapper">
 
-        <label htmlFor="loginid">email :  </label>
+        <label htmlFor="loginid">Username :  </label>
+        <div className="ii-wrapper"  >
         <input type="email" name="email" id="loginid" />
+        </div>
       </div>
         <br />
       <div className="label-input-wrapper">
@@ -142,9 +144,9 @@ const LoginPage = () => {
 
         <br />
         <br />
+      
+      <button onClick={(e) => { login()}} >login</button><br></br>
       <a href="#">Forgot Password?</a>
-      <button onClick={(e) => { login()}} >loginnn</button>
-
         {/* <input type="submit" /> */}
       <br />
       {/* </div> */}

@@ -4,8 +4,33 @@ import { useParams } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
+let resss = "";
+const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
+  let url = `/sentEmailStudentDeclined`;
 
+  let flydate2 = moment(flydate).format("MMMM Do , YYYY")
+
+  const bod1 = {
+    "text": 'Your Request has been declined',
+    "travelDate" : flydate2,
+    "declineReason" : rod,
+    "mailId" : mailid
+    
+    }
+      const res = await fetch(url, 
+        {
+          method: 'POST', 
+         body: JSON.stringify(bod1),  
+         headers: { 'Content-Type': 'application/json'}, 
+        }
+        );
+  const data = await res.json();
+
+  console.log("IMPPPPPPPPPPPPP:",data);
+  return data;
+};
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
   const res = await fetch(url);
@@ -84,6 +109,8 @@ const Decline = () => {
   const [modalIsOpenalso, setIsOpenalso] = React.useState(false);
   function openModalalso() {
     setIsOpenalso(true);
+    resss = document.getElementById("rod").value
+    
   }
   function afterOpenModalalso() {
     // references are now sync'd and can be accessed.
@@ -115,20 +142,22 @@ const Decline = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-          <form id="form1" >
+          <form action='#' id="form1" >
           <label htmlFor="reason for denial"><h2>Reason for Rejection:  </h2></label>
           <select name="rod" id="rod">
-          <option value="low balance">Balance insufficient</option>
-          <option value="fly hours less">Flight hours insufficient</option>
-          <option value="License not approved">License not valid</option>
-          <option value="No spots left">No spots left</option>
+          {/* <option value="null" selected disabled hidden>Please choose</option> */}
+          <option value="Balance insufficient" selected>Insufficient Balance</option>
+          <option value="Flight hours insufficient">Insufficient flight hours</option>
+          <option value="License not valid">Expired document/s</option>
+          <option value="No spots left">Document/s will expire in 30 days</option>
         </select><br></br>
         <br></br>
-        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser);closeModal();sentEmail();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
+        {/* {alert((document.getElementById("rod")).value)} */}
+        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser);closeModal();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
         </form>
-       
+        
       </Modal> 
-
+     
       <Modal
         isOpen={modalIsOpenalso}
         onAfterOpen={afterOpenModalalso}
@@ -138,8 +167,7 @@ const Decline = () => {
       >
         <img className='tick2' src={require('../images/verified.gif')} alt='' />
         <div><h2>Request declined successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={closeModalalso}>OK</button></Link>
-        
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email)}}>OK</button></Link>
       </Modal> 
       
     </div>

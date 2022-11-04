@@ -175,6 +175,7 @@ const approveRequestById = () => {
 
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
+    console.log("getRequestsByStudentId")
     try {
       const studentId = req.query.student;
 
@@ -194,8 +195,8 @@ const getRequestsByStudentId = () => {
       // const abc=await Student.studentModel.findById(studentId).select('requests')
       console.log('rrrr');
       const abc = await Request.requestModel.find({
-        'requestedStudent._id': studentId,
-      });
+        'requestedStudent': studentId,
+      }).populate("requestedStudent").populate("approvedAdmin");
 
       res.json(abc);
     } catch (error) {
@@ -236,8 +237,8 @@ const getRequestsByStudentIdValidated = () => {
       // const abc=await Student.studentModel.findById(studentId).select('requests')
       console.log('rrrr');
       const requestsDBArr = await Request.requestModel.find({
-        'requestedStudent._id': studentId,
-      });
+        'requestedStudent': studentId,
+      }).populate("requestedStudent").populate("approvedAdmin");
 
       const newRequestsDBArr = JSON.parse(JSON.stringify(requestsDBArr))
 
@@ -539,7 +540,7 @@ const getRequestById = () => {
       //get requests column from student
       const abc = await Request.requestModel.findById(
         req.params.id
-      );
+      ).populate("requestedStudent").populate("approvedAdmin");
       res.json(abc);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -550,17 +551,28 @@ const getRequestById = () => {
 const claireFn = () => {
   return async (req, res) => {
     try {
-      const pendingRequests = await Request.requestModel
-        .find({
+      // const pendingRequests = await Request.requestModel
+      //   .find({
+      //     isApproved: false,
+      //     isRejected: false,
+      //     isExpired: false,
+      //     // adminVerifiedDate: null,
+      //     // approvedAdmin: null
+      //   })
+      //   .sort({ flightDate: 1 });
+        // pendingRequests.forEach((el)=>{
+        //   console.log(el.populate("requestedStudent"))
+        //  el.requestedStudent = el.populate("requestedStudent")
+        // })
+        const pendingRequests2 = await Request.requestModel.find({
           isApproved: false,
           isRejected: false,
           isExpired: false,
           // adminVerifiedDate: null,
           // approvedAdmin: null
-        })
-        .sort({ flightDate: 1 });
-
-      res.json(pendingRequests);
+        }).sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin")
+        console.log(pendingRequests2)
+      res.json(pendingRequests2);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

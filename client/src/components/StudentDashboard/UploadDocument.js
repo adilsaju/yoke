@@ -3,6 +3,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useState,useEffect, useContext } from 'react';
 import SideMenu from '../Navbar/SideMenu';
 import { useNavigate } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import '../../App.css'
 
 const formData2 = new FormData();
@@ -207,9 +208,11 @@ const fetchTasks = async (loggedInUser) => {
             
             <div className="whiteBg">
               <div className="buttonWrapper">
-                  <button className="transparentBtn duo" onClick={(e) => { navigate(-1)  }}  >
-                  Cancel
-                  </button>
+                  <Link to="/student-account-status">
+                    <button className="transparentBtn duo">
+                      Cancel
+                    </button>
+                    </Link>
                   <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
                 </div>
               

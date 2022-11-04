@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const {studentSchema} = require('./StudentModel')
 const {adminSchema} = require('./adminModel')
+const Schema = mongoose.Schema
+
 
 
 const requestSchema = new mongoose.Schema({
@@ -21,8 +23,12 @@ const requestSchema = new mongoose.Schema({
        type: Date,
        default: Date.now
     },
-    requestedStudent: studentSchema,
-    approvedAdmin: adminSchema,
+    requestedStudent: { type: Schema.Types.ObjectId,
+      ref: "student"
+   },
+    approvedAdmin: { type: Schema.Types.ObjectId,
+      ref: "admin"
+   },
     isRejected: {
       type: Boolean,
       default: false
