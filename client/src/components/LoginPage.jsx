@@ -142,7 +142,7 @@ const LoginPage = () => {
 
         <br />
         <br />
-      <a href="daasa">Forgot Password?</a>
+      <a href="#">Forgot Password?</a>
       <button onClick={(e) => { login()}} >loginnn</button>
 
         {/* <input type="submit" /> */}
