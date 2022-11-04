@@ -1,26 +1,24 @@
-.form1{
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 1rem;
-}
+
 
 .parent {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    margin-top: 5rem;
 }
 
-.label-input-wrapper {
-    display: grid;
-    grid-template-columns: 1fr  ;
-    text-align: left;
-    /* justify-content: center; */
+.form1{
+    background-color: #DDEFFF;
+    max-width: 50%;
+   
 }
 
-.label-input-wrapper label{
+
+/* .label-input-wrapper label{
     text-align: right;
 }
 
 .ii-wrapper {
     display: flex;
     flex-flow: column nowrap;
-}
+} */
