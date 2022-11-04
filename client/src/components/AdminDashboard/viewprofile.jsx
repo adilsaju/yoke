@@ -266,7 +266,8 @@ const Viewprofile = () => {
           <div className='notes'>
             <h4>Notes</h4>
             <div className="noteWrapper">
-              <textarea name="" id="" cols="40" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  ></textarea> <br />
+              <textarea name="" id="note1" cols="40" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  disabled></textarea> <br />
+              <button className="dBlueBtn" onClick={(e) => {  document.querySelector("#note1").disabled = false }}  >Edit</button>
               <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes)}}  >Update Notes</button>
             </div>
             {/* end of noteWrapper */}
