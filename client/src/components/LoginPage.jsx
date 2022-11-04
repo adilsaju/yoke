@@ -5,7 +5,7 @@ import { useState,useEffect,useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext';
 import "./LoginPage.css";
 import cover from './images/login_img.jpg';
-
+import logoDBlue from './images/logoDrkBlue.png'
 
 
 const LoginPage = () => {
@@ -120,33 +120,32 @@ const LoginPage = () => {
       {/* <div className='fullpage'> */}
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
-
-      <br />
-      <div className="label-input-wrapper">
-
-        <label htmlFor="loginid">Username :  </label>
-        <div className="ii-wrapper"  >
-        <input type="email" name="email" id="loginid" />
+      <img src={logoDBlue} ></img>
+      <p>Please login with your school credentials.</p>
+      <div className="inputField">
+        <div className="label-input-wrapper">
+          <label htmlFor="loginid">Your Email</label>
+          <div className="ii-wrapper"  >
+          <input type="email" name="email" id="loginid" />
+          </div>
         </div>
-      </div>
-        <br />
-      <div className="label-input-wrapper">
-
-        <label htmlFor="password">Password :  </label>
-        <div className="ii-wrapper"  >
-
-            <input type="password" name="password" id="password" />
-            <button onClick={(e)=>{show()}} >show</button>
+        <div className="label-input-wrapper">
+          <label htmlFor="password">Your Password</label>
+          <div className="ii-wrapper passwordWrapper"  >
+              <input type="password" name="password" id="password" />
+              <button onClick={(e)=>{show()}} >show</button>
+              <a href="#">Forgot Password?</a>
+          </div>
         </div>
       </div>
 
         <br />
         <br />
       
-      <button onClick={(e) => { login()}} >login</button><br></br>
-      <a href="#">Forgot Password?</a>
+      <button className="yellowBtn" onClick={(e) => { login()}} >login</button>
+      
         {/* <input type="submit" /> */}
-      <br />
+      
       {/* </div> */}
       {/* </div> */}
     </div>

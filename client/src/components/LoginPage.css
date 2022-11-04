@@ -1,18 +1,45 @@
-
-
 .parent {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(12,1fr);
     align-items: center;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
+    height: 83vh;
+}
+
+.dummy {
+    grid-column: 1/10;
+    grid-row: 1/2;
+}
+
+.dummy img {
+    border-radius: 0px 50px 50px 0px;
 }
 
 .form1{
-    background-color: #DDEFFF;
-    max-width: 50%;
-   
+    /* background-color: #DDEFFF;
+    max-width: 50%; */
+    grid-column: 9/12;
+    grid-row: 1/2;
+    background: #DDEFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    height: 25rem;
+    padding: 1.5rem 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+.form1 img {
+    max-width: 9rem;
+    padding-bottom: 2rem;
+}
+
+.form1 p {
+    font-size: smaller;
+}
 
 /* .label-input-wrapper label{
     text-align: right;
@@ -22,3 +49,33 @@
     display: flex;
     flex-flow: column nowrap;
 } */
+
+.ii-wrapper input {
+    border-radius: 28.5px;
+    border: 1px solid #00284E;
+    width: 10rem;
+    height: 1.5rem;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.label-input-wrapper label {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.passwordWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .3rem;
+}
+
+.form1 .yellowBtn {
+    width: 6rem;
+}
