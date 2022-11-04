@@ -17,7 +17,6 @@ import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-
 const images = [
   {
     original: 'https://picsum.photos/id/1018/1000/600/',
@@ -99,6 +98,27 @@ const Viewprofile = () => {
 
       const tfs2 = await fetchTasks2();
       
+      // const [images, setImages] = useState([
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.license}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+      //   },
+      //   {
+      //     original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+      //     thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+      //   },
+      // ]);
+
+
+
       requestStudent(tfs);
       setRequests(tfs2);
 
@@ -206,19 +226,19 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img>
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
               <div className="uploaded">
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img>
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
               <div className="uploaded">
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img>
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
               <div className="uploaded">
-                <img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img>
+                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>
