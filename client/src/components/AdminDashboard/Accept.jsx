@@ -5,7 +5,27 @@ import { useParams } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
+const sentEmailStudentApproved = async (flydate) => {
+  let url = `/sentEmailStudentApproved`;
+  let flydate2 = moment(flydate).format("MMMM Do , YYYY")
+  const bod1 = {
+    "text": 'Your Request has been approved',
+    "travelDate" : flydate2
+    }
+      const res = await fetch(url, 
+        {
+          method: 'POST', 
+         body: JSON.stringify(bod1),  
+         headers: { 'Content-Type': 'application/json'}, 
+        }
+        );
+  const data = await res.json();
+
+  console.log("IMPPPPPPPPPPPPP:",data);
+  return data;
+};
 
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
@@ -81,7 +101,7 @@ console.log(loginCredentials.loggedInUser.id);
   return (
     <div>
     { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser);openModal()} }>Approve</button> }
-  
+   
 
     <Modal
         isOpen={modalIsOpen}
@@ -92,7 +112,7 @@ console.log(loginCredentials.loggedInUser.id);
       >
         <img className='tick' src={require('../images/200w.gif')} alt='' />
         <div><h2>Request approved successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={closeModal}>OK</button></Link>
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModal();sentEmailStudentApproved(request.flightDate)}}>OK</button></Link>
         {/* <form>
           <input />
           <button>tab navigation</button>
