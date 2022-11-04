@@ -1,12 +1,10 @@
 import React from 'react'
 import SideMenuAdmin from './Navbar/SideMenuAdmin'
 import { useNavigate } from "react-router-dom";
-
 import { useState,useEffect,useContext } from 'react';
-import {UserContext} from '../Contexts/UserContext'
-
-import "./LoginPage.css"
-
+import {UserContext} from '../Contexts/UserContext';
+import "./LoginPage.css";
+import cover from './images/login_img.jpg';
 
 
 
@@ -115,7 +113,7 @@ const LoginPage = () => {
 <div className="parent">
 
     <div className="dummy">
-    <img src='login_imgg.png' ></img>
+    <img src={cover} ></img>
     </div>
 
     <div className='form1'>
