@@ -39,12 +39,8 @@
     -webkit-text-security: disc !important;
 }
 
-/* .division {
-    margin: 1rem;
-} */
-
 .subDivision {
-    margin: auto;
+    margin: 2rem auto;
 }
 
 .topDivision {

@@ -29,7 +29,7 @@
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     background: #C8E4FF;
-    margin-bottom: 1rem;
+    margin: 0 1rem;
 }
 
 .topOfTheBox {
@@ -245,17 +245,9 @@ padding: 0;
 }
 
 /***** UploadDocument.js *****/
-/* .uploadDocs .topOfTheBox h2 {
-    margin: 0;
-}  */
-
 .uploadDocs .imageupload {
-    /* display: grid;
-    grid-template-columns: repeat(2,1fr); */
-
     display: flex;
     justify-content: space-evenly;
-
     gap: 1.5rem;
     padding-bottom: 2rem;
 }
