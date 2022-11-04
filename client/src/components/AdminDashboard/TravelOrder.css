@@ -121,6 +121,10 @@ overflow-wrap:break-word;
     padding: 0.3rem 1.2rem;
 }
 
+.setting {
+    margin: 1rem 2rem;
+}
+
 .admin-settings {
     text-align-last: left;
     padding: 1rem;
