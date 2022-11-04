@@ -75,7 +75,7 @@ async function main(recipient,reason, body) {
     return async (req, res, next) => {
       let message = req.body.text
       let fldt = req.body.travelDate
-      
+
       body = `Hello, Your Request for ${`${fldt}`} has been approved.`
       // let studentId = req.body.studentEmail
 
@@ -95,14 +95,16 @@ async function main(recipient,reason, body) {
 
   const sentEmailStudentDeclined = () => {
     return async (req, res, next) => {
-      let message = req.body.Text
+      let message = req.body.text
+      let fldt = req.body.travelDate
+      let ROD = req.body.declineReason
       // let studentId = req.body.studentEmail
-
+      body = `Hello, Your Request for ${fldt} has been declined and the reason is : ${ROD}`
       // const studentEmail = Student.studentModel.findById(studentId).select(email);
       const studentEmail = "mohitwadhwa1233@gmail.com"
       try {
-        body=`<b>Hello world?</b>`
-        main(studentEmail,"Your Flight request has been declined", body).catch(console.error);
+        // body=`<b>Hello world?</b>`
+        main(studentEmail,message, body).catch(console.error);
         res.json("sent successfull");
       } catch (error) {
         res.status(500).json({ message: error.message });
