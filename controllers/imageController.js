@@ -14,6 +14,16 @@ const bcrypt = require('bcrypt')
     return upload, async (req, res) => {
     
         upload( req, res, async (error)=> {
+
+          if (! req.params.id){
+            res.status(500).json("Invalid params")
+            return
+          }
+          console.log(req.params.id.length)
+          if ( req.params.id.length !== 24 ){
+            res.status(500).json("Invalid params")
+            return
+          }
     
           console.log("uploadEnglishByStudentId");
     
