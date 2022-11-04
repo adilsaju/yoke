@@ -27,6 +27,7 @@ import SettingStudent from './components/StudentDashboard/SettingStudent';
 import LoginPage from './components/LoginPage';
 import RejectionReason from './components/AdminDashboard/RejectionReason';
 import Decline from './components/AdminDashboard/Decline';
+import Viewprofiles from './components/AdminDashboard/Viewprofiles';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
@@ -137,7 +138,8 @@ function App() {
       <Route path="/logout" element={ <LoginPage /> } /> 
 
       <Route path="/travel-order" element={ <TravelOrder/> } />
-      <Route path="/travel-order/profile/:id" element={ <Viewprofile/> } />
+      <Route path={"/travel-order/profile/:id"} element={ <Viewprofile/> } />
+      <Route path = {"/final-list/profile/:id"} element={<Viewprofiles/>}/>
       <Route path='*' element={<NotFound/>}/>
       <Route path="/final-list" element={<FinalList/>}/>
       <Route path="/archive" element={<Archive/>}/>

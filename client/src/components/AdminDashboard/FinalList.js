@@ -83,7 +83,7 @@ const sentEmail = async () => {
                           <td>{ student.requestedStudent.name}</td>
                           <td>{ student.requestedStudent.studentNumber}</td>
                           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                          <td><Link to={ `/travel-order/profile/${student._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
+                          <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
                         </tr>
                         </tbody>
                     )}
