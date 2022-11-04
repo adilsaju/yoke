@@ -360,6 +360,7 @@ padding: 0;
 	width: 50vw;
 	box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	position: relative;
+    border-radius: 35px;
 }
 
 .light {
