@@ -42,7 +42,7 @@ const sentEmail = async () => {
                  }).catch(err => {
                    setError(err.message)
                  })
-                },1000)
+                })
         
             }, []);
               

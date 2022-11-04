@@ -203,30 +203,30 @@ const Viewprofiles = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>
 
 
 
-            <div id="popup2" class="overlay light">
-              <a class="cancel" href="#"></a>
-              <div class="popup">
+            <div id="popup2" className="overlay light">
+              <a className="cancel" href="#"></a>
+              <div className="popup">
                 <h2>{request.requestedStudent && request.requestedStudent.name}</h2>
-                <div class="content">
+                <div className="content">
                   <ImageGallery items={images} />
                   <p>Click outside the popup to close.</p>
                 </div>
