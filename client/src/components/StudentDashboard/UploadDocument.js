@@ -202,7 +202,7 @@ const fetchTasks = async (loggedInUser) => {
                   <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
                   {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
               </div>
-              <button onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save (floppy-disk)</button>
+              <button className="yellowBtn" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
                 {/* <button onClick={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }>Submit</button> */}
               
                 {/* </form> */}
