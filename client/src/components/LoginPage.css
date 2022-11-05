@@ -55,8 +55,29 @@
     border: 1px solid #00284E;
     width: 10rem;
     height: 1.5rem;
+    padding: 0 5px;
+    background-color: #DDEFFF;
 }
 
+.abc-wrapper {
+    border: 1px solid black;
+    border-radius: 28.5px;
+}
+.abc-wrapper input {
+    border: none;
+    background-color: #DDEFFF;
+    font-size: 0.8rem;
+    margin-right: .5rem;
+}
+.abc-wrapper button {
+    background-color: #DDEFFF ;
+    border: none;
+    padding: unset;
+    margin-right: .5rem;
+}
+#password {
+    border: none;
+}
 .inputField {
     display: flex;
     flex-direction: column;

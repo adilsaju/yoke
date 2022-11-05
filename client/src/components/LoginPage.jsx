@@ -132,8 +132,11 @@ const LoginPage = () => {
         <div className="label-input-wrapper">
           <label htmlFor="password">Your Password</label>
           <div className="ii-wrapper passwordWrapper"  >
+            <div className="abc-wrapper">
+
               <input type="password" name="password" id="password" />
-              <button onClick={(e)=>{show()}} >show</button>
+              <button onClick={(e)=>{show()}} > &#128065; </button>
+            </div>
               <a href="#">Forgot Password?</a>
           </div>
         </div>
