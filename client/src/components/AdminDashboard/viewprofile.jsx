@@ -201,7 +201,8 @@ const Viewprofile = () => {
           </div>
 
           <div className='studentimage'>
-            <img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' />
+          <div className="profileWrapper"><img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' /></div>
+
 
             <div className='studentviews'>
               <div>
