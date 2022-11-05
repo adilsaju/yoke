@@ -8,6 +8,9 @@ const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+// const json2html = require('node-json2html');
+// const { parse } = require('json2csv');
+// var json2html = require('json2html')
 
 
 
@@ -25,12 +28,13 @@ async function main(recipient,reason, body) {
       auth: {
         user: 'flightcoordinator.yoke@gmail.com',
         pass: 'wnamljtnjzuulvva'
+        //actual pwd is: Oneringtorulethemall
       }
     });
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Admin@flyingscholl" <adilsaju@gmail.com>', // sender address
+      from: '"Yoke App ✈️" <mailer@yoke.com>', // sender address
       to: `${recipient}`, // list of receivers
       subject: `${reason}`, // Subject line
       text: `${body}`, // plain text body
@@ -51,15 +55,60 @@ async function main(recipient,reason, body) {
       // const requestInfo = await Request.requestModel.findById(
       //   req.params.id
       // );
-      let body1 = req.body.finalList
-      body1 = {}
-      body1=JSON.stringify(body1)
-      //TODO: get final list
 
-      const email = "tarun.1999thakur33@gmail.com"
+
+      // let body1 = req.body.finalList
+      // body1 = {}
+      //TODO: get final list
+// ===========
+let body1 = await Request.requestModel
+.find({
+  isApproved: true,
+  isRejected: false,
+  isExpired: false,
+})
+.sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin").select(["flightDate", "requestedDate", "requestedStudent", "approvedAdmin" ]);
+
+// ===========
+
+kk = `
+<table style="text-align: center; border: 1px solid black;">
+  <tr>
+    <th>Flight Date</th>
+    <th>Requested Date</th>
+    <th>Student Name</th>
+    <th>Approved Admin Name</th>
+
+  </tr>`
+
+  body1.forEach((el)=>{
+
+kk+=`  <tr>
+<td>${el.flightDate}</td>
+<td>${el.requestedDate}</td>
+<td>${el.requestedStudent.name}</td>
+<td>${el.approvedAdmin && el.approvedAdmin.name}</td>
+</tr>`
+
+  })
+  kk+=`
+</table>
+`
+// const fields = ['flightDate', 'isApproved', 'requestedDate'];
+// const opts = { fields };
+
+//   const csv = parse(body1, opts);
+//   console.log(csv);
+
+
+// let kk = json2html.render(body1, {plainHtml: true})
+      // body1=JSON.stringify(body1)
+      // body1 = json2html.transform(body1)
+
+      const email = "flightcoordinator.yoke@gmail.com"
       try {
   
-        main(email,"Final List",body1).catch(console.error);
+        main(email,"Final List",kk).catch(console.error);
         res.json("sent successfull");
       } catch (error) {
         res.status(500).json({ message: error.message });
