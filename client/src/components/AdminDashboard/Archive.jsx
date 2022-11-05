@@ -68,8 +68,8 @@ return (
                               {count++}
                             </td>
                             <td>{student._id}</td>
-                            <td>{student.requestedStudent.name}</td>
-                            <td>{student.requestedStudent.studentNumber}</td>
+                            <td>{student.requestedStudent && student.requestedStudent.name}</td>
+                            <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{  
                               (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))

@@ -35,7 +35,7 @@ const TravelOrder = () => {
   }).catch(err => {
     setError(err.message)
   })
- },1000)
+ })
 
     }, []);
 let count = 1;

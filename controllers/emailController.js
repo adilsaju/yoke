@@ -30,7 +30,7 @@ async function main(recipient,reason, body) {
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Fred Foo 👻" <adilsaju@gmail.com>', // sender address
+      from: '"Admin@flyingscholl" <adilsaju@gmail.com>', // sender address
       to: `${recipient}`, // list of receivers
       subject: `${reason}`, // Subject line
       text: `${body}`, // plain text body
@@ -45,7 +45,6 @@ async function main(recipient,reason, body) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
-  
   // ******** admin decline ********
   const sentEmail = () => {
     return async (req, res, next) => {
@@ -57,7 +56,7 @@ async function main(recipient,reason, body) {
       body1=JSON.stringify(body1)
       //TODO: get final list
 
-      const email = "mohitwadhwa1233@gmail.com"
+      const email = "tarun.1999thakur33@gmail.com"
       try {
   
         main(email,"Final List",body1).catch(console.error);

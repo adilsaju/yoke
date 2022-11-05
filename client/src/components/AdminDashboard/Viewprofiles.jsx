@@ -56,7 +56,6 @@ const fetchTasks2 = async () => {
 
 const Viewprofiles = () => {
   const [request,requestStudent] = useState([]);
-  const [notes,setNotes] = useState("");
   //list of pending requests
   const [requests, setRequests]= useState([])
   const [cnt, setCnt]= useState([])
@@ -68,8 +67,6 @@ const Viewprofiles = () => {
   // const history = useHistory()
   const navigate = useNavigate();
 
-
-
   let params = useParams();
 
   useEffect(() => {
@@ -78,26 +75,6 @@ const Viewprofiles = () => {
 
       const tfs2 = await fetchTasks2();
       
-      // const [images, setImages] = useState([
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.license}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //   },
-      // ]);
-
-
 
       requestStudent(tfs);
       setRequests(tfs2);
@@ -105,7 +82,6 @@ const Viewprofiles = () => {
       setCurrentPage(tfs2, tfs)
     };
     getTasks();
-
 
 
     }, []);
@@ -136,9 +112,11 @@ const Viewprofiles = () => {
       <SideMenuAdmin/>
       <div className='division'>
         <div className="backBar">
-          <button  onClick={(e) => { navigate(-1)  }}  >
-            Back 
-          </button>
+          <Link to="/final-list">
+            <button>
+              Back
+            </button>
+          </Link>
         </div>
 
 
@@ -171,8 +149,6 @@ const Viewprofiles = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentNumber}</span>
               </div>
 
-              {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-
               <div>
                 <h4>Travel Date:&nbsp;</h4>
                 <span>{moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</span>
@@ -193,49 +169,41 @@ const Viewprofiles = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
             </div>
-            {/* end of studentviews */}
-
           </div>
-          {/* end of studentimage */}
-
           
           <div className='licenseimage'>
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
               <div className="uploaded">
-                <a class="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
+                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>
 
 
 
-            <div id="popup2" class="overlay light">
-              <a class="cancel" href="#"></a>
-              <div class="popup">
+            <div id="popup2" className="overlay light">
+              <a className="cancel" href="#"></a>
+              <div className="popup">
                 <h2>{request.requestedStudent && request.requestedStudent.name}</h2>
-                <div class="content">
+                <div className="content">
                   <ImageGallery items={images} />
                   <p>Click outside the popup to close.</p>
                 </div>
               </div>
             </div>
-
-
-            {/* gallery library */}
-            {/* <ImageGallery items={images} /> */}
           </div>
 
           <h4 className="visually-hidden">Req Id: {params.id}</h4>
@@ -244,13 +212,8 @@ const Viewprofiles = () => {
             <Decline/>
             </div> }
         </div>
-        {/* end of box */}
-
       </div>
-      {/* end of division */}
-
     </div>
-    {/* end of full page */}
     <ToastContainer />
     </>
 

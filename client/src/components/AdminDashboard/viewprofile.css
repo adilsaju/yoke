@@ -331,26 +331,30 @@ padding: 0;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
 	transition: opacity 200ms;
-  visibility: hidden;
+    visibility: hidden;
 	opacity: 0;
+    width: 100%;
+  height: 100%;
 }
 
 .light {
     background: rgba(255,255,255,0.5);
-  }
+}
 
-  .cancel {
+.cancel {
     position: absolute;
     width: 100%;
     height: 100%;
     cursor: default;
-  }
+    left: 0;
+    top: 0;
+}
 
-  .overlay:target {
+.overlay:target {
     visibility: visible;
     opacity: 1;
     display: flex;
@@ -374,7 +378,7 @@ padding: 0;
 .light {
     border-color: #aaa;
     box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-  }
+}
 
 .popup h2 {
     margin-top: 0;

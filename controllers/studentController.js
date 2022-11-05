@@ -607,7 +607,7 @@ const getFinalList = () => {
           // adminVerifiedDate: null,
           // approvedAdmin: null
         })
-        .sort({ flightDate: 1 });
+        .sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin");
 
       res.json(requestsInToday);
     } catch (error) {
@@ -634,7 +634,7 @@ const archive = () => {
             },
           ],
         })
-        .sort({ flightDate: 1, requestedDate: 1 });
+        .sort({ flightDate: 1, requestedDate: 1 }).populate("requestedStudent").populate("approvedAdmin");
 
       res.json(archivedRequests);
     } catch (error) {
