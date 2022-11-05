@@ -58,6 +58,10 @@ const Viewprofiles = () => {
   const [cnt, setCnt]= useState([])
   const [prevId, setPrevId]= useState("")
   const [nextId, setNextId]= useState("")
+  const [images, setImages]= useState([])
+  const [imagesId, setImagesId]= useState(0)
+
+
   console.log("previd",prevId);
   console.log("nextId",nextId);
 
@@ -72,6 +76,24 @@ const Viewprofiles = () => {
 
       const tfs2 = await fetchTasks2();
       
+       setImages([
+        {
+          original: `${tfs.requestedStudent.studentRequirements.license}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+        },
+        {
+          original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+          thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+        },
+      ]);
 
       requestStudent(tfs);
       setRequests(tfs2);
@@ -172,19 +194,19 @@ const Viewprofiles = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
+                <a className="button" href="#popup2" onClick={()=>{ setImagesId(0)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
+                <a className="button" href="#popup2" onClick={()=>{ setImagesId(1)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
+                <a className="button" href="#popup2" onClick={()=>{ setImagesId(2)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
+                <a className="button" href="#popup2" onClick={()=>{ setImagesId(3)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>
@@ -196,7 +218,7 @@ const Viewprofiles = () => {
               <div className="popup">
                 <h2>{request.requestedStudent && request.requestedStudent.name}</h2>
                 <div className="content">
-                  <ImageGallery items={images} />
+                  <ImageGallery items={images} startIndex={imagesId} />
                   <p>Click outside the popup to close.</p>
                 </div>
               </div>
