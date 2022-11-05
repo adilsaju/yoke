@@ -7,6 +7,9 @@ import moment from 'moment';
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
 import { useLocation } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const sentEmail = async () => {
   let url = `/sentemail`;
@@ -20,7 +23,16 @@ const sentEmail = async () => {
 
 
   const FinalList = () => {
-  const {pageTitle, setPageTitle} = useContext(UserContext)
+  const {pageTitle, setPageTitle} = useContext(UserContext);
+  const notify = () => toast("List Successfully Sent to Flight Co-ordinator",{
+    position: "bottom-left",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
       
               const [finalstudents,FinalStudents] = useState([]);
   
@@ -64,7 +76,16 @@ const sentEmail = async () => {
                   <div className="topDivision">
                     <Search />
                     <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { sentEmail() }} > Send to Flight Coordinator </button>
+                    <button className="yellowBtn" onClick={(e) => { sentEmail();notify() }} > Send to Flight Coordinator </button>
+                    <ToastContainer position="bottom-left"
+autoClose={5000}
+hideProgressBar
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
                     </div>
                   </div>
                   <table className='myTable'>
