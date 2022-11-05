@@ -83,9 +83,9 @@ const sentEmail = async () => {
                       <tbody key={id}>
                         <tr className='tay' >
                           <td>{count++}</td>
-                          {/* <td>{ student._id}</td>
-                          <td>{ student.requestedStudent.name}</td>
-                          <td>{ student.requestedStudent.studentNumber}</td> */}
+                          <td>{ student._id}</td>
+                          <td>{ student.requestedStudent && student.requestedStudent.name}</td>
+                          <td>{ student.requestedStudent && student.requestedStudent.studentNumber}</td>
                           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                           <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
                         </tr>

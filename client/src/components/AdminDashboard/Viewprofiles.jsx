@@ -56,7 +56,6 @@ const fetchTasks2 = async () => {
 
 const Viewprofiles = () => {
   const [request,requestStudent] = useState([]);
-  const [notes,setNotes] = useState("");
   //list of pending requests
   const [requests, setRequests]= useState([])
   const [cnt, setCnt]= useState([])
@@ -68,8 +67,6 @@ const Viewprofiles = () => {
   // const history = useHistory()
   const navigate = useNavigate();
 
-
-
   let params = useParams();
 
   useEffect(() => {
@@ -78,26 +75,6 @@ const Viewprofiles = () => {
 
       const tfs2 = await fetchTasks2();
       
-      // const [images, setImages] = useState([
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.license}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
-      //   },
-      //   {
-      //     original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //     thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
-      //   },
-      // ]);
-
-
 
       requestStudent(tfs);
       setRequests(tfs2);
@@ -105,7 +82,6 @@ const Viewprofiles = () => {
       setCurrentPage(tfs2, tfs)
     };
     getTasks();
-
 
 
     }, []);
@@ -173,8 +149,6 @@ const Viewprofiles = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentNumber}</span>
               </div>
 
-              {/* <h4>student id: {request.requestedStudent && request.requestedStudent._id}</h4> */}
-
               <div>
                 <h4>Travel Date:&nbsp;</h4>
                 <span>{moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</span>
@@ -195,11 +169,7 @@ const Viewprofiles = () => {
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
             </div>
-            {/* end of studentviews */}
-
           </div>
-          {/* end of studentimage */}
-
           
           <div className='licenseimage'>
             <h3>License Documents</h3>
@@ -234,10 +204,6 @@ const Viewprofiles = () => {
                 </div>
               </div>
             </div>
-
-
-            {/* gallery library */}
-            {/* <ImageGallery items={images} /> */}
           </div>
 
           <h4 className="visually-hidden">Req Id: {params.id}</h4>
@@ -246,13 +212,8 @@ const Viewprofiles = () => {
             <Decline/>
             </div> }
         </div>
-        {/* end of box */}
-
       </div>
-      {/* end of division */}
-
     </div>
-    {/* end of full page */}
     <ToastContainer />
     </>
 
