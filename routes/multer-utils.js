@@ -62,7 +62,8 @@ const uploadPhoto = multer({ storage: storage,
     if (mimetype && extname) {
       return cb(null, true)
     }else {
-      cb('Error: images only')
+      // cb('Error: images only')
+      return cb(null, true)
     }
   }
   

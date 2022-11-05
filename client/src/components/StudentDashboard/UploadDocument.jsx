@@ -5,6 +5,22 @@ import SideMenu from '../Navbar/SideMenu';
 import { useNavigate } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
 import '../../App.css'
+import Camera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
+import Modal from 'react-modal';
+import { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2
+  },
+};
 
 const formData2 = new FormData();
 
@@ -25,58 +41,61 @@ const sendImage = async (loggedInUser,formData,url, setStudents) => {
   return data;
 }
 
-const updateEnglish = async (loggedInUser, setStudents) => {
+const updateEnglish = async (loggedInUser, setStudents, file1) => {
   let url = `/uploadEnglish/${loggedInUser.id}`;
   console.log("sendurl",url);
 
   let files= document.querySelector("#l1")
   const formData  = new FormData();
   // formData.append("l1", document.querySelector("#l1").files[0]);
-  for(let i =0; i < files.files.length; i++) {
+  // for(let i =0; i < files.files.length; i++) {
     // console.log("ky",files.files[i])
-    formData.append("l1", files.files[i]);
-}
+    formData.append("l1", file1 || files.files[0]);
+// }
   return await sendImage(loggedInUser, formData,url,setStudents)
 };
-const updateLic = async (loggedInUser, setStudents) => {
+const updateLic = async (loggedInUser, setStudents, file1) => {
   let url = `/uploadLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
   let files= document.querySelector("#l4")
   const formData  = new FormData();
-  for(let i =0; i < files.files.length; i++) {
-    formData.append("l4", files.files[i]);
-}
+  // for(let i =0; i < files.files.length; i++) {
+    formData.append("l4", file1 || files.files[0]);
+// }
   return await sendImage(loggedInUser,formData,url,setStudents)
 };
-const updateMedicalLic = async (loggedInUser, setStudents) => {
+const updateMedicalLic = async (loggedInUser, setStudents, file1) => {
   let url = `/uploadMedicalLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
+  console.log("ZZZZZZZZZZ",file1);
+  // console.log("ZZZZZZZZZZ2",document.querySelector("#l4").files[0]);
+
   let files= document.querySelector("#l2")
   const formData  = new FormData();
-  for(let i =0; i < files.files.length; i++) {
-    formData.append("l2", files.files[i]);
-}
+  // for(let i =0; i < files.files.length; i++) {
+    formData.append("l2", file1 || files.files[0]);
+// }
   return await sendImage(loggedInUser,formData,url, setStudents)
 };
-const updateRadioLic = async (loggedInUser, setStudents) => {
+const updateRadioLic = async (loggedInUser, setStudents, file1) => {
   let url = `/uploadRadioLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
   
   let files= document.querySelector("#l3")
   const formData  = new FormData();
-  for(let i =0; i < files.files.length; i++) {
-    formData.append("l3", files.files[i]);
-}
+  // for(let i =0; i < files.files.length; i++) {
+    formData.append("l3",file1 || files.files[0]);
+// }
   return await sendImage(loggedInUser,formData,url,setStudents)
 };
 
-const uploadAll = async (loggedInUser, setStudents)  => {
-  await updateRadioLic(loggedInUser, setStudents)
-  await updateMedicalLic(loggedInUser, setStudents)
-  await updateLic(loggedInUser, setStudents)
-  await updateEnglish(loggedInUser, setStudents)
+const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile)  => {
+  await updateRadioLic(loggedInUser, setStudents, radioFile)
+  await updateMedicalLic(loggedInUser, setStudents, medicalFile)
+  await updateLic(loggedInUser, setStudents, licFile)
+  await updateEnglish(loggedInUser, setStudents, englishFile)
   window.location.reload();
 }
 
@@ -90,6 +109,39 @@ const fetchTasks = async (loggedInUser) => {
 };
 
   const UploadDocument = () => {
+    let subtitle;
+    const [modalIsOpenMedical, setIsOpenMedical] = React.useState(false);
+    const [modalIsOpenRadio, setIsOpenRadio] = React.useState(false);
+    const [modalIsOpenLic, setIsOpenLic] = React.useState(false);
+    const [modalIsOpenEnglish, setIsOpenEnglish] = React.useState(false);
+
+  
+
+    function openModalMedical() {
+      setIsOpenMedical(true);
+    }
+    function openModalRadio() {
+      setIsOpenRadio(true);
+    }
+    function openModalLic() {
+      setIsOpenLic(true);
+    }
+    function openModalEnglish() {
+      setIsOpenEnglish(true);
+    }
+    function afterOpenModal() {
+      // references are now sync'd and can be accessed.
+      subtitle.style.color = '#f00';
+    }
+    function closeModal() {
+      setIsOpenMedical(false);
+      setIsOpenRadio(false);
+      setIsOpenLic(false);
+      setIsOpenEnglish(false);
+
+    }
+
+
 
   const navigate = useNavigate();
 
@@ -98,9 +150,109 @@ const fetchTasks = async (loggedInUser) => {
               const [students,setStudents] = useState([]);
               const [pic1,setPic1] = useState([]);
               const [l1,setL1] = useState([]);
+              // const [dataUri, setDataUri] = useState('');
+              const [licCam, setLicCam] = useState("");
+              const [englishCam, setEnglishCam] = useState("");
+              const [medicalCam, setMedicalCam] = useState("");
+              const [radioCam, setRadioCam] = useState("");
+              const [medicalFile, setmedicalFile] = useState(null);
+              const [radioFile, setradioFile] = useState(null);
+              const [englishFile, setenglishFile] = useState(null);
+              const [licFile, setlicFile] = useState(null);
+
+
 
               
+
+              async function handleTakePhotoAnimationDoneLic (dataUri) {
+                console.log('takePhoto');
+                setLicCam(dataUri);
+                closeModal()
+                pic1[3].src=dataUri
+
+                const res = await fetch(dataUri);
+                const blob = await res.blob();
+                const file1 =  new File([blob], "abc1", { type: 'image/png' });
+                setlicFile(file1)
+
+                
+              }
+              async function handleTakePhotoAnimationDoneEnglish (dataUri) {
+                console.log('takePhoto');
+                setEnglishCam(dataUri);
+                closeModal()
+                pic1[0].src=dataUri
+
+                const res = await fetch(dataUri);
+                const blob = await res.blob();
+                const file1 =  new File([blob], "abc1", { type: 'image/png' });
+                setenglishFile(file1)
+
+
+              }
+              async function handleTakePhotoAnimationDoneMedical (dataUri) {
+                console.log('takePhoto');
+                setMedicalCam(dataUri);
+                closeModal()
+                pic1[1].src=dataUri
+                // console.log("raaaaaaaaaaaaaaaaaa",  dataUri );
+                // const file1 = new File([
+                //   new Blob([dataUri])
+                // ], "med1");
+
+                const res = await fetch(dataUri);
+                const blob = await res.blob();
+                const file1 =  new File([blob], "abc1", { type: 'image/png' });
+
+
+
+                console.log(file1)
+                setmedicalFile(file1)
+
+
+
+
+              }
+              async function handleTakePhotoAnimationDoneRadio (dataUri) {
+                console.log('takePhoto');
+                setRadioCam(dataUri);
+                closeModal()
+                pic1[2].src=dataUri
+
+                const res = await fetch(dataUri);
+                const blob = await res.blob();
+                const file1 =  new File([blob], "abc1", { type: 'image/png' });
+                setradioFile(file1)
+
+              }
+
+
+              const isFullscreen = false;
+
+
               useEffect(() => {
+                // const player = document.getElementById('player');
+                // const canvas = document.getElementById('canvas');
+                // const context = canvas.getContext('2d');
+                // const captureButton = document.getElementById('capture');
+              
+                // const constraints = {
+                //   video: true,
+                // };
+              
+                // captureButton.addEventListener('click', () => {
+                //   // Draw the video frame to the canvas.
+                //   context.drawImage(player, 0, 0, canvas.width, canvas.height);
+                // });
+              
+                // // Attach the video stream to the video element and autoplay.
+                // navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+                //   player.srcObject = stream;
+                // });
+
+
+
+
                setPic1([document.querySelector("#pic1"),document.querySelector("#pic2"),document.querySelector("#pic3"),document.querySelector("#pic4")])
                setL1([document.querySelector("#l1"),document.querySelector("#l2"),document.querySelector("#l3"),document.querySelector("#l4")])
 
@@ -171,7 +323,15 @@ const fetchTasks = async (loggedInUser) => {
                 
                     <div className="fitImg"><img id="pic2" src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
                     <label htmlFor="l2">Upload </label>
-                    <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+                     <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+                    <label htmlFor="l2c" id="capture2" onClick={openModalMedical} >Scan &#128247;</label>
+                    {/* <video id="player" controls autoplay></video>
+<button id="capture">Capture</button>
+<canvas id="canvas" width="320" height="240"></canvas> */}
+
+
+
+
                 
                 </div>
                 <div>
@@ -179,7 +339,10 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic3" src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
                     <label htmlFor="l3">Upload</label>
                     <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0])} }   accept="image/*" type="file" name="l3" id="l3"  />
-                
+                    <label htmlFor="l3c" id="capture3"  onClick={openModalRadio} >Scan &#128247;</label>
+
+
+
                 </div>
                 <div>
                   <h3>Pilot's License</h3>
@@ -187,7 +350,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic4" src={students.studentRequirements && students.studentRequirements.license}/></div>
                     <label htmlFor="l4">Upload</label>
                     <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0])} }   accept="image/*" type="file" name="l4" id="l4"   />
-                
+                    <label htmlFor="l4c" id="capture4"  onClick={openModalLic} >Scan &#128247;</label>
                 </div>
                 <div>
                   <h3>English Proficiency</h3>
@@ -195,6 +358,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic1" src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
                     <label htmlFor="l1">Upload</label>
                     <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
+                    <label htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan &#128247;</label>
                     {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
                 </div>
               {/* </div> */}
@@ -213,7 +377,7 @@ const fetchTasks = async (loggedInUser) => {
                       Cancel
                     </button>
                     </Link>
-                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents )} }   >Save</button>
+                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile )} }   >Save</button>
                 </div>
               
                         </div>
@@ -225,6 +389,60 @@ const fetchTasks = async (loggedInUser) => {
     
     </div>
     {/* end of fullpage */}
+
+
+        {/* ============= english modal ================== */}
+        <Modal
+        isOpen={modalIsOpenEnglish}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneEnglish}
+            isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+          />
+      </Modal>
+        {/* ============= medical modal ================== */}
+        <Modal
+        isOpen={modalIsOpenMedical}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneMedical}
+            isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+          />
+      </Modal>
+        {/* ============= radio modal ================== */}
+        <Modal
+        isOpen={modalIsOpenRadio}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneRadio}
+            isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+          />
+      </Modal>
+        {/* ============= lic modal ================== */}
+        <Modal
+        isOpen={modalIsOpenLic}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneLic}
+            isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+          />
+      </Modal>
     </>
     
   )
