@@ -98,10 +98,22 @@
     background-color: #ffffff;
 }
 
+.profileWrapper {
+    display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 10rem;
+  height: 10rem;
+}
+
 .studentImg {
-    border-radius: 50%;
-    max-width: 20%;
-    padding: 0 1rem;
+    /* border-radius: 50%; */
+    /* max-width: 20%; */
+    /* padding: 0 1rem; */
+
+    width:100%;
+  height:100%;
+  object-fit: cover;
 }
 
 .studentImg img {
