@@ -73,7 +73,7 @@ const updateStudentNotesById = () => {
       //update all req with this student id as well
       const allReqsOfSameStudent =
       await Request.requestModel.find({
-        'requestedStudent._id': req.params.id,
+        'requestedStudent': req.params.id,
       })
       allReqsOfSameStudent.forEach((requestObj)=>{
         requestObj.requestedStudent = particularStudent
@@ -330,7 +330,7 @@ const postRequestByStudentId = () => {
       //return all requests of given student
       const requestsOfAStudent =
         await Request.requestModel.find({
-          'requestedStudent._id': req.body.studentId,
+          'requestedStudent': req.body.studentId,
         });
       // if same student  and same date requests return error
       requestsOfAStudent.map((reqDBObj) => {
