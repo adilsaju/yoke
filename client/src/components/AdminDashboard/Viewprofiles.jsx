@@ -33,9 +33,6 @@ const images = [
 ];
 
 
-const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
-
-
 const fetchTasks = async (request_id) => {
   let url = `/requests/${request_id}`;
   const res = await fetch(url);
@@ -214,7 +211,6 @@ const Viewprofiles = () => {
         </div>
       </div>
     </div>
-    <ToastContainer />
     </>
 
   )

@@ -33,7 +33,16 @@ const images = [
 ];
 
 
-const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`);
+const notify1 = (studentName) => toast(`Notes of ${studentName} updated successfully`,{
+  position: "bottom-left",
+  autoClose: 5000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  });
+
 
 
 const fetchTasks = async (request_id) => {
@@ -291,7 +300,15 @@ const Viewprofile = () => {
 
     </div>
     {/* end of full page */}
-    <ToastContainer />
+    <ToastContainer position="bottom-left"
+autoClose={5000}
+hideProgressBar
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
     </>
 
   )
