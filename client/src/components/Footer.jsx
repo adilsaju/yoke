@@ -6,7 +6,7 @@ const Footer = () => {
 
   const { pathname } = useLocation();
   console.log(pathname);
-  if (pathname === "/login" || "/logout") return null;
+  if (pathname === "/login" || pathname === "/logout") return null;
 
   return (
     
