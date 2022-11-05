@@ -63,8 +63,10 @@ useEffect(() => {
       <h3 className='studentAccountName'>{students.name}</h3>
      
         <div className='studentimage'>
-          <img 
-          className='studentImg' src={students.photo} alt='profile of student' />
+          <div className="profileWrapper">
+            <img
+            className='studentImg' src={students.photo} alt='profile of student' />
+          </div>
           
           <div className='studentviews'>
             {students.length===0? console.log("Nothing") : 
