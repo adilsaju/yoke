@@ -230,19 +230,19 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
+                <a class="button hover-shadow" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
+                <a class="button hover-shadow" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
+                <a class="button hover-shadow" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
               <div className="uploaded">
-                <a className="button" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
+                <a class="button hover-shadow" href="#popup2"><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>

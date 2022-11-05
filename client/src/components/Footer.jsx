@@ -1,7 +1,13 @@
 import React from 'react'
 import './HeaderFooter.css'
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+
+  const { pathname } = useLocation();
+  console.log(pathname);
+  if (pathname === "/login" || "/logout") return null;
+
   return (
     
         <footer>

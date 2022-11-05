@@ -141,8 +141,16 @@
 }
 
 .uploaded p {
- margin: 0;
- padding-bottom: 1rem;
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.hover-shadow {
+    transition: 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .notes {
@@ -353,7 +361,8 @@ padding: 0;
     align-items: center;
     align-content: center;
     justify-content: center;
-}
+    z-index: 2;
+  }
 
 .popup {
 	margin: 75px auto;
@@ -363,6 +372,7 @@ padding: 0;
 	width: 50vw;
 	box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	position: relative;
+    border-radius: 35px;
 }
 
 .light {
@@ -437,4 +447,9 @@ padding: 0;
 .image-gallery-thumbnail+.image-gallery-thumbnail,
 .image-gallery-thumbnail {
     padding: .5rem!important;
+}
+
+/* OTHER MODALS */
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    z-index: 2;
 }
