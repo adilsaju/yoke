@@ -34,7 +34,7 @@ app.use(express.json())
 // app.disable('view cache');
 
 //router 
-app.use("/api/", studentRoute)
+app.use("/", studentRoute)
 
 // app.use("/login", login)
 
