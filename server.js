@@ -12,6 +12,8 @@ const Admin = require('./models/adminModel')
 // const login = require('./routes/login')
 const errorHandler = require('./middlewares/errorMiddleware')
 const jwt = require('jsonwebtoken')
+const cors = require('cors')
+
 
 const port = process.env.PORT || 5001
 
@@ -25,6 +27,7 @@ Request.requestModel.collection.dropIndexes(function (err, results) {
     // Handle errors
 });
 // addData()
+app.use(cors())
 
 //middleware
 app.use(express.json())
