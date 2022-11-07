@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Student = require('../models/StudentModel.js');
+const Student = require('../models/studentModel.js');
 const Request = require('../models/requestModel.js');
 const Admin = require('../models/adminModel.js');
 const Checklist = require('../models/checklistModel.js');

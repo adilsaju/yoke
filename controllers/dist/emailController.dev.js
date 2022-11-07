@@ -4,7 +4,7 @@ var express = require('express');
 
 var router = express.Router();
 
-var Student = require('../models/StudentModel.js');
+var Student = require('../models/studentModel.js');
 
 var Request = require('../models/requestModel.js');
 

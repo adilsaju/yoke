@@ -1,4 +1,4 @@
-const Student = require('../models/StudentModel')
+const Student = require('../models/studentModel')
 const Checklist = require('../models/checklistModel')
 const Request = require('../models/requestModel')
 const Admin = require('../models/adminModel')
