@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState,useEffect,useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext';
 import "./LoginPage.css";
-import cover from './images/login_img.jpg';
+import cover from './images/plane.png';
 import logoDBlue from './images/logoDrkBlue.png'
 
 
