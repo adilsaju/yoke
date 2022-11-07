@@ -27,7 +27,7 @@ Request.requestModel.collection.dropIndexes(function (err, results) {
     // Handle errors
 });
 // addData()
-// app.use(cors())
+app.use(cors())
 
 //middleware
 app.use(express.json())
