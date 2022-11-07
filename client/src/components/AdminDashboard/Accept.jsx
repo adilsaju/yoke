@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const sentEmailStudentApproved = async (flydate,mailid) => {
-  let url = `/sentEmailStudentApproved`;
+  let url = `/api/sentEmailStudentApproved`;
   let flydate2 = moment(flydate).format("MMMM Do , YYYY")
   const bod1 = {
     "text": 'Your Request has been approved',
@@ -29,7 +29,7 @@ const sentEmailStudentApproved = async (flydate,mailid) => {
 };
 
 const fetchTasks = async (request_id) => {
-  let url = `/requests/${request_id}`;
+  let url = `/api/requests/${request_id}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -48,7 +48,7 @@ const customStyles = {
   },
 };
 const approve = async (request, loggedInUser) => {
-  let url = `/requests/${request._id}/approve`;
+  let url = `/api/requests/${request._id}/approve`;
 
 const bod1 = {
   "adminId": `${loggedInUser.id}`

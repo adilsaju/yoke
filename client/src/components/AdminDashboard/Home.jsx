@@ -48,7 +48,7 @@ const options = {
 
 
 const fetchTasks = async () => {
-  let url = `/past30daysRequests`;
+  let url = `/api/past30daysRequests`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -91,7 +91,7 @@ const optionsDoughnut = {
 };
 
 const fetchDoughnut = async () => {
-  let url = `/studentsInEachProgram`;
+  let url = `/api/studentsInEachProgram`;
   const res = await fetch(url);
   const dataDoughnut = await res.json();
 
@@ -135,7 +135,7 @@ const optionsPie = {
 };
 
 const fetchPie = async () => {
-  let url = `/todaysDecisions`;
+  let url = `/api/todaysDecisions`;
   const res = await fetch(url);
   const dataPie = await res.json();
   console.log(dataPie);

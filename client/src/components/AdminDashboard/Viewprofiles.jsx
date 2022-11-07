@@ -34,7 +34,7 @@ const images = [
 
 
 const fetchTasks = async (request_id) => {
-  let url = `/requests/${request_id}`;
+  let url = `/api/requests/${request_id}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -43,7 +43,7 @@ const fetchTasks = async (request_id) => {
 };
 
 const fetchTasks2 = async () => {
-  let url = `/finalList`;
+  let url = `/api/finalList`;
   const res = await fetch(url);
   const data = await res.json();
 

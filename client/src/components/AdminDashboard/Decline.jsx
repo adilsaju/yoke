@@ -8,7 +8,7 @@ import moment from 'moment';
 
 let resss = "";
 const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
-  let url = `/sentEmailStudentDeclined`;
+  let url = `/api/sentEmailStudentDeclined`;
 
   let flydate2 = moment(flydate).format("MMMM Do , YYYY")
 
@@ -32,7 +32,7 @@ const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
   return data;
 };
 const fetchTasks = async (request_id) => {
-  let url = `/requests/${request_id}`;
+  let url = `/api/requests/${request_id}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -41,7 +41,7 @@ const fetchTasks = async (request_id) => {
 };
 
 const sentEmail = async () => {
-  let url = `/sentemail`;
+  let url = `/api/sentemail`;
 
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
@@ -64,7 +64,7 @@ const customStyles = {
 
 
 const decline = async (request, loggedInUser) => {
-  let url = `/requests/${request._id}/decline`;
+  let url = `/api/requests/${request._id}/decline`;
   const bod1 = {
     "adminId": `${loggedInUser.id}`,
     "reason"  : "tumse na hopayega"

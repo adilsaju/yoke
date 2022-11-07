@@ -16,7 +16,7 @@ const Archive = () => {
   setPageTitle("Archive")
         
         setTimeout(() => {
-         fetch(`/archives`).then(res => {
+         fetch(`/api/archives`).then(res => {
            if(!res.ok) {
              throw Error(res.statusText);
            }

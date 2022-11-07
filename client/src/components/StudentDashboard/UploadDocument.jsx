@@ -42,7 +42,7 @@ const sendImage = async (loggedInUser,formData,url, setStudents) => {
 }
 
 const updateEnglish = async (loggedInUser, setStudents, file1) => {
-  let url = `/uploadEnglish/${loggedInUser.id}`;
+  let url = `/api/uploadEnglish/${loggedInUser.id}`;
   console.log("sendurl",url);
 
   let files= document.querySelector("#l1")
@@ -55,7 +55,7 @@ const updateEnglish = async (loggedInUser, setStudents, file1) => {
   return await sendImage(loggedInUser, formData,url,setStudents)
 };
 const updateLic = async (loggedInUser, setStudents, file1) => {
-  let url = `/uploadLicense/${loggedInUser.id}`;
+  let url = `/api/uploadLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
   let files= document.querySelector("#l4")
@@ -66,7 +66,7 @@ const updateLic = async (loggedInUser, setStudents, file1) => {
   return await sendImage(loggedInUser,formData,url,setStudents)
 };
 const updateMedicalLic = async (loggedInUser, setStudents, file1) => {
-  let url = `/uploadMedicalLicense/${loggedInUser.id}`;
+  let url = `/api/uploadMedicalLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
 
   console.log("ZZZZZZZZZZ",file1);
@@ -80,7 +80,7 @@ const updateMedicalLic = async (loggedInUser, setStudents, file1) => {
   return await sendImage(loggedInUser,formData,url, setStudents)
 };
 const updateRadioLic = async (loggedInUser, setStudents, file1) => {
-  let url = `/uploadRadioLicense/${loggedInUser.id}`;
+  let url = `/api/uploadRadioLicense/${loggedInUser.id}`;
   console.log("sendurl",url);
   
   let files= document.querySelector("#l3")
@@ -100,7 +100,7 @@ const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licF
 }
 
 const fetchTasks = async (loggedInUser) => {
-  let url = `/students/${loggedInUser.id}`;
+  let url = `/api/students/${loggedInUser.id}`;
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
@@ -280,7 +280,7 @@ const fetchTasks = async (loggedInUser) => {
                 for (var pair of formData.entries()) {
                   console.log(pair[0]+ ', ' + pair[1]);  }
                
-                  let url2 = `/updateStudentPhoto/${loginCredentials.loggedInUser.id}`;
+                  let url2 = `/api/updateStudentPhoto/${loginCredentials.loggedInUser.id}`;
                   const res = await fetch(url2, 
                     {
                       method: 'POST', 

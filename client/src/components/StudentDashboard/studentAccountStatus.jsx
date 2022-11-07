@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 //Fetch Data using API
 
 const fetchTasks = async (loggedInUser) => {
-  let url = `/students/${loggedInUser.id}`;
+  let url = `/api/students/${loggedInUser.id}`;
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);

@@ -5,7 +5,7 @@ import SideMenu from '../Navbar/SideMenu';
 
 
 const fetchTasks = async (student_id) => {
-    let url = `/students/${student_id}`;
+    let url = `/api/students/${student_id}`;
     const res = await fetch(url);
   
     const data = await res.json();

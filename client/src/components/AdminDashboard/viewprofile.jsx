@@ -46,7 +46,7 @@ const notify1 = (studentName) => toast(`Notes of ${studentName} updated successf
 
 
 const fetchTasks = async (request_id) => {
-  let url = `/requests/${request_id}`;
+  let url = `/api/requests/${request_id}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -55,7 +55,7 @@ const fetchTasks = async (request_id) => {
 };
 
 const fetchTasks2 = async () => {
-  let url = `/pendingRequests`;
+  let url = `/api/pendingRequests`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -64,7 +64,7 @@ const fetchTasks2 = async () => {
 };
 
 const updateStudentNotes = async (request, newNote) => {
-  let url = `/students/${request.requestedStudent._id}`;
+  let url = `/api/students/${request.requestedStudent._id}`;
   const bod1 = {
     "notes": `${newNote}`
     }

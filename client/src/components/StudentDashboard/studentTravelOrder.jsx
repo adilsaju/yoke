@@ -11,7 +11,7 @@ import '../../App.css'
 
 //Fetch Data using API
 const fetchTasks = async (loggedInUser) => {
-    let url = `/requests?student=${loggedInUser.id}`;
+    let url = `/api/requests?student=${loggedInUser.id}`;
    
     const res = await fetch(url);
     const data = await res.json();
@@ -22,7 +22,7 @@ const fetchTasks = async (loggedInUser) => {
   };
 
   const fetchStudent = async (loggedInUser) => {
-    let url = `/students/${loggedInUser.id}`;
+    let url = `/api/students/${loggedInUser.id}`;
 
     const res = await fetch(url);
     const studentData = await res.json();

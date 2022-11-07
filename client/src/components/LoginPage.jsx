@@ -21,7 +21,7 @@ const LoginPage = () => {
 
 
   const login = async () => {
-    let url = `/login`;
+    let url = `/api/login`;
   
     
   

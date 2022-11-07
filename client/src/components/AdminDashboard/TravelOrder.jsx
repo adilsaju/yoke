@@ -22,7 +22,7 @@ const TravelOrder = () => {
   setPageTitle("Travel Order")
 
  setTimeout(() => {
-  fetch(`/pendingRequests`).then(res => {
+  fetch(`/api/pendingRequests`).then(res => {
     if(!res.ok) {
       throw Error(res.statusText);
     }

@@ -12,7 +12,7 @@ const SideMenuAdmin = () => {
 
   useEffect(() => {  
    setTimeout(() => {
-    fetch(`/pendingRequests`).then(res => {
+    fetch(`/api/pendingRequests`).then(res => {
       if(!res.ok) {
         throw Error(res.statusText);
       }
@@ -30,7 +30,7 @@ const SideMenuAdmin = () => {
 
   useEffect(() => {
     setTimeout(() => {
-     fetch(`/finalList`).then(res => {
+     fetch(`/api/finalList`).then(res => {
        if(!res.ok) {
          throw Error(res.statusText);
        }

@@ -35,7 +35,7 @@ const customStyles = {
 
 const req = async (flightDate, loggedInUser) => {
   console.log("VERYYY KKKKKK: ", flightDate);
-  let url = `/requests`;
+  let url = `/api/requests`;
 
   let flightDate2 = moment(flightDate).format("MMMM Do , YYYY")
   console.log(flightDate2)

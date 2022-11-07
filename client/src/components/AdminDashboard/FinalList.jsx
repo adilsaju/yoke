@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const sentEmail = async () => {
-  let url = `/sentemail`;
+  let url = `/api/sentemail`;
 
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
@@ -46,7 +46,7 @@ const sentEmail = async () => {
                 setPageTitle("Final List")
 
                 setTimeout(() => {
-                 fetch(`/finalList`).then(res => {
+                 fetch(`/api/finalList`).then(res => {
                    if(!res.ok) {
                      throw Error(res.statusText);
                    }
