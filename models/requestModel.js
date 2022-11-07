@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const {studentSchema} = require('./StudentModel')
+const {studentSchema} = require('./studentModel')
 const {adminSchema} = require('./adminModel')
 const Schema = mongoose.Schema
 
