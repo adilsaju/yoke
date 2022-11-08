@@ -121,7 +121,7 @@ const LoginPage = () => {
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
       <img src={logoDBlue} ></img>
-      <p>Please login with your school credentials.</p>
+      <p>Plase.</p>
       <div className="inputField">
         <div className="label-input-wrapper">
           <label htmlFor="loginid">Your Email</label>
