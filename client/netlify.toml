@@ -3,7 +3,6 @@
   to = "https://yoke-staging.up.railway.app/:splat"
   status = 200
   force = false
-  headers = {Access-Control-Allow-Origin = "*"}
 
  [[redirects]]
   from = "/*"
