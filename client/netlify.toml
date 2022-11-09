@@ -1,6 +1,6 @@
  [[redirects]]
   from = "/api/*"
-  to = "https://yoke-staging.up.railway.app/:splat"
+  to = "https://yoke-staging.up.railway.app/api/:splat"
   status = 200
   force = false
 
