@@ -195,9 +195,9 @@ useEffect(() => {
 
 
   const [data, setData] = useState(false);
-  const [fileName1, setfileName1] = useState("chart1.csv");
-  const [fileName2, setfileName2] = useState("chart2.csv");
-  const [fileName3, setfileName3] = useState("chart3.csv");
+  const [fileName1, setfileName1] = useState("chart1.xls");
+  const [fileName2, setfileName2] = useState("chart2.xls");
+  const [fileName3, setfileName3] = useState("chart3.xls");
 
 
 
