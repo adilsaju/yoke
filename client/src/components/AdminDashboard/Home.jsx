@@ -6,6 +6,13 @@ import { Pie } from 'react-chartjs-2';
 import { useNavigate } from "react-router-dom";
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
+// import abc1 from "./abc.jpg";
+// const { parse } = require();
+import { parse }  from 'json2csv'
+
+
+
+
 import './Home.css'
 import {
   Chart as ChartJS,
@@ -19,6 +26,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 const { faker } = require('@faker-js/faker');
+
 
 
 ChartJS.register(
@@ -187,6 +195,11 @@ useEffect(() => {
 
 
   const [data, setData] = useState(false);
+  const [fileName1, setfileName1] = useState("chart1.csv");
+  const [fileName2, setfileName2] = useState("chart2.csv");
+  const [fileName3, setfileName3] = useState("chart3.csv");
+
+
 
   useEffect(() => {
     
@@ -222,6 +235,53 @@ useEffect(() => {
     getPie();
   }, []);
 
+
+  function downloadAnyFile(json1, filename) {
+   const report1 =  json2Report(json1)
+
+
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(report1));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+
+  function json2Report(json1) {
+    console.log("gaaaaaaaaaaaaaaaaaaa", json1  );
+    // const fields = ['datasets', 'labels'    ];
+    // const opts = { fields };
+
+    // try {
+    //   const csv = parse(json1, opts);
+    //   console.log(csv);
+    // return   csv ;
+
+    // } catch (err) {
+    //   console.error(err);
+    // return   null ;
+
+    // }
+    let report1 = ""
+    for ( let i = 0 ; i< json1.labels.length; i++){
+      report1+=`${json1.labels[i]}, `
+    }
+    report1+=`\n`
+
+    for ( let i = 0 ; i< json1.labels.length; i++){
+      report1+=`${json1.datasets[0].data[i]}, `
+    }
+
+    return report1
+  }
+
   return ( <>
   <div className='fullpage'>
       <SideMenuAdmin/>
@@ -248,9 +308,30 @@ useEffect(() => {
           </div>
 
         </div>
-  
+          <div>
+          {/* <a href="../yoke-logo.png" download>eeeee</a><br /> */}
+
+  {/* <a href={abc1} download={fileName1}>Download chart1 report</a> <br />
+  <a href={abc1} download={fileName2}>Download chart2 report</a> <br />
+  <a href={abc1} download={fileName3}>Download chart3 report</a> */}
+  <button onClick={()=>{ downloadAnyFile(data, fileName1) }}   >
+  Download chart1 report
+    </button>
+    
+    <button onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
+    Download chart2 report
+      </button>
+      
+      <button onClick={()=>{ downloadAnyFile(dataPie, fileName3) }} >
+      Download chart3 report
+      </button>
+
+
+          </div>
       </div>
   </div>
+
+  adsas
   </>)
 
 }
