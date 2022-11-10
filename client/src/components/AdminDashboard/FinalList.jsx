@@ -18,9 +18,8 @@ const sentEmail = async () => {
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
   if(data === 25){
-    console.log("yipee")
     emailcheck = false
-    console.log(emailcheck)
+   
   }
 
 
