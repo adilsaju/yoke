@@ -5,7 +5,7 @@ import Search from './Search';
 import moment from 'moment';
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-
+import { Link } from "react-router-dom";
 const Archive = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
@@ -55,6 +55,7 @@ return (
                       <th>Name</th>
                       <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
+                      <th className=''>Status</th>
                       <th className=''>Action</th>
                     </tr>
                   </thead>
@@ -76,6 +77,7 @@ return (
                             
                               // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
                             }</td>
+                            <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">Review</button></Link></td>
                           </tr>
                         </tbody>
                         ) }
