@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt')
 
 
 const daftom = new Date();
-daftom.setDate(daftom.getDate()+2);
+daftom.setDate(daftom.getDate()+1);
 let flgg = 1;
 const today = new Date();
 
