@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
 import { NavLink } from "react-router-dom";
+import { slide as Menu } from 'react-burger-menu';
 
 
 const SideMenuAdmin = () => {
@@ -50,42 +51,39 @@ const SideMenuAdmin = () => {
   return (
     <div className='Nav-menu'>
   
-      <nav>
-      <ul>
-      <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
-          Dashboard
-      </li></NavLink>
-        
-      <NavLink activeClassName="active" to="/travel-order" className="travelOrder"> <li>
-        Travel Order&nbsp;
-        <button className='countInd'><span>{(requests.length)}</span></button>
-      </li></NavLink>
-        {/* <li>
-        <Link to="/login">Login</Link>
-        </li> */}
-       
-       <NavLink activeClassName="active" to="/final-list" className="finalList"> <li>
-          Final list&nbsp;
-          <button className='countInd'><span>{finalstudents.length}</span></button>
+      <Menu isOpen={ true } disableCloseOnEsc disableAutoFocus>
+        <nav>
+        <ul>
+        <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
+            Dashboard
         </li></NavLink>
-
-
-      <NavLink activeClassName="active" to="/archive" className='archive'><li>
-         History
-      </li></NavLink>
-
-        {<div>
-      <NavLink activeClassName="active" to="/setting" className='settings'><li>
-          Setting
-      </li></NavLink>
-
-      <NavLink activeClassName="active" to="/logout" className='logout'><li>
-          Logout
-      </li></NavLink>
-  
-        </div>}
-      </ul>
-      </nav>
+        
+        <NavLink activeClassName="active" to="/travel-order" className="travelOrder"> <li>
+          Travel Order&nbsp;
+          <button className='countInd'><span>{(requests.length)}</span></button>
+        </li></NavLink>
+          {/* <li>
+          <Link to="/login">Login</Link>
+          </li> */}
+        
+         <NavLink activeClassName="active" to="/final-list" className="finalList"> <li>
+            Final list&nbsp;
+            <button className='countInd'><span>{finalstudents.length}</span></button>
+          </li></NavLink>
+        <NavLink activeClassName="active" to="/archive" className='archive'><li>
+           History
+        </li></NavLink>
+          {<div>
+        <NavLink activeClassName="active" to="/setting" className='settings'><li>
+            Setting
+        </li></NavLink>
+        <NavLink activeClassName="active" to="/logout" className='logout'><li>
+            Logout
+        </li></NavLink>
+          </div>}
+        </ul>
+        </nav>
+      </Menu>
 
 
     </div>
