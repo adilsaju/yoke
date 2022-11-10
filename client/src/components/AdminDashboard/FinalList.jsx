@@ -97,7 +97,7 @@ const sentEmail = async () => {
                   <div className="topDivision">
                     <Search />
                     <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,100) }} > Send to Flight Coordinator </button>
+                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,200) }} > Send to Flight Coordinator </button>
                     <ToastContainer position="bottom-left"
 autoClose={5000}
 hideProgressBar
