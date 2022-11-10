@@ -17,10 +17,13 @@ const sentEmail = async () => {
 
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
-
-  if(data === 'nothing to send'){
+  if(data === 25){
+    console.log("yipee")
     emailcheck = false
+    console.log(emailcheck)
   }
+
+
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
@@ -28,7 +31,9 @@ const sentEmail = async () => {
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
   const notify = () => {
-    if (!emailcheck){
+   
+    if (emailcheck){
+   
       toast("List Successfully Sent to Flight Co-ordinator",{
         position: "bottom-left",
         autoClose: 5000,
@@ -93,7 +98,7 @@ const sentEmail = async () => {
                   <div className="topDivision">
                     <Search />
                     <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { sentEmail();notify() }} > Send to Flight Coordinator </button>
+                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,100) }} > Send to Flight Coordinator </button>
                     <ToastContainer position="bottom-left"
 autoClose={5000}
 hideProgressBar
