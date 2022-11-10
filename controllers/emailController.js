@@ -124,7 +124,7 @@ kk+=`  <tr>
       // body1=JSON.stringify(body1)
       // body1 = json2html.transform(body1)
 
-      const email = "mohitwadhwa1233@gmail.com"
+      const email = "flightcoordinator.yoke@gmail.com"
       if (flgg == 1){
       try {
   
