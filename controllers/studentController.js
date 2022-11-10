@@ -196,7 +196,7 @@ const getRequestsByStudentId = () => {
       console.log('rrrr');
       const abc = await Request.requestModel.find({
         'requestedStudent': studentId,
-      }).populate("requestedStudent").populate("approvedAdmin");
+      }).sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin");
 
       res.json(abc);
     } catch (error) {
