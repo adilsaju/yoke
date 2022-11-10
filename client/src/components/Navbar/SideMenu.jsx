@@ -19,11 +19,11 @@ const SideMenu = () => {
           </li>
         </Link>
 
-        <Link to="/settingStudent"> 
+        {/* <Link to="/settingStudent"> 
           <li className='settings'>
           Setting
           </li>
-        </Link>
+        </Link> */}
         
         <Link to="/logout"> 
           <li className='logout'>

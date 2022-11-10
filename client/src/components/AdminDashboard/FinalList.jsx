@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+let emailcheck = true
 
 const sentEmail = async () => {
   let url = `/api/sentemail`;
@@ -17,22 +18,38 @@ const sentEmail = async () => {
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
 
+  if(data === 'nothing to send'){
+    emailcheck = false
+  }
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
 
-
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
-  const notify = () => toast("List Successfully Sent to Flight Co-ordinator",{
-    position: "bottom-left",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    });
+  const notify = () => {
+    if (!emailcheck){
+      toast("List Successfully Sent to Flight Co-ordinator",{
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+    }else{
+      toast("Nothing to send",{
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+    }
+    };
       
               const [finalstudents,FinalStudents] = useState([]);
   

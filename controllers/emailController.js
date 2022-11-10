@@ -13,6 +13,11 @@ const bcrypt = require('bcrypt')
 // var json2html = require('json2html')
 
 
+const daftom = new Date();
+daftom.setDate(daftom.getDate()+2);
+let flgg = 1;
+const today = new Date();
+
 
 
 async function main(recipient,reason, body) {
@@ -49,6 +54,9 @@ async function main(recipient,reason, body) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
+// *********** Sent correct email data *************
+
+
   // ******** admin decline ********
   const sentEmail = () => {
     return async (req, res, next) => {
@@ -69,6 +77,14 @@ let body1 = await Request.requestModel
 })
 .sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin").select(["flightDate", "requestedDate", "requestedStudent", "approvedAdmin" ]);
 
+
+
+
+let body2 = body1.filter((a) =>{
+  return a.flightDate < daftom && a.flightDate > today
+})
+
+
 // ===========
 
 kk = `
@@ -80,8 +96,8 @@ kk = `
     <th>Approved Admin Name</th>
 
   </tr>`
-
-  body1.forEach((el)=>{
+  if (body2.length > 0){ 
+  body2.forEach((el)=>{
 
 kk+=`  <tr>
 <td>${el.flightDate}</td>
@@ -94,6 +110,9 @@ kk+=`  <tr>
   kk+=`
 </table>
 `
+}else{
+  flgg = 0
+}
 // const fields = ['flightDate', 'isApproved', 'requestedDate'];
 // const opts = { fields };
 
@@ -105,7 +124,8 @@ kk+=`  <tr>
       // body1=JSON.stringify(body1)
       // body1 = json2html.transform(body1)
 
-      const email = "flightcoordinator.yoke@gmail.com"
+      const email = "mohitwadhwa1233@gmail.com"
+      if (flgg == 1){
       try {
   
         main(email,"Final List",kk).catch(console.error);
@@ -113,7 +133,9 @@ kk+=`  <tr>
       } catch (error) {
         res.status(500).json({ message: error.message });
       }
-  
+    }else{
+      res.json("nothing to send");
+    }
       next();
     }; //end of middleware
   }; //end of declineRequest
