@@ -70,7 +70,7 @@ const SideMenuAdmin = () => {
 
 
       <Link to="/archive"><li className='archive'>
-          Archive
+         History
       </li></Link>
 
         {<div>
