@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/");
+    navigate("/dashboard");
   }
 
 
@@ -57,7 +57,7 @@ const LoginPage = () => {
           loggedInUser: JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser,
         })
         // setIsAdmin(true)
-        navigate("/");
+        navigate("/dashboard");
       }
       else {
 
