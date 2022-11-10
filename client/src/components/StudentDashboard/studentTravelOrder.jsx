@@ -86,7 +86,7 @@ const StudentTravelOrder = () => {
                   <button className="yellowBtn" type="button" disabled> Request Travel Order</button>
                 </Link>}
               </div>
-              
+              <span>Previous Records of Travel Orders</span>
               <table className='myTable'>
                 <thead>
                   <tr>
