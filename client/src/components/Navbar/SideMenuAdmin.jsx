@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
+import { NavLink } from "react-router-dom";
 
 
 const SideMenuAdmin = () => {
@@ -51,36 +52,36 @@ const SideMenuAdmin = () => {
   
       <nav>
       <ul>
-      <Link to="/"><li className='dashboard'>
+      <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
           Dashboard
-      </li></Link>
+      </li></NavLink>
         
-        <Link to="/travel-order"> <li className="travelOrder">
-          Travel Order&nbsp;
-          <button className='countInd'><span>{(requests.length)}</span></button>
-        </li></Link>
+      <NavLink activeClassName="active" to="/travel-order" className="travelOrder"> <li>
+        Travel Order&nbsp;
+        <button className='countInd'><span>{(requests.length)}</span></button>
+      </li></NavLink>
         {/* <li>
         <Link to="/login">Login</Link>
         </li> */}
        
-       <Link to="/final-list"> <li className="finalList">
+       <NavLink activeClassName="active" to="/final-list" className="finalList"> <li>
           Final list&nbsp;
           <button className='countInd'><span>{finalstudents.length}</span></button>
-        </li></Link>
+        </li></NavLink>
 
 
-      <Link to="/archive"><li className='archive'>
+      <NavLink activeClassName="active" to="/archive" className='archive'><li>
          History
-      </li></Link>
+      </li></NavLink>
 
         {<div>
-      <Link to="/setting"><li className='settings'>
+      <NavLink activeClassName="active" to="/setting" className='settings'><li>
           Setting
-      </li></Link>
+      </li></NavLink>
 
-      <Link to="/logout"><li className='logout'>
+      <NavLink activeClassName="active" to="/logout" className='logout'><li>
           Logout
-      </li></Link>
+      </li></NavLink>
   
         </div>}
       </ul>

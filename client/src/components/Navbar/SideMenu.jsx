@@ -1,23 +1,24 @@
 import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
+import { NavLink } from "react-router-dom";
 
 const SideMenu = () => {
   return (
     <div className='Nav-menu'>
   <nav>
       <ul className="studentMenu">
-        <Link to="/student-account-status">
-          <li className='studentAcct'>
+        <NavLink activeClassName="active" to="/student-account-status" className='studentAcct'>
+          <li>
             Account Status
           </li>
-        </Link>
+        </NavLink>
 
-        <Link to="/student-travel-order"> 
-          <li className="travelOrder">
+        <NavLink activeClassName="active" to="/student-travel-order" className="travelOrder"> 
+          <li>
             Student Travel Order
           </li>
-        </Link>
+        </NavLink>
 
         {/* <Link to="/settingStudent"> 
           <li className='settings'>
@@ -25,11 +26,11 @@ const SideMenu = () => {
           </li>
         </Link> */}
         
-        <Link to="/logout"> 
-          <li className='logout'>
+        <NavLink activeClassName="active" to="/logout" className='logout'> 
+          <li>
           Logout
           </li>
-        </Link>
+        </NavLink>
   
       </ul>
       </nav>

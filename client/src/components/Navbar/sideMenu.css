@@ -5,6 +5,16 @@
     z-index: 1;  
 }
 
+nav ul a {
+    border-bottom: 2px solid #5cb0ff;
+    margin: 0  5px 0 5px;
+  }
+  
+  nav ul{
+    margin: 0;
+    padding: 0;
+  }
+
 nav img {
     max-width: 1.25rem;
     padding-right: 1rem;
@@ -20,15 +30,21 @@ nav {
     text-decoration: none;
 }
 
-nav ul li{
+nav ul a{
     font-size: larger;
     text-decoration: none;
     list-style-type: none;
-    padding: 1.5rem 1rem 1.5rem 5.5rem;
+    display: flex;
+
     background-size: 1.25rem; 
     background-repeat: no-repeat;
     background-position: 3rem 1.5rem;
-    display: flex;
+
+}
+
+nav ul li{
+    padding: 1.5rem 1rem 1.5rem 5.5rem;
+    display: flex; 
 
 }
 
@@ -64,44 +80,61 @@ nav ul li{
 }
 
 /*** HOVER - CHANGE ICON ***/
-nav li:hover{
+nav a:hover{
     background-color: #5cb0ff;
+    color: #00284E;
+    /* background-size: 1.20rem;  */
+    /* background-repeat: no-repeat; */
+    /* background-position: 3rem 1.5rem; */
+}
+
+nav li:hover{
+    /* background-color: #5cb0ff; */
     color: #00284E;
     background-size: 1.20rem; 
     background-repeat: no-repeat;
     background-position: 3rem 1.5rem;
-    
 }
 
-.dashboard:hover {
+.dashboard:hover, a.dashboard.active  {
     background-image: url(../images/dashboardDrk.svg);
     
 }
 
-.travelOrder:hover {
+.travelOrder:hover, a.travelOrder.active {
     background-image: url(../images/travelOrderDrk.svg);
 }
 
-.finalList:hover {
+.finalList:hover, a.finalList.active {
     background-image: url(../images/finalListDrk.svg);
     background-position: 3rem 1.7rem;
 }
 
-.archive:hover {
+.archive:hover, a.archive.active {
     background-image: url(../images/archiveDrk.svg);
     background-position: 3rem 1.6rem;
 }
 
-.settings:hover {
+.settings:hover, a.settings.active {
     background-image: url(../images/settingsDrk.svg);
 }
 
-.logout:hover {
+.logout:hover, a.logout.active {
     background-image: url(../images/logoutDrk.svg);
 }
 
-.studentAcct:hover {
+.studentAcct:hover, a.studentAcct.active {
     background-image: url(../images/acctStatusDrk.svg);
+}
+
+
+a.active {
+    background-color: #5cb0ff;
+    color: #00284E;
+    /* font-weight: bold; */
+    background-size: 1.20rem; 
+    background-repeat: no-repeat;
+    background-position: 3rem 1.5rem;
 }
 
 .countInd {
