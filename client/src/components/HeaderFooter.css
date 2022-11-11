@@ -26,7 +26,8 @@ header{
     display: flex!important;
     justify-content: center;
     padding-bottom: 1rem;
-    margin-right: 0.84rem;
+    /* margin-right: 0.84rem; */
+    margin: 0 5px 0 5px;
 }
 
 
@@ -61,9 +62,13 @@ header img{
   @media screen and (min-width: 760px) {
     .borderRight {
         border-right: 1px solid #50ABFF;
-        /* padding-right: 1rem; */
+        padding-right: 1rem;
         width: 16.9rem;
-        padding: 0.5rem 0 0 .31rem;
+        /* padding: 0.5rem 0 0 .31rem; */
+    }
+
+    .logo {
+        margin-right: .55rem;
     }
 
     .page-name {
