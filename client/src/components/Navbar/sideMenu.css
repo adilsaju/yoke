@@ -40,12 +40,12 @@ nav ul a{
 
     background-size: 1.25rem; 
     background-repeat: no-repeat;
-    background-position: 3rem 1.5rem;
+    background-position: 2rem 1.5rem;
 
 }
 
 nav ul li{
-    padding: 1.5rem 1rem 1.5rem 5.5rem;
+    padding: 1.5rem 1rem 1.5rem 4.5rem;
     display: flex; 
 
 }
@@ -61,12 +61,12 @@ nav ul li{
 
 .finalList {
     background-image: url(../images/finalList.svg);
-    background-position: 3rem 1.7rem;
+    background-position: 2rem 1.7rem;
 }
 
 .archive {
     background-image: url(../images/archive.svg);
-    background-position: 3rem 1.6rem;
+    background-position: 2rem 1.6rem;
 }
 
 .settings {
@@ -109,12 +109,12 @@ nav li:hover{
 
 .finalList:hover, a.finalList.active {
     background-image: url(../images/finalListDrk.svg);
-    background-position: 3rem 1.7rem;
+    background-position: 2rem 1.7rem;
 }
 
 .archive:hover, a.archive.active {
     background-image: url(../images/archiveDrk.svg);
-    background-position: 3rem 1.6rem;
+    background-position: 2rem 1.6rem;
 }
 
 .settings:hover, a.settings.active {
@@ -136,7 +136,7 @@ a.active {
     /* font-weight: bold; */
     background-size: 1.20rem; 
     background-repeat: no-repeat;
-    background-position: 3rem 1.5rem;
+    background-position: 2rem 1.5rem;
 }
 
 .countInd {

@@ -5,8 +5,8 @@
 }
 
 header{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    /* display: grid;
+    grid-template-columns: 1fr 3fr; */
     text-align: left;
     height: 5rem;
     background-color: #00284E;
@@ -16,6 +16,7 @@ header{
     right: 0;
     top: 0;
     width: 100%;
+    display: flex;
 }
 
 .logo {
@@ -33,7 +34,6 @@ header{
 
 .logo img {
     max-width: 50%;
-    padding-left: 3rem;
 }
 
 header h3,footer p{
@@ -70,6 +70,7 @@ header img{
 
     .logo {
         margin-right: .55rem;
+        justify-content: center;
     }
 
     .page-name {
