@@ -15,11 +15,10 @@ const { pathname } = useLocation();
 
 
   return (
-    <div >
         <header>
-          <div className='logo'>
+          {/* <div className='logo'>
             <img src={require('./images/logoWhite.png')} alt='' />
-          </div>
+          </div> */}
           <div className='page-name'>
             <h3>{pageTitle}</h3>
         {/* <button > <Link to='/login'>Login Page</Link></button>
@@ -28,7 +27,6 @@ const { pathname } = useLocation();
     
           </div>
         </header>
-    </div>
   )
 }
 

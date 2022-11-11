@@ -1,5 +1,7 @@
 .page-name {
     cursor: not-allowed;
+    width: calc(100% - 6rem);
+    padding-left: 6rem;
 }
 
 header{
@@ -9,11 +11,24 @@ header{
     height: 5rem;
     background-color: #00284E;
     align-items: center;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
 }
 
 .logo {
     width: 17.9rem;
     border-right: 1px solid #50ABFF;
+    border-bottom: 2px solid #5cb0ff;
+    margin-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+
+.logo img {
+    max-width: 60%;
 }
 
 header h3,footer p{
@@ -39,3 +54,11 @@ header img{
     width: calc(100% - 18rem);
     padding-left: 18rem;
   }
+
+  @media screen and (min-width: 760px) {
+    .page-name {
+        width: calc(100% - 20rem);
+        padding-left: 20rem;
+    }
+  }
+  

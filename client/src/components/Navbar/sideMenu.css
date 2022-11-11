@@ -3,6 +3,8 @@
     /* background-color: #00284E;
     width: 18rem; */
     z-index: 1;  
+
+    padding: 0 0.8em;
 }
 
 nav ul a {
@@ -206,7 +208,7 @@ a.active {
   /* Wrapper for item list */
   .bm-item-list {
     color: #b8b7ad;
-    padding: 0.8em;
+    /* padding: 0.8em; */
   }
   
   /* Individual item */
@@ -257,6 +259,12 @@ a.active {
         padding: unset;
         font-size: unset;
     }
+
+    .logo {        
+        display: flex!important;
+        justify-content: center;
+    }
+
   }
   
 

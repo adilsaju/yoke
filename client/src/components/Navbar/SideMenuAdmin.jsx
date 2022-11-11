@@ -50,8 +50,12 @@ const SideMenuAdmin = () => {
 
   return (
     <div className='Nav-menu'>
-  
+
       <Menu isOpen={ true } disableCloseOnEsc disableAutoFocus>
+      <div className='logo'>
+        <img src={require('../images/logoWhite.png')} alt='' />
+      </div>
+
         <nav>
         <ul>
         <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
