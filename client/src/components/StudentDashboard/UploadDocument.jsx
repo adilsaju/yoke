@@ -18,7 +18,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: 2
+    zIndex: 2,
+    width: "70%",
   },
 };
 
@@ -151,10 +152,10 @@ const fetchTasks = async (loggedInUser) => {
               const [pic1,setPic1] = useState([]);
               const [l1,setL1] = useState([]);
               // const [dataUri, setDataUri] = useState('');
-              const [licCam, setLicCam] = useState("");
-              const [englishCam, setEnglishCam] = useState("");
-              const [medicalCam, setMedicalCam] = useState("");
-              const [radioCam, setRadioCam] = useState("");
+              // const [licCam, setLicCam] = useState("");
+              // const [englishCam, setEnglishCam] = useState("");
+              // const [medicalCam, setMedicalCam] = useState("");
+              // const [radioCam, setRadioCam] = useState("");
               const [medicalFile, setmedicalFile] = useState(null);
               const [radioFile, setradioFile] = useState(null);
               const [englishFile, setenglishFile] = useState(null);
@@ -166,7 +167,7 @@ const fetchTasks = async (loggedInUser) => {
 
               async function handleTakePhotoAnimationDoneLic (dataUri) {
                 console.log('takePhoto');
-                setLicCam(dataUri);
+                // setLicCam(dataUri);
                 closeModal()
                 pic1[3].src=dataUri
 
@@ -179,7 +180,7 @@ const fetchTasks = async (loggedInUser) => {
               }
               async function handleTakePhotoAnimationDoneEnglish (dataUri) {
                 console.log('takePhoto');
-                setEnglishCam(dataUri);
+                // setEnglishCam(dataUri);
                 closeModal()
                 pic1[0].src=dataUri
 
@@ -192,7 +193,7 @@ const fetchTasks = async (loggedInUser) => {
               }
               async function handleTakePhotoAnimationDoneMedical (dataUri) {
                 console.log('takePhoto');
-                setMedicalCam(dataUri);
+                // setMedicalCam(dataUri);
                 closeModal()
                 pic1[1].src=dataUri
                 // console.log("raaaaaaaaaaaaaaaaaa",  dataUri );
@@ -215,7 +216,7 @@ const fetchTasks = async (loggedInUser) => {
               }
               async function handleTakePhotoAnimationDoneRadio (dataUri) {
                 console.log('takePhoto');
-                setRadioCam(dataUri);
+                // setRadioCam(dataUri);
                 closeModal()
                 pic1[2].src=dataUri
 
