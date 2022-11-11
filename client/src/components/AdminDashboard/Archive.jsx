@@ -6,6 +6,9 @@ import moment from 'moment';
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
 import { Link } from "react-router-dom";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 const Archive = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
@@ -77,12 +80,28 @@ return (
                             
                               // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
                             }</td>
-                            <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">Review</button></Link></td>
+                            <td><Link to={ `/final-list/profile/${student._id}` }>
+                              {/* <button className="viewProfileBtn">Review</button> */}
+                              
+                              <Popup
+    trigger={open => (
+      <button className="button viewProfileBtn">Review</button>
+    )}
+    position="bottom center"
+    on={['hover', 'focus']}
+    arrow={true}
+    closeOnDocumentClick
+  >
+    <span> Reason: { student.reason } </span>
+  </Popup>
+                              
+                              </Link></td>
                           </tr>
                         </tbody>
                         ) }
                       )
                     }
+
                 </table>
                 <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                 </div>

@@ -63,11 +63,11 @@ const customStyles = {
 };
 
 
-const decline = async (request, loggedInUser) => {
+const decline = async (request, loggedInUser, rod) => {
   let url = `/api/requests/${request._id}/decline`;
   const bod1 = {
     "adminId": `${loggedInUser.id}`,
-    "reason"  : "tumse na hopayega"
+    "reason"  : `${rod}`
   }
   const res = await fetch(url, {method: 'PATCH', body: JSON.stringify(bod1),     headers: {
     'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ const Decline = () => {
     <div>
       {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { openModal()} }>Decline</button> }
       {(request.isApproved) ? <h3>The request is already approved!</h3> : console.log("nothing")}
-      {(request.isRejected) ? <><h3>The request is already declined!</h3><p>Reason for Decline :</p></>: console.log("nothing")}
+      {(request.isRejected) ? <><h3>The request is already declined!</h3><p>Reason for Decline : {request.reason}</p></>: console.log("nothing")}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -154,7 +154,7 @@ const Decline = () => {
         </select><br></br>
         <br></br>
         {/* {alert((document.getElementById("rod")).value)} */}
-        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser);closeModal();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
+        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser, document.querySelector("#rod").value);sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email);closeModal();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
         </form>
         
       </Modal> 
@@ -168,7 +168,7 @@ const Decline = () => {
       >
         <img className='tick2' src={require('../images/verified.gif')} alt='' />
         <div><h2>Request declined successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email)}}>OK</button></Link>
+        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();}}>OK</button></Link>
       </Modal> 
       
     </div>
