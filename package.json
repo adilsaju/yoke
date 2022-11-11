@@ -8,10 +8,11 @@
     "backend": "nodemon server.js",
     "server": "nodemon server.js",
     "start": "node server.js",
+    "setup": "npm i && npm i --prefix ./client",
     "frontend": "npm run start --prefix client",
-    "both": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "build": "echo abc",
-    "setup": "npm i && cd client && npm i && cd.."
+    "both": "npm run setup && concurrently \"npm run backend\" \"npm run frontend\"",
+    "both-bare": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "echo abc"
   },
   "repository": {
     "type": "git",
