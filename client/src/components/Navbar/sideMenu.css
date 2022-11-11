@@ -4,7 +4,7 @@
     width: 18rem; */
     z-index: 1;  
 
-    padding: 0 0.8em;
+    /* padding: 0 0.8em; */
 }
 
 nav ul a {
@@ -19,7 +19,7 @@ nav ul a {
 
 nav img {
     max-width: 1.25rem;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
 }
 
 nav {
@@ -160,7 +160,7 @@ a.active {
     width: 36px;
     height: 30px;
     left: 36px;
-    top: 36px;
+    top: 23px;
   }
   
   /* Color/shape of burger icon bars */
@@ -196,8 +196,9 @@ a.active {
   /* General sidebar styles */
   .bm-menu {
     background: #373a47;
-    padding: 2.5em 1.5em 0;
+    /* padding: 2.5em 1.5em 0; */
     font-size: 1.15em;
+    overflow: unset;
   }
   
   /* Morph shape necessary with bubble or elastic */
@@ -208,7 +209,7 @@ a.active {
   /* Wrapper for item list */
   .bm-item-list {
     color: #b8b7ad;
-    /* padding: 0.8em; */
+    padding: 0.8em;
   }
   
   /* Individual item */
@@ -225,6 +226,8 @@ a.active {
     .Nav-menu {
         background-color: #00284E;
         width: 18rem;
+        padding: 0 0.8em;
+        position: fixed;
     }
 
     .bm-overlay {
@@ -260,10 +263,6 @@ a.active {
         font-size: unset;
     }
 
-    .logo {        
-        display: flex!important;
-        justify-content: center;
-    }
 
   }
   

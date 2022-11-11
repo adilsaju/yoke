@@ -19,16 +19,19 @@ header{
 }
 
 .logo {
-    width: 17.9rem;
-    border-right: 1px solid #50ABFF;
+    /* width: 17.9rem; */
     border-bottom: 2px solid #5cb0ff;
-    margin-top: 1rem;
-    padding-bottom: .5rem;
+    /* margin-top: 1rem; */
+    /* padding: .5rem 0 1rem 0; */
+    display: flex!important;
+    justify-content: center;
+    padding-bottom: 1rem;
+    margin-right: 0.84rem;
 }
 
 
 .logo img {
-    max-width: 60%;
+    max-width: 50%;
 }
 
 header h3,footer p{
@@ -56,6 +59,13 @@ header img{
   }
 
   @media screen and (min-width: 760px) {
+    .borderRight {
+        border-right: 1px solid #50ABFF;
+        /* padding-right: 1rem; */
+        width: 16.9rem;
+        padding: 0.5rem 0 0 .31rem;
+    }
+
     .page-name {
         width: calc(100% - 20rem);
         padding-left: 20rem;

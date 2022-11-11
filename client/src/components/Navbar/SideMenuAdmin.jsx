@@ -52,8 +52,11 @@ const SideMenuAdmin = () => {
     <div className='Nav-menu'>
 
       <Menu isOpen={ true } disableCloseOnEsc disableAutoFocus>
-      <div className='logo'>
-        <img src={require('../images/logoWhite.png')} alt='' />
+      
+      <div className="borderRight">
+        <div className='logo'>
+          <img src={require('../images/logoWhite.png')} alt='' />
+        </div>
       </div>
 
         <nav>
