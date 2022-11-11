@@ -220,7 +220,7 @@ a.active {
     background: rgba(0, 0, 0, 0.3);
   }
 
-  @media screen and (min-width: 760px) {
+  /* @media screen and (min-width: 760px) {
     .Nav-menu {
         background-color: #00284E;
         width: 18rem;
@@ -266,4 +266,4 @@ a.active {
     }
 
   }
-  
+   */

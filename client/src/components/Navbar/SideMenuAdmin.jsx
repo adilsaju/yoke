@@ -3,17 +3,54 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
 import { NavLink } from "react-router-dom";
-import { slide as Menu } from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu';
 import menu from '../images/menu.svg';
 import closeBtn from '../images/closeBtn.svg';
 
 const SideMenuAdmin = () => {
 
+  
+
   const [requests,setRequests] = useState([]);
   const [finalstudents,FinalStudents] = useState([]);
   const [error, setError] = useState(null);
+  const [menuOpen, setmenuOpen] = useState(false);
+
+  function handleStateChange (state) {
+    setmenuOpen(state.isOpen)
+  }
+
+  function closeMenu () {
+    setmenuOpen(false)
+  }
+
+  function toggleMenu (state) {
+    setmenuOpen(state => ({menuOpen: !state.menuOpen}))
+  }
+
+  function printWidth(){
+    // console.log(window.innerWidth);
+    if (window.innerWidth > 760){
+      console.log("Sidebar coming nowww")
+      // setisOpenSideBar(false)
+
+      // setisOpenSideBar(true)
+      setmenuOpen(true)
+    }
+
+  }
+
 
   useEffect(() => {  
+    const repeatMilliSeconds = 1000
+    var intervalId = window.setInterval(function(){
+      // call your function here
+      printWidth();
+    }, repeatMilliSeconds);
+
+
+
+
    setTimeout(() => {
     fetch(`/api/pendingRequests`).then(res => {
       if(!res.ok) {
@@ -52,9 +89,11 @@ const SideMenuAdmin = () => {
   return (
     <div className='Nav-menu'>
 
-      <Menu isOpen={ true } disableCloseOnEsc 
+      <Menu isOpen={ menuOpen } 
+      onStateChange={(state) => handleStateChange(state)}
+      disableCloseOnEsc 
         disableAutoFocus 
-        noTransition 
+        // noTransition 
         customBurgerIcon={ <img src={menu}  /> } 
         customCrossIcon={ <img src={closeBtn} /> }
       >
