@@ -29,7 +29,7 @@
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     background-image: linear-gradient(#C8E4FF 10%, #ffffff 20% 100%);
-    margin: 0 1rem;
+    margin: 2rem;
 }
 
 .topOfTheBox {
@@ -279,13 +279,18 @@ padding: 0;
     padding-bottom: 2rem;
 }
 
-.uploadDocs .imageupload div {
+.uploadBoxes {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: center;
     
+}
+
+.btnWrapper {
+    display: flex;
+    flex-direction: row;
 }
 
 .uploadDocs .imageupload h3 {
