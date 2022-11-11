@@ -9,11 +9,10 @@ import closeBtn from '../images/closeBtn.svg';
 
 const SideMenuAdmin = () => {
 
-  
-
   const [requests,setRequests] = useState([]);
   const [finalstudents,FinalStudents] = useState([]);
   const [error, setError] = useState(null);
+  
   const [menuOpen, setmenuOpen] = useState(false);
 
   function handleStateChange (state) {
@@ -57,7 +56,7 @@ const SideMenuAdmin = () => {
 
 
 
-   setTimeout(() => {
+    setTimeout(() => {
     fetch(`/api/pendingRequests`).then(res => {
       if(!res.ok) {
         throw Error(res.statusText);
@@ -71,7 +70,7 @@ const SideMenuAdmin = () => {
     }).catch(err => {
       setError(err.message)
     })
-   },1000)
+    },1000)
   }, []);
 
   useEffect(() => {
@@ -96,18 +95,18 @@ const SideMenuAdmin = () => {
     <div className='Nav-menu'>
 
       <Menu isOpen={ menuOpen } 
-      onStateChange={(state) => handleStateChange(state)}
-      disableCloseOnEsc 
+        onStateChange={(state) => handleStateChange(state)}
+        disableCloseOnEsc 
         disableAutoFocus 
         noTransition 
         noOverlay
-        customBurgerIcon={ <img src={menu}  /> } 
-        customCrossIcon={ <img src={closeBtn} /> }
+        customBurgerIcon={ <img src={menu} alt='hamburger menu' /> } 
+        customCrossIcon={ <img src={closeBtn} alt='close button' /> }
       >
       
       <div className="borderRight">
         <div className='logo'>
-          <img src={require('../images/logoWhite.png')} alt='' />
+          <img src={require('../images/logoWhite.png')} alt='Yoke' />
         </div>
       </div>
 
