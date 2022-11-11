@@ -425,16 +425,6 @@ const getChartOne = () => {
     try {
       const abc = await Request.requestModel.aggregate([
         {
-          $match: {
-            requestedDate: {
-              $gte: new Date(
-                new Date().getTime() -
-                  1 * 24 * 60 * 60 * 1000
-              ),
-            },
-          },
-        },
-        {
           $group: {
             _id: 1,
             isApproved: {
