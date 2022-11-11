@@ -1,18 +1,73 @@
 import React from 'react'
+import { useState,useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
 import { NavLink } from "react-router-dom";
-import { slide as Menu } from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu';
+import menu from '../images/menu.svg';
+import closeBtn from '../images/closeBtn.svg';
 
 
 const SideMenu = () => {
+
+  // HAMBURGER
+    const [menuOpen, setmenuOpen] = useState(false);
+
+    function handleStateChange (state) {
+      setmenuOpen(state.isOpen)
+    }
+
+    function closeMenu () {
+      setmenuOpen(false)
+    }
+
+    function toggleMenu (state) {
+      setmenuOpen(state => ({menuOpen: !state.menuOpen}))
+    }
+
+    function printWidth(){
+      // console.log(window.innerWidth);
+      const crossBtn = document.querySelector(".bm-cross-button")
+
+      if (window.innerWidth > 760){
+        console.log("Sidebar coming nowww")
+        // setisOpenSideBar(false)
+
+        // setisOpenSideBar(true)
+        setmenuOpen(true)
+        crossBtn.style.display = "none" 
+      }
+      else {
+        crossBtn.style.display = "unset" 
+      }
+
+    }
+    
+    useEffect(() => {  
+      const repeatMilliSeconds = 100
+      var intervalId = window.setInterval(function(){
+        // call your function here
+        printWidth();
+      }, repeatMilliSeconds);
+
+    }, []);
+
+
   return (
     <div className='Nav-menu'>
-  <Menu isOpen={ true } disableCloseOnEsc disableAutoFocus>
+    <Menu isOpen={ menuOpen } 
+      onStateChange={(state) => handleStateChange(state)}
+      disableCloseOnEsc 
+      disableAutoFocus 
+      noTransition 
+      noOverlay
+      customBurgerIcon={ <img src={menu} alt='hamburger menu' /> } 
+      customCrossIcon={ <img src={closeBtn} alt='close button' /> }
+    >
 
     <div className="borderRight">
       <div className='logo'>
-        <img src={require('../images/logoWhite.png')} alt='' />
+        <img src={require('../images/logoWhite.png')} alt='Yoke' />
       </div>
     </div>
 
