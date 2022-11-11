@@ -1,7 +1,7 @@
 
 .Nav-menu{
-    background-color: #00284E;
-    width: 18rem;
+    /* background-color: #00284E;
+    width: 18rem; */
     z-index: 1;  
 }
 
@@ -220,6 +220,11 @@ a.active {
   }
 
   @media screen and (min-width: 760px) {
+    .Nav-menu {
+        background-color: #00284E;
+        width: 18rem;
+    }
+
     .bm-overlay {
         position: unset!important; 
         z-index: unset!important;
