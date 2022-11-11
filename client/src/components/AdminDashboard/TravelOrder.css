@@ -94,12 +94,12 @@ table th {
     background-color: rgba(200, 288, 255, 0.5);
 }
 
-tr.heading th:first-child {
-    border-radius: 20px 0 0 0;
+thead th:first-child {
+    border-radius: 20px 0 0 20px;
 }
 
-tr.heading th:last-child {
-    border-radius: 0 20px 0 0;
+thead th:last-child {
+    border-radius: 0 20px 20px 0;
 }
 
 table td {
