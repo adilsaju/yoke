@@ -173,7 +173,7 @@ a.active {
   .bm-cross-button {
     height: 24px;
     width: 24px;
-    top: 1.375rem;
+    top: 8px;
   }
   
   /* Color/shape of close button cross */
@@ -206,7 +206,7 @@ a.active {
   /* Wrapper for item list */
   .bm-item-list {
     color: #b8b7ad;
-    padding: 0.8em;
+    padding: 1.5rem 0.8em 0.8em 0.8em;
   }
   
   /* Individual item */
@@ -260,13 +260,9 @@ a.active {
         font-size: unset;
     }
 
-
-  }
-  
-
-  @media screen and (min-width: 1366px) {
-    ELEMENT {
-        
+    .bm-item-list {
+        padding: 0.8em;
     }
+
   }
   
