@@ -35,9 +35,11 @@ const SideMenu = () => {
 
         // setisOpenSideBar(true)
         setmenuOpen(true)
+      if (crossBtn)
         crossBtn.style.display = "none" 
       }
       else {
+      if (crossBtn)
         crossBtn.style.display = "unset" 
       }
 
