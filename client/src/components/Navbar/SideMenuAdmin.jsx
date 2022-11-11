@@ -4,7 +4,8 @@ import { useState,useEffect } from 'react';
 import './sideMenu.css';
 import { NavLink } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
-
+import menu from '../images/menu.svg';
+import closeBtn from '../images/closeBtn.svg';
 
 const SideMenuAdmin = () => {
 
@@ -51,7 +52,12 @@ const SideMenuAdmin = () => {
   return (
     <div className='Nav-menu'>
 
-      <Menu isOpen={ true } disableCloseOnEsc disableAutoFocus>
+      <Menu isOpen={ true } disableCloseOnEsc 
+        disableAutoFocus 
+        noTransition 
+        customBurgerIcon={ <img src={menu}  /> } 
+        customCrossIcon={ <img src={closeBtn} /> }
+      >
       
       <div className="borderRight">
         <div className='logo'>

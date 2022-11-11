@@ -173,12 +173,13 @@ a.active {
   .bm-cross-button {
     height: 24px;
     width: 24px;
-    top: 8px;
+    right: 20px;
+    top: 35px;
   }
   
   /* Color/shape of close button cross */
   .bm-cross {
-    background: #bdc3c7;
+    /* background: #bdc3c7; */
   }
   
   /*
