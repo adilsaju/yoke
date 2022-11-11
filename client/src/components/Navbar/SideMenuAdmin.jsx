@@ -2,15 +2,55 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
-
+import { NavLink } from "react-router-dom";
+import { push as Menu } from 'react-burger-menu';
+import menu from '../images/menu.svg';
+import closeBtn from '../images/closeBtn.svg';
 
 const SideMenuAdmin = () => {
+
+  
 
   const [requests,setRequests] = useState([]);
   const [finalstudents,FinalStudents] = useState([]);
   const [error, setError] = useState(null);
+  const [menuOpen, setmenuOpen] = useState(false);
+
+  function handleStateChange (state) {
+    setmenuOpen(state.isOpen)
+  }
+
+  function closeMenu () {
+    setmenuOpen(false)
+  }
+
+  function toggleMenu (state) {
+    setmenuOpen(state => ({menuOpen: !state.menuOpen}))
+  }
+
+  function printWidth(){
+    // console.log(window.innerWidth);
+    if (window.innerWidth > 760){
+      console.log("Sidebar coming nowww")
+      // setisOpenSideBar(false)
+
+      // setisOpenSideBar(true)
+      setmenuOpen(true)
+    }
+
+  }
+
 
   useEffect(() => {  
+    const repeatMilliSeconds = 1000
+    var intervalId = window.setInterval(function(){
+      // call your function here
+      printWidth();
+    }, repeatMilliSeconds);
+
+
+
+
    setTimeout(() => {
     fetch(`/api/pendingRequests`).then(res => {
       if(!res.ok) {
@@ -48,43 +88,54 @@ const SideMenuAdmin = () => {
 
   return (
     <div className='Nav-menu'>
-  
-      <nav>
-      <ul>
-      <Link to="/"><li className='dashboard'>
-          Dashboard
-      </li></Link>
+
+      <Menu isOpen={ menuOpen } 
+      onStateChange={(state) => handleStateChange(state)}
+      disableCloseOnEsc 
+        disableAutoFocus 
+        // noTransition 
+        customBurgerIcon={ <img src={menu}  /> } 
+        customCrossIcon={ <img src={closeBtn} /> }
+      >
+      
+      <div className="borderRight">
+        <div className='logo'>
+          <img src={require('../images/logoWhite.png')} alt='' />
+        </div>
+      </div>
+
+        <nav>
+        <ul>
+        <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
+            Dashboard
+        </li></NavLink>
         
-        <Link to="/travel-order"> <li className="travelOrder">
+        <NavLink activeClassName="active" to="/travel-order" className="travelOrder"> <li>
           Travel Order&nbsp;
           <button className='countInd'><span>{(requests.length)}</span></button>
-        </li></Link>
-        {/* <li>
-        <Link to="/login">Login</Link>
-        </li> */}
-       
-       <Link to="/final-list"> <li className="finalList">
-          Final list&nbsp;
-          <button className='countInd'><span>{finalstudents.length}</span></button>
-        </li></Link>
-
-
-      <Link to="/archive"><li className='archive'>
-         History
-      </li></Link>
-
-        {<div>
-      <Link to="/setting"><li className='settings'>
-          Setting
-      </li></Link>
-
-      <Link to="/logout"><li className='logout'>
-          Logout
-      </li></Link>
-  
-        </div>}
-      </ul>
-      </nav>
+        </li></NavLink>
+          {/* <li>
+          <Link to="/login">Login</Link>
+          </li> */}
+        
+         <NavLink activeClassName="active" to="/final-list" className="finalList"> <li>
+            Final list&nbsp;
+            <button className='countInd'><span>{finalstudents.length}</span></button>
+          </li></NavLink>
+        <NavLink activeClassName="active" to="/archive" className='archive'><li>
+           History
+        </li></NavLink>
+          {<div>
+        <NavLink activeClassName="active" to="/setting" className='settings'><li>
+            Setting
+        </li></NavLink>
+        <NavLink activeClassName="active" to="/logout" className='logout'><li>
+            Logout
+        </li></NavLink>
+          </div>}
+        </ul>
+        </nav>
+      </Menu>
 
 
     </div>
