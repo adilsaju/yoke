@@ -24,7 +24,7 @@ header{
     /* margin-top: 1rem; */
     /* padding: .5rem 0 1rem 0; */
     display: flex!important;
-    justify-content: center;
+    justify-content: flex-start;
     padding-bottom: 1rem;
     /* margin-right: 0.84rem; */
     margin: 0 5px 0 5px;
@@ -33,6 +33,7 @@ header{
 
 .logo img {
     max-width: 50%;
+    padding-left: 3rem;
 }
 
 header h3,footer p{
