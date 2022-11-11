@@ -30,19 +30,25 @@ const SideMenuAdmin = () => {
 
   function printWidth(){
     // console.log(window.innerWidth);
+    const crossBtn = document.querySelector(".bm-cross-button")
+
     if (window.innerWidth > 760){
       console.log("Sidebar coming nowww")
       // setisOpenSideBar(false)
 
       // setisOpenSideBar(true)
       setmenuOpen(true)
+      crossBtn.style.display = "none" 
+    }
+    else {
+      crossBtn.style.display = "unset" 
     }
 
   }
 
 
   useEffect(() => {  
-    const repeatMilliSeconds = 1000
+    const repeatMilliSeconds = 100
     var intervalId = window.setInterval(function(){
       // call your function here
       printWidth();
@@ -93,7 +99,8 @@ const SideMenuAdmin = () => {
       onStateChange={(state) => handleStateChange(state)}
       disableCloseOnEsc 
         disableAutoFocus 
-        // noTransition 
+        noTransition 
+        noOverlay
         customBurgerIcon={ <img src={menu}  /> } 
         customCrossIcon={ <img src={closeBtn} /> }
       >
