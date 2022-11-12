@@ -21,7 +21,8 @@ const fetchTasks = async (loggedInUser) => {
 };
 const StudentAccountStatus = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const [images, setImages]= useState([])
+  const [imagesId, setImagesId]= useState(0)
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/login");
@@ -29,7 +30,6 @@ const StudentAccountStatus = () => {
 
 useEffect(() => {
   setPageTitle("Account Status")
-
   // let isLoggedIn  = true
   
   // if (!isLoggedIn){
@@ -39,7 +39,8 @@ useEffect(() => {
     handleClick();
     }
 
-}, []);
+}, []
+);
 
   const {loggedInUser, loginCredentials} = useContext(UserContext)
 
@@ -48,6 +49,24 @@ useEffect(() => {
                 const getTasks = async () => {
                 const tfs = await fetchTasks(loginCredentials.loggedInUser);
                 setStudents(tfs);
+                setImages([
+                  {
+                    original: `${tfs.requestedStudent.studentRequirements.license}`,
+                    thumbnail: `${tfs.requestedStudent.studentRequirements.license}`,
+                  },
+                  {
+                    original: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+                    thumbnail: `${tfs.requestedStudent.studentRequirements.medicalLicense}`,
+                  },
+                  {
+                    original: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+                    thumbnail: `${tfs.requestedStudent.studentRequirements.radioLicense}`,
+                  },
+                  {
+                    original: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+                    thumbnail: `${tfs.requestedStudent.studentRequirements.englishProficiency}`,
+                  },
+                ]);
                 };
                 getTasks();
             }, []);
