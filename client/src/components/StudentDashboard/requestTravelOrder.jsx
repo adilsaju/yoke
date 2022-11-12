@@ -14,7 +14,7 @@ const maximDate = new Date();
 maximDate.setDate(maximDate.getDate()+30);
 
 const minimDate = new Date();
-minimDate.setDate(minimDate.getDate()+2);
+minimDate.setDate(minimDate.getDate()+1);
 
 let resp = 'ok';
 let trr = false;
