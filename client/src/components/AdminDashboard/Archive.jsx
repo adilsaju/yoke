@@ -8,6 +8,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import './TravelOrder.css';
 
 const Archive = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
@@ -92,7 +93,7 @@ return (
     arrow={true}
     closeOnDocumentClick
   >
-    <span> Reason: { student.reason } </span>
+    <span className='thePopUp'> Reason: { student.reason } </span>
   </Popup>
                               
                               </Link></td>

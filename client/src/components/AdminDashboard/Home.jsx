@@ -293,18 +293,27 @@ useEffect(() => {
           {
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName1) }}   >
+          Download Chart Report
+          </button>
           </div>
 
           <div className="doughutChart">
           {
             dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
           } 
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
+          Download Chart Report
+          </button>
           </div>
 
           <div className="barGraph">
           {
             data && <Bar options={options} data={data} />
           } 
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName3) }} >
+          Download Chart Report
+          </button>
           </div>
 
         </div>
@@ -314,17 +323,11 @@ useEffect(() => {
   {/* <a href={abc1} download={fileName1}>Download chart1 report</a> <br />
   <a href={abc1} download={fileName2}>Download chart2 report</a> <br />
   <a href={abc1} download={fileName3}>Download chart3 report</a> */}
-  <button onClick={()=>{ downloadAnyFile(data, fileName1) }}   >
-  Download chart1 report
-    </button>
+  
     
-    <button onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
-    Download chart2 report
-      </button>
+    
       
-      <button onClick={()=>{ downloadAnyFile(dataPie, fileName3) }} >
-      Download chart3 report
-      </button>
+      
 
 
           </div>
