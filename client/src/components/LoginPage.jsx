@@ -5,7 +5,8 @@ import { useState,useEffect,useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext';
 import "./LoginPage.css";
 import cover from './images/plane.png';
-import logoDBlue from './images/logoDrkBlue.png'
+import logoDBlue from './images/logoDrkBlue.png';
+import pwEye from  './images/pwHideDark.svg';
 
 
 const LoginPage = () => {
@@ -135,7 +136,7 @@ const LoginPage = () => {
             <div className="abc-wrapper">
 
               <input type="password" name="password" id="password" />
-              <button onClick={(e)=>{show()}} > &#128065; </button>
+              <button onClick={(e)=>{show()}} > <img src={pwEye} alt="hide password" /> </button>
             </div>
               <a href="#">Forgot Password?</a>
           </div>
@@ -145,7 +146,7 @@ const LoginPage = () => {
         <br />
         <br />
       
-      <button className="yellowBtn" onClick={(e) => { login()}} >login</button>
+      <button className="yellowBtn" onClick={(e) => { login()}} >Login</button>
       
         {/* <input type="submit" /> */}
       
