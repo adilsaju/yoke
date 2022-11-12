@@ -106,7 +106,19 @@ const fetchDoughnut = async () => {
   
 
 
-const labelsDoughnut1 = dataDoughnut.map((a)=>a._id)
+const labelsDoughnut1 = dataDoughnut.map((a)=>{
+  if (a._id == null )
+  {
+    return "Not specified"
+  }
+  else
+  {
+    return a._id
+
+  }
+}
+
+)
 const labels = labelsDoughnut1.sort()
  
   const dataDoughnut2 = {
@@ -293,7 +305,7 @@ useEffect(() => {
           {
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
-          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName1) }}   >
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
           Download Chart Report
           </button>
           </div>
@@ -311,7 +323,7 @@ useEffect(() => {
           {
             data && <Bar options={options} data={data} />
           } 
-          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName3) }} >
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
           Download Chart Report
           </button>
           </div>
