@@ -70,7 +70,7 @@ const Setting = () => {
               { <><h3>Email: <span className="fontFira">{admin.email}</span></h3>
               <h4>Password: <span className="maskPw">{admin.password}</span></h4></> }
               <div>
-                <button className="dBlueBtn" onClick={openModal} >Forgot Password</button>
+                <button className="dBlueBtn" onClick={openModal} >Change Password</button>
               </div>
             </div>
         </div>
