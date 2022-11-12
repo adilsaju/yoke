@@ -135,7 +135,8 @@ const LoginPage = () => {
           <div className="ii-wrapper passwordWrapper"  >
             <div className="abc-wrapper">
 
-              <input type="password" name="password" id="password" />
+              <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
+                                                                                                                  login();  }}/>
               <button onClick={(e)=>{show()}} > <img src={pwEye} alt="hide password" /> </button>
             </div>
               <a href="#" className='forgot'>Forgot Password?</a>
