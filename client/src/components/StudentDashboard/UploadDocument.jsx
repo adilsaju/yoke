@@ -9,6 +9,8 @@ import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import Modal from 'react-modal';
 import { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const customStyles = {
   content: {
@@ -108,6 +110,16 @@ const fetchTasks = async (loggedInUser) => {
   console.log("wah data")
   return data;
 };
+
+const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
+  position: "bottom-left",
+  autoClose: 5000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  });
 
   const UploadDocument = () => {
     let subtitle;
@@ -325,7 +337,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic4" src={students.studentRequirements && students.studentRequirements.license}/></div>
                     <div className="btnWrapper">
                       <label htmlFor="l4">Upload</label>
-                      <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0])} }   accept="image/*" type="file" name="l4" id="l4"   />
+                      <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l4" id="l4"   />
                       <label htmlFor="l4c" id="capture4"  onClick={openModalLic} >Scan &#128247;</label>
                     </div>
                 </div>
@@ -336,7 +348,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic2" src={students.studentRequirements && students.studentRequirements.medicalLicense} /></div>
                     <div className="btnWrapper">
                       <label htmlFor="l2">Upload </label>
-                       <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0])} }  accept="image/*" type="file" name="l2" id="l2"     />
+                       <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0]) ; notify1();  } }  accept="image/*" type="file" name="l2" id="l2"     />
                       <label htmlFor="l2c" id="capture2" onClick={openModalMedical} >Scan &#128247;</label>
                     </div>
                     {/* <video id="player" controls autoplay></video>
@@ -349,7 +361,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic3" src={students.studentRequirements && students.studentRequirements.radioLicense} /></div>
                     <div className="btnWrapper">
                       <label htmlFor="l3">Upload</label>
-                      <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0])} }   accept="image/*" type="file" name="l3" id="l3"  />
+                      <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l3" id="l3"  />
                       <label htmlFor="l3c" id="capture3"  onClick={openModalRadio} >Scan &#128247;</label>
                     </div>
                 </div>
@@ -360,7 +372,7 @@ const fetchTasks = async (loggedInUser) => {
                     <div className="fitImg"><img id="pic1" src={students.studentRequirements && students.studentRequirements.englishProficiency} /></div>
                     <div className="btnWrapper">
                       <label htmlFor="l1">Upload</label>
-                      <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0])} }  accept="image/*" type="file" name="l1" id="l1"    />
+                      <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0]) ; notify1();   } }  accept="image/*" type="file" name="l1" id="l1"    />
                       <label htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan &#128247;</label>
                     </div>
                     {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
@@ -447,6 +459,15 @@ const fetchTasks = async (loggedInUser) => {
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
           />
       </Modal>
+      <ToastContainer position="bottom-left"
+autoClose={5000}
+hideProgressBar
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
     </>
     
   )
