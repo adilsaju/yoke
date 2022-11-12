@@ -94,12 +94,13 @@ const updateRadioLic = async (loggedInUser, setStudents, file1) => {
   return await sendImage(loggedInUser,formData,url,setStudents)
 };
 
-const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile)  => {
+const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile, navigate)  => {
   await updateRadioLic(loggedInUser, setStudents, radioFile)
   await updateMedicalLic(loggedInUser, setStudents, medicalFile)
   await updateLic(loggedInUser, setStudents, licFile)
   await updateEnglish(loggedInUser, setStudents, englishFile)
-  window.location.reload();
+  // window.location.reload();
+  navigate("/student-account-status")
 }
 
 const fetchTasks = async (loggedInUser) => {
@@ -393,7 +394,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                       Cancel
                     </button>
                     </Link>
-                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile )} }   >Save</button>
+                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile, navigate )} }   >Save</button>
                 </div>
               
                         </div>
@@ -415,7 +416,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneEnglish}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
           />
@@ -428,7 +429,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneMedical}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
           />
@@ -441,7 +442,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneRadio}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
           />
@@ -454,7 +455,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
+        <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneLic}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
           />

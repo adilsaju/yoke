@@ -232,3 +232,7 @@ a[href="/student-account-status"] {
     grid-template-columns: 1fr 3fr;
   }
 }
+
+.camTitle {
+  color: black !important;
+}
