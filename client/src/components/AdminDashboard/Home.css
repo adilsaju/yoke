@@ -1,28 +1,43 @@
+.graphGrid {
+    padding: 2rem 2%;
+}
 
-
-/* .content {
-    grid-area: c;
-    background: rgb(60, 255, 0);
-    position: relative;
-} */
+.graphGrid div {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin: 1rem 0;
+}
 
 canvas {
     min-width: 100%;
     font-family: 'Bai Jamjuree', Helvetica, sans-serif;
+    padding: 2rem;
 }
 
-@media screen and (min-width: 760px) {
+.pieChart button,
+.doughutChart button,
+.barGraph button {
+    margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 900px) {
     .graphGrid {
         /* display: flex;
         flex-flow: row wrap; */
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 2rem 0;
+        gap: 1rem;
     }
 
     .barGraph {
         flex-basis: 100%;
         flex-grow: 1;
     grid-column: 1 / -1;
+    }
+
+    .graphGrid div {
+        margin: 0;
+
     }
 }
