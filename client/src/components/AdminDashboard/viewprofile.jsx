@@ -202,7 +202,7 @@ const Viewprofile = () => {
                 <Link to={ `/travel-order/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  ><button className="leftBtn">
                   <img src={leftArrowBtn} alt='left-button' /></button>
                 </Link>}
-              <span className="fontFira">{cnt}</span>
+              <span className="fontFira">{cnt+1}</span>
               {cnt<requests.length-1 &&
               
                 <Link to={ `/travel-order/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >
