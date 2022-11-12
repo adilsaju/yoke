@@ -107,9 +107,9 @@ useEffect(() => {
             
             {students.length===0? console.log("Nothing") : 
             <div>
-                <h4>Account Balance: $&nbsp;</h4>
+                <h4>Account Balance: &nbsp;</h4>
                 
-                <span>{students.studentRequirements && students.studentRequirements.balance}
+                <span>${students.studentRequirements && students.studentRequirements.balance}
                 </span> 
             </div>
             }
