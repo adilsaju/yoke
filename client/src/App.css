@@ -182,8 +182,8 @@ nav{
 
 
 .fullpage{
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  /* display: grid;
+  grid-template-columns: 1fr 3fr; */
   grid-gap: 0;
   height: 100vh;
 }
@@ -221,4 +221,11 @@ button {
 .tick2{
   max-width: 30%;
   border-radius: 50% 50%;
+}
+
+@media screen and (min-width: 760px) {
+  .fullpage {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
 }
