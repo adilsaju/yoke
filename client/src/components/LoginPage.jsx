@@ -125,8 +125,8 @@ const LoginPage = () => {
       <div className="inputField">
         <div className="label-input-wrapper">
           <label htmlFor="loginid">Your Email</label>
-          <div className="ii-wrapper"  >
-          <input type="email" name="email" id="loginid" />
+          <div className="ii-wrapper email-wrapper"  >
+          <input type="email" name="email" id="loginid" placeholder='email' />
           </div>
         </div>
         <div className="label-input-wrapper">
@@ -134,10 +134,11 @@ const LoginPage = () => {
           <div className="ii-wrapper passwordWrapper"  >
             <div className="abc-wrapper">
 
-              <input type="password" name="password" id="password" />
+              <input type="password" name="password" id="password"  placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
+                                                                                          login();  }}  />
               <button onClick={(e)=>{show()}} > &#128065; </button>
             </div>
-              <a href="#">Forgot Password?</a>
+              <a href="#" className='forgot'>Forgot Password?</a>
           </div>
         </div>
       </div>
@@ -145,7 +146,7 @@ const LoginPage = () => {
         <br />
         <br />
       
-      <button className="yellowBtn" onClick={(e) => { login()}} >login</button>
+      <button className="yellowBtn" onClick={(e) => { login()}} >Login</button>
       
         {/* <input type="submit" /> */}
       
