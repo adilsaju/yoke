@@ -321,16 +321,25 @@ useEffect(() => {
           </div>
 
           <div className="doughutChart">
-          {
-            dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
-          } 
+            <div className="doughnutWrapper">
+              
+                        {
+              dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut}
+              />
+                        }
+
+              <div>
+                {dntCnt}
+              </div>
+            </div>
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
           Download Chart Report
           </button>
+
+          
+
           </div>
-          <div>
-            {dntCnt}
-          </div>
+          
 
           <div className="barGraph">
           {
