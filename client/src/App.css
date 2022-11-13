@@ -43,6 +43,12 @@ width: 1px;
   padding: 0.3rem 1.2rem;
 }
 
+.yellowBtn:hover {
+  background: rgba(254, 195, 38, 0.1);
+  border: 1px solid #FEC326;
+  color: #000000;
+}
+
 
 .dBlueBtn {
   background-color: #00284E;
@@ -51,6 +57,12 @@ width: 1px;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   padding: 0.3rem 1.2rem;
+}
+
+.dBlueBtn:hover {
+  background: rgba(0, 40, 78, 0.06);
+  border: 1px solid #000000;
+  color: #00284E;
 }
 
 .transparentBtn {

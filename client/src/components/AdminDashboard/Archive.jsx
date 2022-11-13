@@ -86,7 +86,7 @@ return (
                               
                               <Popup
     trigger={open => (
-      <button className="button viewProfileBtn">Review</button>
+      <button className="button dBlueBtn">Review</button>
     )}
     position="bottom center"
     on={['hover', 'focus']}
