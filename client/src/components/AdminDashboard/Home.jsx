@@ -98,13 +98,21 @@ const optionsDoughnut = {
   },
 };
 
-const fetchDoughnut = async () => {
+const fetchDoughnut = async (setdntCnt) => {
   let url = `/api/studentsInEachProgram`;
   const res = await fetch(url);
   const dataDoughnut = await res.json();
 
   
+console.log("dataDoughnuttttttttttttt",dataDoughnut)
+let dCnt = 0 ; 
+dataDoughnut.forEach((a)=>{
+  // dCnt += 1;
 
+  dCnt += a.count;
+
+})
+setdntCnt(dCnt)
 
 const labelsDoughnut1 = dataDoughnut.map((a)=>{
   if (a._id == null )
@@ -186,6 +194,8 @@ console.log("dataPie2",dataPie2);
 const Home = () => {
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
+  const [dntCnt, setdntCnt] = useState(0)
+
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -229,7 +239,7 @@ useEffect(() => {
   useEffect(() => {
     
     const getDoughnut = async () => {
-      const tfs = await fetchDoughnut();
+      const tfs = await fetchDoughnut(setdntCnt);
       setDataDoughnut(tfs);
     };
     getDoughnut();
@@ -317,6 +327,9 @@ useEffect(() => {
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
           Download Chart Report
           </button>
+          </div>
+          <div>
+            {dntCnt}
           </div>
 
           <div className="barGraph">
