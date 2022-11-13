@@ -6,7 +6,9 @@ import {UserContext} from '../Contexts/UserContext';
 import "./LoginPage.css";
 import cover from './images/plane.png';
 import logoDBlue from './images/logoDrkBlue.png';
-import pwEye from  './images/pwHideDark.svg';
+import pwEye1 from  './images/pwHideDark.svg';
+import pwEye2 from  './images/pwShowDark.svg';
+
 
 
 const LoginPage = () => {
@@ -107,7 +109,19 @@ const LoginPage = () => {
   const show = () => {
     // console.log("hah")
     const el = document.querySelector("#password")
-    el.type === "password" ? el.type = "text" : el.type = "password"
+    const eye = document.querySelector("#passwordEye")
+    
+    if (el.type === "password" )
+    {
+      el.type = "text"
+      eye.src = pwEye2
+    }
+    else {
+      el.type = "password"
+      eye.src = pwEye1
+    }
+    
+    
   }
 
   return (
@@ -137,7 +151,7 @@ const LoginPage = () => {
 
               <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
                                                                                                                   login();  }}/>
-              <button onClick={(e)=>{show()}} > <img src={pwEye} alt="hide password" /> </button>
+              <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
             </div>
               <a href="#" className='forgot'>Forgot Password?</a>
           </div>
