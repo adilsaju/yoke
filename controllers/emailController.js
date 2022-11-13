@@ -93,7 +93,7 @@ kk = `
     <th>Flight Date</th>
     <th>Requested Date</th>
     <th>Student Name</th>
-    <th>Approved Admin Name</th>
+    <th>Approved By</th>
 
   </tr>`
   if (body2.length > 0){ 
@@ -146,7 +146,7 @@ kk+=`  <tr>
       let message = req.body.text
       let fldt = req.body.travelDate
       let studentmail = req.body.mailId
-      body = `Hello, Your Request for ${`${fldt}`} has been approved.`
+      body = `Hello, We have verified your documents and approved your requested flight on ${`${fldt}`}. You will receive a final confirmation email from the flight coordinator within 24 to 48 hours.`
       // let studentId = req.body.studentEmail
 
       // const studentEmail = Student.studentModel.findById(studentId).select(email);
@@ -172,7 +172,7 @@ kk+=`  <tr>
 
       // const studenEmail = Student.studentModel.findById(studentId).select(email);
      
-      body = `Hello, Your Request for ${fldt} has been declined and the reason is : ${ROD} `
+      body = `Hello, We declined your requested flight on ${fldt} due to the following reason: ${ROD}. Kindly fulfill all the requirements and make a new request. `
       const studentEmail = studentmail
       try {
         // body=`<b>Hello world?</b>`
