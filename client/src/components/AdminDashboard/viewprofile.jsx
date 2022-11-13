@@ -183,13 +183,13 @@ const Viewprofile = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division viewProfile'>
-        <div className="backBar">
+        {/* <div className="backBar">
           <Link to="/travel-order">
             <button>
               Back
             </button>
           </Link>
-        </div>
+        </div> */}
 
 
         <div className='box'>
