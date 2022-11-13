@@ -74,7 +74,7 @@ button.duo {
 /* VIEW PROFILE OF STUDENT (admin & student) */
 
 .division {
-  margin: 5rem auto 1rem auto;
+  margin: 6.5rem auto 1rem auto;
   padding-bottom: 2rem;
   grid-column: 2/-1;
 }
@@ -226,13 +226,24 @@ button {
 a[href="/student-account-status"] {
   text-decoration: none;
 }
+
+.camTitle {
+  color: black !important;
+}
+
+
+/* ***** MEDIA QUERIES***** */
 @media screen and (min-width: 760px) {
   .fullpage {
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
+
+
+  .division {
+    margin: 5rem auto 1rem auto;
+  }
+
 }
 
-.camTitle {
-  color: black !important;
-}
+/* end of media queries */
