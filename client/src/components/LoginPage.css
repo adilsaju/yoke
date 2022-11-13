@@ -53,9 +53,9 @@
 .ii-wrapper input {
     border-radius: 28.5px;
     border: 1px solid #00284E;
-    width: 10rem;
+    width: 9rem;
     height: 1.5rem;
-    padding: 0 1rem;
+    padding: 0 1.7rem 0 1rem;
     background-color: #DDEFFF;
 }
 
@@ -82,13 +82,11 @@
 .abc-wrapper button {
     background-color: transparent ;
     border: none;
-    padding: .2rem .5rem 0 0;
+    padding: .3rem .4rem 0 0;
     position: absolute;
     right: 0;
 }
-#password {
-    border: none;
-}
+
 .inputField {
     display: flex;
     flex-direction: column;
@@ -110,8 +108,7 @@
 
 #password {
     margin: 0;
-    /* width: unset;
-    outline: none; */
+    border: none;
 }
 
 .passwordWrapper img {
