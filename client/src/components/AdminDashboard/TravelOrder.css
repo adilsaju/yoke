@@ -141,3 +141,20 @@ overflow-wrap:break-word;
 
 
 /**** STUDENT TRAVEL ORDER ****/
+
+
+/* ARCHIVE STATUS COLUMN */
+.myTable tr>td:nth-last-of-type(1) {
+    font-size: .95rem;
+    cursor: help;
+}
+
+.myTable .approved1 {
+    color: #70BB6F;
+}
+.myTable .declined1 {
+    color: #E77373;
+}
+/* .myTable .pending1 {
+    color: #70BB6F;
+} */

@@ -5,7 +5,9 @@ import Search from '../AdminDashboard/Search';
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
+import Popup from 'reactjs-popup';
 import '../../App.css'
+import 'reactjs-popup/dist/index.css';
 
 
 
@@ -104,10 +106,25 @@ const StudentTravelOrder = () => {
                             <td>{ student._id}</td>
                             <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{
-                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
+                              // (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
               
                                   // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
-                            }</td>
+                          
+                          
+                                  <Popup
+                                  trigger={open => (
+                                    (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
+                                  )}
+                                  position="bottom center"
+                                  on={['hover', 'focus']}
+                                  arrow={false}
+                                  closeOnDocumentClick
+                                >
+                                  <span className='thePopUp'> Reason: { student.reason } </span>
+                                </Popup>
+                          
+                          
+                          }</td>
                           </tr>
                         </tbody>
                         ) }

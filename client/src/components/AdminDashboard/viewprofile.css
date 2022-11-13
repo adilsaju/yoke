@@ -532,14 +532,14 @@ padding: 0;
     margin:auto;
     background:#fff!important;
     width:20%!important;
-    padding:5px;
+    padding:2rem;
     border:2px solid #00284E!important;
-    left: unset!important;
-    right: 0!important;
-    margin-right: 1rem!important;
+    /* left: unset!important; */
+    /* right: 0!important; */
+    /* margin-right: 1rem!important; */
 }
 
-.popup-arrow{
+/* .popup-arrow{
    visibility: hidden;
     
-}
+} */
