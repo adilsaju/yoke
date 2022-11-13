@@ -43,6 +43,11 @@ const requestSchema = new mongoose.Schema({
       default: "NA"
    },
 
+   IsSentToCoordinator: {
+      type: Boolean,
+      default: false
+   },
+
    // requestedStudent:  mongoose.Schema.Types.ObjectId,
    // approvedAdmin:  mongoose.Schema.Types.ObjectId,
  })
