@@ -74,6 +74,12 @@ width: 1px;
   padding: 0.3rem 1.2rem;
 }
 
+.transparentBtn:hover {
+  background-color: #00284E;
+  color: #ffffff;
+  border: 1px solid #00284E;
+}
+
 button.duo {
   width: 6rem;
   height: 2rem;
