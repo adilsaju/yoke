@@ -60,7 +60,6 @@ return (
                       <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
                       <th className=''>Status</th>
-                      <th className=''>Action</th>
                     </tr>
                   </thead>
                   {
@@ -77,16 +76,12 @@ return (
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{  
-                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
+                              
                             
                               // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
-                            }</td>
-                            <td><Link to={ `/final-list/profile/${student._id}` }>
-                              {/* <button className="viewProfileBtn">Review</button> */}
-                              
                               <Popup
     trigger={open => (
-      <button className="button dBlueBtn">Review</button>
+      (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
     )}
     position="bottom center"
     on={['hover', 'focus']}
@@ -95,8 +90,10 @@ return (
   >
     <span className='thePopUp'> Reason: { student.reason } </span>
   </Popup>
-                              
-                              </Link></td>
+
+
+                            }</td>
+
                           </tr>
                         </tbody>
                         ) }
