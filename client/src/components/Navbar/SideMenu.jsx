@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
 import { NavLink } from "react-router-dom";
-import { push as Menu } from 'react-burger-menu';
+// import { push as Menu } from 'react-burger-menu';
 import menu from '../images/menu.svg';
 import closeBtn from '../images/closeBtn.svg';
 
@@ -57,7 +57,7 @@ const SideMenu = () => {
 
   return (
     <div className='Nav-menu'>
-    <Menu isOpen={ menuOpen } 
+    {/* <Menu isOpen={ menuOpen } 
       onStateChange={(state) => handleStateChange(state)}
       disableCloseOnEsc 
       disableAutoFocus 
@@ -65,7 +65,7 @@ const SideMenu = () => {
       noOverlay
       customBurgerIcon={ <img src={menu} alt='hamburger menu' /> } 
       customCrossIcon={ <img src={closeBtn} alt='close button' /> }
-    >
+    > */}
 
     <div className="borderRight">
       <div className='logo'>
@@ -102,7 +102,7 @@ const SideMenu = () => {
     
         </ul>
         </nav>
-  </Menu>
+  {/* </Menu> */}
       </div>
   )
 }
