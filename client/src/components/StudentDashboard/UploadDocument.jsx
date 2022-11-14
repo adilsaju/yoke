@@ -184,6 +184,8 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // setLicCam(dataUri);
                 closeModal()
                 pic1[3].src=dataUri
+                notify1()
+
 
                 const res = await fetch(dataUri);
                 const blob = await res.blob();
@@ -197,6 +199,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // setEnglishCam(dataUri);
                 closeModal()
                 pic1[0].src=dataUri
+                notify1()
 
                 const res = await fetch(dataUri);
                 const blob = await res.blob();
@@ -210,6 +213,8 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // setMedicalCam(dataUri);
                 closeModal()
                 pic1[1].src=dataUri
+                notify1()
+
                 // console.log("raaaaaaaaaaaaaaaaaa",  dataUri );
                 // const file1 = new File([
                 //   new Blob([dataUri])
@@ -233,6 +238,8 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // setRadioCam(dataUri);
                 closeModal()
                 pic1[2].src=dataUri
+                notify1()
+
 
                 const res = await fetch(dataUri);
                 const blob = await res.blob();
