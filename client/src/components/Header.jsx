@@ -8,17 +8,21 @@ import { useLocation } from "react-router-dom";
 let navToggle = document.querySelector('.toggle-nav');
 
 const define = () => {
+  let close = false;
   navToggle = document.querySelector('.toggle-nav');
- 
-
-
-if(navToggle){
-navToggle.addEventListener('click', () => {
+  console.log(navToggle)
+navToggle && navToggle.addEventListener('click', () => {
   console.log('clickme')
-  document.body.classList.toggle('nav-open');
+  if(close){
+    close = false
+    document.body.classList.remove('nav-open');
+  }else{
+    close = true
+  document.body.classList.add('nav-open');
+}
 });
 }
-} 
+
 
 
 // }
@@ -37,7 +41,8 @@ const { pathname } = useLocation();
       
         <header>
         <div className='hamburg'>
-            <button onFocus={define} className='toggle-nav'>///</button>
+            <button  className='toggle-nav'>|||</button>
+            {define()}
           </div>
           <div className='logo'>
             <img src={require('./images/logoWhite.png')} alt='' />
