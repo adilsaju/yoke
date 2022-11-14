@@ -29,7 +29,7 @@ const SideMenu = () => {
       // console.log(window.innerWidth);
       const crossBtn = document.querySelector(".bm-cross-button")
 
-      if (window.innerWidth > 760){
+      if (window.innerWidth > 1100){
         // console.log("Sidebar coming nowww")
         // setisOpenSideBar(false)
 

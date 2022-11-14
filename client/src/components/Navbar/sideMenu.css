@@ -215,17 +215,23 @@ a.active {
   
   /* Individual item */
   nav.bm-item {
-    /* display: inline-block; */
-    display: flex!important;
-    flex-direction: column;
-    height: 90%;
-    justify-content: space-between;
+    display: inline-block;
   }
   
   /* Styling of overlay */
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+
+  @media screen and (min-width: 760px) {
+    nav.bm-item {
+        display: flex!important;
+        flex-direction: column;
+        height: 90%;
+        justify-content: space-between;
+      }
+  }
+  
 
   /* @media screen and (min-width: 760px) {
     .Nav-menu {
