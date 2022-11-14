@@ -25,6 +25,7 @@ nav img {
 nav {
     text-align-last: left;
     background-color: #00284E;
+
 }
 
 .Nav-menu a {
@@ -47,7 +48,8 @@ nav ul a{
 nav ul li{
     padding: 1.5rem 1rem 1.5rem 4.5rem;
     display: flex; 
-
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .dashboard {
@@ -133,7 +135,6 @@ nav li:hover{
 a.active {
     background-color: #5cb0ff;
     color: #00284E;
-    /* font-weight: bold; */
     background-size: 1.20rem; 
     background-repeat: no-repeat;
     background-position: 2rem 1.9rem;
@@ -151,6 +152,8 @@ a.active {
     align-items: center;
     align-content: center;
 }
+
+
 
 
 /***** HAMBURGER *****/
@@ -211,8 +214,12 @@ a.active {
   }
   
   /* Individual item */
-  .bm-item {
-    display: inline-block;
+  nav.bm-item {
+    /* display: inline-block; */
+    display: flex!important;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
   }
   
   /* Styling of overlay */
