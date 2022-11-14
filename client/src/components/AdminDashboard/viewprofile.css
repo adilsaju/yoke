@@ -86,10 +86,14 @@
 .studentviews h4 {
     margin: 0;
     padding: .5rem 0;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .studentviews span {
     padding: 0.5rem 0 0.5rem 2rem;
+    font-weight: 400;
+    font-size: 1.313rem;
 }
 
 .studentimage, .imageupload {
@@ -166,6 +170,8 @@
 .uploaded p {
     margin: 0;
     padding-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .hover-shadow {
@@ -272,6 +278,8 @@ padding: 0;
 
 .imageupload p {
     text-align: center;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .yellowBtn a {
@@ -279,7 +287,8 @@ padding: 0;
 }
 
 .desktopBtn {
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
 
 .mobileBtn {
@@ -500,11 +509,11 @@ padding: 0;
 
 @media screen and (min-width: 760px) {
     .desktopBtn {
-        visibility: visible;
+        display: block;
     }
 
-    .mobileBtn {
-        visibility: hidden;
+    .mobileBtnWrapper {
+        display: none;
     }
 }
 
