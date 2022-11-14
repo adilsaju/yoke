@@ -55,9 +55,9 @@ return (
                   { error && <div>{ error }</div> }
                     <tr>
                       <th>No.</th>
-                      <th>Requested ID</th>
+                      {/* <th>Requested ID</th> */}
                       <th>Name</th>
-                      {/* <th className=''>Student Id</th> */}
+                      <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
                       <th className=''>Processed Admin</th>
                       <th className=''>Status</th>
