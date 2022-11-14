@@ -231,3 +231,37 @@ overflow-wrap:break-word;
 
 }
 
+/* student table===== */
+.studentTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .studentTableDesktop {
+    display: none;
+
+    }
+
+    .studentTableMobile {
+        display: block;
+        
+    }
+    .studentTableMobile>div{
+        display: flex;
+    }
+
+    /* ARCHIVE STATUS COLUMN MOBILE  */
+.studentTableMobile div:nth-last-of-type(1) {
+    font-size: .95rem;
+    cursor: help;
+}
+
+.studentTableMobile .approved1 {
+    color: #70BB6F;
+}
+.studentTableMobile .declined1 {
+    color: #E77373;
+}
+
+
+}
+

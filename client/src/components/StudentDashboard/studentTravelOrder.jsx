@@ -89,7 +89,7 @@ const StudentTravelOrder = () => {
                 </Link>}
               </div>
               <span>Previous Records of Travel Orders</span>
-              <table className='myTable'>
+              <table className='myTable studentTableDesktop'>
                 <thead>
                   <tr>
                     <th>No.</th>
@@ -132,6 +132,52 @@ const StudentTravelOrder = () => {
                     }
               </table>
               
+            {/* MOBILE VIEWWWW====================== */}
+            <div className="studentTableMobile" >
+
+            {students.map((student,id) => {
+
+                  return(
+
+                    <div>
+                      <div>
+                      <p>
+                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      {/* <p>
+                        Processed Admin: { student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable"  }
+                      </p> */}
+
+                      </div>
+
+                    <div>
+
+                      <p>
+
+                      <Popup
+    trigger={open => (
+      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
+    )}
+    position="bottom center"
+    on={['hover', 'focus']}
+    arrow={false}
+    closeOnDocumentClick
+  >
+    <span className='thePopUp'> Reason: { student.reason } </span>
+  </Popup>
+
+                      
+                      </p>
+                    </div>
+
+                    </div>
+
+              ) 
+  })
+                              }
+            </div>
+            {/* MOBILE VIEWWWW END====================== */}
+
               <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
               </div>
             </div>
