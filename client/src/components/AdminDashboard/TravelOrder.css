@@ -92,14 +92,16 @@ background-color: rgba(200, 288, 255, 0.15);
 table th {
     padding: 1.5rem;
     background-color: rgba(200, 288, 255, 0.5);
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
-tr.heading th:first-child {
-    border-radius: 20px 0 0 0;
+thead th:first-child {
+    border-radius: 20px 0 0 20px;
 }
 
-tr.heading th:last-child {
-    border-radius: 0 20px 0 0;
+thead th:last-child {
+    border-radius: 0 20px 20px 0;
 }
 
 table td {
@@ -141,3 +143,91 @@ overflow-wrap:break-word;
 
 
 /**** STUDENT TRAVEL ORDER ****/
+
+
+/* ARCHIVE STATUS COLUMN  ( APPLIES TO STUDENT PREVIOUS REQUEST PAGE TABLEEE */
+.myTable tr>td:nth-last-of-type(1) {
+    font-size: .95rem;
+    cursor: help;
+}
+
+.myTable .approved1 {
+    color: #70BB6F;
+}
+.myTable .declined1 {
+    color: #E77373;
+}
+/* .myTable .pending1 {
+    color: #70BB6F;
+} */
+
+.travelOrderTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .travelOrderTableDesktop {
+    display: none;
+
+    }
+
+    .travelOrderTableMobile {
+        display: block;
+        
+    }
+    .travelOrderTableMobile>div{
+        display: flex;
+    }
+}
+/* ====FINAL LIST  */
+.finalListTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .finalListTableDesktop {
+    display: none;
+
+    }
+
+    .finalListTableMobile {
+        display: block;
+        
+    }
+    .finalListTableMobile>div{
+        display: flex;
+    }
+}
+
+/* ====ARCHIVE   */
+.archiveTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .archiveTableDesktop {
+    display: none;
+
+    }
+
+    .archiveTableMobile {
+        display: block;
+        
+    }
+    .archiveTableMobile>div{
+        display: flex;
+    }
+
+    /* ARCHIVE STATUS COLUMN MOBILE  */
+.archiveTableMobile div:nth-last-of-type(1) {
+    font-size: .95rem;
+    cursor: help;
+}
+
+.archiveTableMobile .approved1 {
+    color: #70BB6F;
+}
+.archiveTableMobile .declined1 {
+    color: #E77373;
+}
+
+
+}
+

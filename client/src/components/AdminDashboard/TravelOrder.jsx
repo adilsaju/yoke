@@ -8,11 +8,13 @@ import Filters from './Filters';
 import "./TravelOrder.css"
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
+import Pagination from './Pagination';
 
 
 const TravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(2);
 
   const [requests,setRequests] = useState([]);
   const [error, setError] = useState(null);
@@ -66,7 +68,11 @@ function onFilterValueSelected(filterValue) {
 updatefilterText(filterValue);
 }
 
+const indexOfLastPost = currentPage * postsPerPage;
+const indexOfFirstPost = indexOfLastPost - postsPerPage;
+const currentPosts = requests.slice(indexOfFirstPost, indexOfLastPost);
 
+const paginate = pageNumber => setCurrentPage(pageNumber);
 
 return (
     <>
@@ -80,28 +86,25 @@ return (
                 <Filters FilterValueSelected={onFilterValueSelected}/>
               </div>
             </div>
-
-            <table className="myTable">
+            {/* DESKTOP VIEWWWW====================== */}
+            <table className="myTable travelOrderTableDesktop">
               <thead>
               { error && <div>{ error }</div> }
                 <tr className="heading">
                   <th>No.</th>
-                  <th>Requested ID</th>
                   <th>Name</th>
                   <th className=''>Student Id</th>
                   <th className=''>Travel Date</th>
                   <th className=''>Action</th>
                 </tr>
               </thead>
-                        
-              {requests.map((request,id) => {
+              {currentPosts.map((request,id) => {
                 if ( 'requestedStudent' in request && request.isApproved === false)
                 {
                   return(
               <tbody key={id}>
                 <tr className='tay'>
                   <td>{count++}</td>
-                  <td>{request._id}</td>
                   <td>{request.requestedStudent && request.requestedStudent.name}</td>
                   <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
                   <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
@@ -109,10 +112,56 @@ return (
                 </tr>
               </tbody>
               ) }
-                                })
+  })
                               }
-            
             </table>
+            {/* DESKTOP VIEWWWW END====================== */}
+
+            {/* MOBILE VIEWWWW====================== */}
+            <div className="travelOrderTableMobile" >
+            {currentPosts.map((request,id) => {
+                if ( 'requestedStudent' in request && request.isApproved === false)
+                {
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {request.requestedStudent && request.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {request.requestedStudent && request.requestedStudent.studentNumber? request.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(request.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+                      <Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link>
+                      </p>
+                    </div>
+
+                    </div>
+
+              ) }
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
+
+
+            <div>
+            <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={requests.length}
+        paginate={paginate}
+      />
+            </div>
                         
           </div>
           {/* end of subDivision */}

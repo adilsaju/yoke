@@ -6,6 +6,10 @@ import moment from 'moment';
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
 import { Link } from "react-router-dom";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import './TravelOrder.css';
+
 const Archive = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
@@ -46,7 +50,7 @@ return (
               <Search/>
             </div>
             
-                <table className='myTable'>
+                <table className='myTable archiveTableDesktop'>
                   <thead>
                   { error && <div>{ error }</div> }
                     <tr>
@@ -55,8 +59,8 @@ return (
                       <th>Name</th>
                       <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
+                      <th className=''>Processed Admin</th>
                       <th className=''>Status</th>
-                      <th className=''>Action</th>
                     </tr>
                   </thead>
                   {
@@ -72,21 +76,86 @@ return (
                             <td>{student.requestedStudent && student.requestedStudent.name}</td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                            <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td>
                             <td>{  
-                              (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
+                              
                             
                               // ((!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <h2>Expired</h2>: console.log("nothing"))
+                              <Popup
+    trigger={open => (
+      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
+    )}
+    position="bottom center"
+    on={['hover', 'focus']}
+    arrow={false}
+    closeOnDocumentClick
+  >
+    <span className='thePopUp'> Reason: { student.reason } </span>
+  </Popup>
+
+
                             }</td>
-                            <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">Review</button></Link></td>
+
                           </tr>
                         </tbody>
                         ) }
                       )
                     }
+
                 </table>
                 <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                 </div>
             
+            {/* MOBILE VIEWWWW====================== */}
+            <div className="archiveTableMobile" >
+            { error && <div>{ error }</div> }
+
+            {Archivestudent.map((student,id) => {
+
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {student.requestedStudent && student.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+
+                      <Popup
+    trigger={open => (
+      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
+    )}
+    position="bottom center"
+    on={['hover', 'focus']}
+    arrow={false}
+    closeOnDocumentClick
+  >
+    <span className='thePopUp'> Reason: { student.reason } </span>
+  </Popup>
+
+                      
+                      </p>
+                    </div>
+
+                    </div>
+
+              ) 
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
 
           </div>
           {/* end of subDivision */}

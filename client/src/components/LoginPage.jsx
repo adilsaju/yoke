@@ -5,7 +5,10 @@ import { useState,useEffect,useContext } from 'react';
 import {UserContext} from '../Contexts/UserContext';
 import "./LoginPage.css";
 import cover from './images/plane.png';
-import logoDBlue from './images/logoDrkBlue.png'
+import logoDBlue from './images/logoDrkBlue.png';
+import pwEye1 from  './images/pwHideDark.svg';
+import pwEye2 from  './images/pwShowDark.svg';
+
 
 
 const LoginPage = () => {
@@ -16,7 +19,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/");
+    navigate("/dashboard");
   }
 
 
@@ -57,7 +60,7 @@ const LoginPage = () => {
           loggedInUser: JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser,
         })
         // setIsAdmin(true)
-        navigate("/");
+        navigate("/dashboard");
       }
       else {
 
@@ -106,7 +109,19 @@ const LoginPage = () => {
   const show = () => {
     // console.log("hah")
     const el = document.querySelector("#password")
-    el.type === "password" ? el.type = "text" : el.type = "password"
+    const eye = document.querySelector("#passwordEye")
+    
+    if (el.type === "password" )
+    {
+      el.type = "text"
+      eye.src = pwEye2
+    }
+    else {
+      el.type = "password"
+      eye.src = pwEye1
+    }
+    
+    
   }
 
   return (
@@ -125,8 +140,8 @@ const LoginPage = () => {
       <div className="inputField">
         <div className="label-input-wrapper">
           <label htmlFor="loginid">Your Email</label>
-          <div className="ii-wrapper"  >
-          <input type="email" name="email" id="loginid" />
+          <div className="ii-wrapper email-wrapper"  >
+          <input type="email" name="email" id="loginid" placeholder='email' />
           </div>
         </div>
         <div className="label-input-wrapper">
@@ -134,10 +149,11 @@ const LoginPage = () => {
           <div className="ii-wrapper passwordWrapper"  >
             <div className="abc-wrapper">
 
-              <input type="password" name="password" id="password" />
-              <button onClick={(e)=>{show()}} > &#128065; </button>
+              <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
+                                                                                                                  login();  }}/>
+              <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
             </div>
-              <a href="#">Forgot Password?</a>
+              <a href="#" className='forgot'>Forgot Password?</a>
           </div>
         </div>
       </div>
@@ -145,7 +161,7 @@ const LoginPage = () => {
         <br />
         <br />
       
-      <button className="yellowBtn" onClick={(e) => { login()}} >login</button>
+      <button className="yellowBtn" onClick={(e) => { login()}} >Login</button>
       
         {/* <input type="submit" /> */}
       

@@ -16,6 +16,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import  abcd2  from "../images/abcd2.png"
+
+
+
+//============== TRAVEL ORDER VIEW PROFILEEEEEEE================================
+
+
+
+
+
 
 const images = [
   {
@@ -93,6 +103,10 @@ const Viewprofile = () => {
   const [nextId, setNextId]= useState("")
   const [images, setImages]= useState([])
   const [imagesId, setImagesId]= useState(0)
+  const [noteInitial, setnoteInitial]= useState(true)
+
+
+  
 
 
   console.log("previd",prevId);
@@ -171,13 +185,13 @@ const Viewprofile = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division viewProfile'>
-        <div className="backBar">
+        {/* <div className="backBar">
           <Link to="/travel-order">
             <button>
               Back
             </button>
           </Link>
-        </div>
+        </div> */}
 
 
         <div className='box'>
@@ -190,7 +204,7 @@ const Viewprofile = () => {
                 <Link to={ `/travel-order/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  ><button className="leftBtn">
                   <img src={leftArrowBtn} alt='left-button' /></button>
                 </Link>}
-              <span className="fontFira">{cnt}</span>
+              <span className="fontFira">{cnt+1}</span>
               {cnt<requests.length-1 &&
               
                 <Link to={ `/travel-order/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >
@@ -245,14 +259,17 @@ const Viewprofile = () => {
                 <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(0)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
                 <p>Pilot License</p>
               </div>
+
               <div className="uploaded">
                 <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(1)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
                 <p>Medical License</p>
               </div>
+
               <div className="uploaded">
                 <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(2)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
                 <p>Radio License</p>
               </div>
+              
               <div className="uploaded">
                 <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(3)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
                 <p>English Proficiency</p>
@@ -281,9 +298,9 @@ const Viewprofile = () => {
             <h4>Notes</h4>
             <div className="noteWrapper">
               <textarea name="" id="note1" cols="40" rows="10" value={notes}   onChange={e => setNotes(e.target.value)}  disabled></textarea> <br />
-              <div className="buttonWrapper">
-                <button className="transparentBtn" onClick={(e) => {  document.querySelector("#note1").disabled = false }}  >Edit</button>
-                <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes)}}  >Save</button>
+              <div className="buttonWrapper notesBtn">
+                { noteInitial? <button className="dBlueBtn" onClick={(e) => {  document.querySelector("#note1").disabled = false; setnoteInitial(false) }}  >Edit</button> : <button className="dBlueBtn" onClick={(e) => { updateStudentNotes(request, notes); setnoteInitial(true)  }}  >Save</button> }
+                
               </div>
             </div>
             {/* end of noteWrapper */}

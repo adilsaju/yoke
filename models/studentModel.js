@@ -31,7 +31,10 @@ const studentSchema = new mongoose.Schema({
    //       contentType: String
    //    }
    // },
-   photo: String,
+   photo: {
+      type: String,
+      default: "https://storage.googleapis.com/yoke-e05d7.appspot.com/yoke%2F%2Fpexels-george-dolgikh-13105061846c77aa1e.jpg"
+   },
    dateJoined: {
       type: Date,
       default: Date.now

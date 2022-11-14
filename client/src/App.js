@@ -14,10 +14,10 @@ import FinalList from './components/AdminDashboard/FinalList'
 import NotFound from './components/AdminDashboard/NotFound';
 
 import { Routes, Route, Link } from "react-router-dom";
-import { initializeApp } from 'firebase/app';
-import { collection, getFirestore } from 'firebase/firestore';
-import { getAuth } from "firebase/auth";
-import {getStorage} from "firebase/storage";
+// import { initializeApp } from 'firebase/app';
+// import { collection, getFirestore } from 'firebase/firestore';
+// import { getAuth } from "firebase/auth";
+// import {getStorage} from "firebase/storage";
 import { useState,useEffect } from 'react';
 import TravelOrder from './components/AdminDashboard/TravelOrder';
 import Archive from './components/AdminDashboard/Archive';
@@ -29,30 +29,22 @@ import RejectionReason from './components/AdminDashboard/RejectionReason';
 import Decline from './components/AdminDashboard/Decline';
 import Viewprofiles from './components/AdminDashboard/Viewprofiles';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
-  authDomain: "yoke-e05d7.firebaseapp.com",
-  projectId: "yoke-e05d7",
-  storageBucket: "yoke-e05d7.appspot.com",
-  messagingSenderId: "57509978133",
-  appId: "1:57509978133:web:b5486f62e1a8675a61ee1c",
-  measurementId: "G-PSY32G7NGY"
-};
-
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
- const auth = getAuth(app);
- const storage = getStorage(app);
- export {auth,storage,app};
-
-//  const fetchTasks = async () => {
-//   let url1 = `/students`;
-//   const res = await fetch(url1);
-//   const data = await res.json();
-
-//   console.log(data);
-//   return data;
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCpGHO4mWc03HUiq3NCFbDzcZbLfH-YFZA",
+//   authDomain: "yoke-e05d7.firebaseapp.com",
+//   projectId: "yoke-e05d7",
+//   storageBucket: "yoke-e05d7.appspot.com",
+//   messagingSenderId: "57509978133",
+//   appId: "1:57509978133:web:b5486f62e1a8675a61ee1c",
+//   measurementId: "G-PSY32G7NGY"
 // };
+
+// const app = initializeApp(firebaseConfig);
+// export const db = getFirestore(app);
+//  const auth = getAuth(app);
+//  const storage = getStorage(app);
+//  export {auth,storage,app};
+
 
 function App() {
  
@@ -96,30 +88,6 @@ function App() {
 
     useEffect(() => {
       console.log("APPPJS USEFFFF  RANNNNNNNN");
-      
-
-      // if (!JSON.parse(localStorage.getItem("loginCredentials"))){
-      //   localStorage.setItem("loginCredentials", null)
-      // }else {
-
-      //   let isLoggedIn  =  JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn
-      //   let loggedInUser  =  JSON.parse(localStorage.getItem("loginCredentials")).loggedInUser
-      //   let isAdmin  =  JSON.parse(localStorage.getItem("loginCredentials")).isAdmin
-
-      //   //set states based on local storage
-      //   setLoginCredentials({
-      //     isLoggedIn: isLoggedIn,
-      //     loggedInUser: {
-      //       id: loggedInUser.id,
-      //       name: loggedInUser.name
-      //     },
-      //     isAdmin: isAdmin
-      //   })
-      // }
-
-
-      // setLoginCredentials({abc:"haha"})
-
       console.log("ESEFF", loginCredentials);
 
     }, []);
@@ -133,7 +101,8 @@ function App() {
     <Header/>
     
     <Routes>
-      <Route path="/" element={ <Home/> } /> 
+    <Route path="/" element={ <Home/> } /> 
+      <Route path="/dashboard" element={ <Home/> } /> 
       <Route path="/login" element={ <LoginPage /> } /> 
       <Route path="/logout" element={ <LoginPage /> } /> 
 

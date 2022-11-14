@@ -425,16 +425,6 @@ const getChartOne = () => {
     try {
       const abc = await Request.requestModel.aggregate([
         {
-          $match: {
-            requestedDate: {
-              $gte: new Date(
-                new Date().getTime() -
-                  1 * 24 * 60 * 60 * 1000
-              ),
-            },
-          },
-        },
-        {
           $group: {
             _id: 1,
             isApproved: {
@@ -688,7 +678,35 @@ const declineRequestById = () => {
       return;
     }
 
+
+    if (
+      req.body.adminId != null &&
+      req.body.adminId != undefined
+    ) {
+      try {
+        particularAdmin = await Admin.adminModel.findById(
+          req.body.adminId
+        );
+      } catch (error) {
+        res.status(500).json({
+          message:
+            'finding particular admin by given id failed',
+        });
+
+        return;
+      }
+    } else {
+      res.status(500).json({ message: 'error.message' });
+
+      return;
+    }
+
     requestInfo.isRejected = true;
+    //actually declinedadmin :(
+    requestInfo.approvedAdmin=particularAdmin
+    requestInfo.adminVerifiedDate = new Date();
+    requestInfo.reason = req.body.reason
+
 
     try {
       const declineArequest = await requestInfo.save();

@@ -18,9 +18,28 @@ code {
 body {
   font-family: 'Bai Jamjuree', 'Fira Sans', Helvetica, sans-serif;
   line-height: 1.5;
+  color: #1F1F1F;
+  font-size: 1rem;
+  font-weight: 400;
+  ;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }

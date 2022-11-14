@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import  abcd2  from "../images/abcd2.png"
+
 
 const images = [
   {
@@ -130,13 +132,13 @@ const Viewprofiles = () => {
     <div className='fullpage'>
       <SideMenuAdmin/>
       <div className='division'>
-        <div className="backBar">
+        {/* <div className="backBar">
           <Link to="/final-list">
             <button>
               Back
             </button>
           </Link>
-        </div>
+        </div> */}
 
 
         <div className='box'>
@@ -149,7 +151,7 @@ const Viewprofiles = () => {
                 <Link to={ `/final-list/profile/${prevId}` } onClick={(e)=>{ setCurrentPage() }}  ><button className="leftBtn">
                   <img src={leftArrowBtn} alt='left-button' /></button>
                 </Link>}
-              <span className="fontFira">{cnt}</span>
+              <span className="fontFira">{cnt+1}</span>
               {cnt<requests.length-1 &&
               
                 <Link to={ `/final-list/profile/${nextId}` } onClick={(e)=>{ setCurrentPage() }}   >

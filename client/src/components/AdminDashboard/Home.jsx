@@ -98,15 +98,35 @@ const optionsDoughnut = {
   },
 };
 
-const fetchDoughnut = async () => {
+const fetchDoughnut = async (setdntCnt) => {
   let url = `/api/studentsInEachProgram`;
   const res = await fetch(url);
   const dataDoughnut = await res.json();
 
   
+console.log("dataDoughnuttttttttttttt",dataDoughnut)
+let dCnt = 0 ; 
+dataDoughnut.forEach((a)=>{
+  // dCnt += 1;
 
+  dCnt += a.count;
 
-const labelsDoughnut1 = dataDoughnut.map((a)=>a._id)
+})
+setdntCnt(dCnt)
+
+const labelsDoughnut1 = dataDoughnut.map((a)=>{
+  if (a._id == null )
+  {
+    return "Not specified"
+  }
+  else
+  {
+    return a._id
+
+  }
+}
+
+)
 const labels = labelsDoughnut1.sort()
  
   const dataDoughnut2 = {
@@ -174,6 +194,8 @@ console.log("dataPie2",dataPie2);
 const Home = () => {
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
+  const [dntCnt, setdntCnt] = useState(0)
+
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -217,7 +239,7 @@ useEffect(() => {
   useEffect(() => {
     
     const getDoughnut = async () => {
-      const tfs = await fetchDoughnut();
+      const tfs = await fetchDoughnut(setdntCnt);
       setDataDoughnut(tfs);
     };
     getDoughnut();
@@ -293,18 +315,39 @@ useEffect(() => {
           {
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
+          Download Chart Report
+          </button>
           </div>
 
           <div className="doughutChart">
-          {
-            dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut} />
-          } 
+            <div className="doughnutWrapper">
+              
+                        {
+              dataDoughnut && <Doughnut options={optionsDoughnut} data={dataDoughnut}
+              />
+                        }
+
+              <div>
+                {dntCnt}
+              </div>
+            </div>
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
+          Download Chart Report
+          </button>
+
+          
+
           </div>
+          
 
           <div className="barGraph">
           {
             data && <Bar options={options} data={data} />
           } 
+          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
+          Download Chart Report
+          </button>
           </div>
 
         </div>
@@ -314,24 +357,17 @@ useEffect(() => {
   {/* <a href={abc1} download={fileName1}>Download chart1 report</a> <br />
   <a href={abc1} download={fileName2}>Download chart2 report</a> <br />
   <a href={abc1} download={fileName3}>Download chart3 report</a> */}
-  <button onClick={()=>{ downloadAnyFile(data, fileName1) }}   >
-  Download chart1 report
-    </button>
+  
     
-    <button onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
-    Download chart2 report
-      </button>
+    
       
-      <button onClick={()=>{ downloadAnyFile(dataPie, fileName3) }} >
-      Download chart3 report
-      </button>
+      
 
 
           </div>
       </div>
   </div>
 
-  adsas
   </>)
 
 }

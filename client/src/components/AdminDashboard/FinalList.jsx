@@ -9,6 +9,8 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from './Pagination';
+//FINAL LIST SOME CSS IS IN travelorder css
 
 let emailcheck = true
 
@@ -58,7 +60,8 @@ const sentEmail = async () => {
               const [finalstudents,FinalStudents] = useState([]);
   
               const [error, setError] = useState(null);
-
+              const [currentPage, setCurrentPage] = useState(1);
+              const [postsPerPage] = useState(2);
               const location = useLocation();
               console.log(location.pathname);
 
@@ -87,6 +90,13 @@ const sentEmail = async () => {
               // console.log(isEmpty);
   
               let count = 1;
+
+              const indexOfLastPost = currentPage * postsPerPage;
+const indexOfFirstPost = indexOfLastPost - postsPerPage;
+const currentPosts = finalstudents.slice(indexOfFirstPost, indexOfLastPost);
+
+const paginate = pageNumber => setCurrentPage(pageNumber);
+
     return (
                
         <div>
@@ -109,32 +119,75 @@ draggable
 pauseOnHover/>
                     </div>
                   </div>
-                  <table className='myTable'>
+                  <table className='myTable finalListTableDesktop'>
                     <thead>
                       <tr>
                         <th>No.</th>
-                        <th>Requested ID</th>
                         <th>Name</th>
                         <th className=''>Student Id</th>
                         <th className=''>Travel Date</th>
                         <th className=''>Action</th>
                       </tr>
                     </thead>
-                    {finalstudents.map((student,id)=> {
+                    {currentPosts.map((student,id)=> {
                     return (
                       <tbody key={id}>
                         <tr className='tay' >
                           <td>{count++}</td>
-                          <td>{ student._id}</td>
                           <td>{ student.requestedStudent && student.requestedStudent.name}</td>
                           <td>{ student.requestedStudent && student.requestedStudent.studentNumber}</td>
                           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
-                          <td><Link to={ `/final-list/profile/${student._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
+                          <td><Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link></td>
                         </tr>
                         </tbody>
                     )}
                     )}
                   </table>
+
+                                  {/* MOBILE VIEWWWW====================== */}
+            <div className="finalListTableMobile" >
+            {currentPosts.map((student,id) => {
+
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {student.requestedStudent && student.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+                      <Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link>
+                      </p>
+                    </div>
+
+                    </div>
+
+              )
+             
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
+
+                  <div>
+                  <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={finalstudents.length}
+        paginate={paginate}
+      />
+                  </div>
                   <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                   </div>
                 </div>
