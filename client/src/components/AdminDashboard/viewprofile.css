@@ -274,9 +274,24 @@ padding: 0;
     text-align: center;
 }
 
-.topOfTheBox .yellowBtn a {
+.yellowBtn a {
     text-decoration: none;
-    }
+}
+
+.desktopBtn {
+    visibility: hidden;
+}
+
+.mobileBtn {
+    width: 100%;
+    height: 3.75rem;
+}
+
+.mobileBtnWrapper {
+    border-top: 2px solid #C8E4FF;
+    padding-top: 2rem;
+    flex: 1 0 100%;
+}
 
 .whiteBg {
     background-color: #ffffff;
@@ -482,6 +497,17 @@ padding: 0;
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
     z-index: 2;
 }
+
+@media screen and (min-width: 760px) {
+    .desktopBtn {
+        visibility: visible;
+    }
+
+    .mobileBtn {
+        visibility: hidden;
+    }
+}
+
 
 @media screen and (min-width: 1100px) {
     .box {
