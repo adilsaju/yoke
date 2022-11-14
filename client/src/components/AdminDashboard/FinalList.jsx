@@ -113,7 +113,6 @@ pauseOnHover/>
                     <thead>
                       <tr>
                         <th>No.</th>
-                        <th>Requested ID</th>
                         <th>Name</th>
                         <th className=''>Student Id</th>
                         <th className=''>Travel Date</th>
@@ -125,7 +124,6 @@ pauseOnHover/>
                       <tbody key={id}>
                         <tr className='tay' >
                           <td>{count++}</td>
-                          <td>{ student._id}</td>
                           <td>{ student.requestedStudent && student.requestedStudent.name}</td>
                           <td>{ student.requestedStudent && student.requestedStudent.studentNumber}</td>
                           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>

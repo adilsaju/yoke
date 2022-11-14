@@ -93,7 +93,6 @@ const StudentTravelOrder = () => {
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Request ID</th>
                     <th className=''>Travel Date</th>
                     <th className=''>Processed Admin</th>
                     <th className=''>Status</th>
@@ -104,7 +103,6 @@ const StudentTravelOrder = () => {
                         <tbody key={id}>
                           <tr className='tay'>
                             <td>{(count++)}</td>
-                            <td>{ student._id}</td>
                             <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable"  }</td>
                             <td>{
