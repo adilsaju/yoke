@@ -231,52 +231,9 @@ a.active {
         justify-content: space-between;
       }
   }
-  
 
-  /* @media screen and (min-width: 760px) {
-    .Nav-menu {
-        background-color: #00284E;
-        width: 18rem;
-        padding: 0 0.8em;
-        position: fixed;
+@media screen and (min-width: 1100px) {
+    .menuBottom a {
+        border-bottom: unset;
     }
-
-    .bm-overlay {
-        position: unset!important; 
-        z-index: unset!important;
-        width: unset!important;
-        height: unset!important;
-        background: unset!important;
-        opacity: unset!important;
-        transition: unset!important;
-    }
-
-    .bm-menu-wrap {
-        position: unset!important;
-        right: unset!important;
-        z-index: unset!important;
-        width: unset!important;
-        height: unset!important;
-        transition: unset!important;
-    }
-
-    .bm-burger-button {
-        display: none;
-    }
-
-    .bm-cross-button {
-        display: none;
-    }
-
-    .bm-menu {
-        background: unset;
-        padding: unset;
-        font-size: unset;
-    }
-
-    .bm-item-list {
-        padding: 0.8em;
-    }
-
-  }
-   */
+}
