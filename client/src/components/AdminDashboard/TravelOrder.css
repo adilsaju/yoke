@@ -178,3 +178,21 @@ overflow-wrap:break-word;
         display: flex;
     }
 }
+/* ====FINAL LIST  */
+.finalListTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .finalListTableDesktop {
+    display: none;
+
+    }
+
+    .finalListTableMobile {
+        display: block;
+        
+    }
+    .finalListTableMobile>div{
+        display: flex;
+    }
+}

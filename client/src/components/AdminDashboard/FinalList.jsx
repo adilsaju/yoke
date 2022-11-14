@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from './Pagination';
+//FINAL LIST SOME CSS IS IN travelorder css
 
 let emailcheck = true
 
@@ -118,7 +119,7 @@ draggable
 pauseOnHover/>
                     </div>
                   </div>
-                  <table className='myTable'>
+                  <table className='myTable finalListTableDesktop'>
                     <thead>
                       <tr>
                         <th>No.</th>
@@ -142,6 +143,44 @@ pauseOnHover/>
                     )}
                     )}
                   </table>
+
+                                  {/* MOBILE VIEWWWW====================== */}
+            <div className="finalListTableMobile" >
+            {currentPosts.map((student,id) => {
+
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {student.requestedStudent && student.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+                      <Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link>
+                      </p>
+                    </div>
+
+                    </div>
+
+              )
+             
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
+
                   <div>
                   <Pagination
         postsPerPage={postsPerPage}
