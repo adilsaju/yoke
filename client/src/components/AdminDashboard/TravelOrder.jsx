@@ -8,11 +8,13 @@ import Filters from './Filters';
 import "./TravelOrder.css"
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
+import Pagination from './Pagination';
 
 
 const TravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(2);
 
   const [requests,setRequests] = useState([]);
   const [error, setError] = useState(null);
@@ -66,6 +68,12 @@ function onFilterValueSelected(filterValue) {
 updatefilterText(filterValue);
 }
 
+const indexOfLastPost = currentPage * postsPerPage;
+const indexOfFirstPost = indexOfLastPost - postsPerPage;
+const currentPosts = requests.slice(indexOfFirstPost, indexOfLastPost);
+
+const paginate = pageNumber => setCurrentPage(pageNumber);
+
 return (
     <>
   <div className='fullpage'>
@@ -90,7 +98,7 @@ return (
                   <th className=''>Action</th>
                 </tr>
               </thead>
-              {requests.map((request,id) => {
+              {currentPosts.map((request,id) => {
                 if ( 'requestedStudent' in request && request.isApproved === false)
                 {
                   return(
@@ -108,6 +116,13 @@ return (
                               }
             
             </table>
+            <div>
+            <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={requests.length}
+        paginate={paginate}
+      />
+            </div>
                         
           </div>
           {/* end of subDivision */}

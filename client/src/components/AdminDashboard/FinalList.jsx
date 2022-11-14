@@ -9,6 +9,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from './Pagination';
 
 let emailcheck = true
 
@@ -58,7 +59,8 @@ const sentEmail = async () => {
               const [finalstudents,FinalStudents] = useState([]);
   
               const [error, setError] = useState(null);
-
+              const [currentPage, setCurrentPage] = useState(1);
+              const [postsPerPage] = useState(2);
               const location = useLocation();
               console.log(location.pathname);
 
@@ -87,6 +89,13 @@ const sentEmail = async () => {
               // console.log(isEmpty);
   
               let count = 1;
+
+              const indexOfLastPost = currentPage * postsPerPage;
+const indexOfFirstPost = indexOfLastPost - postsPerPage;
+const currentPosts = finalstudents.slice(indexOfFirstPost, indexOfLastPost);
+
+const paginate = pageNumber => setCurrentPage(pageNumber);
+
     return (
                
         <div>
@@ -119,7 +128,7 @@ pauseOnHover/>
                         <th className=''>Action</th>
                       </tr>
                     </thead>
-                    {finalstudents.map((student,id)=> {
+                    {currentPosts.map((student,id)=> {
                     return (
                       <tbody key={id}>
                         <tr className='tay' >
@@ -133,6 +142,13 @@ pauseOnHover/>
                     )}
                     )}
                   </table>
+                  <div>
+                  <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={finalstudents.length}
+        paginate={paginate}
+      />
+                  </div>
                   <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                   </div>
                 </div>
