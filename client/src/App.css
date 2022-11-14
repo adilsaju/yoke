@@ -40,6 +40,8 @@ width: 1px;
   border-radius: 2.31rem;
   cursor: pointer;
   font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -50,6 +52,8 @@ width: 1px;
   border: 1px solid #00284E;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -59,6 +63,8 @@ width: 1px;
   border: 2px solid #00284E;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
   padding: 0.3rem 1.2rem;
 }
 
