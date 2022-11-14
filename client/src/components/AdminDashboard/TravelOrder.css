@@ -145,7 +145,7 @@ overflow-wrap:break-word;
 /**** STUDENT TRAVEL ORDER ****/
 
 
-/* ARCHIVE STATUS COLUMN */
+/* ARCHIVE STATUS COLUMN  ( APPLIES TO STUDENT PREVIOUS REQUEST PAGE TABLEEE */
 .myTable tr>td:nth-last-of-type(1) {
     font-size: .95rem;
     cursor: help;
@@ -196,3 +196,38 @@ overflow-wrap:break-word;
         display: flex;
     }
 }
+
+/* ====ARCHIVE   */
+.archiveTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .archiveTableDesktop {
+    display: none;
+
+    }
+
+    .archiveTableMobile {
+        display: block;
+        
+    }
+    .archiveTableMobile>div{
+        display: flex;
+    }
+
+    /* ARCHIVE STATUS COLUMN MOBILE  */
+.archiveTableMobile div:nth-last-of-type(1) {
+    font-size: .95rem;
+    cursor: help;
+}
+
+.archiveTableMobile .approved1 {
+    color: #70BB6F;
+}
+.archiveTableMobile .declined1 {
+    color: #E77373;
+}
+
+
+}
+

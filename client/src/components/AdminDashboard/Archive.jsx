@@ -50,7 +50,7 @@ return (
               <Search/>
             </div>
             
-                <table className='myTable'>
+                <table className='myTable archiveTableDesktop'>
                   <thead>
                   { error && <div>{ error }</div> }
                     <tr>
@@ -106,6 +106,56 @@ return (
                 <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                 </div>
             
+            {/* MOBILE VIEWWWW====================== */}
+            <div className="archiveTableMobile" >
+            { error && <div>{ error }</div> }
+
+            {Archivestudent.map((student,id) => {
+
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {student.requestedStudent && student.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+
+                      <Popup
+    trigger={open => (
+      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
+    )}
+    position="bottom center"
+    on={['hover', 'focus']}
+    arrow={false}
+    closeOnDocumentClick
+  >
+    <span className='thePopUp'> Reason: { student.reason } </span>
+  </Popup>
+
+                      
+                      </p>
+                    </div>
+
+                    </div>
+
+              ) 
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
 
           </div>
           {/* end of subDivision */}
