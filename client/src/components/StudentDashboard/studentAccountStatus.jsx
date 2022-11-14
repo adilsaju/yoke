@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import { useNavigate } from "react-router-dom";
+import  abcd  from "../images/abcd.png"
+import  abcd2  from "../images/abcd2.png"
+
 // import './studentAccountStatus.css';
 // import '../../App.css';
 
@@ -84,25 +87,25 @@ useEffect(() => {
         <div className='studentimage'>
           <div className="profileWrapper">
             <img
-            className='studentImg' src={students.photo} alt='profile of student' />
+            className='studentImg' src={students.photo? ( students.photo.startsWith("https://")? students.photo : abcd )  : abcd } alt='profile of student' />
           </div>
           
           <div className='studentviews'>
             
           <div>
               <h4>Student ID:&nbsp;</h4>
-              <span>{students.studentNumber}</span>
+              <span>{students.studentNumber?  students.studentNumber : "Not found" }</span>
             </div>
 
             <div>
               <h4>Course:&nbsp;</h4>
-              <span>{students.program}</span>
+              <span>{students.program?  students.program : "Not found" }</span>
             </div>
             
             {students.length===0? console.log("Nothing") : 
             <div>
               <h4>Hours Flown:&nbsp;</h4>
-              <span>{students.studentRequirements && students.studentRequirements.flownHours}  </span>
+              <span>{students.studentRequirements && ( students.studentRequirements.flownHours?  students.studentRequirements.flownHours : "Not found" ) }  </span>
             </div>
             }
       
@@ -110,7 +113,7 @@ useEffect(() => {
             <div>
                 <h4>Account Balance: &nbsp;</h4>
                 
-                <span>${students.studentRequirements && students.studentRequirements.balance}
+                <span>${students.studentRequirements &&  ( students.studentRequirements.balance?  students.studentRequirements.balance : "Not found" )  }
                 </span> 
             </div>
             }

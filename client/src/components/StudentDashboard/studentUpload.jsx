@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
 import ImageGallery from 'react-image-gallery';
+import  abcd2  from "../images/abcd2.png"
+
 // import './studentAccountStatus.css';
 const fetchTasks = async (loggedInUser) => {
   let url = `/api/students/${loggedInUser.id}`;
@@ -60,7 +62,7 @@ const StudentUpload = (props) => {
         <div className='imageupload'>
           <div>
           <div className="uploaded">
-            <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(0) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.license}></img></a>
+            <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(0) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.license? ( props.starry.studentRequirements.license.startsWith("https://")? props.starry.studentRequirements.license : abcd2 )  : abcd2 }  ></img></a>
 
           </div>
             {/* <div className="uploaded"><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense} /></div> */}
@@ -71,7 +73,7 @@ const StudentUpload = (props) => {
 
           <div>
             <div className="uploaded">
-              <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(1) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense}></img></a>
+              <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(1) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.medicalLicense? ( props.starry.studentRequirements.medicalLicense.startsWith("https://")? props.starry.studentRequirements.medicalLicense : abcd2 )  : abcd2 }  ></img></a>
             </div>
             <p>Medical License</p>
           </div>
@@ -81,7 +83,7 @@ const StudentUpload = (props) => {
 
           <div>
             <div className="uploaded">
-              <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(2) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.radioLicense}>
+              <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(2) }} ><img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.radioLicense? ( props.starry.studentRequirements.radioLicense.startsWith("https://")? props.starry.studentRequirements.radioLicense : abcd2 )  : abcd2 }   >
               </img></a>
             </div>
             <p>Radio License</p>
@@ -92,7 +94,7 @@ const StudentUpload = (props) => {
           <div>
             <div className="uploaded">
               <a class="button hover-shadow" href="#popup2" onClick={() => { setImagesId(2) }} >
-                <img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.englishProficiency} >
+                <img src={props.starry && props.starry.studentRequirements && props.starry.studentRequirements.englishProficiency? ( props.starry.studentRequirements.englishProficiency.startsWith("https://")? props.starry.studentRequirements.englishProficiency : abcd2 )  : abcd2 } >
                 </img></a>
             </div>
             <p>English Proficiency </p>

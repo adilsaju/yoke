@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import  abcd2  from "../images/abcd2.png"
+
 
 const images = [
   {
