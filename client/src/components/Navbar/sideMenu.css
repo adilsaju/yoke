@@ -153,8 +153,39 @@ a.active {
     align-content: center;
 }
 
+/* mohit's ==================================*/
+.hamburg{
+    display: none;
+}
 
+@media screen and (max-width: 760px) {
 
+.Nav-menu{
+    position: fixed;
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    top: 5rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+}    
+.nav-open .Nav-menu{
+    transform: translateX(0%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+}
+.logo{
+    display: none;
+}
+
+.hamburg{
+    display: inline;
+}
+}
+
+/* =============================================claire's old */
 
 /***** HAMBURGER *****/
 /* Position and sizing of burger button */
@@ -237,3 +268,5 @@ a.active {
         border-bottom: unset;
     }
 }
+
+/* claire's old end */
