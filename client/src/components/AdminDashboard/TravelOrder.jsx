@@ -86,8 +86,8 @@ return (
                 <Filters FilterValueSelected={onFilterValueSelected}/>
               </div>
             </div>
-
-            <table className="myTable">
+            {/* DESKTOP VIEWWWW====================== */}
+            <table className="myTable travelOrderTableDesktop">
               <thead>
               { error && <div>{ error }</div> }
                 <tr className="heading">
@@ -114,8 +114,47 @@ return (
               ) }
   })
                               }
-            
             </table>
+            {/* DESKTOP VIEWWWW END====================== */}
+
+            {/* MOBILE VIEWWWW====================== */}
+            <div className="travelOrderTableMobile" >
+            {currentPosts.map((request,id) => {
+                if ( 'requestedStudent' in request && request.isApproved === false)
+                {
+                  return(
+
+                    <div>
+                      <div>
+
+                      <p>
+                        {request.requestedStudent && request.requestedStudent.name}
+                      </p>
+                      <p>
+                        ID: {request.requestedStudent && request.requestedStudent.studentNumber? request.requestedStudent.studentNumber : "Not found" }
+                      </p>
+                      <p>
+                      Travel Date: {moment(request.flightDate).format("MMMM Do , YYYY")}
+                      </p>
+                      </div>
+
+                    <div>
+
+                      <p>
+                      <Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link>
+                      </p>
+                    </div>
+
+                    </div>
+
+              ) }
+  })
+                              }
+            </div>
+
+            {/* MOBILE VIEWWWW END====================== */}
+
+
             <div>
             <Pagination
         postsPerPage={postsPerPage}

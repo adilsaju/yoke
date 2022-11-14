@@ -160,3 +160,21 @@ overflow-wrap:break-word;
 /* .myTable .pending1 {
     color: #70BB6F;
 } */
+
+.travelOrderTableMobile {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .travelOrderTableDesktop {
+    display: none;
+
+    }
+
+    .travelOrderTableMobile {
+        display: block;
+        
+    }
+    .travelOrderTableMobile>div{
+        display: flex;
+    }
+}
