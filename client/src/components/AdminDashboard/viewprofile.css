@@ -86,34 +86,37 @@
 .studentviews h4 {
     margin: 0;
     padding: .5rem 0;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .studentviews span {
     padding: 0.5rem 0 0.5rem 2rem;
+    font-weight: 400;
+    font-size: 1.313rem;
 }
 
 .studentimage, .imageupload {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 1rem 1rem 1.5rem 1rem;
-    text-align: center;
     gap: 1rem;
     background-color: #ffffff;
 }
 
 .studentimage {
     padding-top: 1.9rem;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .profileWrapper {
     display: inline-block;
   border-radius: 50%;
   overflow: hidden;
-  width: 11rem;
-  height: 11rem;
+  width: 12.5rem;
+  height: 12.5rem;
 }
 
 .studentImg {
@@ -134,6 +137,7 @@
     background-color: #ffffff;
     padding: 0 1rem;
 }
+
 
 .licenseimage h3 {
     flex: 1 0 100%;
@@ -166,6 +170,8 @@
 .uploaded p {
     margin: 0;
     padding-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
 .hover-shadow {
@@ -279,11 +285,29 @@ padding: 0;
 
 .imageupload p {
     text-align: center;
+    font-weight: 600;
+    font-size: 1.313rem;
 }
 
-.topOfTheBox .yellowBtn a {
+.yellowBtn a {
     text-decoration: none;
-    }
+}
+
+.desktopBtn {
+    /* visibility: hidden; */
+    display: none;
+}
+
+.mobileBtn {
+    width: 100%;
+    height: 3.75rem;
+}
+
+.mobileBtnWrapper {
+    border-top: 2px solid #C8E4FF;
+    padding-top: 2rem;
+    flex: 1 0 100%;
+}
 
 .whiteBg {
     background-color: #ffffff;
@@ -491,6 +515,17 @@ padding: 0;
 }
 
 @media screen and (min-width: 760px) {
+    .desktopBtn {
+        display: block;
+    }
+
+    .mobileBtnWrapper {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 1100px) {
     .box {
         margin: 2rem 2%;
     }

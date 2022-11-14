@@ -29,7 +29,7 @@ const SideMenu = () => {
       // console.log(window.innerWidth);
       const crossBtn = document.querySelector(".bm-cross-button")
 
-      if (window.innerWidth > 760){
+      if (window.innerWidth > 1100){
         // console.log("Sidebar coming nowww")
         // setisOpenSideBar(false)
 
@@ -75,7 +75,7 @@ const SideMenu = () => {
 
 
     <nav>
-        <ul className="studentMenu">
+        <ul className="studentMenu menuTop">
           <NavLink activeClassName="active" to="/student-account-status" className='studentAcct'>
             <li>
               Account Status
@@ -86,12 +86,14 @@ const SideMenu = () => {
               Student Travel Order
             </li>
           </NavLink>
+        </ul>
           {/* <Link to="/settingStudent">
             <li className='settings'>
             Setting
             </li>
           </Link> */}
     
+        <ul className='menuBottom'>
           <NavLink activeClassName="active" to="/logout" className='logout'>
             <li>
             Logout

@@ -31,7 +31,7 @@ const SideMenuAdmin = () => {
     // console.log(window.innerWidth);
     const crossBtn = document.querySelector(".bm-cross-button")
 
-    if (window.innerWidth > 760){
+    if (window.innerWidth > 1100){
       // console.log("Sidebar coming nowww")
       // setisOpenSideBar(false)
 
@@ -113,7 +113,7 @@ const SideMenuAdmin = () => {
       </div>
 
         <nav>
-        <ul>
+        <ul className='menuTop'>
         <NavLink activeClassName="active" to="/dashboard" className='dashboard'><li >
             Dashboard
         </li></NavLink>
@@ -133,6 +133,9 @@ const SideMenuAdmin = () => {
         <NavLink activeClassName="active" to="/archive" className='archive'><li>
            History
         </li></NavLink>
+        </ul>  
+
+        <ul className='menuBottom'>
           {<div>
         <NavLink activeClassName="active" to="/setting" className='settings'><li>
             Setting
@@ -141,6 +144,7 @@ const SideMenuAdmin = () => {
             Logout
         </li></NavLink>
           </div>}
+          
         </ul>
         </nav>
       </Menu>
