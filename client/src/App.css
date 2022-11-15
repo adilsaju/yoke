@@ -210,7 +210,7 @@ nav ul li{
 }
 
 nav ul{
-  margin: 0;
+  margin: 1rem;
   padding: 0;
 }
 
@@ -433,4 +433,8 @@ button {
 }
 .hideme{
   display: none ;
+}
+
+.mobmen{
+  display: none;
 }
