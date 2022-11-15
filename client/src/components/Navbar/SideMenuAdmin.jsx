@@ -130,7 +130,7 @@ const SideMenuAdmin = () => {
             Final list&nbsp;
             <button className='countInd'><span>{finalstudents.length}</span></button>
           </li></NavLink>
-        <NavLink activeClassName="active" to="/archive" className='archive'><li>
+        <NavLink activeClassName="active" to="/history" className='archive'><li>
            History
         </li></NavLink>
         </ul>  

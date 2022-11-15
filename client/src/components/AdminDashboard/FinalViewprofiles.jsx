@@ -53,7 +53,7 @@ const fetchTasks2 = async () => {
   return data;
 };
 
-const Viewprofiles = () => {
+const FinalViewprofiles = () => {
   const [request,requestStudent] = useState([]);
   //list of pending requests
   const [requests, setRequests]= useState([])
@@ -240,4 +240,4 @@ const Viewprofiles = () => {
   )
 }
 
-export default Viewprofiles
+export default FinalViewprofiles

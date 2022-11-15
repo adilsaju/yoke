@@ -5,12 +5,11 @@ import Search from './Search';
 import moment from 'moment';
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
-import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './TravelOrder.css';
 
-const Archive = () => {
+const History = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
     const [Archivestudent,ArchiveStudents] = useState([]);
@@ -167,4 +166,4 @@ return (
   )
 }
 
-export default Archive
+export default History
