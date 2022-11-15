@@ -624,6 +624,7 @@ const getFinalList = () => {
           isApproved: true,
           isRejected: false,
           isExpired: false,
+          IsSentToCoordinator: false
           // flightDate: {$eq : Date }
 
           // flightDate: {

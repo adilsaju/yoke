@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 let emailcheck = true
 
 const sentEmail = async () => {
@@ -21,11 +22,24 @@ const sentEmail = async () => {
     emailcheck = false
    
   }
-
-
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
 };
+
+const sentToFlightCn = async () =>{
+  let url = `/api/requests/senttofc`;
+
+    const ress = await fetch(url, {method: 'PATCH' });
+    const data = await ress.json();
+    // openModal
+    // alert("APPROVED!")
+     
+    console.log("FlightCoooorrrdd",data);
+    return data;
+} 
+
+
+
 
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
@@ -72,9 +86,11 @@ const sentEmail = async () => {
                      throw Error(res.statusText);
                    }
                    return res.json();
+                   
                  })
                  .then(data => {
                    FinalStudents(data);
+                   console.log('see' ,data);
                    setError(null);
                  }).catch(err => {
                    setError(err.message)
@@ -97,7 +113,7 @@ const sentEmail = async () => {
                   <div className="topDivision">
                     <Search />
                     <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,200) }} > Send to Flight Coordinator </button>
+                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,300);sentToFlightCn() }} > Send to Flight Coordinator </button>
                     <ToastContainer position="bottom-left"
 autoClose={5000}
 hideProgressBar
