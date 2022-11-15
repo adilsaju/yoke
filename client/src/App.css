@@ -409,6 +409,19 @@ button {
       .hideme{
         display: initial !important;
       }
+
+      .abc-wrapper {
+        border: 1px solid black;
+        border-radius: 28.5px;
+        display: inline-block !important;
+        
+    }
+
+    .abc-wrapper button img{
+      background-color: transparent;
+      position: static !important;
+      padding: 0.65rem !important;
+    }
       
 }
 .setandlog{
