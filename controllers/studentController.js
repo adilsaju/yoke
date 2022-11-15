@@ -408,6 +408,46 @@ const postRequestByStudentId = () => {
   };
 };
 
+const sentToFC = () => {
+  return async (req, res, next) => {
+    const daftom = new Date();
+daftom.setDate(daftom.getDate()+1);
+let flgg = 1;
+const today = new Date();
+    console.log('senttoFc');
+    try {
+      
+          Request.requestModel.updateMany({ $and: [
+            {
+              flightDate: {
+                $lt:daftom
+              }
+            },
+            {
+              flightDate: {
+                $gt:today
+              }
+            }
+          ]}, 
+            {IsSentToCoordinator:true}, function (err, docs) {
+            if (err){
+                console.log(err)
+            }
+            else{
+                console.log("Updated Docs : ", docs);
+            }
+        });
+
+    
+
+      res.json('success');
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
+
 const getRequests = () => {
   return async (req, res, next) => {
     try {
@@ -736,7 +776,7 @@ module.exports = {
   getRequestsByStudentId,
 
   postRequestByStudentId,
-
+  sentToFC,
   getRequests,
   getRequestById,
   updateStudentNotesById,

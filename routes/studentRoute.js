@@ -16,6 +16,7 @@ const {
   getStudentById,
   getRequestsByStudentId,
   postRequestByStudentId,
+  sentToFC,
   getRequests,
   getRequestById,
   updateStudentNotesById,
@@ -117,6 +118,11 @@ router
 
 //getting request by id (used for student profile page as well)
 router.route('/requests/:id').get(getRequestById());
+
+//updating sentToFC
+router
+  .route('/requests/senttofc')
+  .patch(sentToFC());
 
 router
   .route('/requests/:id/approve')
