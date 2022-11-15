@@ -66,6 +66,8 @@ function onFilterValueSelected(filterValue) {
 updatefilterText(filterValue);
 }
 
+
+
 return (
     <>
   <div className='fullpage'>
@@ -78,8 +80,8 @@ return (
                 <Filters FilterValueSelected={onFilterValueSelected}/>
               </div>
             </div>
-            {/* DESKTOP VIEWWWW====================== */}
-            <table className="myTable travelOrderTableDesktop">
+
+            <table className="myTable">
               <thead>
               { error && <div>{ error }</div> }
                 <tr className="heading">
@@ -90,6 +92,7 @@ return (
                   <th className=''>Action</th>
                 </tr>
               </thead>
+                        
               {requests.map((request,id) => {
                 if ( 'requestedStudent' in request && request.isApproved === false)
                 {
@@ -104,48 +107,10 @@ return (
                 </tr>
               </tbody>
               ) }
-  })
+                                })
                               }
+            
             </table>
-            {/* DESKTOP VIEWWWW END====================== */}
-
-            {/* MOBILE VIEWWWW====================== */}
-            <div className="travelOrderTableMobile" >
-            {requests.map((request,id) => {
-                if ( 'requestedStudent' in request && request.isApproved === false)
-                {
-                  return(
-
-                    <div>
-                      <div>
-
-                      <p>
-                        {request.requestedStudent && request.requestedStudent.name}
-                      </p>
-                      <p>
-                        ID: {request.requestedStudent && request.requestedStudent.studentNumber? request.requestedStudent.studentNumber : "Not found" }
-                      </p>
-                      <p>
-                      Travel Date: {moment(request.flightDate).format("MMMM Do , YYYY")}
-                      </p>
-                      </div>
-
-                    <div>
-
-                      <p>
-                      <Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link>
-                      </p>
-                    </div>
-
-                    </div>
-
-              ) }
-  })
-                              }
-            </div>
-
-            {/* MOBILE VIEWWWW END====================== */}
-
                         
           </div>
           {/* end of subDivision */}

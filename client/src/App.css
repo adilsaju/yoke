@@ -97,9 +97,8 @@ button.duo {
 /* VIEW PROFILE OF STUDENT (admin & student) */
 
 .division {
-  margin: 6.5rem auto 1rem auto;
+  margin: 1rem auto;
   padding-bottom: 2rem;
-  grid-column: 2/-1;
 }
 
 
@@ -197,12 +196,28 @@ footer{
   background: #4d43dd;
 }
 
+nav{
+  display: flex;
+  flex-flow: column;
+  height: 50rem;
+}
 
+
+nav ul li{
+  padding: 2rem 2rem;
+  border-bottom: 2px solid #5cb0ff;
+  margin: 0  5px 0 5px;
+}
+
+nav ul{
+  margin: 0;
+  padding: 0;
+}
 
 
 .fullpage{
-  /* display: grid;
-  grid-template-columns: 1fr 3fr; */
+  display: grid;
+  grid-template-columns: .5fr 3.5fr;
   grid-gap: 0;
   height: 100vh;
 }
@@ -242,42 +257,160 @@ button {
   border-radius: 50% 50%;
 }
 
-a[href="/student-account-status"] {
-  text-decoration: none;
-}
-
-.camTitle {
-  color: black !important;
-}
 
 
-/* ***** MEDIA QUERIES***** */
-@media screen and (min-width: 1100px) {
-  .fullpage {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+@media screen and (max-width: 900px) { 
+
+  body{
+    font-size: large !important;
   }
 
-
-  .division {
-    margin: 5rem auto 1rem auto;
+  footer p{
+    text-align: center;
   }
+    .division{
+      width: 100vw;
+    }
+    .studentimage{
+      display: flex;
+      flex-flow: column;
+    }
+  
+   .topDivision{
+      display: flex !important;
+      flex-flow: column;
+      gap:10px !important
+   }
+   .studentTO .topDivision .Searchbar {
+     display: none;
+   }
+   .textinf{
+      display: none !important;
+   }
+   .btnnn{
+     width: 95vw;
+     padding: 1rem;
+   }
+   .studentTO th:nth-of-type(1) {
 
+    display: none;
+    
+    }
+    .studentTO td:nth-of-type(1) {
+
+    display: none;
+    
+    }
+.studentTO{
+  margin-top: 0 !important;
+}
+    .studentTO th:nth-of-type(3) {
+
+      display: none;
+      
+      }
+      .studentTO td:nth-of-type(3) {
+  
+      display: none;
+      
+      }
+      .studentTO .myTable{
+        width: 95vw;
+        min-width: 0%;
+    
+      }
+    
+      .react-calendar{
+        font-size: x-large;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+      .react-calendar__month-view__days__day,.react-calendar__navigation__label__labelText{
+        font-size: large;
+      }
+      .calendr .buttonWrapper{
+          display: flex;
+          flex-flow: column-reverse;
+          justify-content: center;
+          align-items: center;
+      }
+      .calendr .transparentBtn,.calendr .yellowBtn{
+        width: 60vw;
+        text-decoration: none;
+        padding: 1.5rem;
+      }
+      nav ul li{
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      .dummy{
+        display: none;
+      }
+      .form1{
+        background: rgba(229, 243, 255, 0.9) !important ;
+        border: none !important;
+        box-shadow: none !important;
+        display: flex;
+        flex-flow: column;
+        height: 95vh !important; 
+        width: 100vw !important;
+        border-radius: 0 !important;
+    
+      }
+      .parent{
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background:url('./components/images/plane.png') ;
+        background-size:cover;
+        padding: 0;
+        margin: 0;
+        background-position: center;
+ 
+      }
+      .parent input{
+        background-color: white !important;
+        opacity: 1 !important;
+        width: 70vw !important;
+       height: 6vh !important;
+      }
+      .parent .yellowBtn{
+        width: 35vw !important;
+        font-weight: bolder;
+        padding: 1.2rem;
+      }
+
+      .parent img {
+        padding-top: 4rem !important;
+        padding-bottom: 11rem !important;
+        max-width: 11rem !important;
+      }
+      .deskfoot{
+        display: none;  
+      }
+      .mobilefoot{
+        display: flex !important;
+        color: white;
+        justify-content: center;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .ReactModal__Content--after-open{
+        display: inline;
+        width: 70vw !important;
+      }
+      .ReactModal__Content--after-open button{
+        padding: 1rem 2rem;
+      }
+      
+}
+.setandlog{
+   border-bottom: none !important;
 }
 
-/* end of media queries */
-
-
-
-/* MOHIT SIDBAR FIX 1 */
-.Nav-menu {
-  position: fixed;
-
-}
-.Nav-menu nav {
-  position: fixed;
-  height: 100%;
-}
-.setting {
-  margin-top: 5rem !important;
+.mobilefoot{
+  display: none;
 }

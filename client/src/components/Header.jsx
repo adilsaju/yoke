@@ -40,10 +40,10 @@ const { pathname } = useLocation();
       
         <header>
         <div className='hamburg'>
-            <button  className='toggle-nav'>|||</button>
+            <button onMouseEnter={define()} className='toggle-nav'><img src={require('./images/menu-logo.png')} alt="" /></button>
             {define()}
           </div>
-          <div className='logo'> </div>
+          <div className='logo'><img src={require('./images/logoWhite.png')} alt='Yoke' /></div>
           <div className='page-name'>
             <h3>{pageTitle}</h3>
         {/* <button > <Link to='/login'>Login Page</Link></button>

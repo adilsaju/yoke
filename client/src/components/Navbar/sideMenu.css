@@ -1,31 +1,18 @@
 
 .Nav-menu{
-    /* background-color: #00284E;
-    width: 18rem; */
+    background-color: #00284E;
+    width: 18rem;
     z-index: 1;  
-
-    /* padding: 0 0.8em; */
 }
-
-nav ul a {
-    border-bottom: 2px solid #5cb0ff;
-    margin: 0  5px 0 5px;
-  }
-  
-  nav ul{
-    margin: 0;
-    padding: 0;
-  }
 
 nav img {
     max-width: 1.25rem;
-    /* padding-right: 1rem; */
+    padding-right: 1rem;
 }
 
 nav {
     text-align-last: left;
     background-color: #00284E;
-
 }
 
 .Nav-menu a {
@@ -33,23 +20,16 @@ nav {
     text-decoration: none;
 }
 
-nav ul a{
+nav ul li{
     font-size: larger;
     text-decoration: none;
     list-style-type: none;
-    display: flex;
-
+    padding: 1.5rem 1rem 1.5rem 5.5rem;
     background-size: 1.25rem; 
     background-repeat: no-repeat;
-    background-position: 2rem 1.6rem;
+    background-position: 3rem 1.5rem;
+    display: flex;
 
-}
-
-nav ul li{
-    padding: 1.5rem 1rem 1.5rem 4.5rem;
-    display: flex; 
-    font-weight: 600;
-    font-size: 1.313rem;
 }
 
 .dashboard {
@@ -63,12 +43,12 @@ nav ul li{
 
 .finalList {
     background-image: url(../images/finalList.svg);
-    background-position: 2rem 1.9rem;
+    background-position: 3rem 1.7rem;
 }
 
 .archive {
     background-image: url(../images/archive.svg);
-    background-position: 2rem 1.9rem;
+    background-position: 3rem 1.6rem;
 }
 
 .settings {
@@ -84,60 +64,44 @@ nav ul li{
 }
 
 /*** HOVER - CHANGE ICON ***/
-nav a:hover{
-    background-color: #5cb0ff;
-    color: #00284E;
-    /* background-size: 1.20rem;  */
-    /* background-repeat: no-repeat; */
-    /* background-position: 3rem 1.5rem; */
-}
-
 nav li:hover{
-    /* background-color: #5cb0ff; */
+    background-color: #5cb0ff;
     color: #00284E;
     background-size: 1.20rem; 
     background-repeat: no-repeat;
-    background-position: 3rem 1.6rem;
+    background-position: 3rem 1.5rem;
+    
 }
 
-.dashboard:hover, a.dashboard.active  {
+.dashboard:hover {
     background-image: url(../images/dashboardDrk.svg);
     
 }
 
-.travelOrder:hover, a.travelOrder.active {
+.travelOrder:hover {
     background-image: url(../images/travelOrderDrk.svg);
 }
 
-.finalList:hover, a.finalList.active {
+.finalList:hover {
     background-image: url(../images/finalListDrk.svg);
-    background-position: 2rem 1.9rem;
+    background-position: 3rem 1.7rem;
 }
 
-.archive:hover, a.archive.active {
+.archive:hover {
     background-image: url(../images/archiveDrk.svg);
-    background-position: 2rem 1.9   rem;
+    background-position: 3rem 1.6rem;
 }
 
-.settings:hover, a.settings.active {
+.settings:hover {
     background-image: url(../images/settingsDrk.svg);
 }
 
-.logout:hover, a.logout.active {
+.logout:hover {
     background-image: url(../images/logoutDrk.svg);
 }
 
-.studentAcct:hover, a.studentAcct.active {
+.studentAcct:hover {
     background-image: url(../images/acctStatusDrk.svg);
-}
-
-
-a.active {
-    background-color: #5cb0ff;
-    color: #00284E;
-    background-size: 1.20rem; 
-    background-repeat: no-repeat;
-    background-position: 2rem 1.9rem;
 }
 
 .countInd {
@@ -180,93 +144,15 @@ a.active {
     display: none;
 }
 
+.toggle-nav{
+    background: transparent;
+    border: 0px;
+   
+    margin: 0;
+
+}
+
 .hamburg{
     display: inline;
 }
 }
-
-/* =============================================claire's old */
-
-/***** HAMBURGER *****/
-/* Position and sizing of burger button */
-.bm-burger-button {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 36px;
-    top: 23px;
-  }
-
-  
-  /* Color/shape of burger icon bars */
-  .bm-burger-bars {
-    background: #50ABFF;
-  }
- 
-  /* Position and sizing of clickable cross button */
-  .bm-cross-button {
-    height: 24px!important;
-    width: 24px!important;
-    right: 20px!important;
-    top: 31px!important;
-  }
-  
-  /* Color/shape of close button cross */
-  .bm-cross {
-    /* background: #bdc3c7; */
-  }
-  
-  /*
-  Sidebar wrapper styles
-  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
-  */
-  .bm-menu-wrap {
-    width: 25%!important;
-
-  }
-  
-  /* General sidebar styles */
-  .bm-menu {
-    background: #373a47;
-    /* padding: 2.5em 1.5em 0; */
-    font-size: 1.15em;
-    overflow: unset!important;
-  }
-  
-  /* Morph shape necessary with bubble or elastic */
-  .bm-morph-shape {
-    fill: #373a47;
-  }
-  
-  /* Wrapper for item list */
-  .bm-item-list {
-    color: #b8b7ad;
-    padding: 1.5rem 0.8em 0.8em 0.8em;
-  }
-  
-  /* Individual item */
-  nav.bm-item {
-    display: inline-block;
-  }
-  
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  @media screen and (min-width: 760px) {
-    nav.bm-item {
-        display: flex!important;
-        flex-direction: column;
-        height: 90%;
-        justify-content: space-between;
-      }
-  }
-
-@media screen and (min-width: 1100px) {
-    .menuBottom a {
-        border-bottom: unset;
-    }
-}
-
-/* claire's old end */

@@ -1,108 +1,38 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
-import { NavLink } from "react-router-dom";
-// import { push as Menu } from 'react-burger-menu';
-import menu from '../images/menu.svg';
-import closeBtn from '../images/closeBtn.svg';
-
 
 const SideMenu = () => {
-
-  // HAMBURGER
-    const [menuOpen, setmenuOpen] = useState(false);
-
-    function handleStateChange (state) {
-      setmenuOpen(state.isOpen)
-    }
-
-    function closeMenu () {
-      setmenuOpen(false)
-    }
-
-    function toggleMenu (state) {
-      setmenuOpen(state => ({menuOpen: !state.menuOpen}))
-    }
-
-    function printWidth(){
-      // console.log(window.innerWidth);
-      const crossBtn = document.querySelector(".bm-cross-button")
-
-      if (window.innerWidth > 1100){
-        // console.log("Sidebar coming nowww")
-        // setisOpenSideBar(false)
-
-        // setisOpenSideBar(true)
-        setmenuOpen(true)
-      if (crossBtn)
-        crossBtn.style.display = "none" 
-      }
-      else {
-      if (crossBtn)
-        crossBtn.style.display = "unset" 
-      }
-
-    }
-    
-    useEffect(() => {  
-      const repeatMilliSeconds = 100
-      var intervalId = window.setInterval(function(){
-        // call your function here
-        printWidth();
-      }, repeatMilliSeconds);
-
-    }, []);
-
-
   return (
     <div className='Nav-menu'>
-    {/* <Menu isOpen={ menuOpen } 
-      onStateChange={(state) => handleStateChange(state)}
-      disableCloseOnEsc 
-      disableAutoFocus 
-      noTransition 
-      noOverlay
-      customBurgerIcon={ <img src={menu} alt='hamburger menu' /> } 
-      customCrossIcon={ <img src={closeBtn} alt='close button' /> }
-    > */}
+  <nav>
+      <ul className="studentMenu">
+        <Link to="/student-account-status">
+          <li className='studentAcct'>
+            Account Status
+          </li>
+        </Link>
 
-    <div className="borderRight">
-      <div className='logo'>
-        <img src={require('../images/logoWhite.png')} alt='Yoke' />
-      </div>
-    </div>
+        <Link to="/student-travel-order"> 
+          <li className="travelOrder">
+            Student Travel Order
+          </li>
+        </Link>
 
-
-    <nav>
-        <ul className="studentMenu menuTop">
-          <NavLink activeClassName="active" to="/student-account-status" className='studentAcct'>
-            <li>
-              Account Status
-            </li>
-          </NavLink>
-          <NavLink activeClassName="active" to="/student-travel-order" className="travelOrder">
-            <li>
-              Student Travel Order
-            </li>
-          </NavLink>
-        </ul>
-          {/* <Link to="/settingStudent">
-            <li className='settings'>
-            Setting
-            </li>
-          </Link> */}
-    
-        <ul className='menuBottom'>
-          <NavLink activeClassName="active" to="/logout" className='logout'>
-            <li>
-            Logout
-            </li>
-          </NavLink>
-    
-        </ul>
-        </nav>
-  {/* </Menu> */}
+        {/* <Link to="/settingStudent"> 
+          <li className='settings'>
+          Setting
+          </li>
+        </Link> */}
+        
+        <Link to="/logout"> 
+          <li className='logout'>
+          Logout
+          </li>
+        </Link>
+  
+      </ul>
+      </nav>
       </div>
   )
 }
