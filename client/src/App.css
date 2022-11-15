@@ -405,6 +405,10 @@ button {
       .ReactModal__Content--after-open button{
         padding: 1rem 2rem;
       }
+
+      .hideme{
+        display: initial !important;
+      }
       
 }
 .setandlog{
@@ -413,4 +417,7 @@ button {
 
 .mobilefoot{
   display: none;
+}
+.hideme{
+  display: none ;
 }

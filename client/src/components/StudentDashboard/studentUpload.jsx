@@ -109,8 +109,8 @@ const StudentUpload = (props) => {
               </div>
             </div>
           </div>
-
-          <button className="yellowBtn mobileBtn"> <Link to='/student-account-status/upload-document'>Update</Link></button>
+          
+          <button className="yellowBtn mobileBtn hideme"> <Link to='/student-account-status/upload-document'>Update</Link></button>
           
         </div>
         {/* end of imageupload */}
