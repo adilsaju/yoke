@@ -266,3 +266,18 @@ a[href="/student-account-status"] {
 }
 
 /* end of media queries */
+
+
+
+/* MOHIT SIDBAR FIX 1 */
+.Nav-menu {
+  position: fixed;
+
+}
+.Nav-menu nav {
+  position: fixed;
+  height: 100%;
+}
+.setting {
+  margin-top: 5rem !important;
+}
