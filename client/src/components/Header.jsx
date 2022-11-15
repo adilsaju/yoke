@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 let navToggle = document.querySelector('.toggle-nav');
 
 const define = () => {
-  let close = false;
+  let close = true;
   navToggle = document.querySelector('.toggle-nav');
   console.log(navToggle)
 navToggle && navToggle.addEventListener('click', () => {
