@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useRef } from 'react'
 import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
@@ -30,6 +30,9 @@ const SideMenuAdmin = () => {
   const [requests,setRequests] = useState([]);
   const [finalstudents,FinalStudents] = useState([]);
   const [error, setError] = useState(null);
+  const[len,Reqlen] = useState([]);
+  const [len1,Finlen] = useState([]);
+
 
   useEffect(() => {  
    setTimeout(() => {
@@ -40,13 +43,13 @@ const SideMenuAdmin = () => {
       return res.json();
     })
     .then(data => {
-      console.log("TOOO: data");
+      Reqlen(data.length)
       setRequests(data);
       setError(null);
     }).catch(err => {
       setError(err.message)
     })
-    },1000)
+    })
   }, []);
 
   useEffect(() => {
@@ -58,12 +61,13 @@ const SideMenuAdmin = () => {
        return res.json();
      })
      .then(data => {
+      Finlen(data.length)
        FinalStudents(data);
        setError(null);
      }).catch(err => {
        setError(err.message)
      })
-    },1000)
+    })
 
 }, []);
 
@@ -85,7 +89,7 @@ const SideMenuAdmin = () => {
         
         <Link to="/travel-order"> <li onClick={(e) => { closemenuonclick()}} className="travelOrder">
           Travel Order&nbsp;
-          <button className='countInd'><span>{(requests.length)}</span></button>
+          <button className='countInd'><span>{len}</span></button>
         </li></Link>
         {/* <li>
         <Link to="/login">Login</Link>
@@ -93,7 +97,7 @@ const SideMenuAdmin = () => {
        
        <Link to="/final-list"> <li onClick={(e) => { closemenuonclick()}} className="finalList">
           Final list&nbsp;
-          <button className='countInd'><span>{finalstudents.length}</span></button>
+          <button className='countInd'><span>{len1}</span></button>
         </li></Link>
 
 
