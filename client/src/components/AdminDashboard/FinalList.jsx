@@ -90,7 +90,7 @@ const sentToFlightCn = async () =>{
                  })
                  .then(data => {
                    FinalStudents(data);
-                   console.log('see' ,data);
+                    console.log('see' ,data);
                    setError(null);
                  }).catch(err => {
                    setError(err.message)
@@ -150,43 +150,7 @@ pauseOnHover/>
                     )}
                   </table>
 
-                                  {/* MOBILE VIEWWWW====================== */}
-            <div className="finalListTableMobile" >
-            {finalstudents.map((student,id) => {
-
-                  return(
-
-                    <div>
-                      <div>
-
-                      <p>
-                        {student.requestedStudent && student.requestedStudent.name}
-                      </p>
-                      <p>
-                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
-                      </p>
-                      <p>
-                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
-                      </p>
-                      </div>
-
-                    <div>
-
-                      <p>
-                      <Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link>
-                      </p>
-                    </div>
-
-                    </div>
-
-              )
-             
-  })
-                              }
-            </div>
-
-            {/* MOBILE VIEWWWW END====================== */}
-
+                               
 
                   <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                   </div>

@@ -11,7 +11,8 @@ const Footer = () => {
   return (
     
         <footer>
-          <p className="fontFira">Copyright @2022 Yoke | All Rights Reserved</p>
+          <p className="fontFira deskfoot">Copyright @2022 Yoke | All Rights Reserved</p>
+          <p className="fontFira mobilefoot">@Yoke</p>
         </footer>
        
   )

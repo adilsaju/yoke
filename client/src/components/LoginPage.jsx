@@ -153,7 +153,7 @@ const LoginPage = () => {
                                                                                                                   login();  }}/>
               <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
             </div>
-              <a href="#" className='forgot'>Forgot Password?</a>
+              <a href="#">Forgot Password?</a>
           </div>
         </div>
       </div>

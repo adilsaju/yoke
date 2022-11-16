@@ -5,10 +5,8 @@ import Search from '../AdminDashboard/Search';
 import SideMenu from '../Navbar/SideMenu';
 import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
-import Popup from 'reactjs-popup';
 import '../../App.css'
-import 'reactjs-popup/dist/index.css';
-
+import Popup from 'reactjs-popup';
 
 
 //Fetch Data using API
@@ -78,21 +76,22 @@ const StudentTravelOrder = () => {
             
             <div className="subDivision studentTO">
               <div className="topDivision">
-                < Search/>
-              
+        
+                < Search />
+          
               {console.log(studentsInfo)}
               {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?
                 <Link to='/request'>
-                  <button className="yellowBtn" > Request Travel Order</button>
+                  <button className="yellowBtn btnnn" > Request Travel Order</button>
                 </Link> : <Link to='/request'>
                   <button className="yellowBtn" type="button" disabled> Request Travel Order</button>
                 </Link>}
               </div>
-              <span>Previous Records of Travel Orders</span>
-              <table className='myTable studentTableDesktop'>
+              <span className='textinf'>Previous Records of Travel Orders</span>
+              <table className='myTable'>
                 <thead>
                   <tr>
-                    <th>No.</th>
+                  <th>No.</th>
                     <th className=''>Travel Date</th>
                     <th className=''>Processed Admin</th>
                     <th className=''>Status</th>
@@ -132,52 +131,6 @@ const StudentTravelOrder = () => {
                     }
               </table>
               
-            {/* MOBILE VIEWWWW====================== */}
-            <div className="studentTableMobile" >
-
-            {students.map((student,id) => {
-
-                  return(
-
-                    <div>
-                      <div>
-                      <p>
-                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
-                      </p>
-                      {/* <p>
-                        Processed Admin: { student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable"  }
-                      </p> */}
-
-                      </div>
-
-                    <div>
-
-                      <p>
-
-                      <Popup
-    trigger={open => (
-      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
-    )}
-    position="bottom center"
-    on={['hover', 'focus']}
-    arrow={false}
-    closeOnDocumentClick
-  >
-    <span className='thePopUp'> Reason: { student.reason } </span>
-  </Popup>
-
-                      
-                      </p>
-                    </div>
-
-                    </div>
-
-              ) 
-  })
-                              }
-            </div>
-            {/* MOBILE VIEWWWW END====================== */}
-
               <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
               </div>
             </div>

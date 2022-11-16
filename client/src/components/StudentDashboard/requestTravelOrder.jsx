@@ -14,7 +14,7 @@ const maximDate = new Date();
 maximDate.setDate(maximDate.getDate()+30);
 
 const minimDate = new Date();
-minimDate.setDate(minimDate.getDate()+1);
+minimDate.setDate(minimDate.getDate()+2);
 
 let resp = 'ok';
 let trr = false;
@@ -95,7 +95,7 @@ const RequestTravelOrder = () => {
 
         <div className="sectionWrapper">
           <h2>Select Flight Date </h2>
-          <div>
+          <div className='calendr'>
             <div className='Clendr'>
               <Calendar onChange={onChange} minDate={minimDate} maxDate={maximDate} value={value} />
               {console.log(value)}

@@ -4,12 +4,13 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Search from './Search';
 import moment from 'moment';
 import {  useContext } from 'react';
+import { Link } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import './TravelOrder.css';
+
 
 const History = () => {
+
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
     const [Archivestudent,ArchiveStudents] = useState([]);
@@ -49,12 +50,11 @@ return (
               <Search/>
             </div>
             
-                <table className='myTable archiveTableDesktop'>
+                <table className='myTable'>
                   <thead>
                   { error && <div>{ error }</div> }
                     <tr>
                       <th>No.</th>
-                      {/* <th>Requested ID</th> */}
                       <th>Name</th>
                       <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
@@ -71,7 +71,6 @@ return (
                             <td>
                               {count++}
                             </td>
-                            {/* <td>{student._id}</td> */}
                             <td>{student.requestedStudent && student.requestedStudent.name}</td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
@@ -105,55 +104,6 @@ return (
                 <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                 </div>
             
-            {/* MOBILE VIEWWWW====================== */}
-            <div className="archiveTableMobile" >
-            { error && <div>{ error }</div> }
-
-            {Archivestudent.map((student,id) => {
-
-                  return(
-
-                    <div>
-                      <div>
-
-                      <p>
-                        {student.requestedStudent && student.requestedStudent.name}
-                      </p>
-                      <p>
-                        ID: {student.requestedStudent && student.requestedStudent.studentNumber? student.requestedStudent.studentNumber : "Not found" }
-                      </p>
-                      <p>
-                      Travel Date: {moment(student.flightDate).format("MMMM Do , YYYY")}
-                      </p>
-                      </div>
-
-                    <div>
-
-                      <p>
-
-                      <Popup
-    trigger={open => (
-      (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
-    )}
-    position="bottom center"
-    on={['hover', 'focus']}
-    arrow={false}
-    closeOnDocumentClick
-  >
-    <span className='thePopUp'> Reason: { student.reason } </span>
-  </Popup>
-
-                      
-                      </p>
-                    </div>
-
-                    </div>
-
-              ) 
-  })
-                              }
-            </div>
-            {/* MOBILE VIEWWWW END====================== */}
 
           </div>
           {/* end of subDivision */}

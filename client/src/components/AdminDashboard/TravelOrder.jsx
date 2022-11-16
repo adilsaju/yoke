@@ -66,87 +66,55 @@ function onFilterValueSelected(filterValue) {
 updatefilterText(filterValue);
 }
 
+console.log(requests.length)
+
+
 return (
     <>
   <div className='fullpage'>
     <SideMenuAdmin/>
       <div className='division'>
           <div className="subDivision">
-            <div className="topDivision">
-              <Search/>
+{ requests.filter(task=> task).length > 0 ? (
+    <><div className="topDivision">
+              <Search />
               <div className="leftBorder">
-                <Filters FilterValueSelected={onFilterValueSelected}/>
+                <Filters FilterValueSelected={onFilterValueSelected} />
               </div>
-            </div>
-            {/* DESKTOP VIEWWWW====================== */}
-            <table className="myTable travelOrderTableDesktop">
-              <thead>
-              { error && <div>{ error }</div> }
-                <tr className="heading">
-                  <th>No.</th>
-                  <th>Name</th>
-                  <th className=''>Student Id</th>
-                  <th className=''>Travel Date</th>
-                  <th className=''>Action</th>
-                </tr>
-              </thead>
-              {requests.map((request,id) => {
-                if ( 'requestedStudent' in request && request.isApproved === false)
-                {
-                  return(
-              <tbody key={id}>
-                <tr className='tay'>
-                  <td>{count++}</td>
-                  <td>{request.requestedStudent && request.requestedStudent.name}</td>
-                  <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
-                  <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
-                  <td><Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link></td>
-                </tr>
-              </tbody>
-              ) }
-  })
-                              }
-            </table>
-            {/* DESKTOP VIEWWWW END====================== */}
+            </div><table className="myTable">
+                <thead>
+                  {error && <div>{error}</div>}
+                  <tr className="heading">
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th className=''>Student Id</th>
+                    <th className=''>Travel Date</th>
+                    <th className=''>Action</th>
+                  </tr>
+                </thead>
 
-            {/* MOBILE VIEWWWW====================== */}
-            <div className="travelOrderTableMobile" >
-            {requests.map((request,id) => {
-                if ( 'requestedStudent' in request && request.isApproved === false)
-                {
-                  return(
+                {requests.map((request, id) => {
+                  if ('requestedStudent' in request && request.isApproved === false) {
+                    return (
+                      <tbody key={id}>
+                        <tr className='tay'>
+                          <td>{count++}</td>
+                          <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                          <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
+                          <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                          <td><Link to={`/travel-order/profile/${request._id}`}><button className="viewProfileBtn">View Profile</button></Link></td>
+                        </tr>
+                      </tbody>
+                    );
+                  }
+                })}
 
-                    <div>
-                      <div>
-
-                      <p>
-                        {request.requestedStudent && request.requestedStudent.name}
-                      </p>
-                      <p>
-                        ID: {request.requestedStudent && request.requestedStudent.studentNumber? request.requestedStudent.studentNumber : "Not found" }
-                      </p>
-                      <p>
-                      Travel Date: {moment(request.flightDate).format("MMMM Do , YYYY")}
-                      </p>
-                      </div>
-
-                    <div>
-
-                      <p>
-                      <Link to={ `/travel-order/profile/${request._id}` }><button className="viewProfileBtn">View Profile</button></Link>
-                      </p>
-                    </div>
-
-                    </div>
-
-              ) }
-  })
-                              }
-            </div>
-
-            {/* MOBILE VIEWWWW END====================== */}
-
-                        
+              </table></>
+               
+) : (
+  <div>No student has requested for travel order yet</div>
+)}
+       
           </div>
           {/* end of subDivision */}
               <div id="msg" style={ { display: "none" } }>Oops! It did not match any results. Maybe try searching for something different.
