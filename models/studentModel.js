@@ -33,7 +33,7 @@ const studentSchema = new mongoose.Schema({
    // },
    photo: {
       type: String,
-      default: "https://storage.googleapis.com/yoke-e05d7.appspot.com/yoke%2F%2Fpexels-george-dolgikh-13105061846c77aa1e.jpg"
+      default: "https://storage.googleapis.com/yoke-e05d7.appspot.com/yoke%2F%2Faccount184822ff688.svg"
    },
    dateJoined: {
       type: Date,

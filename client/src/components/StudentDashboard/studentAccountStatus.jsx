@@ -87,7 +87,7 @@ useEffect(() => {
         <div className='studentimage'>
           <div className="profileWrapper">
             <img
-            className='studentImg' src={students.photo? ( students.photo.startsWith("https://")? students.photo : abcd )  : abcd } alt='profile of student' />
+            className='studentImg' src={students.photo}   alt='profile of student' />
           </div>
           
           <div className='studentviews'>
