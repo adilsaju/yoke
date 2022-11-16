@@ -1,24 +1,22 @@
 import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
+import '../HeaderFooter.css'
 
-let navToggle = document.querySelector('.toggle-nav');
+let navToggle = document.querySelector('.crosbtn');
+
 
 const define = () => {
-  console.log('init')
-//   let close = true;
-//   navToggle = document.querySelector('.toggle-nav');
-//   console.log(navToggle)
-// navToggle && navToggle.addEventListener('click', () => {
-//   console.log('clickme')
-//   if(close){
-//     close = false
-//     document.body.classList.add('nav-open');
-//   }else{
-//     close = true
-//   document.body.classList.remove('nav-open');
-// }
-// });
+
+  
+  navToggle = document.querySelector('.crosbtn');
+  console.log(navToggle)
+navToggle && navToggle.addEventListener('click', () => {
+  console.log('clickme')
+
+    document.body.classList.remove('nav-open');
+ 
+});
 }
 
 const SideMenu = () => {
@@ -26,9 +24,10 @@ const SideMenu = () => {
     <div className='Nav-menu'>
       <div className="mobmen">
       
-            {define()}
+           
       <div className='logomob'><img src={require('../images/logoWhite.png')} alt='Yoke' /></div>
-      <div onClick={define()} className='logomob'> <button  className='toggle-nav logomob'><img src={require('../images/logo-cros.png')} alt='Yoke' /></button></div>
+      <button onClick={(e) => { define()}} className='crosbtn'><img src={require('../images/logo-cros.png')} alt='Yoke' /></button>
+      {define()}
       {/* <div className='logocros'><img src={require('../images/logo-cros.png')} alt='Yoke' /></div> */}
       </div>
 

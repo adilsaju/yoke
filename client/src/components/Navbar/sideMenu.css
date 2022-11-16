@@ -145,13 +145,17 @@ nav li:hover{
     display: none;
 }
 
-.toggle-nav{
+.openbtn{
     background: transparent;
     border: 0px;
     margin: 0;
 
 }
-
+.crosbtn{
+    background: transparent;
+    border: 0px;
+    margin: 0;
+}
 .hamburg{
     display: inline;
 }
@@ -174,4 +178,6 @@ nav li:hover{
     width: 100vw;
    
 }
+
+
 }

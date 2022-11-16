@@ -5,21 +5,22 @@ import {UserContext} from '../Contexts/UserContext'
 import './HeaderFooter.css'
 import { useLocation } from "react-router-dom";
 
-let navToggle = document.querySelector('.toggle-nav');
+
+
+
+let navToggle = document.querySelector('.openbtn');
+
 
 const define = () => {
-  let close = true;
-  navToggle = document.querySelector('.toggle-nav');
+  console.log('yoloooo')
+
+  navToggle = document.querySelector('.openbtn');
   console.log(navToggle)
 navToggle && navToggle.addEventListener('click', () => {
   console.log('clickme')
-  if(close){
-    close = false
-    document.body.classList.remove('nav-open');
-  }else{
-    close = true
-  document.body.classList.add('nav-open');
-}
+
+    document.body.classList.add('nav-open');
+
 });
 }
 
@@ -40,8 +41,8 @@ const { pathname } = useLocation();
       
         <header>
         <div className='hamburg'>
-            <button onMouseEnter={define()} className='toggle-nav'><img src={require('./images/menu-logo.png')} alt="" /></button>
-            {define()}
+        <button onClick={(e) => { define()}} className='openbtn'><img src={require('./images/menu-logo.png')} alt='Yoke' /></button>
+      {define()}
           </div>
           <div className='logo'><img src={require('./images/logoWhite.png')} alt='Yoke' /></div>
           <div className='page-name'>
