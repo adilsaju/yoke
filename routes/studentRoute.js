@@ -30,6 +30,7 @@ const {
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
+  undoApproveRequestById
 } = require('../controllers/studentController.js');
 
 const {
@@ -127,6 +128,10 @@ router
 router
   .route('/requests/:id/approve')
   .patch(approveRequestById());
+
+  router
+  .route('/requests/:id/undoapprove')
+  .patch(undoApproveRequestById());
 
 router.route('/pendingRequests').get(claireFn());
 
