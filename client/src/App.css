@@ -540,6 +540,28 @@ button {
              margin-top: 0 !important;
            }
 
+           /* history page mobile */
+          
+           .histable th {
+
+            display: none;
+            
+            }
+          
+         
+            .histable td:nth-of-type(2),.mobile-data{
+              text-align:left;
+            }
+            
+            .histable td:nth-of-type(1),.histable td:nth-of-type(3),.histable td:nth-of-type(4),.histable td:nth-of-type(5){
+              display: none;
+            }
+            .histmob .Searchbar{
+              width: 85vw !important;
+              height: 1.5rem;
+              align-items: center;
+              text-align: center;
+            }
 }
 /* end of mobile view */
 

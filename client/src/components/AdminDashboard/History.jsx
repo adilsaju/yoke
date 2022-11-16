@@ -17,7 +17,7 @@ const History = () => {
     const [error, setError] = useState(null);
 
       useEffect(() => {
-  setPageTitle("Archive")
+  setPageTitle("History")
         
         setTimeout(() => {
          fetch(`/api/archives`).then(res => {
@@ -46,11 +46,11 @@ return (
         <div className='division'>
           <div className="subDivision">
           
-            <div className="topDivision">
+            <div className="topDivision histmob">
               <Search/>
             </div>
             
-                <table className='myTable'>
+                <table className='myTable histable'>
                   <thead>
                   { error && <div>{ error }</div> }
                     <tr>
@@ -71,7 +71,12 @@ return (
                             <td>
                               {count++}
                             </td>
-                            <td>{student.requestedStudent && student.requestedStudent.name}</td>
+                            <td>{student.requestedStudent && student.requestedStudent.name}
+                            <div className="mobile-data">
+                           <div className="id"> ID - {student.requestedStudent && student.requestedStudent.studentNumber}</div>
+                            <div className="travdate">Travel date - {moment(student.flightDate).format("MMMM Do , YYYY")}</div>
+                            </div>
+                            </td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                             <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td>
