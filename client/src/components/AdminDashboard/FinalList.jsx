@@ -110,7 +110,7 @@ const sentToFlightCn = async () =>{
             <SideMenuAdmin/>
               <div className='division'>
                 <div className="subDivision">
-                  <div className="topDivision">
+                  <div className="topDivision finalmobile">
                     <Search />
                     <div className="leftBorder">
                     <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,300);sentToFlightCn() }} > Send to Flight Coordinator </button>
@@ -140,7 +140,11 @@ pauseOnHover/>
                       <tbody key={id}>
                         <tr className='tay' >
                           <td>{count++}</td>
-                          <td>{ student.requestedStudent && student.requestedStudent.name}</td>
+                          <td>{ student.requestedStudent && student.requestedStudent.name}
+                          <div className="mobile-data">
+                           <div className="id"> ID - {student.requestedStudent && student.requestedStudent.studentNumber}</div>
+                            <div className="travdate">Travel date - {moment(student.flightDate).format("MMMM Do , YYYY")}</div>
+                          </div></td>
                           <td>{ student.requestedStudent && student.requestedStudent.studentNumber}</td>
                           <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
                           <td><Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link></td>

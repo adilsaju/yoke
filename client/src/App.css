@@ -429,7 +429,7 @@ button {
 
 
     /* Admin side mobile view start */
-    .adminTO{
+    .finalListTableDesktop,.adminTO{
       /* width: 7vw !important; */
       padding: 0 10px;
     }
@@ -476,6 +476,42 @@ button {
     background-color: #00284E;
     padding: 0.65rem 3rem !important;
         }
+
+        /* final list mobile */
+
+        .finalListTableDesktop  th {
+
+          display: none;
+          
+          }
+        
+       
+          .finalListTableDesktop td:nth-of-type(2),.mobile-data{
+            text-align:left;
+          }
+          
+          .finalListTableDesktop td:nth-of-type(1),.finalListTableDesktop td:nth-of-type(3),.finalListTableDesktop td:nth-of-type(4){
+            display: none;
+          }
+
+          .finalmobile{
+            display: flex !important;
+            flex-flow: column !important;
+            width: 95vw !important;
+          }
+          .finalmobile .Searchbar{
+            width: 25rem !important;
+            height: 1.5rem;
+            text-align: center;
+          }
+           .finalmobile .yellowBtn{
+            width: 27.5rem !important;
+            height: 3rem !important;
+           }
+
+           .subDivision{
+             margin-top: 0 !important;
+           }
 
 }
 /* end of mobile view */
