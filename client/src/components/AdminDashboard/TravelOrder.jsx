@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
@@ -81,7 +82,7 @@ return (
               <div className="leftBorder">
                 <Filters FilterValueSelected={onFilterValueSelected} />
               </div>
-            </div><table className="myTable">
+            </div><table className="myTable adminTO">
                 <thead>
                   {error && <div>{error}</div>}
                   <tr className="heading">
@@ -99,7 +100,12 @@ return (
                       <tbody key={id}>
                         <tr className='tay'>
                           <td>{count++}</td>
-                          <td>{request.requestedStudent && request.requestedStudent.name}</td>
+                          <td>{request.requestedStudent && request.requestedStudent.name}
+                          <div className="mobile-data">
+                           <div className="id"> ID - {request.requestedStudent && request.requestedStudent.studentNumber}</div>
+                            <div className="travdate">Travel date - {moment(request.flightDate).format("MMMM Do , YYYY")}</div>
+                          </div>
+                          </td>
                           <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
                           <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
                           <td><Link to={`/travel-order/profile/${request._id}`}><button className="viewProfileBtn">View Profile</button></Link></td>
@@ -127,3 +133,4 @@ return (
 }
 
 export default TravelOrder
+
