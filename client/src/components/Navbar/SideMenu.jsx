@@ -19,6 +19,14 @@ navToggle && navToggle.addEventListener('click', () => {
 });
 }
 
+const closemenuonclick = () => {
+
+
+    document.body.classList.remove('nav-open');
+ 
+
+}
+
 const SideMenu = () => {
   return (
     <div className='Nav-menu'>
@@ -37,13 +45,13 @@ const SideMenu = () => {
   
       <ul className="studentMenu">
         <Link to="/student-account-status">
-          <li className='studentAcct'>
+          <li onClick={(e) => { closemenuonclick()}} className='studentAcct'>
             Account Status
           </li>
         </Link>
 
         <Link to="/student-travel-order"> 
-          <li className="travelOrder">
+          <li onClick={(e) => { closemenuonclick()}} className="travelOrder">
             Student Travel Order
           </li>
         </Link>
@@ -55,7 +63,7 @@ const SideMenu = () => {
         </Link> */}
         
         <Link to="/logout"> 
-          <li className='logout'>
+          <li onClick={(e) => { closemenuonclick()}} className='logout'>
           Logout
           </li>
         </Link>
