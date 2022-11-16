@@ -143,6 +143,7 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
 
 /***** MODALS *****/
 .ReactModal__Content.ReactModal__Content--after-open {
-    width: 20vw;
+    width: 40vw;
     border-radius: 20px!important;
+    padding: 2rem !important;
 }

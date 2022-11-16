@@ -9,10 +9,10 @@ import {UserContext} from '../../Contexts/UserContext'
 import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Modal from 'react-modal';
 
 let emailcheck = true
-
+let resss = "";
 const sentEmail = async () => {
   let url = `/api/sentemail`;
 
@@ -38,11 +38,53 @@ const sentToFlightCn = async () =>{
     return data;
 } 
 
-
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2
+  },
+};
 
 
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
+
+      //---------------------- modal begin ---------------------------
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+ 
+  const [modalIsOpenalso, setIsOpenalso] = React.useState(false);
+  function openModalalso() {
+    setIsOpenalso(true);
+    resss = document.getElementById("rod").value
+    
+  }
+  function afterOpenModalalso() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+  function closeModalalso() {
+    setIsOpenalso(false);
+  }
+  // ---------------------- modal end ----------------------
+
+
   const notify = () => {
    
     if (emailcheck){
@@ -108,12 +150,27 @@ const sentToFlightCn = async () =>{
         <div>
           <div className='fullpage'>
             <SideMenuAdmin/>
+            <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal">
+          
+          <h2>Are you sure you want to send ?</h2>
+          <div className="final-btnn">
+          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,300);sentToFlightCn();closeModal()}}>Yes</button> 
+          <Link to="/final-list"><button className='useno' onClick={(e) => closeModal()} >No</button></Link> 
+          </div> 
+      </Modal> 
+     
+
               <div className='division'>
                 <div className="subDivision">
                   <div className="topDivision finalmobile">
                     <Search />
                     <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { sentEmail();setTimeout( notify,300);sentToFlightCn() }} > Send to Flight Coordinator </button>
+                    <button className="yellowBtn" onClick={(e) => { openModal() }} > Send to Flight Coordinator </button>
                     <ToastContainer position="bottom-left"
 autoClose={5000}
 hideProgressBar

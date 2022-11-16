@@ -33,6 +33,33 @@ width: 1px;
   font-family: 'Fira Sans', Helvetica, sans-serif;
 }
 
+.final-btnn{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.useno{
+  background:transparent;
+  border: 1px solid #00284E;
+  border-radius: 2.31rem;
+  cursor: pointer;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  padding: 0.5rem 2rem;
+}
+.useno:hover {
+  background: #00284E;
+  color: white;
+}
+
+
+.useyes {
+  padding: 0.5rem 2rem !important;
+}
+
+
+
 .yellowBtn {
   background-color: #FEC326;
   border: 1px solid #FEC326;
