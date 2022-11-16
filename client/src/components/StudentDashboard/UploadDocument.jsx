@@ -427,6 +427,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneEnglish}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
           />
       </Modal>
         {/* ============= medical modal ================== */}
@@ -440,6 +441,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneMedical}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
           />
       </Modal>
         {/* ============= radio modal ================== */}
@@ -453,6 +455,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneRadio}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
           />
       </Modal>
         {/* ============= lic modal ================== */}
@@ -466,6 +469,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneLic}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
           />
       </Modal>
       <ToastContainer position="bottom-left"
