@@ -108,7 +108,7 @@ return (
                           </td>
                           <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
                           <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
-                          <td><Link to={`/travel-order/profile/${request._id}`}><button className="viewProfileBtn">View Profile</button></Link></td>
+                          <td><Link to={`/travel-order/profile/${request._id}`}><button className="viewProfileBtn dBlueBtn">View Profile</button></Link></td>
                         </tr>
                       </tbody>
                     );
