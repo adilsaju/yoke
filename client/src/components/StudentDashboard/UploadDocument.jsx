@@ -427,6 +427,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
         <h2 className="camTitle" ref={(_subtitle) => (subtitle = _subtitle)}>Scan</h2>
         <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDoneEnglish}
             isFullscreen={isFullscreen} imageType = {IMAGE_TYPES.PNG}
+            idealFacingMode = {FACING_MODES.ENVIRONMENT}
           />
       </Modal>
         {/* ============= medical modal ================== */}
