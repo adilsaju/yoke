@@ -16,7 +16,7 @@ maximDate.setDate(maximDate.getDate()+30);
 const minimDate = new Date();
 minimDate.setDate(minimDate.getDate()+2);
 
-let resp = 'ok';
+let resp = 'Booking Submitted';
 let trr = false;
 
 const customStyles = {
