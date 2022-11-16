@@ -124,7 +124,7 @@ nav li:hover{
 
 @media screen and (max-width: 760px) {
 
-.Nav-menu{
+    .Nav-menu{
     position: fixed;
     background: var(--clr-dark);
     color: var(--clr-light);
@@ -148,7 +148,6 @@ nav li:hover{
 .toggle-nav{
     background: transparent;
     border: 0px;
-   
     margin: 0;
 
 }
