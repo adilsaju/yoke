@@ -18,8 +18,6 @@ daftom.setDate(daftom.getDate()+1);
 let flgg = 1;
 const today = new Date();
 
-
-
 async function main(recipient,reason, body) {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
@@ -74,6 +72,7 @@ let body1 = await Request.requestModel
   isApproved: true,
   isRejected: false,
   isExpired: false,
+  IsSentToCoordinator : false
 })
 .sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin").select(["flightDate", "requestedDate", "requestedStudent", "approvedAdmin" ]);
 
