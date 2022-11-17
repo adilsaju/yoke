@@ -448,7 +448,15 @@ button {
         padding: 0 !important;
         margin: 0 !important;
       }
-
+      .setting{
+        border: 1px solid black;
+        width: 80vw;
+        display:flex;
+        background-color: rgba(229, 243, 255, 0.9) !important;
+        border-radius: 15px;
+        align-items: center;
+        height: 50vh;
+      }
       .ReactModal__Content--after-open{
         display: inline;
         width: 70vw !important;
@@ -581,6 +589,39 @@ button {
               height: 1.5rem;
               align-items: center;
               text-align: center;
+            }
+
+            /* student profile buttons */
+            .mobilebtnwrap{
+              display: flex !important;
+              flex-flow: column !important;
+              width: 100%;
+             margin-bottom: 1rem;
+             font-size: 1.25rem;
+             
+            }
+         
+            .uploadDocs img {
+              width: 70vw !important;
+              height: 100% !important;
+            }
+
+            .mobilebtnwrap .dBlueBtn{
+              padding: 0.5rem;
+            }
+            .uploadDocs .buttonWrapper{
+              display: flex !important;
+              flex-flow: column-reverse !important;
+              
+            }
+
+            .mobilebtnwrapdec .duo{
+              width: 100%;
+              padding: 1.5rem;
+              
+            }
+            a{
+              text-decoration: none;
             }
 }
 /* end of mobile view */

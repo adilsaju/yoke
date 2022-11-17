@@ -344,7 +344,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                   <h3>Pilot's License</h3>
                 
                     <div className="fitImg"><img id="pic4" src={students && students.studentRequirements && students.studentRequirements.license? ( students.studentRequirements.license.startsWith("https://")? students.studentRequirements.license : abcd2 )  : abcd2 }  /></div>
-                    <div className="btnWrapper">
+                    <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l4">Upload</label>
                       <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l4" id="l4"   />
                       <label className='dBlueBtn' htmlFor="l4c" id="capture4"  onClick={openModalLic} >Scan &#128247;</label>
@@ -355,7 +355,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                   <h3>Medical License</h3>
                 
                     <div className="fitImg"><img id="pic2" src={students && students.studentRequirements && students.studentRequirements.medicalLicense? ( students.studentRequirements.medicalLicense.startsWith("https://")? students.studentRequirements.medicalLicense : abcd2 )  : abcd2 } /></div>
-                    <div className="btnWrapper">
+                    <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l2">Upload </label>
                        <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0]) ; notify1();  } }  accept="image/*" type="file" name="l2" id="l2"     />
                       <label className='dBlueBtn' htmlFor="l2c" id="capture2" onClick={openModalMedical} >Scan &#128247;</label>
@@ -368,7 +368,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 <div className='uploadBoxes'>
                   <h3>Radio License</h3>
                     <div className="fitImg"><img id="pic3" src={students && students.studentRequirements && students.studentRequirements.radioLicense? ( students.studentRequirements.radioLicense.startsWith("https://")? students.studentRequirements.radioLicense : abcd2 )  : abcd2 } /></div>
-                    <div className="btnWrapper">
+                    <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l3">Upload</label>
                       <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l3" id="l3"  />
                       <label className='dBlueBtn' htmlFor="l3c" id="capture3"  onClick={openModalRadio} >Scan &#128247;</label>
@@ -379,7 +379,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                   <h3>English Proficiency</h3>
                 
                     <div className="fitImg"><img id="pic1" src={students && students.studentRequirements && students.studentRequirements.englishProficiency? ( students.studentRequirements.englishProficiency.startsWith("https://")? students.studentRequirements.englishProficiency : abcd2 )  : abcd2 } /></div>
-                    <div className="btnWrapper">
+                    <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l1">Upload</label>
                       <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0]) ; notify1();   } }  accept="image/*" type="file" name="l1" id="l1"    />
                       <label className='dBlueBtn' htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan &#128247;</label>
@@ -396,7 +396,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
             {/* end of imageupload */}
             
             <div className="whiteBg">
-              <div className="buttonWrapper">
+              <div className="buttonWrapper mobilebtnwrapdec">
                   <Link to="/student-account-status">
                     <button className="transparentBtn duo">
                       Cancel

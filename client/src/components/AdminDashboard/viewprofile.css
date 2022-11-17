@@ -378,8 +378,8 @@ padding: 0;
 .uploadDocs .buttonWrapper {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start!important;
-    flex-direction: row!important;
+    justify-content: flex-start;
+    flex-direction: row;
     flex: 1 0 100%;
     border-top: 2px solid #C8E4FF;
     padding: 2rem 1rem;
