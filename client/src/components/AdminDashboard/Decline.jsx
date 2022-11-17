@@ -5,8 +5,58 @@ import {UserContext} from '../../Contexts/UserContext'
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
 
 let resss = "";
+let shouldEmail = true;
+//undo decline
+const undo = async (request, loggedInUser,setStudents, toastDelay) => {
+  shouldEmail = false;
+  let url = `/api/requests/${request._id}/undodecline`;
+
+const bod1 = {
+  "adminId": `${loggedInUser.id}`
+}
+
+  const res = await fetch(url, {method: 'PATCH',
+   body: JSON.stringify(bod1), 
+      headers: {
+    'Content-Type': 'application/json'
+  }, });
+  const data = await res.json();
+  // openModal
+  // alert("APPROVED!")
+   
+  console.log("IMPPPPPPPPPPPPP:",data);
+  setStudents(data)
+  toast.dismiss()
+  notifyUndoed(toastDelay);
+
+  // setStudents(data)
+  return data;
+};
+
+
+//toast
+const notifyUndoed = (toastDelay) => toast(`Undo successfull`,{
+  position: "bottom-left",
+  autoClose: 1000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  });
+const notifyDeclined = (toastDelay, DeclineToast) => toast(<DeclineToast />,{
+  position: "bottom-left",
+  autoClose: toastDelay,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  });
+
 const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
   let url = `/api/sentEmailStudentDeclined`;
 
@@ -91,6 +141,31 @@ const Decline = () => {
   const [request,setStudents] = useState([]);
   const {loggedInUser, loginCredentials} = useContext(UserContext)
 
+  //toast call
+  // const [shouldEmail,setshouldEmail] = useState(true);
+  const [toastDelay,settoastDelay] = useState(5000);
+
+  const DeclineToast = ({ closeToast, toastProps }) => (
+    <div>
+      
+      Declined Successfully
+      <button onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents); }}  >Undo</button>
+      
+    </div>
+  )
+  const sentEmailBasedOnCondition = () => {
+    
+
+      setTimeout(()=>{
+        if (shouldEmail){
+        sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email);
+        setTimeout( window.location.reload(false),5000 ) 
+        }
+      } , toastDelay);
+    
+  }
+
+
   //---------------------- modal begin ---------------------------
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -106,19 +181,7 @@ const Decline = () => {
   }
 
  
-  const [modalIsOpenalso, setIsOpenalso] = React.useState(false);
-  function openModalalso() {
-    setIsOpenalso(true);
-    resss = document.getElementById("rod").value
-    
-  }
-  function afterOpenModalalso() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-  function closeModalalso() {
-    setIsOpenalso(false);
-  }
+  
   // ---------------------- modal end ----------------------
 
 
@@ -134,8 +197,7 @@ const Decline = () => {
   return (
     <div>
       {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { openModal()} }>Decline</button> }
-      {(request.isApproved) ? <h3>This request has already been approved.</h3> : console.log("nothing")}
-      {(request.isRejected) ? <><h3>This request has already been declined.</h3><p>Reason for Decline : {request.reason}</p></>: console.log("nothing")}
+      {(request.isRejected) ? <><h3>This request has been declined.</h3></>: console.log("nothing")}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -154,22 +216,11 @@ const Decline = () => {
         </select><br></br>
         <br></br>
         {/* {alert((document.getElementById("rod")).value)} */}
-        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser, document.querySelector("#rod").value);sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email);closeModal();openModalalso()}} type="submit" className='viewProfileBtn' value="Confirm"></input>
+        <input onClick={(e) => { decline(request, loginCredentials.loggedInUser, document.querySelector("#rod").value);setTimeout(sentEmailBasedOnCondition(),5000);closeModal();notifyDeclined(toastDelay, DeclineToast)}} type="submit" className='viewProfileBtn' value="Confirm"></input>
         </form>
         
       </Modal> 
      
-      <Modal
-        isOpen={modalIsOpenalso}
-        onAfterOpen={afterOpenModalalso}
-        onRequestClose={closeModalalso}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <img className='tick2' src={require('../images/verified.gif')} alt='' />
-        <div><h2>Request declined successfully</h2></div>
-        <Link to="/travel-order"><button className='viewProfileBtn' onClick={(e) => {closeModalalso();}}>OK</button></Link>
-      </Modal> 
       
     </div>
     

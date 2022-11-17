@@ -7,7 +7,9 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
+import Decline from './Decline';
 
+let shouldEmail = true;
 
 const sentEmailStudentApproved = async (flydate,mailid) => {
   let url = `/api/sentEmailStudentApproved`;
@@ -28,6 +30,7 @@ const sentEmailStudentApproved = async (flydate,mailid) => {
 
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
+  
 };
 
 const fetchTasks = async (request_id) => {
@@ -71,8 +74,8 @@ const bod1 = {
   return data;
 };
 //undo approve
-const undo = async (request, loggedInUser,setStudents, setshouldEmail, toastDelay) => {
-  setshouldEmail(false)
+const undo = async (request, loggedInUser,setStudents, toastDelay) => {
+  shouldEmail = false;
   let url = `/api/requests/${request._id}/undoApprove`;
 
 const bod1 = {
@@ -90,21 +93,23 @@ const bod1 = {
    
   console.log("IMPPPPPPPPPPPPP:",data);
   setStudents(data)
+  toast.dismiss()
   notifyUndoed(toastDelay);
   // setStudents(data)
   return data;
 };
 
-
-const notifyUndoed = (toastDelay) => toast(`undo successfull`,{
+const notifyUndoed = (toastDelay) => toast(`Undo successfull`,{
   position: "bottom-left",
-  autoClose: toastDelay,
+  autoClose: 1000,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
   });
+
+
   const notifyApproved = (toastDelay, ApproveToast) => toast(<ApproveToast />,{
     position: "bottom-left",
     autoClose: toastDelay,
@@ -137,7 +142,7 @@ const Accept = () => {
   const {loggedInUser, loginCredentials} = useContext(UserContext)
 console.log(loginCredentials.loggedInUser.id);
   const [request,setStudents] = useState([]);
-  const [shouldEmail,setshouldEmail] = useState(true);
+  // const [shouldEmail,setshouldEmail] = useState(true);
   const [toastDelay,settoastDelay] = useState(5000);
 
 
@@ -156,26 +161,30 @@ console.log(loginCredentials.loggedInUser.id);
     <div>
       {/* Lorem ipsum dolor {toastProps.position} */}
       Approved Successfully
-      <button onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents, setshouldEmail); }}  >Undo</button>
+      <button onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents) }}>Undo</button>
       {/* <button onClick={closeToast}>Close</button> */}
     </div>
   )
   
   const sentEmailBasedOnCondition = () => {
-    if (shouldEmail){
-
+    
+    
       setTimeout(()=>{
+        if (shouldEmail){
+         
         sentEmailStudentApproved(request.flightDate,request.requestedStudent.email);
-      } , toastDelay);
-    }
+        setTimeout( window.location.reload(false),5000 ) 
+      }} , toastDelay);
+      
+    
   }
 
   return (
-    <div>
-    { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser, setStudents);sentEmailBasedOnCondition(); notifyApproved(toastDelay, ApproveToast) ;  } }>Approve</button> }
-   
+    <div> 
+  { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser, setStudents);setTimeout(sentEmailBasedOnCondition(),5000); notifyApproved(toastDelay, ApproveToast) } }>Approve</button> }
+  {(request.isApproved) ? <h3>This request has been approved.</h3> : console.log("nothing")}
 
-      <ToastContainer />
+      <ToastContainer  />
     </div>
   )
 }
