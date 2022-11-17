@@ -4,7 +4,7 @@ import { useState,useEffect, useContext } from 'react';
 import SideMenu from '../Navbar/SideMenu';
 import { useNavigate } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
-import '../../App.css'
+// import '../../App.css'
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import Modal from 'react-modal';
