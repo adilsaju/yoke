@@ -38,7 +38,7 @@ const bod1 = {
 
 
 //toast
-const notifyUndoed = (toastDelay) => toast(`Undo successfull`,{
+const notifyUndoed = (toastDelay) => toast(<p className='toast-content'>Undo Successful</p>,{
   position: "bottom-left",
   autoClose: 1000,
   hideProgressBar: true,
@@ -146,10 +146,10 @@ const Decline = () => {
   const [toastDelay,settoastDelay] = useState(5000);
 
   const DeclineToast = ({ closeToast, toastProps }) => (
-    <div>
+    <div className='toast-inn'>
       
-      Declined Successfully
-      <button onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents); }}  >Undo</button>
+      <p className='toast-content'>The request has been <br /> Declined</p>
+      <button className='dBlueBtn' onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents); }}  >Undo</button>
       
     </div>
   )

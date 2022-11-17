@@ -99,7 +99,7 @@ const bod1 = {
   return data;
 };
 
-const notifyUndoed = (toastDelay) => toast(`Undo successfull`,{
+const notifyUndoed = (toastDelay) => toast(<p className='toast-content'>Undo Successful</p>,{
   position: "bottom-left",
   autoClose: 1000,
   hideProgressBar: true,
