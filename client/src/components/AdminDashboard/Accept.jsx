@@ -158,10 +158,10 @@ console.log(loginCredentials.loggedInUser.id);
   }, []);
 
   const ApproveToast = ({ closeToast, toastProps }) => (
-    <div>
+    <div className='toast-inn'>
       {/* Lorem ipsum dolor {toastProps.position} */}
-      Approved Successfully
-      <button onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents) }}>Undo</button>
+      <p className='toast-content'>Student record sent to final <br />list successfully</p>
+      <button className='dBlueBtn' onClick={(e) => {   undo(request, loginCredentials.loggedInUser, setStudents) }}>Undo</button>
       {/* <button onClick={closeToast}>Close</button> */}
     </div>
   )
@@ -173,7 +173,7 @@ console.log(loginCredentials.loggedInUser.id);
         if (shouldEmail){
          
         sentEmailStudentApproved(request.flightDate,request.requestedStudent.email);
-        setTimeout( window.location.reload(false),5000 ) 
+        setTimeout( window.location.reload(false),toastDelay ) 
       }} , toastDelay);
       
     
@@ -182,9 +182,9 @@ console.log(loginCredentials.loggedInUser.id);
   return (
     <div> 
   { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser, setStudents);setTimeout(sentEmailBasedOnCondition(),5000); notifyApproved(toastDelay, ApproveToast) } }>Approve</button> }
-  {(request.isApproved) ? <h3>This request has been approved.</h3> : console.log("nothing")}
+  
 
-      <ToastContainer  />
+      {/* <ToastContainer  /> */}
     </div>
   )
 }

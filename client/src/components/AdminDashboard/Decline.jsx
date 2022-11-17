@@ -198,6 +198,7 @@ const Decline = () => {
     <div>
       {(!request.isRejected) && (!request.isApproved) && <button className='decline fontFira' onClick={(e) => { openModal()} }>Decline</button> }
       {(request.isRejected) ? <><h3>This request has been declined.</h3></>: console.log("nothing")}
+      {(request.isApproved) ? <h3>This request has been approved.</h3> : console.log("nothing")}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
