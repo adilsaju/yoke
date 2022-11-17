@@ -625,6 +625,7 @@ button {
             
             a{
               text-decoration: none;
+              color: black;
             }
 }
 /* end of mobile view */
