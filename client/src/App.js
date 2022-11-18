@@ -20,7 +20,7 @@ import RejectionReason from './components/AdminDashboard/RejectionReason';
 import Decline from './components/AdminDashboard/Decline';
 import FinalViewprofiles from './components/AdminDashboard/FinalViewprofiles';
 import History from './components/AdminDashboard/History';
-import { Helmet, HelmetProvider } from "react-helmet-async";
+
 
 function App() {
  
@@ -70,14 +70,7 @@ function App() {
 
   return (
     
-    <HelmetProvider>
-      <meta
-        name="description"
-        content="Helps flying school manage travel order requests through automation."
-      />;
-      <Helmet>
-        <title>Yoke</title>
-      </Helmet>
+   
       
       <>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials, pageTitle, setPageTitle  }}>
@@ -108,7 +101,7 @@ function App() {
         <Footer/>
       </UserContext.Provider>
       </>
-    </HelmetProvider>
+  
   );
 }
 
