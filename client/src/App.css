@@ -7,6 +7,7 @@
   pointer-events: none;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -58,6 +59,13 @@ width: 1px;
   padding: 0.5rem 2rem !important;
 }
 
+.Toastify__toast{
+  background-color: rgba(229, 243, 255, 1) !important ;
+  width: 40rem;
+  margin-left: 5rem;
+  border-radius: 15px !important;
+  height: 9rem;
+}
 
 
 .yellowBtn {
@@ -87,6 +95,19 @@ width: 1px;
   font-weight: 400;
   font-size: 1.125rem;
   padding: 0.3rem 1.2rem;
+}
+
+.toast-inn{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  gap: 3rem;
+}
+.toast-content{
+  font-size: 1.5rem;
+  color: #00284E;;
 }
 
 .dBlueBtn:hover {
@@ -428,7 +449,15 @@ button {
         padding: 0 !important;
         margin: 0 !important;
       }
-
+      .setting{
+        border: 1px solid black;
+        width: 80vw;
+        display:flex;
+        background-color: rgba(229, 243, 255, 0.9) !important;
+        border-radius: 15px;
+        align-items: center;
+        height: 50vh;
+      }
       .ReactModal__Content--after-open{
         display: inline;
         width: 70vw !important;
@@ -562,10 +591,64 @@ button {
               align-items: center;
               text-align: center;
             }
+
+            /* student profile buttons */
+            .mobilebtnwrap{
+              display: flex !important;
+              flex-flow: column !important;
+              width: 100%;
+             margin-bottom: 1rem;
+             font-size: 1.25rem;
+             
+            }
+         
+            .uploadDocs img {
+              width: 70vw !important;
+              height: 100% !important;
+            }
+
+            .mobilebtnwrap .dBlueBtn{
+              padding: 0.5rem;
+            }
+            .uploadDocs .buttonWrapper{
+              display: flex !important;
+              flex-flow: column-reverse !important;
+              
+            }
+
+            .mobilebtnwrapdec .duo{
+              width: 100%;
+              padding: 1.5rem;
+              
+            }
+
+            
+            a{
+              text-decoration: none;
+              color: black;
+            }
+
+            .Toastify__toast{
+              background-color: rgba(229, 243, 255, 1) !important ;
+              width: 70vw !important;
+              margin-left: 1rem !important;
+              border-radius: 15px !important;
+              height: 8rem;
+            }
 }
-/* end of mobile view */
-
-
+/* ---------------------- end of mobile view -----------------------*/
+.loginerror{
+  display: none;
+}
+.loginerrorhide .loginerror{
+  display: initial;
+  color: rgb(247, 121, 121);
+}
+.passwordWrapper a{
+  text-decoration: none;
+  font-size: smaller;
+  color: #000000;
+}
 .mobile-data{
   display: none;
 }

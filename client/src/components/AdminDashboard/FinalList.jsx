@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
 
+
 let emailcheck = true
 let resss = "";
 const sentEmail = async () => {
@@ -18,9 +19,9 @@ const sentEmail = async () => {
 
   const res = await fetch(url, {method: 'POST' });
   const data = await res.json();
-  if(data === 25){
+  if(!data){
     emailcheck = false
-   
+  
   }
   console.log("IMPPPPPPPPPPPPP:",data);
   return data;
@@ -88,8 +89,8 @@ const customStyles = {
   const notify = () => {
    
     if (emailcheck){
-   
-      toast("List Successfully Sent to Flight Co-ordinator",{
+     
+      toast(<p className='toast-content'>List Successfully Sent to Flight Co-ordinator</p>,{
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: true,
@@ -99,7 +100,7 @@ const customStyles = {
         progress: undefined,
         })
     }else{
-      toast("Nothing to send",{
+      toast(<p className='toast-content'>No bookings for tomorrow, email not sent</p>,{
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: true,
@@ -159,7 +160,9 @@ const customStyles = {
           
           <h2>Are you sure you want to send ?</h2>
           <div className="final-btnn">
-          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,300);sentToFlightCn();closeModal()}}>Yes</button> 
+          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,3000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
+            
+          }, 6000);}}>Yes</button> 
           <Link to="/final-list"><button className='useno' onClick={(e) => closeModal()} >No</button></Link> 
           </div> 
       </Modal> 

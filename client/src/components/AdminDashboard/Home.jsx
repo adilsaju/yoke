@@ -328,9 +328,9 @@ useEffect(() => {
               />
                         }
 
-              <div>
+              {/* <div>
                 {dntCnt}
-              </div>
+              </div> */}
             </div>
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
           Download Chart Report

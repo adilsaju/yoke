@@ -57,7 +57,24 @@
     height: 1.5rem;
     padding: 0 1.7rem 0 1rem;
     background-color: #DDEFFF;
-    font-size: 20px;
+    font-size: 14px;
+}
+@media screen and (max-width: 900px) { 
+    .ii-wrapper input {
+        border-radius: 28.5px;
+        border: 1px solid #00284E;
+        width: 9rem;
+        height: 1.5rem;
+        padding: 0 1.7rem 0 1rem;
+        background-color: #DDEFFF;
+        font-size: 20px;
+    }
+    .abc-wrapper input {
+        border: none;
+        background-color: #DDEFFF;
+        font-size: 20px !important;
+        margin: 0;
+    }
 }
 
 .abc-wrapper {
@@ -77,7 +94,7 @@
 .abc-wrapper input {
     border: none;
     background-color: #DDEFFF;
-    font-size: 20px;
+    font-size: 14px;
     margin: 0;
 }
 .abc-wrapper button {

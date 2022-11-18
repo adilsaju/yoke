@@ -15,7 +15,7 @@ const bcrypt = require('bcrypt')
 
 const daftom = new Date();
 daftom.setDate(daftom.getDate()+1);
-let flgg = 1;
+let flgg;
 const today = new Date();
 
 async function main(recipient,reason, body) {
@@ -97,7 +97,7 @@ kk = `
   </tr>`
   if (body2.length > 0){ 
   body2.forEach((el)=>{
-
+    flgg = true
 kk+=`  <tr>
 <td>${el.flightDate}</td>
 <td>${el.requestedDate}</td>
@@ -110,7 +110,7 @@ kk+=`  <tr>
 </table>
 `
 }else{
-  flgg = 0
+  flgg = false
 }
 // const fields = ['flightDate', 'isApproved', 'requestedDate'];
 // const opts = { fields };
@@ -124,7 +124,7 @@ kk+=`  <tr>
       // body1 = json2html.transform(body1)
 
       const email = "flightcoordinator.yoke@gmail.com"
-      if (flgg == 1){
+      if (flgg){
       try {
   
         main(email,"Final List",kk).catch(console.error);
@@ -133,7 +133,7 @@ kk+=`  <tr>
         res.status(500).json({ message: error.message });
       }
     }else{
-      res.json(25);
+      res.json(flgg);
     }
       next();
     }; //end of middleware

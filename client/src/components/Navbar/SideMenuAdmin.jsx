@@ -107,7 +107,7 @@ const SideMenuAdmin = () => {
 
         <div className='setandlog'>
           <Link to="/setting"><li onClick={(e) => { closemenuonclick()}} className='settings'>
-          Setting
+          Settings
             </li></Link>
 
            <Link to="/logout"><li onClick={(e) => { closemenuonclick()}} className='logout'>

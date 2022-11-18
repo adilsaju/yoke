@@ -10,9 +10,20 @@ import pwEye1 from  './images/pwHideDark.svg';
 import pwEye2 from  './images/pwShowDark.svg';
 
 
+const define = () => {
+  
+  document.body.classList.add('loginerrorhide');
+
+}
+
+const defineji = () => {
+  document.body.classList.remove('loginerrorhide');
+}
+
 
 const LoginPage = () => {
   // const [request,setStudents] = useState([]);
+  document.body.classList.remove('loginerrorhide');
   const { loginCredentials, setLoginCredentials } = useContext(UserContext)
   const {pageTitle, setPageTitle} = useContext(UserContext)
 
@@ -42,6 +53,7 @@ const LoginPage = () => {
     console.log("IMPPPPPPPPPPPPP:",data);
     if (data.error === false){
       console.log("succesfooly logged in")
+      defineji()
       //save id and token globally
       // setIsLoggedIn(true);
       console.log(data.isAdmin);
@@ -83,7 +95,7 @@ const LoginPage = () => {
 
     }else{
       console.log("unsuccess")
-      alert("unsuccess")
+      define()
     }
   
     return data;
@@ -128,14 +140,14 @@ const LoginPage = () => {
 <div className="parent">
 
     <div className="dummy">
-    <img src={cover} ></img>
+    <img src={cover} alt="Yoke Aviation login page illustration" ></img>
     </div>
 
     <div className='form1'>
       {/* <div className='fullpage'> */}
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
-      <img src={logoDBlue} ></img>
+      <img src={logoDBlue} alt="Yoke logo"></img>
       <p>Please Login with the flying school credentials</p>
       <div className="inputField">
         <div className="label-input-wrapper">
@@ -157,9 +169,9 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-
+      <span className='loginerror'>Incorrect username or password.</span>
         <br />
-        <br />
+     
       
       <button className="yellowBtn" onClick={(e) => { login()}} >Login</button>
       

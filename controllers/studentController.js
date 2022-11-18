@@ -257,6 +257,91 @@ const undoApproveRequestById = () => {
   };
 };
 
+const undoDeclineRequestById = () => {
+  return async (req, res, next) => {
+    console.log('putRequestById');
+    try {
+      console.log(req.body);
+      // console.log(req.body.adminId)
+      const particularRequest =
+        await Request.requestModel.findById(req.params.id);
+
+      if (!('adminId' in req.body)) {
+        res.status(500).json({
+          message: 'no adminId provided in request body',
+        });
+
+        return;
+      }
+      //MAIN CHECKS
+      // if (particularRequest.isExpired === true) {
+      //   res
+      //     .status(500)
+      //     .json({ message: 'sorry. already expired' });
+
+      //   return;
+      // }
+
+      // if (particularRequest.isRejected === true) {
+      //   res
+      //     .status(500)
+      //     .json({ message: 'already rejected' });
+
+      //   return;
+      // }
+
+      if (particularRequest.isRejected !== true) {
+        res
+          .status(500)
+          .json({ message: 'not declined. So no need to undo' });
+
+        return;
+      }
+
+      let particularAdmin = null;
+
+      if (
+        req.body.adminId != null &&
+        req.body.adminId != undefined
+      ) {
+        try {
+          particularAdmin = await Admin.adminModel.findById(
+            req.body.adminId
+          );
+        } catch (error) {
+          res.status(500).json({
+            message:
+              'finding particular admin by given id failed',
+          });
+
+          return;
+        }
+      } else {
+        res.status(500).json({ message: 'error.message' });
+
+        return;
+      }
+
+      // console.log(req.body.notes);
+
+      // particularRequest.notes = req.body.notes;
+      particularRequest.isRejected = false;
+      particularRequest.reason = "";
+      particularRequest.approvedAdmin = particularAdmin;
+      // particularRequest.adminVerifiedDate = new Date();
+      // particularRequest.isExpired = false
+
+      particularRequest.save();
+
+      // const sas = await Student.studentModel.findById(req.body.studentId)
+
+      res.json(particularRequest);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
 const getRequestsByStudentId = () => {
   return async (req, res, next) => {
     console.log("getRequestsByStudentId")
@@ -876,5 +961,6 @@ module.exports = {
   getChartOne,
   getRequestsByStudentIdValidated,
   undoApproveRequestById,
-  studentRequirementsCutoff
+  studentRequirementsCutoff,
+  undoDeclineRequestById
 };
