@@ -103,7 +103,7 @@ const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licF
   notifysave()
   setTimeout(() => {
     window.location.reload();
-  }, 1000);
+  }, 2000);
   
   // navigate("/student-account-status")
 }

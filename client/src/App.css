@@ -627,8 +627,16 @@ button {
               text-decoration: none;
               color: black;
             }
+
+            .Toastify__toast{
+              background-color: rgba(229, 243, 255, 1) !important ;
+              width: 70vw !important;
+              margin-left: 1rem !important;
+              border-radius: 15px !important;
+              height: 8rem;
+            }
 }
-/* end of mobile view */
+/* ---------------------- end of mobile view -----------------------*/
 .loginerror{
   display: none;
 }
