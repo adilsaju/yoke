@@ -70,38 +70,45 @@ function App() {
 
   return (
     
-    <>
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials, pageTitle, setPageTitle  }}>
-
-      {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
-    <Header/>
-    
-    <Routes>
-    <Route path="/" element={ <Home/> } /> 
-      <Route path="/dashboard" element={ <Home/> } /> 
-      <Route path="/login" element={ <LoginPage /> } /> 
-      <Route path="/logout" element={ <LoginPage /> } /> 
-
-      <Route path="/travel-order" element={ <TravelOrder/> } />
-      <Route path={"/travel-order/profile/:id"} element={ <Viewprofile/> } />
-      <Route path = {"/final-list/profile/:id"} element={<FinalViewprofiles/>}/>
-      <Route path='*' element={<NotFound/>}/>
-      <Route path="/final-list" element={<FinalList/>}/>
-      <Route path="/history" element={<History/>}/>
-      <Route path="/setting" element={<Setting/>}/>
-      <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
-      <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
-      <Route path="/request" element={<RequestTravelOrder/>}/>
-       <Route path='/settingStudent' element={<SettingStudent/>}/>
-      <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
-      <Route path='/travel-order/profile/decline/reason' element={<RejectionReason/>}/>
-      <Route path='/travel-order/profile/decline' element={<Decline/>}/>
-    </Routes>
-    
-      <Footer/>
-    </UserContext.Provider>
-
-    </>
+    <HelmetProvider>
+      <meta
+        name="description"
+        content="Helps flying school manage travel order request through automation."
+      />;
+      <Helmet>
+        <title>Yoke</title>
+      </Helmet>
+      
+      <>
+      <UserContext.Provider value={{ loggedInUser, setLoggedInUser, loginCredentials,  setLoginCredentials, pageTitle, setPageTitle  }}>
+        {/* {showAdmin ? <AdminDashboard/> : <StudentDashboard/> } */}
+      <Header/>
+      
+      <Routes>
+      <Route path="/" element={ <Home/> } />
+        <Route path="/dashboard" element={ <Home/> } />
+        <Route path="/login" element={ <LoginPage /> } />
+        <Route path="/logout" element={ <LoginPage /> } />
+        <Route path="/travel-order" element={ <TravelOrder/> } />
+        <Route path={"/travel-order/profile/:id"} element={ <Viewprofile/> } />
+        <Route path = {"/final-list/profile/:id"} element={<FinalViewprofiles/>}/>
+        <Route path='*' element={<NotFound/>}/>
+        <Route path="/final-list" element={<FinalList/>}/>
+        <Route path="/history" element={<History/>}/>
+        <Route path="/setting" element={<Setting/>}/>
+        <Route path="/student-account-status" element={<StudentAccountStatus/>}/>
+        <Route path="/student-travel-order" element={<StudentTravelOrder/>}/>
+        <Route path="/request" element={<RequestTravelOrder/>}/>
+         <Route path='/settingStudent' element={<SettingStudent/>}/>
+        <Route path="/student-account-status/upload-document" element={<UploadDocument/>}/>
+        <Route path='/travel-order/profile/decline/reason' element={<RejectionReason/>}/>
+        <Route path='/travel-order/profile/decline' element={<Decline/>}/>
+      </Routes>
+      
+        <Footer/>
+      </UserContext.Provider>
+      </>
+    </HelmetProvider>
   );
 }
 
