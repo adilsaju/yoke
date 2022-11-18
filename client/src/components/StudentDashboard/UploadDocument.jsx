@@ -100,8 +100,12 @@ const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licF
   await updateMedicalLic(loggedInUser, setStudents, medicalFile)
   await updateLic(loggedInUser, setStudents, licFile)
   await updateEnglish(loggedInUser, setStudents, englishFile)
-  // window.location.reload();
-  navigate("/student-account-status")
+  notifysave()
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
+  
+  // navigate("/student-account-status")
 }
 
 const fetchTasks = async (loggedInUser) => {
@@ -122,6 +126,16 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
   draggable: true,
   progress: undefined,
   });
+
+  const notifysave = () => toast(`Changes saved successfully`,{
+    position: "bottom-left",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
 
   const UploadDocument = () => {
     let subtitle;
