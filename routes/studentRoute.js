@@ -14,6 +14,7 @@ const {uploadPhoto,uploadL1,uploadL2,uploadL3,uploadL4, uploadArray, checkFileTy
 const {
   getStudents,
   getStudentById,
+  validateStudentById,
   getRequestsByStudentId,
   postRequestByStudentId,
   sentToFC,
@@ -31,7 +32,7 @@ const {
   getChartOne,
   getRequestsByStudentIdValidated,
   undoApproveRequestById,
-  undoDeclineRequestById
+  undoDeclineRequestById,
 } = require('../controllers/studentController.js');
 
 const {
@@ -71,6 +72,12 @@ router
   .get(getStudentById())
   //patch notes field api
   .patch(updateStudentNotesById());
+
+
+  router
+  .route('/validateStudent/:id')
+  .get(validateStudentById());
+
 
 //UPLOAD =====================================================
 

@@ -8,7 +8,7 @@ const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const { studentRequirementsCutoff } = require("./studentController")
+const { studentRequirementsCutoff } = require("./cutoff.js")
 
 const createHashPassword = async (password)=>{
     // const salt = await bcrypt.genSalt()
@@ -22,6 +22,7 @@ const createHashPassword = async (password)=>{
 const validateStudentInDb = async (student) => {
   const student_requirements1_id = student.studentRequirements._id
   const studentRequirements1 = await Checklist.studentRequirementsModel.findById(student_requirements1_id);
+  console.log("kk", studentRequirementsCutoff );
   studentRequirements1.isRequirementsOk = true
 
       //VALIDATION LOGIC 

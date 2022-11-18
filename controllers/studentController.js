@@ -7,13 +7,15 @@ const studentRequirements = require('../models/checklistModel.js');
 const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { validateStudentInDb } = require('./authController.js');
+const { studentRequirementsCutoff } = require("./cutoff.js")
 
 //===============
-const studentRequirementsCutoff = {
-  flownHours: 100,
-  balance: 50,
-};
+// const studentRequirementsCutoff = {
+//   flownHours: 100,
+//   balance: 50,
+// };
 
 const max_request_quota = 10;
 const daysBeforeHecanBook = 7;
@@ -51,6 +53,22 @@ const getStudentById = () => {
       const abc = await Student.studentModel.findById(
         req.params.id
       );
+      res.json(abc);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+};
+
+const validateStudentById = () => {
+  return async (req, res, next) => {
+    console.log('hq');
+    try {
+      let  abc = await Student.studentModel.findById(
+        req.params.id
+      );
+
+      abc = await validateStudentInDb(abc);
       res.json(abc);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -961,6 +979,7 @@ module.exports = {
   getChartOne,
   getRequestsByStudentIdValidated,
   undoApproveRequestById,
-  studentRequirementsCutoff,
-  undoDeclineRequestById
+  // studentRequirementsCutoff,
+  undoDeclineRequestById,
+  validateStudentById
 };
