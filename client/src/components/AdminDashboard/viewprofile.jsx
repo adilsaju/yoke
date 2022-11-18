@@ -215,7 +215,7 @@ const Viewprofile = () => {
           </div>
 
           <div className='studentimage'>
-          <div className="profileWrapper"><img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' /></div>
+          <div className="profileWrapper"><img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' alt='profile of student' /></div>
 
 
             <div className='studentviews'>
@@ -256,22 +256,22 @@ const Viewprofile = () => {
             <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
-                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(0)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license}></img></a>
+                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(0)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license} alt='pilot license'></img></a>
                 <p>Pilot License</p>
               </div>
 
               <div className="uploaded">
-                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(1)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense}></img></a>
+                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(1)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.medicalLicense} alt='medical license'></img></a>
                 <p>Medical License</p>
               </div>
 
               <div className="uploaded">
-                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(2)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense}></img></a>
+                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(2)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.radioLicense} alt='radio license'></img></a>
                 <p>Radio License</p>
               </div>
               
               <div className="uploaded">
-                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(3)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency}></img></a>
+                <a class="button hover-shadow" href="#popup2" onClick={()=>{ setImagesId(3)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.englishProficiency} alt='english profeciency'></img></a>
                 <p>English Proficiency</p>
               </div>
             </div>

@@ -140,14 +140,14 @@ const LoginPage = () => {
 <div className="parent">
 
     <div className="dummy">
-    <img src={cover} ></img>
+    <img src={cover} alt="Yoke Aviation login page illustration" ></img>
     </div>
 
     <div className='form1'>
       {/* <div className='fullpage'> */}
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
-      <img src={logoDBlue} ></img>
+      <img src={logoDBlue} alt="Yoke logo"></img>
       <p>Please Login with the flying school credentials</p>
       <div className="inputField">
         <div className="label-input-wrapper">
