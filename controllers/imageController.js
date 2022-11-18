@@ -8,6 +8,7 @@ const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const {validateStudentInDb} =  require("./authController")
 
    ///image key should be l1
    const uploadEnglishByStudentId = (upload) => {
@@ -46,9 +47,12 @@ const bcrypt = require('bcrypt')
           const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
           student_requirements1.englishProficiency = req.file.publicUrl;
           student_requirements1.uploadedDate = new Date()
-          student_requirements1.save()
+          await student_requirements1.save()          
           student1.studentRequirements = student_requirements1
-          student1.save()
+          // student1.save()
+
+          // update isRequirementsOk 
+          validateStudentInDb(student1)
       
           res.json(student1);
         }
@@ -64,9 +68,12 @@ const bcrypt = require('bcrypt')
             const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
             student_requirements1.englishProficiency = req.file.publicUrl;
             student_requirements1.uploadedDate = new Date()
-            student_requirements1.save()
+            await student_requirements1.save()
             student1.studentRequirements = student_requirements1
-            student1.save()
+            // student1.save()
+
+          // update isRequirementsOk 
+          validateStudentInDb(student1)
         
             res.json(student1);
            }
@@ -99,14 +106,16 @@ const bcrypt = require('bcrypt')
         }
         else {
     
-          const student1 = await Student.studentModel.findById(req.params.id);
+          let student1 = await Student.studentModel.findById(req.params.id);
           const student_requirements1_id = student1.studentRequirements._id
           const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
           student_requirements1.medicalLicense = req.file.publicUrl;
           student_requirements1.uploadedDate = new Date()
-          student_requirements1.save()
+          await student_requirements1.save()
           student1.studentRequirements = student_requirements1
-          student1.save()
+          // student1.save()
+                    // update isRequirementsOk 
+                    student1 = await validateStudentInDb(student1)
       
           res.json(student1);
         }
@@ -117,14 +126,16 @@ const bcrypt = require('bcrypt')
            }
            else {
     
-            const student1 = await Student.studentModel.findById(req.params.id);
+            let student1 = await Student.studentModel.findById(req.params.id);
             const student_requirements1_id = student1.studentRequirements._id
             const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
             student_requirements1.medicalLicense = req.file.publicUrl;
             student_requirements1.uploadedDate = new Date()
-            student_requirements1.save()
+            await student_requirements1.save()
             student1.studentRequirements = student_requirements1
-            student1.save()
+            // student1.save()
+          // update isRequirementsOk 
+          student1 = await validateStudentInDb(student1)
         
             res.json(student1);
            }
@@ -158,14 +169,16 @@ const bcrypt = require('bcrypt')
         }
         else {
     
-          const student1 = await Student.studentModel.findById(req.params.id);
+          let student1 = await Student.studentModel.findById(req.params.id);
           const student_requirements1_id = student1.studentRequirements._id
           const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
           student_requirements1.radioLicense = req.file.publicUrl;
           student_requirements1.uploadedDate = new Date()
-          student_requirements1.save()
+          await student_requirements1.save()
           student1.studentRequirements = student_requirements1
-          student1.save()
+          // student1.save()
+                    // update isRequirementsOk 
+                    student1=     await  validateStudentInDb(student1)
       
           res.json(student1);
         }
@@ -176,14 +189,16 @@ const bcrypt = require('bcrypt')
            }
            else {
     
-            const student1 = await Student.studentModel.findById(req.params.id);
+            let student1 = await Student.studentModel.findById(req.params.id);
             const student_requirements1_id = student1.studentRequirements._id
             const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
             student_requirements1.radioLicense = req.file.publicUrl;
             student_requirements1.uploadedDate = new Date()
-            student_requirements1.save()
+            await student_requirements1.save()
             student1.studentRequirements = student_requirements1
-            student1.save()
+            // student1.save()
+          // update isRequirementsOk 
+          student1=  await validateStudentInDb(student1)
         
             res.json(student1);
            }
@@ -213,14 +228,17 @@ const bcrypt = require('bcrypt')
       }
       else {
   
-        const student1 = await Student.studentModel.findById(req.params.id);
+        let  student1 = await Student.studentModel.findById(req.params.id);
         const student_requirements1_id = student1.studentRequirements._id
         const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
         student_requirements1.license = req.file.publicUrl;
         student_requirements1.uploadedDate = new Date()
-        student_requirements1.save()
+        await student_requirements1.save()
         student1.studentRequirements = student_requirements1
-        student1.save()
+        // student1.save()
+                  // update isRequirementsOk 
+                  //TODO
+                  student1 = await    validateStudentInDb(student1)
     
         res.json(student1);
       }
@@ -231,14 +249,18 @@ const bcrypt = require('bcrypt')
          }
          else {
   
-          const student1 = await Student.studentModel.findById(req.params.id);
+          let student1 = await Student.studentModel.findById(req.params.id);
           const student_requirements1_id = student1.studentRequirements._id
           const student_requirements1 = await studentRequirements.studentRequirementsModel.findById(student_requirements1_id);
           student_requirements1.license = req.file.publicUrl;
           student_requirements1.uploadedDate = new Date()
-          student_requirements1.save()
+          await student_requirements1.save()
           student1.studentRequirements = student_requirements1
-          student1.save()
+          // student1.save()
+
+                    // update isRequirementsOk 
+                  //TODO
+                  student1 = await     validateStudentInDb(student1)
       
           res.json(student1);
          }
@@ -355,6 +377,6 @@ const bcrypt = require('bcrypt')
     uploadLicByStudentId,
     uploadEnglishByStudentId,
     uploadMedicalLicByStudentId,
-uploadRadioLicByStudentId
+    uploadRadioLicByStudentId
   };
   

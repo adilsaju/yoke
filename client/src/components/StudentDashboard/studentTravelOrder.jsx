@@ -83,9 +83,21 @@ const StudentTravelOrder = () => {
               {studentsInfo.studentRequirements && studentsInfo.studentRequirements.isRequirementsOk ?
                 <Link to='/request'>
                   <button className="yellowBtn btnnn" > Request Travel Order</button>
-                </Link> : <Link to='/request'>
-                  <button className="yellowBtn" type="button" disabled> Request Travel Order</button>
-                </Link>}
+                </Link> :
+                <Popup
+                                 trigger={open => ( <Link to='/request'>
+                                  <button className="yellowBtn" type="button" disabled> Request Travel Order</button>
+                                  </Link>
+                                )}
+                                  position="bottom center"
+                                  on={['hover', 'focus']}
+                                  arrow={false}
+                                  closeOnDocumentClick
+                                >
+                                  <span className='thePopUp'> insufficent requirements </span>
+                                </Popup>
+                  
+               }
               </div>
               <span className='textinf'>Previous Records of Travel Orders</span>
               <table className='myTable'>

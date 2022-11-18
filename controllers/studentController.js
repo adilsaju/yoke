@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt')
 
 //===============
 const studentRequirementsCutoff = {
-  flownHours: 200,
+  flownHours: 100,
   balance: 50,
 };
 
@@ -875,5 +875,6 @@ module.exports = {
   getChartTwo,
   getChartOne,
   getRequestsByStudentIdValidated,
-  undoApproveRequestById
+  undoApproveRequestById,
+  studentRequirementsCutoff
 };

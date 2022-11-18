@@ -8,7 +8,7 @@ const { request } = require('express');
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
+const { studentRequirementsCutoff } = require("./studentController")
 
 const createHashPassword = async (password)=>{
     // const salt = await bcrypt.genSalt()
@@ -16,6 +16,33 @@ const createHashPassword = async (password)=>{
     // console.log("salt", salt);
     console.log("hashPassword", hashPassword);
   return hashPassword
+}
+
+
+const validateStudentInDb = async (student) => {
+  const student_requirements1_id = student.studentRequirements._id
+  const studentRequirements1 = await Checklist.studentRequirementsModel.findById(student_requirements1_id);
+  studentRequirements1.isRequirementsOk = true
+
+      //VALIDATION LOGIC 
+      if ( studentRequirements1.flownHours < studentRequirementsCutoff.flownHours){
+        studentRequirements1.isRequirementsOk = false
+      }
+      if ( studentRequirements1.balance < studentRequirementsCutoff.balance){
+        studentRequirements1.isRequirementsOk = false
+      }
+      // studentRequirements1.save();
+  
+      if ( !studentRequirements1.license.startsWith("https://") || !studentRequirements1.radioLicense.startsWith("https://") || !studentRequirements1.medicalLicense.startsWith("https://") || !studentRequirements1.englishProficiency.startsWith("https://") ) {
+  
+        studentRequirements1.isRequirementsOk = false
+  
+      }
+
+      await studentRequirements1.save()
+      student.studentRequirements = studentRequirements1
+      await student.save()
+      return student
 }
 
 const createStudent = ()=>{
@@ -27,7 +54,27 @@ const createStudent = ()=>{
       const hashPassword = await createHashPassword(password)
        //save student to db
     const studentRequirements1 = await Checklist.studentRequirementsModel.create({flownHours: 123 , balance: 66, licenseType: "cpl", englishProficiency: true, medicalLicense: "abc", radioLicense: "abc", license: "xyz", isRequirementsOk: true })
-       const student1 = await Student.studentModel.create({name: req.body.name || "abc" , email: email, password: hashPassword , studentRequirements: studentRequirements1  })
+       
+    // //VALIDATION LOGIC 
+    // if ( studentRequirements1.flownHours < studentRequirementsCutoff.flownHours){
+    //   studentRequirements1.isRequirementsOk = false
+    // }
+    // if ( studentRequirements1.balance < studentRequirementsCutoff.balance){
+    //   studentRequirements1.isRequirementsOk = false
+    // }
+    // // studentRequirements1.save();
+
+    // if ( !studentRequirements1.license.startsWith("https://") || !studentRequirements1.radioLicense.startsWith("https://") || !studentRequirements1.medicalLicense.startsWith("https://") || !studentRequirements1.englishProficiency.startsWith("https://") ) {
+
+    //   studentRequirements1.isRequirementsOk = false
+
+    // }
+// ===============================
+    
+    const student1 = await Student.studentModel.create({name: req.body.name || "abc" , email: email, password: hashPassword , studentRequirements: studentRequirements1  })
+
+      validateStudentInDb(student1)
+
        res.status(201).json({error:false, message: "user added success", data: student1})
     } catch (error) {
       res.status(500).json({error: true, message: "failed", data: error})
@@ -283,6 +330,7 @@ module.exports = {
     createStudent,
     studentLogin,
     createAdmin,
-    verifyToken
+    verifyToken,
+    validateStudentInDb
   };
   
