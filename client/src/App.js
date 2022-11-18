@@ -73,7 +73,7 @@ function App() {
     <HelmetProvider>
       <meta
         name="description"
-        content="Helps flying school manage travel order request through automation."
+        content="Helps flying school manage travel order requests through automation."
       />;
       <Helmet>
         <title>Yoke</title>
