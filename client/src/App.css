@@ -630,7 +630,11 @@ button {
 }
 /* end of mobile view */
 
-
+.passwordWrapper a{
+  text-decoration: none;
+  font-size: smaller;
+  color: #000000;
+}
 .mobile-data{
   display: none;
 }
