@@ -629,7 +629,13 @@ button {
             }
 }
 /* end of mobile view */
-
+.loginerror{
+  display: none;
+}
+.loginerrorhide .loginerror{
+  display: initial;
+  color: rgb(247, 121, 121);
+}
 .passwordWrapper a{
   text-decoration: none;
   font-size: smaller;
