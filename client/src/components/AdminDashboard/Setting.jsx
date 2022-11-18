@@ -68,7 +68,7 @@ const Setting = () => {
             <div className="admin-settings">
               <h2>Admin Info</h2>
               { <><h3>Email: <span className="fontFira">{admin.email}</span></h3>
-              <h4>Password: <span className="maskPw">{admin.password}</span></h4></> }
+              <h4>Password: <span className="maskPw">{admin.password.slice(0,8)}</span></h4></> }
               <div>
                 <button className="dBlueBtn" onClick={openModal} >Change Password</button>
               </div>
