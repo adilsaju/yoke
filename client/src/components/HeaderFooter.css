@@ -30,7 +30,7 @@ header img{
  /* **** FOOTER ****  */
  footer{
     height: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
     /* width: calc(100% - 18rem);
     left: 18rem; */
   }
