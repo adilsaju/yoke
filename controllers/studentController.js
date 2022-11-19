@@ -598,7 +598,7 @@ const postRequestByStudentId = () => {
 const sentToFC = () => {
   return async (req, res, next) => {
     const daftom = new Date();
-daftom.setDate(daftom.getDate()+1);
+daftom.setDate(daftom.getDate()+14);
 let flgg = 1;
 const today = new Date();
     console.log('senttoFc');
