@@ -17,7 +17,7 @@ const { studentRequirementsCutoff } = require("./cutoff.js")
 //   balance: 50,
 // };
 
-const max_request_quota = 10;
+const max_request_quota = 100;
 const daysBeforeHecanBook = 7;
 
 //================
