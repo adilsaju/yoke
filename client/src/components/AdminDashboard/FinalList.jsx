@@ -100,7 +100,7 @@ const customStyles = {
         progress: undefined,
         })
     }else{
-      toast(<p className='toast-content'>No bookings for tomorrow, email not sent</p>,{
+      toast(<p className='toast-content'>No bookings for next 2 weeks, email not sent</p>,{
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: true,
@@ -160,9 +160,9 @@ const customStyles = {
           
           <h2>Are you sure you want to send ?</h2>
           <div className="final-btnn">
-          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,3000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
+          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,2000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
             
-          }, 6000);}}>Yes</button> 
+          }, 4000);}}>Yes</button> 
           <Link to="/final-list"><button className='useno' onClick={(e) => closeModal()} >No</button></Link> 
           </div> 
       </Modal> 
