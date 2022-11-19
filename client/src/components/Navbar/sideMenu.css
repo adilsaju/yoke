@@ -3,6 +3,7 @@
     background-color: #00284E;
     width: 25vw;
     z-index: 1;  
+    min-width: 20rem;
 }
 
 nav img {
