@@ -233,7 +233,7 @@
 
 .approveDecline {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     gap: 5rem;
     justify-content: start;
     background-color: #ffffff;
