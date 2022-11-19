@@ -625,7 +625,7 @@ button {
             
             a{
               text-decoration: none;
-              color: black;
+              color: black !important;
             }
 
             .Toastify__toast{
