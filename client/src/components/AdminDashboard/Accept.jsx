@@ -173,8 +173,8 @@ console.log(loginCredentials.loggedInUser.id);
         if (shouldEmail){
          
         sentEmailStudentApproved(request.flightDate,request.requestedStudent.email);
-        setTimeout( window.location.reload(false),toastDelay ) 
-      }} , toastDelay);
+        setTimeout( window.location.reload(false),1000 ) 
+      }} , 3000);
       
     
   }
