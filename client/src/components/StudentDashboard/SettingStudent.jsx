@@ -38,8 +38,8 @@ const SettingStudent = () => {
       <div className='division setting'>
     
     <div className="admin-settings">
-     { <><h3>Email: <span className="fontFira">{student.email}</span></h3>
-     <h4>Password: <span className="maskPw">{student.password && student.password.slice(0,8)}</span></h4></> }
+     { <><h3>Email: <span className="fontFira">{student && student.email}</span></h3>
+     <h4>Password: <span className="maskPw">{student && student.password && student.password.slice(0,8)}</span></h4></> }
      <div>
      <button className="dBlueBtn">Forgot Password</button>
      </div>

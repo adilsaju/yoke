@@ -45,7 +45,7 @@ const Setting = () => {
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
  
-        const [admin,setAdmin] = useState([]);
+        const [admin,setAdmin] = useState({});
         const {loggedInUser, loginCredentials} = useContext(UserContext);
         console.log(loginCredentials.loggedInUser);
 
@@ -67,8 +67,8 @@ const Setting = () => {
           <div className='division setting'>
             <div className="admin-settings">
               <h2>Admin Info</h2>
-              { <><h3>Email: <span className="fontFira">{admin.email}</span></h3>
-              <h4>Password: <span className="maskPw">{admin.password && admin.password.slice(0,8)}</span></h4></> }
+              { <><h3>Email: <span className="fontFira">{admin && admin.email}</span></h3>
+              <h4>Password: <span className="maskPw">{admin && admin.password && admin.password.slice(0,8)}</span></h4></> }
               <div>
                 <button className="dBlueBtn" onClick={openModal} >Change Password</button>
               </div>
