@@ -56,7 +56,7 @@ const notifyDeclined = (toastDelay, DeclineToast) => toast(<DeclineToast />,{
   draggable: true,
   progress: undefined,
   });
-
+// api call for sending email on student decline
 const sentEmailStudentDeclined = async (flydate,rod,mailid) => {
   let url = `/api/sentEmailStudentDeclined`;
 
