@@ -10,6 +10,7 @@ import "./TravelOrder.css"
 import {  useContext } from 'react';
 import {UserContext} from '../../Contexts/UserContext'
 
+let loading = true;
 
 const TravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
@@ -76,7 +77,8 @@ return (
     <SideMenuAdmin/>
       <div className='division'>
           <div className="subDivision">
-{ requests.filter(task=> task).length > 0 ? (
+          
+{ requests.filter(task=> task).length > 0 ? 
     <><div className="topDivision">
               <Search />
               <div className="leftBorder">
@@ -115,12 +117,20 @@ return (
                   }
                 })}
 
-              </table></>
+              </table>
+              
+              {loading = false} 
+              </>
                
-) : (
-  <div>No student has requested for travel order yet</div>
-)}
-       
+ : <> { loading ? 
+  (
+    <div>No student has requested for travel order yet</div>
+  ) :
+          <span >Loading....</span>
+        } </>
+  }
+
+    
           </div>
           {/* end of subDivision */}
               <div id="msg" style={ { display: "none" } }>Oops! It did not match any results. Maybe try searching for something different.

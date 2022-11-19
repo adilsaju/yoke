@@ -45,7 +45,7 @@ return (
         <SideMenuAdmin/>
         <div className='division'>
           <div className="subDivision">
-          
+          {Archivestudent.length > 0 ? <>
             <div className="topDivision histmob">
               <Search/>
             </div>
@@ -108,14 +108,17 @@ return (
                 </table>
                 <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                 </div>
-            
-
+                </> : <span >Loading...</span>
+                    
+                 }
           </div>
           {/* end of subDivision */}
-
+          
         </div>
+        
         {/* end of division */}
       </div>
+
       {/* end of fullpage */}
     </>
   )

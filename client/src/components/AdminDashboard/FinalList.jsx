@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
 
+let loading = true;
 let emailcheck = true
 let resss = "";
 const sentEmail = async () => {
@@ -220,13 +221,23 @@ pauseOnHover/>
                     
                   </table>
                  
-                               
+                  {loading = false}        
 
                   <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                   </div>
-                  </> : <div className='cceent'>
+                  </> : <>
+
+                  {loading ?
+                  <div className='cceent'>
                     <img src={require('../images/emptyfold.png')} alt="" />
-                    <span>There are no items in the list.</span></div>}
+                    <span>There are no items in the list.</span></div> : <>
+                    
+                    <span >Loading...</span>
+                    
+                    </>}
+                    
+                    
+                    </>}
                 </div>
               </div>
               {/* end of division */}
