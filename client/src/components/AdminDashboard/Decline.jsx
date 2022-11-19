@@ -159,9 +159,9 @@ const Decline = () => {
       setTimeout(()=>{
         if (shouldEmail){
         sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email);
-        setTimeout( window.location.reload(false),5000 ) 
+        setTimeout( window.location.reload(false),1000 ) 
         }
-      } , toastDelay);
+      } , 3000);
     
   }
 
