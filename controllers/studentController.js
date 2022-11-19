@@ -802,7 +802,10 @@ const getFinalList = () => {
     try {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-        
+      const daftom = new Date();
+      daftom.setDate(daftom.getDate()+14);
+ 
+      const todayy = new Date();
       const tomorrow = new Date(today);
       tomorrow.setDate(tomorrow.getDate() + 1);
       
@@ -827,7 +830,11 @@ const getFinalList = () => {
         })
         .sort({ flightDate: 1 }).populate("requestedStudent").populate("approvedAdmin");
 
-      res.json(requestsInToday);
+        let body2 = requestsInToday.filter((a) =>{
+          return a.flightDate < daftom && a.flightDate > todayy
+        })
+        
+      res.json(body2);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

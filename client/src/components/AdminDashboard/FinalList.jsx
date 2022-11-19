@@ -11,7 +11,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
 
-
 let emailcheck = true
 let resss = "";
 const sentEmail = async () => {
@@ -133,6 +132,7 @@ const customStyles = {
                  })
                  .then(data => {
                    FinalStudents(data);
+             
                     console.log('see' ,data);
                    setError(null);
                  }).catch(err => {
@@ -149,6 +149,7 @@ const customStyles = {
     return (
                
         <div>
+          
           <div className='fullpage'>
             <SideMenuAdmin/>
             <Modal
@@ -170,11 +171,7 @@ const customStyles = {
 
               <div className='division'>
                 <div className="subDivision">
-                  <div className="topDivision finalmobile">
-                    <Search />
-                    <div className="leftBorder">
-                    <button className="yellowBtn" onClick={(e) => { openModal() }} > Send to Flight Coordinator </button>
-                    <ToastContainer position="bottom-left"
+                <ToastContainer position="bottom-left"
 autoClose={5000}
 hideProgressBar
 newestOnTop={false}
@@ -183,8 +180,15 @@ rtl={false}
 pauseOnFocusLoss
 draggable
 pauseOnHover/>
+{finalstudents.length > 0 ? <>
+                  <div className="topDivision finalmobile">
+                    <Search />
+                    <div className="leftBorder">
+                    <button className="yellowBtn" onClick={(e) => { openModal() }} > Send to Flight Coordinator </button>
+                    
                     </div>
                   </div>
+                  
                   <table className='myTable finalListTableDesktop'>
                     <thead>
                       <tr>
@@ -195,6 +199,7 @@ pauseOnHover/>
                         <th className=''>Action</th>
                       </tr>
                     </thead>
+                    
                     {finalstudents.map((student,id)=> {
                     return (
                       <tbody key={id}>
@@ -212,12 +217,16 @@ pauseOnHover/>
                         </tbody>
                     )}
                     )}
+                    
                   </table>
-
+                 
                                
 
                   <div id="msg" style={ { display: "none" } }>Oops! It did not match any results.Maybe try searching for Something different.
                   </div>
+                  </> : <div className='cceent'>
+                    <img src={require('../images/emptyfold.png')} alt="" />
+                    <span>There are no items in the list.</span></div>}
                 </div>
               </div>
               {/* end of division */}

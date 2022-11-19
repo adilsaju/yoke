@@ -53,8 +53,16 @@ width: 1px;
   background: #00284E;
   color: white;
 }
-
-
+.cceent{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.cceent img{
+  max-width: 30%;
+}
 .useyes {
   padding: 0.5rem 2rem !important;
 }
