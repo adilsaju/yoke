@@ -104,7 +104,7 @@ const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licF
   setTimeout(() => {
     window.location.reload();
   }, 2000);
-  
+  //page will reload once update is done
   // navigate("/student-account-status")
 }
 
