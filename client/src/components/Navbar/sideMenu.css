@@ -30,6 +30,7 @@ nav ul li{
     background-repeat: no-repeat;
     background-position: 3rem 1.5rem;
     display: flex;
+    text-align-last: left;
 
 }
 
