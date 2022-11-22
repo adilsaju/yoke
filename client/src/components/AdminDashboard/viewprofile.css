@@ -207,7 +207,7 @@
 }
 
 .noteWrapper textarea {
-    /* padding: 1rem; */
+    padding: 1rem;
     background-color: rgba(155, 205, 255, 0.2);
     border: 1px solid rgba(155, 205, 255, 0.2);
     border-radius: 15px;
@@ -530,11 +530,6 @@ padding: 0;
 
     .noteWrapper {
         padding: 1rem;
-    }
-    
-    .noteWrapper textarea {
-        padding: 1rem;
-        
     }
     
 }
