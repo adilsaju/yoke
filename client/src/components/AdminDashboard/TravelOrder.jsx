@@ -105,11 +105,11 @@ return (
                           <td>{request.requestedStudent && request.requestedStudent.name}
                           <div className="mobile-data">
                            <div className="id"> ID - {request.requestedStudent && request.requestedStudent.studentNumber}</div>
-                            <div className="travdate">Travel date - {moment(request.flightDate).format("MMMM Do , YYYY")}</div>
+                            <div className="travdate">Travel date - {moment(request.flightDate).format("MM/DD/YYYY")}</div>
                           </div>
                           </td>
                           <td>{request.requestedStudent && request.requestedStudent.studentNumber}</td>
-                          <td>{moment(request.flightDate).format("MMMM Do , YYYY")}</td>
+                          <td>{moment(request.flightDate).format("MM/DD/YYYY")}</td>
                           <td><Link to={`/travel-order/profile/${request._id}`}><button className="viewProfileBtn dBlueBtn">View Profile</button></Link></td>
                         </tr>
                       </tbody>
