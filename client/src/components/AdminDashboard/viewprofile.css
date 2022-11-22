@@ -185,7 +185,7 @@
 .notes {
     text-align: left;
     background-color: #ffffff;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     border-top: 2px solid #C8E4FF;
     border-bottom: 2px solid #C8E4FF;
     margin: 0 1rem;
@@ -199,7 +199,7 @@
 
 .noteWrapper {
     width: fit-content;
-    padding: 1rem;
+    /* padding: 1rem; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -523,6 +523,15 @@ padding: 0;
     .mobileBtnWrapper {
         display: none;
     }
+
+    .notes {
+        padding: 0 1rem;
+    }
+
+    .noteWrapper {
+        padding: 1rem;
+    }
+    
 }
 
 
