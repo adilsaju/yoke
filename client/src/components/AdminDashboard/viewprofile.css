@@ -360,6 +360,10 @@ padding: 0;
     padding-bottom: 1rem;
 }
 
+.uploadBoxes .dBlueBtn {
+    width: 100%;
+}
+
 .uploadDocs img {
     object-fit: cover;
     width: 225px;
@@ -520,6 +524,10 @@ padding: 0;
         display: block;
     }
 
+    .uploadBoxes .btnWrapper {
+        flex-direction: row!important;
+    }
+
     .mobileBtnWrapper {
         display: none;
     }
@@ -531,7 +539,19 @@ padding: 0;
     .noteWrapper {
         padding: 1rem;
     }
+
+    .uploadBoxes .dBlueBtn {
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+    }
     
+}
+
+@media only screen and (max-width: 900px) and (min-width: 760px) {
+    .uploadBoxes .dBlueBtn {
+        width: 6rem;
+    }
 }
 
 
