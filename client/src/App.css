@@ -535,10 +535,11 @@ button {
         
         .viewProfileBtn{
           border: 1px solid #00284E;
-    border-radius: 18px;
-    color: #FFFFFF;
-    background-color: #00284E;
-    padding: 0.65rem 3rem !important;
+          border-radius: 18px;
+          color: #FFFFFF;
+          background-color: #00284E;
+          width: 8.875rem;
+          height: 2.25rem;
         }
 
         /* final list mobile */
