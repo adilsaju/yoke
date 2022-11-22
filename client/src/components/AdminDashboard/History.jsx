@@ -74,11 +74,11 @@ return (
                             <td>{student.requestedStudent && student.requestedStudent.name}
                             <div className="mobile-data">
                            <div className="id"> ID - {student.requestedStudent && student.requestedStudent.studentNumber}</div>
-                            <div className="travdate">Travel date - {moment(student.flightDate).format("MMMM Do , YYYY")}</div>
+                            <div className="travdate">Travel date - {moment(student.flightDate).format("MM/DD/YYYY")}</div>
                             </div>
                             </td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
-                            <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                            <td>{moment(student.flightDate).format("MM/DD/YYYY")}</td>
                             <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td>
                             <td>{  
                               
