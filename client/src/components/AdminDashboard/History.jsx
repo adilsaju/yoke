@@ -88,7 +88,7 @@ return (
     trigger={open => (
       (student.isApproved ?  <p className='approved1'>Approved</p>: student.isRejected ?  <p className='declined1'>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p className='pending1' >Pending</p>: console.log("nothing"))
     )}
-    position="bottom center"
+    position="bottom right"
     on={['hover', 'focus']}
     arrow={false}
     closeOnDocumentClick

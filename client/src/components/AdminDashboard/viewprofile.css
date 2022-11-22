@@ -515,6 +515,20 @@ padding: 0;
     z-index: 2;
 }
 
+.popup-content{
+    margin:auto;
+    background:#fff!important;
+    width:fit-content;
+    padding: 0.2rem 0.3rem;
+    /* border: 0.5px solid #00284E!important; */
+    box-shadow: 1.5px 1.5px 6px #888888;
+    /* left: unset!important; */
+    right: 0!important;
+    margin-right: 1rem!important;
+    border-radius: 10px;
+}
+
+
 @media screen and (min-width: 760px) {
     .desktopBtn {
         display: block;
@@ -522,6 +536,14 @@ padding: 0;
 
     .mobileBtnWrapper {
         display: none;
+    }
+
+    .popup-content{
+        /* width:10%!important; */
+        margin: unset!important;;
+        padding: .5em;
+        right: unset!important;
+        margin-right: 0!important;
     }
 }
 
@@ -564,17 +586,7 @@ padding: 0;
 }
 
 
-.popup-content{
-    margin:auto;
-    background:#fff!important;
-    width:10%!important;
-    padding:2rem;
-    /* border: 0.5px solid #00284E!important; */
-    box-shadow: 1.5px 1.5px 6px #888888;
-    /* left: unset!important; */
-    /* right: 0!important; */
-    /* margin-right: 1rem!important; */
-}
+
 
 /* .popup-arrow{
    visibility: hidden;
