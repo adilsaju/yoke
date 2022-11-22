@@ -211,7 +211,11 @@ const Decline = () => {
           <select name="rod" id="rod">
           {/* <option value="null" selected disabled hidden>Please choose</option> */}
           <option value="Balance insufficient" selected>Insufficient balance</option>
+<<<<<<< HEAD
           <option value="Flight hours insufficient">Insufficient flight hours</option>
+=======
+          <option value="Flight hours insufficient">Insufficient Flight hours</option>
+>>>>>>> c95993487122cd310bded5dce258e1148fc6ba9a
           <option value="License not valid">Expired document/s</option>
           <option value="No spots left">Document/s will expire in 30 days</option>
         </select><br></br>
