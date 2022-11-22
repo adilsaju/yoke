@@ -210,8 +210,8 @@ const Decline = () => {
           <label htmlFor="reason for denial"><h2>Reason for Rejection:  </h2></label>
           <select name="rod" id="rod">
           {/* <option value="null" selected disabled hidden>Please choose</option> */}
-          <option value="Balance insufficient" selected>Insufficient Balance</option>
-          <option value="Flight hours insufficient">Insufficient flight hours</option>
+          <option value="Balance insufficient" selected>Insufficient balance</option>
+          <option value="Flight hours insufficient">Insufficient Flight hours</option>
           <option value="License not valid">Expired document/s</option>
           <option value="No spots left">Document/s will expire in 30 days</option>
         </select><br></br>
