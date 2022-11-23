@@ -151,7 +151,8 @@ nav li:hover{
     background: transparent;
     border: 0px;
     margin: 0;
-
+    text-align: left;
+    padding-left: 1rem;
 }
 .crosbtn{
     background: transparent;
@@ -159,7 +160,11 @@ nav li:hover{
     margin: 0;
 }
 .hamburg{
-    display: inline;
+    display: flex;
+}
+
+.hamburg img{
+    padding-left: 0;
 }
 
 .mobmen{
@@ -176,10 +181,11 @@ nav li:hover{
     margin: 0;
 }
 .Nav-menu{
-    
     width: 100vw;
-   
 }
 
+.page-name h3 {
+    margin-left: -3.5rem;
+}
 
 }
