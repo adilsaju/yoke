@@ -519,6 +519,15 @@ padding: 0;
     z-index: 2;
 }
 
+
+.camTitle {
+    color: #00284E!important;
+}
+
+.display-error>h1 {
+    font-size: 1rem!important;
+}
+
 @media screen and (min-width: 760px) {
     .desktopBtn {
         display: block;
