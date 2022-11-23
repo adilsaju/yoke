@@ -68,7 +68,7 @@ const customStyles = {
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    // subtitle.style.color = '#f00';
   }
   function closeModal() {
     setIsOpen(false);
@@ -154,6 +154,10 @@ const customStyles = {
               // console.log(isEmpty);
   
               let count = 1;
+              const { pathname } = useLocation();
+              if (pathname === "/landing") return null;
+              
+              
     return (
                
         <div>

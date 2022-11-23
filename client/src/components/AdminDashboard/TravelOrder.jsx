@@ -10,7 +10,7 @@ import "./TravelOrder.css"
 import {  useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
-
+import { useLocation } from "react-router-dom";
 let loading = true;
 
 const TravelOrder = () => {
@@ -75,6 +75,8 @@ updatefilterText(filterValue);
 }
 
 console.log(requests.length)
+const { pathname } = useLocation();
+if (pathname === "/landing") return null;
 
 
 return (

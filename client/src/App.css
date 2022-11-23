@@ -15,7 +15,6 @@
 }
 
 body{
-  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -321,9 +320,6 @@ button {
 
 @media screen and (max-width: 900px) { 
 
-  body{
-    font-size: large !important;
-  }
 
   footer p{
     text-align: center;

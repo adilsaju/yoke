@@ -17,7 +17,7 @@ import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
 import  abcd2  from "../images/abcd2.png"
-
+import { useLocation } from "react-router-dom";
 
 const images = [
   {
@@ -125,6 +125,10 @@ const FinalViewprofiles = () => {
       return index
     }
 
+    const { pathname } = useLocation();
+    if (pathname === "/landing") return null;
+    
+    
 
   return (
     <>

@@ -9,7 +9,7 @@ import {UserContext} from '../../Contexts/UserContext'
 // import abc1 from "./abc.jpg";
 // const { parse } = require();
 import { parse }  from 'json2csv'
-
+import { useLocation } from "react-router-dom";
 
 
 
@@ -303,6 +303,9 @@ useEffect(() => {
 
     return report1
   }
+  const { pathname } = useLocation();
+if (pathname === "/landing") return null;
+
 
   return ( <>
   <div className='fullpage'>

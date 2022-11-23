@@ -4,6 +4,7 @@ import { UserContext } from '../../Contexts/UserContext';
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const fetchTasks = async (admin_id) => {
   let url = `/api/admins/${admin_id}`;
@@ -66,6 +67,10 @@ const Setting = () => {
             getTasks();
 
         }, []);
+
+        const { pathname } = useLocation();
+if (pathname === "/landing") return null;
+
   return (
     <>
       <div className='fullpage'>

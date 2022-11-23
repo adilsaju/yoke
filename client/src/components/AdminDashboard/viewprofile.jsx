@@ -17,7 +17,7 @@ import ImageGallery from 'react-image-gallery';
 // import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
 import  abcd2  from "../images/abcd2.png"
-
+import { useLocation } from "react-router-dom";
 
 
 //============== TRAVEL ORDER VIEW PROFILEEEEEEE================================
@@ -106,8 +106,6 @@ const Viewprofile = () => {
   const [noteInitial, setnoteInitial]= useState(true)
 
 
-  
-
 
   console.log("previd",prevId);
   console.log("nextId",nextId);
@@ -182,7 +180,10 @@ const Viewprofile = () => {
 
       return index
     }
-
+    const { pathname } = useLocation();
+    if (pathname === "/landing") return null;
+    
+  
 
   return (
     <>

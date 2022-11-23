@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Popup from 'reactjs-popup';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const History = () => {
 
@@ -43,6 +44,11 @@ const History = () => {
  
 
 let count = 1;
+
+const { pathname } = useLocation();
+if (pathname === "/landing") return null;
+
+
 
 return (
     <>
