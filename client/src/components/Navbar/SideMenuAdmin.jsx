@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import './sideMenu.css';
 import '../HeaderFooter.css'
+import { useLocation } from "react-router-dom";
 
 let navToggle = document.querySelector('.crosbtn');
 const define = () => {
@@ -70,6 +71,9 @@ const SideMenuAdmin = () => {
     })
 
 }, []);
+
+const { pathname } = useLocation();
+if (pathname === "/landing") return null;
 
   return (
     <div className='Nav-menu'>

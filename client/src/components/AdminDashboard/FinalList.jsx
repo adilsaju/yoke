@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
+import { useNavigate } from "react-router-dom";
 
 let loading = true;
 let emailcheck = true
@@ -55,6 +56,10 @@ const customStyles = {
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
       //---------------------- modal begin ---------------------------
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -63,7 +68,7 @@ const customStyles = {
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    // subtitle.style.color = '#f00';
   }
   function closeModal() {
     setIsOpen(false);
@@ -122,7 +127,9 @@ const customStyles = {
               
               useEffect(() => {
                 setPageTitle("Final List")
-
+                if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                  handleClick();
+                  }
                 setTimeout(() => {
                  fetch(`/api/finalList`).then(res => {
                    if(!res.ok) {
@@ -147,6 +154,10 @@ const customStyles = {
               // console.log(isEmpty);
   
               let count = 1;
+              const { pathname } = useLocation();
+              if (pathname === "/landing") return null;
+              
+              
     return (
                
         <div>
@@ -209,10 +220,10 @@ pauseOnHover/>
                           <td>{ student.requestedStudent && student.requestedStudent.name}
                           <div className="mobile-data">
                            <div className="id"> ID - {student.requestedStudent && student.requestedStudent.studentNumber}</div>
-                            <div className="travdate">Travel date - {moment(student.flightDate).format("MMMM Do , YYYY")}</div>
+                            <div className="travdate">Travel date - {moment(student.flightDate).format("MM/DD/YYYY")}</div>
                           </div></td>
                           <td>{ student.requestedStudent && student.requestedStudent.studentNumber}</td>
-                          <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                          <td>{moment(student.flightDate).format("MM/DD/YYYY")}</td>
                           <td><Link to={ `/final-list/profile/${student._id}` }><button className="dBlueBtn">View Profile</button></Link></td>
                         </tr>
                         </tbody>

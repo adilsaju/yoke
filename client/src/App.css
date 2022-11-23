@@ -15,7 +15,6 @@
 }
 
 body{
-  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -83,7 +82,7 @@ width: 1px;
   cursor: pointer;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -101,7 +100,7 @@ width: 1px;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -131,7 +130,7 @@ width: 1px;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -139,6 +138,18 @@ width: 1px;
   background-color: #00284E;
   color: #ffffff;
   border: 1px solid #00284E;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: #BCBCBC;
+  color: #000000;
+  border: 1px solid #BCBCBC;
+  border-radius: 2.31rem;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.3rem 1.2rem;
 }
 
 button.duo {
@@ -321,199 +332,193 @@ button {
 
 @media screen and (max-width: 900px) { 
 
-  body{
-    font-size: large !important;
-  }
 
   footer p{
     text-align: center;
   }
-    .division{
-      width: 100vw;
-    }
-    .studentimage{
-      display: flex;
-      flex-flow: column;
-    }
+  .division{
+    width: 100vw;
+  }
+  .studentimage{
+    display: flex;
+    flex-flow: column;
+  }
   
-   .topDivision{
-      display: flex !important;
-      flex-flow: column;
-      gap:10px !important
-   }
-   .studentTO .topDivision .Searchbar {
-     display: none;
-   }
-   .textinf{
-      display: none !important;
-   }
-   .btnnn{
-     width: 95vw;
-     padding: 1rem;
-   }
-   .studentTO th:nth-of-type(1) {
-
+  .topDivision{
+    display: flex !important;
+    flex-flow: column;
+    gap:10px !important
+  }
+  .studentTO .topDivision .Searchbar {
     display: none;
-    
-    }
-    .studentTO td:nth-of-type(1) {
+  }
+  .textinf{
+    display: none !important;
+  }
+  .btnnn{
+    width: 95vw;
+    padding: 1rem;
+  }
+  .studentTO th:nth-of-type(1) {
 
-    display: none;
-    
-    }
-.studentTO{
-  margin-top: 0 !important;
-}
-    .studentTO th:nth-of-type(3) {
-
-      display: none;
-      
-      }
-      .studentTO td:nth-of-type(3) {
+  display: none;
   
-      display: none;
-      
-      }
-      .studentTO .myTable{
-        width: 95vw;
-        min-width: 0%;
+  }
+  .studentTO td:nth-of-type(1) {
+
+  display: none;
+  
+  }
+  .studentTO{
+    margin-top: 0 !important;
+  }
+  .studentTO th:nth-of-type(3) {
+    display: none;
+  }
+  .studentTO td:nth-of-type(3) {
+    display: none;
+  }
     
-      }
+  .studentTO .myTable{
+    width: 95vw;
+    min-width: 0%;
+  }
     
-      .react-calendar{
-        font-size: x-large;
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-      }
-      .react-calendar__month-view__days__day,.react-calendar__navigation__label__labelText{
-        font-size: large;
-      }
-      .calendr .buttonWrapper{
-          display: flex;
-          flex-flow: column-reverse;
-          justify-content: center;
-          align-items: center;
-      }
-      .calendr .transparentBtn,.calendr .yellowBtn{
-        width: 60vw;
-        text-decoration: none;
-        padding: 1.5rem;
-      }
-      nav ul li{
-        padding-left: 0;
-        margin-left: 0;
-      }
+  .react-calendar{
+    font-size: x-large;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
 
-      .dummy{
-        display: none;
-      }
-      .form1{
-        background: rgba(229, 243, 255, 0.9) !important ;
-        border: none !important;
-        box-shadow: none !important;
-        display: flex;
-        flex-flow: column;
-        height: 95vh !important; 
-        width: 100vw !important;
-        border-radius: 0 !important;
-    
-      }
-      .parent{
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        background:url('./components/images/plane.png') ;
-        background-size:cover;
-        padding: 0;
-        margin: 0;
-        background-position: center;
- 
-      }
-      .parent input{
-        background-color: white !important;
-        opacity: 1 !important;
-        width: 70vw !important;
-       height: 6vh !important;
-      }
-      .parent .yellowBtn{
-        width: 35vw !important;
-        font-weight: bolder;
-        padding: 1.2rem;
-      }
-
-      .parent img {
-        padding-top: 4rem !important;
-        padding-bottom: 11rem !important;
-        max-width: 11rem !important;
-      }
-      .deskfoot{
-        display: none;  
-      }
-      .mobilefoot{
-        display: flex !important;
-        color: white;
-        justify-content: center;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-      .setting{
-        border: 1px solid black;
-        width: 80vw;
-        display:flex;
-        background-color: rgba(229, 243, 255, 0.9) !important;
-        border-radius: 15px;
-        align-items: center;
-        height: 50vh;
-      }
-      .ReactModal__Content--after-open{
-        display: inline;
-        width: 70vw !important;
-      }
-      .ReactModal__Content--after-open button{
-        padding: 1rem 2rem;
-      }
-
-      .hideme{
-        display: initial !important;
-      }
-
-      .abc-wrapper {
-        border: 1px solid black;
-        border-radius: 28.5px;
-        display: inline-block !important;
-        
-    }
-
-    .abc-wrapper button img{
-      background-color: transparent;
-      position: static !important;
-      padding: 0.65rem !important;
-    }
-
-
-    /* Admin side mobile view start */
-    .finalListTableDesktop,.adminTO{
-      /* width: 7vw !important; */
-      padding: 0 10px;
-    }
-    
-    .subDivision{
-      width: 95vw;
+  .react-calendar__month-view__days__day,.react-calendar__navigation__label__labelText{
+    font-size: large;
+  }
+  .calendr .buttonWrapper{
       display: flex;
-      flex-flow: column;
-    }
-    .mobile-data{
-      display: flex !important;
-      flex-flow: column;
-      font-size: 12px;
-      
-    }
-    .adminTO td:nth-of-type(2),.mobile-data{
-      text-align:left;
-    }
+      flex-flow: column-reverse;
+      justify-content: center;
+      align-items: center;
+  }
+  .calendr .transparentBtn,.calendr .yellowBtn{
+    width: 60vw;
+    text-decoration: none;
+    padding: 1.5rem;
+  }
+  nav ul li{
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .dummy{
+    display: none;
+  }
+  .form1{
+    background: rgba(229, 243, 255, 0.9) !important ;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex;
+    flex-flow: column;
+    height: 95vh !important; 
+    width: 100vw !important;
+    border-radius: 0 !important;
+
+  }
+  .parent{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background:url('./components/images/plane.png') ;
+    background-size:cover;
+    padding: 0;
+    margin: 0;
+    background-position: center;
+
+  }
+  .parent input{
+    background-color: white !important;
+    opacity: 1 !important;
+    width: 70vw !important;
+    height: 6vh !important;
+  }
+  .parent .yellowBtn{
+    width: 35vw !important;
+    font-weight: bolder;
+    padding: 1.2rem;
+  }
+
+  .parent img {
+    padding-top: 4rem !important;
+    padding-bottom: 11rem !important;
+    max-width: 11rem !important;
+  }
+  .deskfoot{
+    display: none;  
+  }
+  .mobilefoot{
+    display: flex !important;
+    color: white;
+    justify-content: center;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .setting{
+    border: 1px solid black;
+    width: 80vw;
+    display:flex;
+    background-color: rgba(229, 243, 255, 0.9) !important;
+    border-radius: 15px;
+    align-items: center;
+    height: 50vh;
+  }
+  .ReactModal__Content--after-open{
+    display: inline;
+    width: 70vw !important;
+  }
+  .ReactModal__Content--after-open button{
+    padding: 1rem 2rem;
+  }
+
+  .hideme{
+    display: initial !important;
+  }
+
+  .abc-wrapper {
+    border: 1px solid black;
+    border-radius: 28.5px;
+    display: inline-block !important;
     
-    .adminTO td:nth-of-type(1),.adminTO td:nth-of-type(3),.adminTO td:nth-of-type(4){
+  }
+
+  .abc-wrapper button img{
+  background-color: transparent;
+  position: static !important;
+  padding: 0.65rem !important;
+  }
+
+
+  /* Admin side mobile view start */
+  .finalListTableDesktop,.adminTO{
+    /* width: 7vw !important; */
+    padding: 0 10px;
+  }
+
+  .subDivision{
+    width: 95vw;
+    display: flex;
+    flex-flow: column;
+  }
+  .mobile-data{
+    display: flex !important;
+    flex-flow: column;
+    font-size: 12px;
+    
+  }
+  .adminTO td:nth-of-type(2),.mobile-data{
+    text-align:left;
+  }
+
+ .adminTO td:nth-of-type(1),.adminTO td:nth-of-type(3),.adminTO td:nth-of-type(4){
       display: none;
     }
  
@@ -535,114 +540,130 @@ button {
         
         .viewProfileBtn{
           border: 1px solid #00284E;
-    border-radius: 18px;
-    color: #FFFFFF;
-    background-color: #00284E;
-    padding: 0.65rem 3rem !important;
+          border-radius: 18px;
+          color: #FFFFFF;
+          background-color: #00284E;
+          width: 8.875rem;
+          height: 2.25rem;
+          font-size: 1rem;
         }
 
-        /* final list mobile */
+   
 
-        .finalListTableDesktop  th {
+  /* final list mobile */
 
-          display: none;
+  .finalListTableDesktop  th {
+    display: none;
+  }
           
-          }
         
-       
-          .finalListTableDesktop td:nth-of-type(2),.mobile-data{
-            text-align:left;
-          }
-          
-          .finalListTableDesktop td:nth-of-type(1),.finalListTableDesktop td:nth-of-type(3),.finalListTableDesktop td:nth-of-type(4){
-            display: none;
-          }
+  .finalListTableDesktop td:nth-of-type(2),.mobile-data{
+    text-align:left;
+  }
 
-          .finalmobile{
-            display: flex !important;
-            flex-flow: column !important;
-            width: 95vw !important;
-          }
-          .finalmobile .Searchbar{
-            width: 80vw !important;
-            height: 1.5rem;
-            text-align: center;
-          }
-           .finalmobile .yellowBtn{
-            width: 90vw !important;
-            height: 3rem !important;
-           }
+  .finalListTableDesktop td:nth-of-type(1),.finalListTableDesktop td:nth-of-type(3),.finalListTableDesktop td:nth-of-type(4){
+    display: none;
+  }
 
-           .subDivision{
-             margin-top: 0 !important;
-           }
+  .finalmobile{
+    display: flex !important;
+    flex-flow: column !important;
+    width: 95vw !important;
+  }
+  .finalmobile .Searchbar{
+    width: 80vw !important;
+    height: 1.5rem;
+    text-align: center;
+  }
+    .finalmobile .yellowBtn{
+    width: 90vw !important;
+    height: 3rem !important;
+    }
 
-           /* history page mobile */
-          
-           .histable th {
+  .subDivision{
+    margin-top: 0 !important;
+  }
 
-            display: none;
-            
-            }
-          
-         
-            .histable td:nth-of-type(2),.mobile-data{
-              text-align:left;
-            }
-            
-            .histable td:nth-of-type(1),.histable td:nth-of-type(3),.histable td:nth-of-type(4),.histable td:nth-of-type(5){
-              display: none;
-            }
-            .histmob .Searchbar{
-              width: 85vw !important;
-              height: 1.5rem;
-              align-items: center;
-              text-align: center;
-            }
+  /* history page mobile */
 
-            /* student profile buttons */
-            .mobilebtnwrap{
-              display: flex !important;
-              flex-flow: column !important;
-              width: 100%;
-             margin-bottom: 1rem;
-             font-size: 1.25rem;
-             
-            }
-         
-            .uploadDocs img {
-              width: 70vw !important;
-              height: 100% !important;
-            }
+  .histable th {
 
-            .mobilebtnwrap .dBlueBtn{
-              padding: 0.5rem;
-            }
-            .uploadDocs .buttonWrapper{
-              display: flex !important;
-              flex-flow: column-reverse !important;
+  display: none;
+
+  }
+
+  .histable td:nth-of-type(2),.mobile-data{
+    text-align:left;
+  }
               
-            }
+  .histable td:nth-of-type(1),.histable td:nth-of-type(3),.histable td:nth-of-type(4),.histable td:nth-of-type(5){
+    display: none;
+  }
+  .histmob .Searchbar{
+    width: 85vw !important;
+    height: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
 
-            .mobilebtnwrapdec .duo{
-              width: 100%;
-              padding: 1.5rem;
-              
-            }
+  /* student profile buttons */
+  .mobilebtnwrap{
+    display: flex !important;
+    flex-flow: column !important;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    
+  }
+          
+  .uploadDocs img {
+    width: 70vw !important;
+    height: 100% !important;
+  }
 
-            
-            a{
-              text-decoration: none;
-              color: black;
-            }
+  .mobilebtnwrap .dBlueBtn{
+    padding: 0.5rem;
+  }
+  .uploadDocs .buttonWrapper{
+    display: flex !important;
+    flex-flow: column-reverse !important;
+    
+  }
 
-            .Toastify__toast{
-              background-color: rgba(229, 243, 255, 1) !important ;
-              width: 70vw !important;
-              margin-left: 1rem !important;
-              border-radius: 15px !important;
-              height: 8rem;
-            }
+  .mobilebtnwrapdec .duo{
+    width: 100%;
+    padding: 1.5rem;
+    
+  }
+
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .Toastify__toast{
+    background-color: rgba(229, 243, 255, 1) !important ;
+    width: 70vw !important;
+    margin-left: 1rem !important;
+    border-radius: 15px !important;
+    height: 8rem;
+  }
+
+  .toast-inn {
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toast-content {
+    font-size: 1rem;
+  }
+
+  .toast-inn button {
+    font-size: 1rem;
+  }
+
 }
 /* ---------------------- end of mobile view -----------------------*/
 .loginerror{

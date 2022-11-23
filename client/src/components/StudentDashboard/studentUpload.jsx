@@ -55,7 +55,7 @@ const StudentUpload = (props) => {
       <div className='studentupload'>
         <div className="topOfTheBox">
           <h3>Uploaded documents</h3>
-          <button className="yellowBtn desktopBtn"> <Link to='/student-account-status/upload-document'>Update</Link></button>
+          <Link to='/student-account-status/upload-document'><button className="yellowBtn desktopBtn">Update</button></Link>
         </div>
 
 
@@ -110,7 +110,7 @@ const StudentUpload = (props) => {
             </div>
           </div>
           
-          <button className="yellowBtn mobileBtn hideme"> <Link to='/student-account-status/upload-document'>Update</Link></button>
+          <Link to='/student-account-status/upload-document' className='mobileBtn'><button className="yellowBtn mobileBtn hideme">Update</button></Link>
           
         </div>
         {/* end of imageupload */}

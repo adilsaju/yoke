@@ -185,7 +185,7 @@
 .notes {
     text-align: left;
     background-color: #ffffff;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     border-top: 2px solid #C8E4FF;
     border-bottom: 2px solid #C8E4FF;
     margin: 0 1rem;
@@ -199,7 +199,7 @@
 
 .noteWrapper {
     width: fit-content;
-    padding: 1rem;
+    /* padding: 1rem; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -360,6 +360,11 @@ padding: 0;
     padding-bottom: 1rem;
 }
 
+.uploadBoxes .dBlueBtn {
+    width: 100%;
+    text-align: center;
+}
+
 .uploadDocs img {
     object-fit: cover;
     width: 225px;
@@ -514,7 +519,6 @@ padding: 0;
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
     z-index: 2;
 }
-
 .popup-content{
     margin:auto;
     background:#fff!important;
@@ -528,15 +532,27 @@ padding: 0;
     border-radius: 10px;
 }
 
+.camTitle {
+    color: #00284E!important;
+}
+
+.display-error>h1 {
+    font-size: 1rem!important;
+}
 
 @media screen and (min-width: 760px) {
     .desktopBtn {
         display: block;
     }
 
+    .uploadBoxes .btnWrapper {
+        flex-direction: row!important;
+    }
+
     .mobileBtnWrapper {
         display: none;
     }
+
 
     .popup-content{
         /* width:10%!important; */
@@ -544,6 +560,26 @@ padding: 0;
         padding: .5em;
         right: unset!important;
         margin-right: 0!important;
+
+    .notes {
+        padding: 0 1rem;
+    }
+
+    .noteWrapper {
+        padding: 1rem;
+    }
+
+    .uploadBoxes .dBlueBtn {
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+}
+
+@media only screen and (max-width: 900px) and (min-width: 760px) {
+    .uploadBoxes .dBlueBtn {
+        width: 6rem;
     }
 }
 

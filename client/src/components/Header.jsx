@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 
 
 
-
 let navToggle = document.querySelector('.openbtn');
 
 
@@ -34,7 +33,7 @@ const {pageTitle} = useContext(UserContext);
 const { pathname } = useLocation();
   console.log(pathname);
 
-  if (pathname === "/login" || pathname === "/logout") return null;
+  if (pathname === "/login" || pathname === "/logout" || pathname === "/landing") return null;
 
 
   return (

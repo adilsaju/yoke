@@ -7,18 +7,24 @@ import {  useContext } from 'react';
 import { Link } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Popup from 'reactjs-popup';
-
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const History = () => {
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
     const [Archivestudent,ArchiveStudents] = useState([]);
     const [error, setError] = useState(null);
 
       useEffect(() => {
   setPageTitle("History")
-        
+  if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+    handleClick();
+    }
         setTimeout(() => {
          fetch(`/api/archives`).then(res => {
            if(!res.ok) {
@@ -38,6 +44,11 @@ const History = () => {
  
 
 let count = 1;
+
+const { pathname } = useLocation();
+if (pathname === "/landing") return null;
+
+
 
 return (
     <>
@@ -74,11 +85,11 @@ return (
                             <td>{student.requestedStudent && student.requestedStudent.name}
                             <div className="mobile-data">
                            <div className="id"> ID - {student.requestedStudent && student.requestedStudent.studentNumber}</div>
-                            <div className="travdate">Travel date - {moment(student.flightDate).format("MMMM Do , YYYY")}</div>
+                            <div className="travdate">Travel date - {moment(student.flightDate).format("MM/DD/YYYY")}</div>
                             </div>
                             </td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
-                            <td>{moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                            <td>{moment(student.flightDate).format("MM/DD/YYYY")}</td>
                             <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td>
                             <td>{  
                               

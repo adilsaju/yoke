@@ -7,7 +7,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
 import '../../App.css'
 import Popup from 'reactjs-popup';
-
+import { useNavigate } from "react-router-dom";
 
 //Fetch Data using API
 const fetchTasks = async (loggedInUser) => {
@@ -35,14 +35,19 @@ const fetchTasks = async (loggedInUser) => {
 
 const StudentTravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
                 const {loggedInUser, loginCredentials} = useContext(UserContext)
       
                 const [students,setStudents] = useState([]);
                 const [studentsInfo,setStudentsInfo] = useState([]);
                 useEffect(() => {
                    setPageTitle("Student Travel Order")
-                    
+                   if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                    handleClick();
+                    }
                     const getTasks = async () => {
                     const tfs = await fetchTasks(loginCredentials.loggedInUser);
                     setStudents(tfs);
@@ -114,7 +119,7 @@ const StudentTravelOrder = () => {
                         <tbody key={id}>
                           <tr className='tay'>
                             <td>{(count++)}</td>
-                            <td>{ moment(student.flightDate).format("MMMM Do , YYYY")}</td>
+                            <td>{ moment(student.flightDate).format("MM/DD/YYYY")}</td>
                             <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable"  }</td>
                             <td>{
                               // (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))

@@ -20,7 +20,7 @@ import RejectionReason from './components/AdminDashboard/RejectionReason';
 import Decline from './components/AdminDashboard/Decline';
 import FinalViewprofiles from './components/AdminDashboard/FinalViewprofiles';
 import History from './components/AdminDashboard/History';
-
+import Style from './components/LandingPage/Style';
 
 function App() {
  
@@ -79,6 +79,7 @@ function App() {
       
       <Routes>
       <Route path="/" element={ <Home/> } />
+      <Route path='/landing' element={<Style/>}/>
         <Route path="/dashboard" element={ <Home/> } />
         <Route path="/login" element={ <LoginPage /> } />
         <Route path="/logout" element={ <LoginPage /> } />

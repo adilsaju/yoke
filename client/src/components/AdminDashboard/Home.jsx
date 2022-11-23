@@ -9,7 +9,7 @@ import {UserContext} from '../../Contexts/UserContext'
 // import abc1 from "./abc.jpg";
 // const { parse } = require();
 import { parse }  from 'json2csv'
-
+import { useLocation } from "react-router-dom";
 
 
 
@@ -303,6 +303,9 @@ useEffect(() => {
 
     return report1
   }
+  const { pathname } = useLocation();
+if (pathname === "/landing") return null;
+
 
   return ( <>
   <div className='fullpage'>
@@ -316,7 +319,7 @@ useEffect(() => {
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
-          Download Chart Report
+          Download Report
           </button>
           </div>
 
@@ -328,12 +331,12 @@ useEffect(() => {
               />
                         }
 
-              {/* <div>
+              <div className='chartCount'>
                 {dntCnt}
-              </div> */}
+              </div>
             </div>
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
-          Download Chart Report
+          Download Report
           </button>
 
           
@@ -346,7 +349,7 @@ useEffect(() => {
             data && <Bar options={options} data={data} />
           } 
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
-          Download Chart Report
+          Download Report
           </button>
           </div>
 

@@ -145,4 +145,15 @@ overflow-wrap:break-word;
 }
 
 
-/**** STUDENT TRAVEL ORDER ****/
+td:last-child {
+        text-align: center;
+}
+
+@media screen and (min-width: 415px) {
+    td:last-child {
+        text-align: right;
+}
+}
+
+
+
