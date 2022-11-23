@@ -28,7 +28,7 @@ nav ul li{
     padding: 1.5rem 1rem 1.5rem 5.5rem;
     background-size: 1.25rem; 
     background-repeat: no-repeat;
-    background-position: 3rem 1.5rem;
+    background-position: 3rem 1.7rem;
     display: flex;
     text-align: left;
 
@@ -45,12 +45,12 @@ nav ul li{
 
 .finalList {
     background-image: url(../images/finalList.svg);
-    background-position: 3rem 1.7rem;
+    background-position: 3rem 2rem;
 }
 
 .archive {
     background-image: url(../images/archive.svg);
-    background-position: 3rem 1.6rem;
+    background-position: 3rem 2rem;
 }
 
 .settings {
@@ -71,7 +71,7 @@ nav li:hover{
     color: #00284E;
     background-size: 1.20rem; 
     background-repeat: no-repeat;
-    background-position: 3rem 1.5rem;
+    background-position: 3rem 1.7rem;
     
 }
 
@@ -86,12 +86,12 @@ nav li:hover{
 
 .finalList:hover {
     background-image: url(../images/finalListDrk.svg);
-    background-position: 3rem 1.7rem;
+    background-position: 3rem 2rem;
 }
 
 .archive:hover {
     background-image: url(../images/archiveDrk.svg);
-    background-position: 3rem 1.6rem;
+    background-position: 3rem 2rem;
 }
 
 .settings:hover {
@@ -138,6 +138,13 @@ nav li:hover{
     transform: translateX(-100%);
     transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
 }    
+
+.logomob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-open .Nav-menu{
     transform: translateX(0%) ;
     transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
