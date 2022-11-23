@@ -138,6 +138,11 @@ nav li:hover{
     transform: translateX(-100%);
     transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
 }    
+
+.logomob {
+    text-align: center;
+}
+
 .nav-open .Nav-menu{
     transform: translateX(0%) ;
     transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
