@@ -143,7 +143,9 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
     const [modalIsOpenRadio, setIsOpenRadio] = React.useState(false);
     const [modalIsOpenLic, setIsOpenLic] = React.useState(false);
     const [modalIsOpenEnglish, setIsOpenEnglish] = React.useState(false);
-
+    const handleClick = () => {
+      navigate("/login");
+  }
   
 
     function openModalMedical() {
@@ -262,11 +264,13 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
 
               }
 
-
+              const {pageTitle, setPageTitle} = useContext(UserContext)
               const isFullscreen = false;
 
 
               useEffect(() => {
+
+                setPageTitle("Upload documents")
                 // const player = document.getElementById('player');
                 // const canvas = document.getElementById('canvas');
                 // const context = canvas.getContext('2d');
@@ -287,7 +291,9 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // });
 
 
-
+                if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                  handleClick();
+                  }
 
                setPic1([document.querySelector("#pic1"),document.querySelector("#pic2"),document.querySelector("#pic3"),document.querySelector("#pic4")])
                setL1([document.querySelector("#l1"),document.querySelector("#l2"),document.querySelector("#l3"),document.querySelector("#l4")])
@@ -361,7 +367,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l4">Upload</label>
                       <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l4" id="l4"   />
-                      <label className='dBlueBtn' htmlFor="l4c" id="capture4"  onClick={openModalLic} >Scan &#128247;</label>
+                      <label className='dBlueBtn' htmlFor="l4c" id="capture4"  onClick={openModalLic} >Scan</label>
                     </div>
                 </div>
                 
@@ -372,7 +378,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l2">Upload </label>
                        <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0]) ; notify1();  } }  accept="image/*" type="file" name="l2" id="l2"     />
-                      <label className='dBlueBtn' htmlFor="l2c" id="capture2" onClick={openModalMedical} >Scan &#128247;</label>
+                      <label className='dBlueBtn' htmlFor="l2c" id="capture2" onClick={openModalMedical} >Scan</label>
                     </div>
                     {/* <video id="player" controls autoplay></video>
 <button id="capture">Capture</button>
@@ -385,7 +391,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l3">Upload</label>
                       <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l3" id="l3"  />
-                      <label className='dBlueBtn' htmlFor="l3c" id="capture3"  onClick={openModalRadio} >Scan &#128247;</label>
+                      <label className='dBlueBtn' htmlFor="l3c" id="capture3"  onClick={openModalRadio} >Scan</label>
                     </div>
                 </div>
             
@@ -396,7 +402,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l1">Upload</label>
                       <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0]) ; notify1();   } }  accept="image/*" type="file" name="l1" id="l1"    />
-                      <label className='dBlueBtn' htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan &#128247;</label>
+                      <label className='dBlueBtn' htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan</label>
                     </div>
                     {/* onChange={ (e) => { updateEnglish(loginCredentials.loggedInUser)}  }  */}
                 </div>

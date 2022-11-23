@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 import './sideMenu.css';
 import '../HeaderFooter.css'
+import { useLocation } from "react-router-dom";
 
 let navToggle = document.querySelector('.crosbtn');
 
@@ -28,6 +29,8 @@ const closemenuonclick = () => {
 }
 
 const SideMenu = () => {
+  const { pathname } = useLocation();
+  if (pathname === "/landing") return null;
   return (
     <div className='Nav-menu'>
       <div className="mobmen">
