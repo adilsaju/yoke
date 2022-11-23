@@ -218,11 +218,14 @@
 .notesBtn {
     position: absolute;
     bottom: 3rem;
-    right: 1.5rem;
+    /* right: 1.5rem; */
+    width: 90%;
+    justify-content: unset!important;
 }
 
 .noteWrapper button {
-    text-align-last: right;
+    /* text-align-last: right; */
+    width: 90%;
 }
 
 .notes h4{
@@ -233,8 +236,8 @@
 
 .approveDecline {
     display: flex;
-    flex-direction: row-reverse;
-    gap: 5rem;
+    flex-direction: column-reverse;
+    gap: .8rem;
     justify-content: start;
     background-color: #ffffff;
     padding: 1rem 2rem;
@@ -244,9 +247,10 @@
     border-radius: 1.71rem;
     background-color: #70BB6F;
     cursor: progress;
-    width: 8rem;
+    /* width: 8rem; */
     height: 2.5rem;
-    border: none
+    border: none;
+    width: 100%;
 }
 
 .decline {
@@ -256,6 +260,7 @@
     width: 8rem;
     height: 2.5rem;
     border: none;
+    width: 100%;
 }
 
 
@@ -565,6 +570,30 @@ padding: 0;
         padding: 0 1rem;
     }
 
+.noteWrapper {
+    padding: 1rem;
+}
+
+.notesBtn {
+position: absolute;
+bottom: 3rem;
+right: 1.5rem;
+justify-content: flex-end!important;
+}
+
+.noteWrapper button {
+    text-align-last: right;
+    width: unset;
+}
+
+.approveDecline {
+    flex-direction: row-reverse;
+    gap: 5rem;
+}
+
+.accept, .decline {
+    width: 8rem;
+}
     .noteWrapper {
         padding: 1rem;
     }
