@@ -8,13 +8,17 @@ import moment from "moment";
 import Filters from './Filters';
 import "./TravelOrder.css"
 import {  useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 
 let loading = true;
 
 const TravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
 
   const [requests,setRequests] = useState([]);
   const [error, setError] = useState(null);
@@ -22,7 +26,9 @@ const TravelOrder = () => {
   
     useEffect(() => {
   setPageTitle("Travel Order")
-
+  if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+    handleClick();
+    }
  setTimeout(() => {
   fetch(`/api/pendingRequests`).then(res => {
     if(!res.ok) {

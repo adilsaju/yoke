@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
+import { useNavigate } from "react-router-dom";
 
 let loading = true;
 let emailcheck = true
@@ -55,6 +56,10 @@ const customStyles = {
   const FinalList = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
       //---------------------- modal begin ---------------------------
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -122,7 +127,9 @@ const customStyles = {
               
               useEffect(() => {
                 setPageTitle("Final List")
-
+                if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                  handleClick();
+                  }
                 setTimeout(() => {
                  fetch(`/api/finalList`).then(res => {
                    if(!res.ok) {

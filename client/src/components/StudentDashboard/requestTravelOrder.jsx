@@ -69,6 +69,10 @@ const bod1 = {
 
 const RequestTravelOrder = () => {
   const navigate = useNavigate();
+  const {pageTitle, setPageTitle} = useContext(UserContext)
+  const handleClick = () => {
+    navigate("/login");
+}
   //--------------- modal start ----------------------
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -86,7 +90,13 @@ const RequestTravelOrder = () => {
   //--------------- modal end ----------------------
   const {loggedInUser, loginCredentials} = useContext(UserContext)
   const [value, onChange] = useState(new Date());
-
+  useEffect(() => {
+    setPageTitle("Request Travel Order")
+    if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+      handleClick();
+      }
+  
+          }, []);
   return (
     <>
       <div className='fullpage'>

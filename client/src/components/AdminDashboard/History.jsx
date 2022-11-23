@@ -7,18 +7,23 @@ import {  useContext } from 'react';
 import { Link } from "react-router-dom";
 import {UserContext} from '../../Contexts/UserContext'
 import Popup from 'reactjs-popup';
-
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
     const [Archivestudent,ArchiveStudents] = useState([]);
     const [error, setError] = useState(null);
 
       useEffect(() => {
   setPageTitle("History")
-        
+  if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+    handleClick();
+    }
         setTimeout(() => {
          fetch(`/api/archives`).then(res => {
            if(!res.ok) {

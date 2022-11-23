@@ -3,7 +3,7 @@ import { useState,useEffect,useContext } from 'react';
 import { UserContext } from '../../Contexts/UserContext'; 
 import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Modal from 'react-modal';
-
+import { useNavigate } from "react-router-dom";
 
 const fetchTasks = async (admin_id) => {
   let url = `/api/admins/${admin_id}`;
@@ -41,7 +41,10 @@ const Setting = () => {
     setIsOpen(false);
   }
 
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
 
   const {pageTitle, setPageTitle} = useContext(UserContext)
  
@@ -51,7 +54,10 @@ const Setting = () => {
 
         useEffect(() => {
   setPageTitle("Setting")
-            
+  if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+    handleClick();
+    }
+
             const getTasks = async () => {
             const tfs = await fetchTasks(loginCredentials.loggedInUser.id);
             setAdmin(tfs);

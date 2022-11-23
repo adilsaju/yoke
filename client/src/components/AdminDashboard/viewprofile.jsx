@@ -114,12 +114,17 @@ const Viewprofile = () => {
 
   // const history = useHistory()
   const navigate = useNavigate();
-
+  const handleClick = () => {
+    navigate("/login");
+}
 
 
   let params = useParams();
 
   useEffect(() => {
+    if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+      handleClick();
+      }
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
 

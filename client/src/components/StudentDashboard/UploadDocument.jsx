@@ -143,7 +143,9 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
     const [modalIsOpenRadio, setIsOpenRadio] = React.useState(false);
     const [modalIsOpenLic, setIsOpenLic] = React.useState(false);
     const [modalIsOpenEnglish, setIsOpenEnglish] = React.useState(false);
-
+    const handleClick = () => {
+      navigate("/login");
+  }
   
 
     function openModalMedical() {
@@ -262,11 +264,13 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
 
               }
 
-
+              const {pageTitle, setPageTitle} = useContext(UserContext)
               const isFullscreen = false;
 
 
               useEffect(() => {
+
+                setPageTitle("Upload documents")
                 // const player = document.getElementById('player');
                 // const canvas = document.getElementById('canvas');
                 // const context = canvas.getContext('2d');
@@ -287,7 +291,9 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 // });
 
 
-
+                if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                  handleClick();
+                  }
 
                setPic1([document.querySelector("#pic1"),document.querySelector("#pic2"),document.querySelector("#pic3"),document.querySelector("#pic4")])
                setL1([document.querySelector("#l1"),document.querySelector("#l2"),document.querySelector("#l3"),document.querySelector("#l4")])

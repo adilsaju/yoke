@@ -7,7 +7,7 @@ import {UserContext} from '../../Contexts/UserContext'
 import moment from "moment";
 import '../../App.css'
 import Popup from 'reactjs-popup';
-
+import { useNavigate } from "react-router-dom";
 
 //Fetch Data using API
 const fetchTasks = async (loggedInUser) => {
@@ -35,14 +35,19 @@ const fetchTasks = async (loggedInUser) => {
 
 const StudentTravelOrder = () => {
   const {pageTitle, setPageTitle} = useContext(UserContext)
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+}
                 const {loggedInUser, loginCredentials} = useContext(UserContext)
       
                 const [students,setStudents] = useState([]);
                 const [studentsInfo,setStudentsInfo] = useState([]);
                 useEffect(() => {
                    setPageTitle("Student Travel Order")
-                    
+                   if(!JSON.parse(localStorage.getItem("loginCredentials")).isLoggedIn){
+                    handleClick();
+                    }
                     const getTasks = async () => {
                     const tfs = await fetchTasks(loginCredentials.loggedInUser);
                     setStudents(tfs);
