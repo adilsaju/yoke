@@ -82,7 +82,7 @@ width: 1px;
   cursor: pointer;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -100,7 +100,7 @@ width: 1px;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -130,7 +130,7 @@ width: 1px;
   border-radius: 2.31rem;
   font-family: 'Fira Sans', Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0.3rem 1.2rem;
 }
 
@@ -138,6 +138,18 @@ width: 1px;
   background-color: #00284E;
   color: #ffffff;
   border: 1px solid #00284E;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: #BCBCBC;
+  color: #000000;
+  border: 1px solid #BCBCBC;
+  border-radius: 2.31rem;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.3rem 1.2rem;
 }
 
 button.duo {
