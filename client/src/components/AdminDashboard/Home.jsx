@@ -331,9 +331,9 @@ if (pathname === "/landing") return null;
               />
                         }
 
-              {/* <div>
+              <div className='chartCount'>
                 {dntCnt}
-              </div> */}
+              </div>
             </div>
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
           Download Report
