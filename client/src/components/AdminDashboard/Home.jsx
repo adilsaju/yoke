@@ -319,7 +319,7 @@ if (pathname === "/landing") return null;
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
-          Download Chart Report
+          Download Report
           </button>
           </div>
 
@@ -336,7 +336,7 @@ if (pathname === "/landing") return null;
               </div> */}
             </div>
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
-          Download Chart Report
+          Download Report
           </button>
 
           
@@ -349,7 +349,7 @@ if (pathname === "/landing") return null;
             data && <Bar options={options} data={data} />
           } 
           <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
-          Download Chart Report
+          Download Report
           </button>
           </div>
 
