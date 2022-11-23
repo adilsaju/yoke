@@ -362,6 +362,7 @@ padding: 0;
 
 .uploadBoxes .dBlueBtn {
     width: 100%;
+    text-align: center;
 }
 
 .uploadDocs img {
@@ -517,6 +518,15 @@ padding: 0;
 /* OTHER MODALS */
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
     z-index: 2;
+}
+
+
+.camTitle {
+    color: #00284E!important;
+}
+
+.display-error>h1 {
+    font-size: 1rem!important;
 }
 
 @media screen and (min-width: 760px) {
