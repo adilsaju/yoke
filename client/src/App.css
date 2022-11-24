@@ -406,7 +406,7 @@ button {
   
   .topDivision{
     display: flex !important;
-    flex-flow: column;
+    /* flex-flow: column; */
     gap:10px !important
   }
 
@@ -595,11 +595,11 @@ button {
         
         }
 
-        .topDivision{
+        /* .topDivision{
           display: grid !important;
           grid-template-columns: 3fr 1fr;
           width: 95vw;
-        }
+        } */
 
         .histmob {
           display: flex!important;
