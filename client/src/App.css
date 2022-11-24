@@ -777,3 +777,10 @@ button {
 a  {
   text-decoration: none ;
 }
+
+
+@media screen and (min-width: 1100px) {
+  .division {
+    margin: 1rem 10%;
+  }
+}
