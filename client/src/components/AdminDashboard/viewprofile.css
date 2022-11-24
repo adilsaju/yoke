@@ -159,6 +159,7 @@
     float: left;
     object-fit: cover;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .uploaded img {
@@ -621,6 +622,7 @@ justify-content: flex-end!important;
         justify-content: center;
         text-align: center;
         justify-items: center;
+        row-gap: 3rem;
     }
 }
 
