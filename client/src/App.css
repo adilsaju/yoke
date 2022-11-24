@@ -345,6 +345,40 @@ button {
   }
 }
 
+@media screen and (min-width: 760px) and (max-width: 900px) {
+  .division {
+    width: unset!important;
+  }
+
+  .subDivision{
+    width: 52vw!important;
+    margin: 2rem auto!important;
+  }
+
+  .topDivision {
+    width: 52vw!important;
+  }
+
+  .studentTO .myTable {
+    width: 52vw!important;
+  }
+
+  .studentTO .topDivision {
+    grid-template-columns: 1fr!important;
+  }
+
+  .studentTO a {
+    display: flex;
+  }
+
+  .studentTO .yellowBtn {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: center;
+  }
+}
+
+
 
 @media screen and (max-width: 900px) { 
   .division {
