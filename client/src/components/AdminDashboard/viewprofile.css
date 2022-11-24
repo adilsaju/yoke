@@ -173,8 +173,7 @@
 .uploaded p {
     margin: 0;
     padding-bottom: 1rem;
-    font-weight: 600;
-    font-size: 1.313rem;
+    font-size: 1.2rem;
 }
 
 .hover-shadow {
@@ -294,8 +293,7 @@ padding: 0;
 
 .imageupload p {
     text-align: center;
-    font-weight: 600;
-    font-size: 1.313rem;
+    font-size: 1.2rem;
 }
 
 .yellowBtn a {
