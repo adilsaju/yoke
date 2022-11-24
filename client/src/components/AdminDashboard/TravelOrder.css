@@ -145,8 +145,12 @@ overflow-wrap:break-word;
 }
 
 
-td:last-child {
+/* td:last-child {
         text-align: center;
+} */
+
+table {
+    text-align: center;
 }
 
 @media screen and (min-width: 415px) {
