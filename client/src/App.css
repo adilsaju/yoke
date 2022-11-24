@@ -376,6 +376,14 @@ button {
     flex: 1 0 0;
     justify-content: center;
   }
+
+  .histmob {
+    grid-template-columns: 1fr!important;
+  }
+
+  .histmob .Searchbar {
+    width: unset!important;
+  }
 }
 
 
@@ -401,6 +409,7 @@ button {
     flex-flow: column;
     gap:10px !important
   }
+
   .studentTO .topDivision .Searchbar {
     display: none;
   }
@@ -591,6 +600,12 @@ button {
           grid-template-columns: 3fr 1fr;
           width: 95vw;
         }
+
+        .histmob {
+          display: flex!important;
+          flex-direction: row;
+        }
+
         .topDivision .leftBorder{
           padding-left: 0 !important;
           border: none !important;
@@ -657,12 +672,12 @@ button {
   .histable td:nth-of-type(1),.histable td:nth-of-type(3),.histable td:nth-of-type(4){
     display: none;
   }
-  .histmob .Searchbar{
+  /* .histmob .Searchbar{
     width: 85vw !important;
     height: 1.5rem;
     align-items: center;
     text-align: center;
-  }
+  } */
 
   /* student profile buttons */
   .mobilebtnwrap{
