@@ -146,6 +146,7 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
     width: 40vw;
     border-radius: 20px!important;
     padding: 2rem !important;
+    text-align: center;
 }
 
 @media screen and (min-width: 760px) {

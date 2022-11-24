@@ -6,7 +6,7 @@ header{
     display: grid;
     grid-template-columns: 1fr 3fr;
     text-align: left;
-    width: 100vw;
+    /* width: 100vw; */
     height: 5rem;
     background-color: #00284E;
     align-items: center;

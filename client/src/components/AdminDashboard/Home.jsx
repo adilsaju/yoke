@@ -54,7 +54,7 @@ const options = {
 
 
 
-
+// *** bar chart
 const fetchTasks = async () => {
   let url = `/api/past30daysRequests`;
   const res = await fetch(url);
@@ -318,7 +318,7 @@ if (pathname === "/landing") return null;
           {
             dataPie && <Pie options={optionsPie} data={dataPie} />
           } 
-          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
+          <button className='dBlueBtn btnnn' onClick={()=>{ downloadAnyFile(dataPie, fileName1) }}   >
           Download Report
           </button>
           </div>
@@ -335,7 +335,7 @@ if (pathname === "/landing") return null;
                 {dntCnt}
               </div>
             </div>
-          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
+          <button className='dBlueBtn btnnn' onClick={()=>{ downloadAnyFile(dataDoughnut, fileName2) }} >
           Download Report
           </button>
 
@@ -348,7 +348,7 @@ if (pathname === "/landing") return null;
           {
             data && <Bar options={options} data={data} />
           } 
-          <button className='dBlueBtn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
+          <button className='dBlueBtn btnnn' onClick={()=>{ downloadAnyFile(data, fileName3) }} >
           Download Report
           </button>
           </div>

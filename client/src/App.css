@@ -37,8 +37,9 @@ width: 1px;
     display: flex;
     justify-content: center;
     gap: 1rem;
+    padding-top: 1rem;
 }
-.useno{
+/* .useno{
   background:transparent;
   border: 1px solid #00284E;
   border-radius: 2.31rem;
@@ -51,19 +52,27 @@ width: 1px;
 .useno:hover {
   background: #00284E;
   color: white;
-}
+} */
 .cceent{
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  height: 60vh;
 }
 .cceent img{
-  max-width: 30%;
+  max-width: 15%;
+  padding-bottom: 1.5rem;
 }
 .useyes {
   padding: 0.5rem 2rem !important;
+}
+
+.cceent span:last-child {
+  font-weight: 600;
+  font-size: large;
+  padding-top: 1rem;
 }
 
 .Toastify__toast{
@@ -164,7 +173,7 @@ button.duo {
 /* VIEW PROFILE OF STUDENT (admin & student) */
 
 .division {
-  margin: 1rem auto;
+  margin: 1rem 2%;
   padding-bottom: 2rem;
 }
 
@@ -331,13 +340,58 @@ button {
 @media screen and (min-width: 760px) {
   .yellowBtn, .dBlueBtn, .transparentBtn, .topDivision>button:disabled,
   .topDivision>button[disabled]  {
-    padding: 0.3rem 1.2rem;
+    padding: 0.3rem 1.2rem!important;
+    width: unset!important;
+  }
+}
+
+@media screen and (min-width: 760px) and (max-width: 900px) {
+  .division {
+    width: unset!important;
+  }
+
+  .subDivision{
+    width: 52vw!important;
+    margin: 2rem auto!important;
+  }
+
+  .topDivision {
+    width: 52vw!important;
+  }
+
+  .studentTO .myTable {
+    width: 52vw!important;
+  }
+
+  .studentTO .topDivision {
+    grid-template-columns: 1fr!important;
+  }
+
+  .studentTO a {
+    display: flex;
+  }
+
+  .studentTO .yellowBtn {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: center;
+  }
+
+  .histmob {
+    grid-template-columns: 1fr!important;
+  }
+
+  .histmob .Searchbar {
+    width: unset!important;
   }
 }
 
 
-@media screen and (max-width: 900px) { 
 
+@media screen and (max-width: 900px) { 
+  .division {
+    margin: 1rem auto;
+  }
 
   footer p{
     text-align: center;
@@ -355,6 +409,7 @@ button {
     flex-flow: column;
     gap:10px !important
   }
+
   .studentTO .topDivision .Searchbar {
     display: none;
   }
@@ -375,6 +430,11 @@ button {
   display: none;
   
   }
+
+  thead th:nth-child(2){
+    border-radius: 20px 0 0 20px;
+  }
+
   .studentTO{
     margin-top: 0 !important;
   }
@@ -540,6 +600,12 @@ button {
           grid-template-columns: 3fr 1fr;
           width: 95vw;
         }
+
+        .histmob {
+          display: flex!important;
+          flex-direction: row;
+        }
+
         .topDivision .leftBorder{
           padding-left: 0 !important;
           border: none !important;
@@ -583,7 +649,7 @@ button {
     text-align: center;
   }
     .finalmobile .yellowBtn{
-    width: 90vw !important;
+    width: 87vw !important;
     height: 3rem !important;
     }
 
@@ -606,12 +672,12 @@ button {
   .histable td:nth-of-type(1),.histable td:nth-of-type(3),.histable td:nth-of-type(4){
     display: none;
   }
-  .histmob .Searchbar{
+  /* .histmob .Searchbar{
     width: 85vw !important;
     height: 1.5rem;
     align-items: center;
     text-align: center;
-  }
+  } */
 
   /* student profile buttons */
   .mobilebtnwrap{

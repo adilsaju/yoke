@@ -5,7 +5,7 @@
     background-size: 16px 16px;
     background-repeat: no-repeat;
     padding-left: 1.80rem;
-    background-position: 0.8rem 0.7rem;
+    background-position: 0.8rem 0.5rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -25,6 +25,7 @@
     background-position: right 1.5rem center;
     background-size: 0.95em;
 }
+
 
 #msg {
     display: flex;
@@ -66,8 +67,8 @@
 }
 
 .leftBorder .yellowBtn {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: .5rem!important;
+    padding-bottom: .5rem!important;
 }
 
 table {
@@ -145,19 +146,10 @@ overflow-wrap:break-word;
 }
 
 
-/* td:last-child {
-        text-align: center;
-} */
-
 table {
     text-align: center;
 }
 
-@media screen and (min-width: 415px) {
-    /* td:last-child {
-        text-align: right;
-} */
-}
 
 @media screen and (min-width: 900px) {
     .Searchbar {
