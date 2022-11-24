@@ -150,9 +150,9 @@ td:last-child {
 }
 
 @media screen and (min-width: 415px) {
-    td:last-child {
+    /* td:last-child {
         text-align: right;
-}
+} */
 }
 
 @media screen and (min-width: 900px) {
