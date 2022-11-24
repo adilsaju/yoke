@@ -84,7 +84,7 @@ useEffect(() => {
       <div className='box studentProfile'>
       <h3 className='studentAccountName'>{students.name}</h3>
      
-        <div className='studentimage'>
+        <div className='studentimage fullProfile'>
           <div className="profileWrapper">
             <img
             className='studentImg' src={students.photo}   alt='profile of student' />
