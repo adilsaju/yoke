@@ -92,23 +92,11 @@ useEffect(() => {
           
           <div className='studentviews'>
             
-          <div>
+            <div>
               <h4>Student ID:&nbsp;</h4>
               <span>{students.studentNumber?  students.studentNumber : "Not found" }</span>
             </div>
 
-            <div>
-              <h4>Course:&nbsp;</h4>
-              <span>{students.program?  students.program : "Not found" }</span>
-            </div>
-            
-            {students.length===0? console.log("Nothing") : 
-            <div>
-              <h4>Hours Flown:&nbsp;</h4>
-              <span>{students.studentRequirements && ( students.studentRequirements.flownHours?  students.studentRequirements.flownHours : "Not found" ) }  </span>
-            </div>
-            }
-      
             {students.length===0? console.log("Nothing") : 
             <div>
                 <h4>Account Balance: &nbsp;</h4>
@@ -117,6 +105,20 @@ useEffect(() => {
                 </span> 
             </div>
             }
+            
+            {students.length===0? console.log("Nothing") : 
+            <div>
+              <h4>Hours Flown:&nbsp;</h4>
+              <span>{students.studentRequirements && ( students.studentRequirements.flownHours?  students.studentRequirements.flownHours : "Not found" ) }  </span>
+            </div>
+            }
+
+            <div>
+              <h4>Course:&nbsp;</h4>
+              <span>{students.program?  students.program : "Not found" }</span>
+            </div>  
+      
+            
           
               {/* {students.length===0 ? console.log("Nothing") : <h2>Hours Flown : {students.requests[0].isApproved? students.requests[0].isApproved : "No upcoming flights"}</h2>  } */}
           </div>

@@ -236,6 +236,11 @@ const Viewprofile = () => {
                 <h4>Travel Date:&nbsp;</h4>
                 <span>{moment(request.requestedStudent && request.flightDate).format("MM/DD/YYYY")}</span>
               </div>
+
+              <div>
+                <h4>Hours Flown:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
+              </div>
               
               <div>
                 <h4>Current License:&nbsp;</h4>
@@ -246,11 +251,7 @@ const Viewprofile = () => {
                 <h4>Current Program:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.program}</span>
               </div>
-                
-              <div>
-                <h4>Hours Flown:&nbsp;</h4>
-                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
-              </div>
+            
             </div>
             {/* end of studentviews */}
 
