@@ -668,6 +668,11 @@ padding: 0;
         padding: unset;
     }
 
+    .box>.imageupload {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+
     
 }
 
