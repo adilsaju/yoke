@@ -176,7 +176,7 @@ const customStyles = {
           <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,2000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
             
           }, 4000);}}>Yes</button> 
-          <Link to="/final-list"><button className='useno' onClick={(e) => closeModal()} >No</button></Link> 
+          <Link to="/final-list"><button className='dBlueBtn ' onClick={(e) => closeModal()} >No</button></Link> 
           </div> 
       </Modal> 
      
@@ -241,7 +241,10 @@ pauseOnHover/>
                   {loading ?
                   <div className='cceent'>
                     <img src={require('../images/emptyfold.png')} alt="" />
-                    <span>There are no items in the list.</span></div> : <>
+                    <span>The list is empty, please approve students from the travel order and then check final list page. </span>
+                    <span>THANK YOU!</span>
+                    
+                    </div> : <>
                     
                     <span >Loading...</span>
                     
