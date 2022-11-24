@@ -26,6 +26,7 @@
     background-size: 0.95em;
 }
 
+
 #msg {
     display: flex;
     align-content: center;
@@ -145,19 +146,10 @@ overflow-wrap:break-word;
 }
 
 
-/* td:last-child {
-        text-align: center;
-} */
-
 table {
     text-align: center;
 }
 
-@media screen and (min-width: 415px) {
-    /* td:last-child {
-        text-align: right;
-} */
-}
 
 @media screen and (min-width: 900px) {
     .Searchbar {
