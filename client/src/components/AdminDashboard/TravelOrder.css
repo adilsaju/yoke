@@ -114,7 +114,7 @@ padding: 1rem;
 overflow-wrap:break-word;
 }
 
-.viewProfileBtn, .tay>.dBlueBtn {
+.viewProfileBtn, .tay .dBlueBtn {
     border: 1px solid #00284E;
     border-radius: 18px;
     color: #FFFFFF;
