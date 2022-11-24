@@ -69,7 +69,7 @@ return (
                       <th>Name</th>
                       <th className=''>Student Id</th>
                       <th className=''>Travel Date</th>
-                      <th className=''>Processed Admin</th>
+                      {/* <th className=''>Processed Admin</th> */}
                       <th className=''>Status</th>
                     </tr>
                   </thead>
@@ -90,7 +90,7 @@ return (
                             </td>
                             <td>{student.requestedStudent && student.requestedStudent.studentNumber}</td>
                             <td>{moment(student.flightDate).format("MM/DD/YYYY")}</td>
-                            <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td>
+                            {/* <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable" }</td> */}
                             <td>{  
                               
                             
