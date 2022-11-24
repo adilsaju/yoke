@@ -331,7 +331,8 @@ button {
 @media screen and (min-width: 760px) {
   .yellowBtn, .dBlueBtn, .transparentBtn, .topDivision>button:disabled,
   .topDivision>button[disabled]  {
-    padding: 0.3rem 1.2rem;
+    padding: 0.3rem 1.2rem!important;
+    width: unset!important;
   }
 }
 
