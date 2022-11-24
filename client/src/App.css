@@ -378,6 +378,11 @@ button {
   display: none;
   
   }
+
+  thead th:nth-child(2){
+    border-radius: 20px 0 0 20px;
+  }
+
   .studentTO{
     margin-top: 0 !important;
   }
