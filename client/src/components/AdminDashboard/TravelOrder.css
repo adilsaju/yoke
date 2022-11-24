@@ -165,6 +165,12 @@ td:last-child {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .tay td:nth-child(2) {
+        line-height: 1.5;
+    }
+}
+
 
 
 

@@ -153,6 +153,7 @@
     gap: 2rem;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    row-gap: 3rem;
 }
 
 .uploaded {
@@ -551,6 +552,10 @@ padding: 0;
         display: block;
     }
 
+    .mobileBtn {
+        display: none;
+    }
+
     .uploadBoxes .btnWrapper {
         flex-direction: row!important;
     }
@@ -617,6 +622,16 @@ padding: 0;
     .licenseimage>.studentimage {
         row-gap: 3rem;
         margin-bottom: 1.5rem;
+        
+    .licenseimage .studentimage, .imageupload {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        justify-items: center;
+        row-gap: 3rem;
     }
 }
 
@@ -625,6 +640,20 @@ padding: 0;
         width: 6rem;
     }
 }
+
+/* @media screen and (min-width: 900px) {
+    .licenseimage .studentimage, .imageupload {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        justify-items: center;
+        row-gap: 3rem;
+    }
+} */
+
 
 
 @media screen and (min-width: 1100px) {
@@ -641,15 +670,17 @@ padding: 0;
         flex-direction: row;
     } */
 
+
     /* .licenseimage>.studentimage, .studentupload .imageupload {
         grid-template-columns: repeat(4,1fr);
         gap: .5rem;
     } */
 
-    .studentviews {
+
+    /* .studentviews {
         grid-template-columns: 1fr 1fr;
         padding: 0;
-    }
+    } */
 
     .studentviews div {
         display: flex;
@@ -668,10 +699,21 @@ padding: 0;
         padding: unset;
     }
 
+
     .box>.imageupload {
         display: grid;
         grid-template-columns: repeat(4,1fr);
     }
+
+@media screen and (min-width: 1200px) {
+    
+    .licenseimage .studentimage, .imageupload {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+}
+
+
 
     .fullProfile {
         display: grid;
