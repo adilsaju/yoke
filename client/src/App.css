@@ -140,8 +140,8 @@ width: 1px;
   border: 1px solid #00284E;
 }
 
-button:disabled,
-button[disabled] {
+.topDivision>button:disabled,
+.topDivision>button[disabled] {
   background-color: #BCBCBC;
   color: #000000;
   border: 1px solid #BCBCBC;
@@ -385,7 +385,8 @@ button {
   }
     
   .react-calendar{
-    font-size: x-large;
+    /* font-size: x-large; 
+    dont put this back, it affects the shape of calendar-round-highlight*/
     width: 100vw;
     margin: 0;
     padding: 0;

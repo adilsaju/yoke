@@ -147,3 +147,9 @@ button.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view
     border-radius: 20px!important;
     padding: 2rem !important;
 }
+
+@media screen and (min-width: 760px) {
+    .sectionWrapper {
+        margin-top: 2rem;
+    }
+}
