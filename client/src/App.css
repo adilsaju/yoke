@@ -164,7 +164,7 @@ button.duo {
 /* VIEW PROFILE OF STUDENT (admin & student) */
 
 .division {
-  margin: 1rem auto;
+  margin: 1rem 2%;
   padding-bottom: 2rem;
 }
 
@@ -337,7 +337,9 @@ button {
 
 
 @media screen and (max-width: 900px) { 
-
+  .division {
+    margin: 1rem auto;
+  }
 
   footer p{
     text-align: center;
