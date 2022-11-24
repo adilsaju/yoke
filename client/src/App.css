@@ -328,6 +328,12 @@ button {
   border-radius: 50% 50%;
 }
 
+@media screen and (min-width: 760px) {
+  .yellowBtn, .dBlueBtn, .transparentBtn, .topDivision>button:disabled,
+  .topDivision>button[disabled]  {
+    padding: 0.3rem 1.2rem;
+  }
+}
 
 
 @media screen and (max-width: 900px) { 
