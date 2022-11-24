@@ -234,7 +234,7 @@ const Viewprofile = () => {
 
               <div>
                 <h4>Travel Date:&nbsp;</h4>
-                <span>{moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</span>
+                <span>{moment(request.requestedStudent && request.flightDate).format("MM/DD/YYYY")}</span>
               </div>
               
               <div>
