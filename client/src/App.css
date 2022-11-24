@@ -37,8 +37,9 @@ width: 1px;
     display: flex;
     justify-content: center;
     gap: 1rem;
+    padding-top: 1rem;
 }
-.useno{
+/* .useno{
   background:transparent;
   border: 1px solid #00284E;
   border-radius: 2.31rem;
@@ -51,7 +52,7 @@ width: 1px;
 .useno:hover {
   background: #00284E;
   color: white;
-}
+} */
 .cceent{
   text-align: center;
   display: flex;
