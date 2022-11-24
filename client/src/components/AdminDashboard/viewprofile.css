@@ -74,13 +74,15 @@
     padding-top: 1.2rem;
     padding-left: .9rem;
     font-size: 1.2rem;
+    text-align: left;
 }
 
 .studentviews div {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    justify-items: start;  
+    justify-items: stretch;  
     padding-bottom: 0.6rem;
+    align-items: center;
 }
 
 .studentviews h4 {
@@ -91,7 +93,7 @@
 }
 
 .studentviews span {
-    padding: 0.5rem 0 0.5rem 2rem;
+    /* padding: 0.5rem 0 0.5rem 2rem; */
     font-weight: 400;
     font-size: 1.313rem;
 }
@@ -172,8 +174,7 @@
 .uploaded p {
     margin: 0;
     padding-bottom: 1rem;
-    font-weight: 600;
-    font-size: 1.313rem;
+    font-size: 1.2rem;
 }
 
 .hover-shadow {
@@ -293,8 +294,7 @@ padding: 0;
 
 .imageupload p {
     text-align: center;
-    font-weight: 600;
-    font-size: 1.313rem;
+    font-size: 1.2rem;
 }
 
 .yellowBtn a {
@@ -564,6 +564,9 @@ padding: 0;
         display: none;
     }
 
+    .mobileBtn {
+        display: none;
+    } 
 
     .popup-content{
         /* width:10%!important; */
@@ -576,30 +579,30 @@ padding: 0;
         padding: 0 1rem;
     }
 
-.noteWrapper {
-    padding: 1rem;
-}
+    .noteWrapper {
+        padding: 1rem;
+    }
 
-.notesBtn {
-position: absolute;
-bottom: 3rem;
-right: 1.5rem;
-justify-content: flex-end!important;
-}
+    .notesBtn {
+    position: absolute;
+    bottom: 3.4rem;
+    right: 1.5rem;
+    justify-content: flex-end!important;
+    }
 
-.noteWrapper button {
-    text-align-last: right;
-    width: unset;
-}
+    .noteWrapper button {
+        text-align-last: right;
+        width: unset;
+    }
 
-.approveDecline {
-    flex-direction: row-reverse;
-    gap: 5rem;
-}
+    .approveDecline {
+        flex-direction: row-reverse;
+        gap: 5rem;
+    }
 
-.accept, .decline {
-    width: 8rem;
-}
+    .accept, .decline {
+        width: 8rem;
+    }
     .noteWrapper {
         padding: 1rem;
     }
@@ -610,6 +613,16 @@ justify-content: flex-end!important;
         justify-content: center;
     }
     
+    .licenseimage>.studentimage, .studentupload .imageupload {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+    }
+
+    .licenseimage>.studentimage {
+        row-gap: 3rem;
+        margin-bottom: 1.5rem;
+        
     .licenseimage .studentimage, .imageupload {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -657,6 +670,13 @@ justify-content: flex-end!important;
         flex-direction: row;
     } */
 
+
+    /* .licenseimage>.studentimage, .studentupload .imageupload {
+        grid-template-columns: repeat(4,1fr);
+        gap: .5rem;
+    } */
+
+
     /* .studentviews {
         grid-template-columns: 1fr 1fr;
         padding: 0;
@@ -678,7 +698,12 @@ justify-content: flex-end!important;
     .studentviews span {
         padding: unset;
     }
-}
+
+
+    .box>.imageupload {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
 
 @media screen and (min-width: 1200px) {
     
@@ -690,9 +715,17 @@ justify-content: flex-end!important;
 
 
 
-
-
-/* .popup-arrow{
-   visibility: hidden;
+    .fullProfile {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
     
-} */
+}
+
+
+@media screen and (min-width: 1200px) {
+    .licenseimage>.studentimage, .studentupload .imageupload {
+        grid-template-columns: repeat(4,1fr);
+        gap: .5rem;
+    }
+}

@@ -220,7 +220,7 @@ const Viewprofile = () => {
             </div>
           </div>
 
-          <div className='studentimage'>
+          <div className='studentimage fullProfile'>
           <div className="profileWrapper"><img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' alt='profile of student' /></div>
 
 
@@ -234,7 +234,12 @@ const Viewprofile = () => {
 
               <div>
                 <h4>Travel Date:&nbsp;</h4>
-                <span>{moment(request.requestedStudent && request.flightDate).format("MMMM Do , YYYY")}</span>
+                <span>{moment(request.requestedStudent && request.flightDate).format("MM/DD/YYYY")}</span>
+              </div>
+
+              <div>
+                <h4>Hours Flown:&nbsp;</h4>
+                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
               
               <div>
@@ -246,11 +251,7 @@ const Viewprofile = () => {
                 <h4>Current Program:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.program}</span>
               </div>
-                
-              <div>
-                <h4>Hours Flown:&nbsp;</h4>
-                <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
-              </div>
+            
             </div>
             {/* end of studentviews */}
 
