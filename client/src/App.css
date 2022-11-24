@@ -410,9 +410,14 @@ button {
     gap:10px !important
   }
 
+  .studentTO .topDivision {
+    flex-flow: column;
+  }
+
   .studentTO .topDivision .Searchbar {
     display: none;
   }
+
   .textinf{
     display: none !important;
   }
