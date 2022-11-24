@@ -709,4 +709,8 @@ padding: 0;
     .licenseimage>.studentimage, .studentupload .imageupload {
         grid-template-columns: repeat(4,1fr);
     }
+
+    .studentviews  {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
