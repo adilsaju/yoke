@@ -5,7 +5,7 @@
     background-size: 16px 16px;
     background-repeat: no-repeat;
     padding-left: 1.80rem;
-    background-position: 0.5rem 0.45rem;
+    background-position: 0.8rem 0.7rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -154,6 +154,17 @@ td:last-child {
         text-align: right;
 }
 }
+
+@media screen and (min-width: 900px) {
+    .Searchbar {
+        background-size: 16px 16px;
+        padding-left: 1.80rem;
+        background-position: 0.5rem 0.45rem;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
+}
+
 
 
 
