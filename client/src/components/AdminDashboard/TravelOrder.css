@@ -67,8 +67,8 @@
 }
 
 .leftBorder .yellowBtn {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: .5rem!important;
+    padding-bottom: .5rem!important;
 }
 
 table {
