@@ -406,13 +406,18 @@ button {
   
   .topDivision{
     display: flex !important;
-    flex-flow: column;
+    /* flex-flow: column; */
     gap:10px !important
+  }
+
+  .studentTO .topDivision {
+    flex-flow: column;
   }
 
   .studentTO .topDivision .Searchbar {
     display: none;
   }
+
   .textinf{
     display: none !important;
   }
@@ -595,11 +600,11 @@ button {
         
         }
 
-        .topDivision{
+        /* .topDivision{
           display: grid !important;
           grid-template-columns: 3fr 1fr;
           width: 95vw;
-        }
+        } */
 
         .histmob {
           display: flex!important;
@@ -771,4 +776,11 @@ button {
 /* CANCEL BUTTON */
 a  {
   text-decoration: none ;
+}
+
+
+@media screen and (min-width: 1100px) {
+  .division {
+    margin: 1rem auto;
+  }
 }
