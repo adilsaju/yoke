@@ -2,7 +2,7 @@ import React from 'react'
 import "./styles1.css"
 import { FiMenu } from "react-icons/fi"
 
-const Style = () => {
+const Landing = () => {
     // useEffect(() => {
 
     const openNav = () => {
@@ -80,7 +80,7 @@ const Style = () => {
                   <div id='login'>
                       <ul>
                           <li className="login-btn">
-                              <a href="https://yokeaviation.ca/">Login</a>
+                              <a href="https://yokeaviation.ca/login">Login</a>
                           </li>
                       </ul>
                   </div>
@@ -209,4 +209,4 @@ const Style = () => {
   )
 }
 
-export default Style
+export default Landing

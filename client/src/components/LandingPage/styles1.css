@@ -458,4 +458,15 @@ color: #FEC326;
         padding: 0.85rem 1rem;
         height: 2rem;
     }
+    .heroimage{
+        background:#00284E url('./images/Rectangle63.png');
+    
+        background-size: contain;
+        padding: 13rem 1rem 1rem 1rem;
+        color: white;
+        height: 42vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
   }
