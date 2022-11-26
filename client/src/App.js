@@ -21,6 +21,8 @@ import Decline from './components/AdminDashboard/Decline';
 import FinalViewprofiles from './components/AdminDashboard/FinalViewprofiles';
 import History from './components/AdminDashboard/History';
 import Style from './components/LandingPage/Style';
+import { useNavigate } from "react-router-dom";
+
 
 function App() {
  
@@ -60,11 +62,22 @@ function App() {
   });
 
   const [pageTitle, setPageTitle] = useState("Travel Order")
+  const navigate = useNavigate();
 
 
     useEffect(() => {
       console.log("APPPJS USEFFFF  RANNNNNNNN");
       console.log("ESEFF", loginCredentials);
+      if (loginCredentials && loginCredentials.isAdmin) {
+        
+        // navigate("/dashboard");
+      } else {
+        // navigate("/student-account-status");
+        
+      } 
+
+
+
 
     }, []);
 
@@ -78,7 +91,7 @@ function App() {
       <Header/>
       
       <Routes>
-      <Route path="/" element={ <Home/> } />
+      <Route path="/" element={ loginCredentials&&loginCredentials.isAdmin?  <Home/> :  <StudentAccountStatus/>   } />
       <Route path='/landing' element={<Style/>}/>
         <Route path="/dashboard" element={ <Home/> } />
         <Route path="/login" element={ <LoginPage /> } />
