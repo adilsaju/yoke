@@ -96,7 +96,7 @@ if (pathname === "/landing") return null;
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>OK</h2>
+       
         <button onClick={closeModal}>close</button>
         <div>Password reset email has been successfully sent to your email id.</div>
         {/* <form>
