@@ -491,7 +491,7 @@ button {
     box-shadow: none !important;
     display: flex;
     flex-flow: column;
-    height: 88vh !important; 
+    height: 98vh !important; 
     padding-bottom: 0 !important;
     width: 100vw !important;
     border-radius: 0 !important;
@@ -505,7 +505,7 @@ button {
     background-size:cover;
     padding: 0;
     margin: 0;
-    max-height: 90vh !important;
+    max-height: 100vh !important;
     background-position: center;
 
   }
