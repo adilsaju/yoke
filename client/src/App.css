@@ -351,7 +351,7 @@ button {
   .yellowBtn, .dBlueBtn, .transparentBtn, .topDivision>button:disabled,
   .topDivision>button[disabled]  {
     padding: 0.3rem 1.2rem!important;
-    width: unset!important;
+    /* width: unset!important; */
   }
 }
 
@@ -359,7 +359,7 @@ button {
   .division {
     width: unset!important;
   }
-
+ 
   .subDivision{
     width: 52vw!important;
     margin: 2rem auto!important;
@@ -396,7 +396,25 @@ button {
   }
 }
 
-
+@media screen and (min-width: 900px) { 
+.desktop-calender-div{
+    border: 2px solid black;
+    align-items: center;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 42px;
+    width: 30rem !important;
+    display: flex;
+    flex-flow: column;
+}
+.desktop-calender-div h2{
+  text-align: left;
+}
+.Clendr{
+  font-size: larger;
+ 
+}
+}
 
 @media screen and (max-width: 900px) { 
   .division {
