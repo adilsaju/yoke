@@ -13,9 +13,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-button{
-  color: black;
-}
+
 body{
   margin: 0;
   padding: 0;
