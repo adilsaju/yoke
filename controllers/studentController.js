@@ -527,7 +527,7 @@ const postRequestByStudentId = () => {
           reqDBObj.flightDate.toLocaleDateString() ===
           new Date(req.body.flightDate).toLocaleDateString()
         ) {
-         throw new Error('already requested same travel day')
+         throw new Error('Already requested same travel day')
 
         }
       });

@@ -791,6 +791,6 @@ a  {
 
 @media screen and (min-width: 1100px) {
   .division {
-    margin: 1rem auto;
+    margin: 0.5rem 3rem;
   }
 }
