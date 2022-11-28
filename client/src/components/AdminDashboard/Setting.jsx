@@ -101,7 +101,7 @@ if (pathname === "/landing") return null;
        <img className='tickimg' src={require("../images/verified.gif")} alt="" />
         
         <div>Password reset email has been successfully sent to your email id.</div>
-        <button className='dBlueBtn' onClick={closeModal}><span >OK</span></button>
+        <button className='dBlueBtn mob-button-height' onClick={closeModal}><span >OK</span></button>
         {/* <form>
           <input />
           <button>tab navigation</button>
