@@ -82,7 +82,7 @@ useEffect(() => {
       <div className='division'>
       
       <div className='box studentProfile'>
-      <h3 className='studentAccountName'>{students.name}</h3>
+      <h3 className=' fontFira-bold studentAccountName'>{students.name}</h3>
      
         <div className='studentimage fullProfile'>
           <div className="profileWrapper">
@@ -93,13 +93,13 @@ useEffect(() => {
           <div className='studentviews'>
             
             <div>
-              <h4>Student ID:&nbsp;</h4>
+              <h4 className='fontFira-bold'>Student ID:&nbsp;</h4>
               <span>{students.studentNumber?  students.studentNumber : "Not found" }</span>
             </div>
 
             {students.length===0? console.log("Nothing") : 
             <div>
-                <h4>Account Balance: &nbsp;</h4>
+                <h4 className='fontFira-bold'>Account Balance: &nbsp;</h4>
                 
                 <span>${students.studentRequirements &&  ( students.studentRequirements.balance?  students.studentRequirements.balance : "Not found" )  }
                 </span> 
@@ -108,13 +108,13 @@ useEffect(() => {
             
             {students.length===0? console.log("Nothing") : 
             <div>
-              <h4>Hours Flown:&nbsp;</h4>
+              <h4 className='fontFira-bold'>Hours Flown:&nbsp;</h4>
               <span>{students.studentRequirements && ( students.studentRequirements.flownHours?  students.studentRequirements.flownHours : "Not found" ) }  </span>
             </div>
             }
 
             <div>
-              <h4>Course:&nbsp;</h4>
+              <h4 className='fontFira-bold'>Course:&nbsp;</h4>
               <span>{students.program?  students.program : "Not found" }</span>
             </div>  
       
