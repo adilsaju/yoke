@@ -327,7 +327,9 @@ td a,.studentupload a{
 
 }
  
-
+.Clendr{
+  margin: 2rem 0;
+}
 
 button {
   cursor: pointer;
@@ -760,7 +762,7 @@ button {
   }
   .react-calendar{
     width: 80vw !important;
-    height: 50vh !important;
+    height: 40vh !important;
   }
 
 }
