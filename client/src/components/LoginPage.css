@@ -60,7 +60,7 @@
     width: 14rem;
     height: 2rem;
     padding: 0.25rem 1.7rem 0.25rem 1rem;
-    font-size: 14px;   
+    font-size: 12px;   
 }
 
 @media screen and (max-width: 900px) { 
@@ -115,7 +115,7 @@
 .abc-wrapper input {
     border: none;
 
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
 }
 .abc-wrapper button {
