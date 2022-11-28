@@ -491,7 +491,7 @@ button {
     box-shadow: none !important;
     display: flex;
     flex-flow: column;
-    height: 85vh !important; 
+    height: 95vh !important; 
     width: 100vw !important;
     border-radius: 0 !important;
 
@@ -504,7 +504,7 @@ button {
     background-size:cover;
     padding: 0;
     margin: 0;
-    max-height: 90vh !important;
+    max-height: 100vh !important;
     background-position: center;
 
   }
@@ -522,7 +522,7 @@ button {
 
   .parent img {
     padding-top: 4rem !important;
-    padding-bottom: 9rem !important;
+    padding-bottom: 11rem !important;
     max-width: 11rem !important;
   }
   .deskfoot{
