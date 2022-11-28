@@ -400,7 +400,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 
                     <div className="fitImg"><img id="pic1" src={students && students.studentRequirements && students.studentRequirements.englishProficiency? ( students.studentRequirements.englishProficiency.startsWith("https://")? students.studentRequirements.englishProficiency : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
-                      <label className='dBlueBtn ' htmlFor="l1">Upload</label>
+                      <label className='dBlueBtn' htmlFor="l1">Upload</label>
                       <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0]) ; notify1();   } }  accept="image/*" type="file" name="l1" id="l1"    />
                       <label className='dBlueBtn' htmlFor="l1c" id="capture1"  onClick={openModalEnglish} >Scan</label>
                     </div>
@@ -418,11 +418,11 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
             <div className="whiteBg">
               <div className="buttonWrapper mobilebtnwrapdec">
                   <Link to="/student-account-status">
-                    <button className="transparentBtn duo mob-button-height">
+                    <button className="transparentBtn duo">
                       Cancel
                     </button>
                     </Link>
-                  <button className="yellowBtn duo mob-button-height" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile, navigate )} }   >Save</button>
+                  <button className="yellowBtn duo" onClick={ (e) => { uploadAll(loginCredentials.loggedInUser, setStudents, medicalFile, radioFile, licFile, englishFile, navigate )} }   >Save</button>
                 </div>
               
                         </div>

@@ -173,7 +173,7 @@ const customStyles = {
           
           <h2>Are you sure you want to send ?</h2>
           <div className="final-btnn">
-          <button className='yellowBtn useyes ' onClick={(e) => {sentEmail();setTimeout( notify,2000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
+          <button className='yellowBtn useyes' onClick={(e) => {sentEmail();setTimeout( notify,2000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
             
           }, 4000);}}>Yes</button> 
           <Link to="/final-list"><button className='dBlueBtn ' onClick={(e) => closeModal()} >No</button></Link> 

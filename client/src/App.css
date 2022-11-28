@@ -431,7 +431,6 @@ button {
   .btnnn{
     width: 95vw;
     padding: 1rem;
-    height: 3.75rem;
   }
   .studentTO th:nth-of-type(1) {
 
@@ -545,7 +544,6 @@ button {
     padding: 0 !important;
     margin: 0 !important;
   }
-  
   .setting{
     border: 1px solid black;
     width: 80vw;
@@ -705,9 +703,7 @@ button {
     font-size: 1.25rem;
     
   }
-  .mob-button-height{
-    height: 3.75rem !important;
-  }        
+          
   .uploadDocs img {
     width: 70vw !important;
     height: 100% !important;

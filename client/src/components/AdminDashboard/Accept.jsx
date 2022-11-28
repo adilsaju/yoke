@@ -181,7 +181,7 @@ console.log(loginCredentials.loggedInUser.id);
 
   return (
     <div> 
-  { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira mob-button-height'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser, setStudents);setTimeout(sentEmailBasedOnCondition(),5000); notifyApproved(toastDelay, ApproveToast) } }>Approve</button> }
+  { (!request.isRejected) && (!request.isApproved) && <button className='accept fontFira'  onClick={ (e) => { approve(request, loginCredentials.loggedInUser, setStudents);setTimeout(sentEmailBasedOnCondition(),5000); notifyApproved(toastDelay, ApproveToast) } }>Approve</button> }
   
 
       {/* <ToastContainer  /> */}
