@@ -94,7 +94,7 @@
     }
     .form1 .yellowBtn {
         width: 10rem !important;
-       height: 3.75rem !important;
+       height: 3.75rem;
     }
 }
 
@@ -157,7 +157,7 @@
 
 .form1 .yellowBtn {
     width: 7rem ;
-   height: 2.5rem;
+   height: 6vh;
 }
 
 .forgot {
