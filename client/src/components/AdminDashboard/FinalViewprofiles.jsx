@@ -147,7 +147,7 @@ const FinalViewprofiles = () => {
 
         <div className='box'>
           <div className="topOfTheBox">
-            <h3 className='fontFira-bold'>{request.requestedStudent && request.requestedStudent.name}</h3>
+            <h3>{request.requestedStudent && request.requestedStudent.name}</h3>
 
             <div className="pagination">
               
@@ -170,34 +170,34 @@ const FinalViewprofiles = () => {
 
             <div className='studentviews'>
               <div>
-                <h4 className='fontFira-bold'>Student Number:&nbsp;</h4>
+                <h4>Student Number:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.studentNumber}</span>
               </div>
 
               <div>
-                <h4 className='fontFira-bold'>Travel Date:&nbsp;</h4>
+                <h4>Travel Date:&nbsp;</h4>
                 <span>{moment(request.requestedStudent && request.flightDate).format("MM/DD/YYYY")}</span>
               </div>
               
               <div>
-                <h4 className='fontFira-bold'>Current License:&nbsp;</h4>
+                <h4>Current License:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.licenseType}</span>
               </div>
                 
               <div>
-                <h4 className='fontFira-bold'>Current Program:&nbsp;</h4>
+                <h4>Current Program:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.program}</span>
               </div>
                 
               <div>
-                <h4 className='fontFira-bold'>Hours Flown:&nbsp;</h4>
+                <h4>Hours Flown:&nbsp;</h4>
                 <span>{request.requestedStudent && request.requestedStudent.studentRequirements.flownHours}</span>
               </div>
             </div>
           </div>
           
           <div className='licenseimage'>
-            <h3 className='fontFira-bold'>License Documents</h3>
+            <h3>License Documents</h3>
             <div className="studentimage">
               <div className="uploaded">
                 <a className="button" href="#popup2" onClick={()=>{ setImagesId(0)  }} ><img src={request.requestedStudent && request.requestedStudent.studentRequirements.license} alt='pilot license'></img></a>
