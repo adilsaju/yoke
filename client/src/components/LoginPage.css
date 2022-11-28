@@ -92,10 +92,6 @@
         position: absolute;
         right: 0;
     }
-    .form1 .yellowBtn {
-        width: 10rem !important;
-       height: 3.75rem;
-    }
 }
 
 .abc-wrapper {
@@ -156,8 +152,8 @@
 }
 
 .form1 .yellowBtn {
-    width: 7rem ;
-   height: 6vh;
+    width: 7rem !important;
+   
 }
 
 .forgot {
