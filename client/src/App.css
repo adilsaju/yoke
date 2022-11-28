@@ -63,6 +63,7 @@ width: 1px;
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  height: 60vh;
 }
 .cceent img{
   max-width: 15%;
