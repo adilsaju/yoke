@@ -5,10 +5,7 @@
     /* margin-top: 5rem; */
     height: 100vh;
 }
-.school-cred{
-    width: 18rem;
-    text-align: center;
-}
+
 .dummy {
     grid-column: 1/10;
     grid-row: 1/2;
@@ -26,14 +23,13 @@
     background: #DDEFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
-    height: 30rem;
+    height: 25rem;
     padding: 1.5rem 0;
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-width: 24rem;
 }
 
 .form1 img {
@@ -57,40 +53,27 @@
 .ii-wrapper input {
     border-radius: 28.5px;
     border: 1px solid #00284E;
-    width: 14rem;
-    height: 2rem;
-    padding: 0.25rem 1.7rem 0.25rem 1rem;
-    font-size: 12px;   
+    width: 9rem;
+    height: 1.5rem;
+    padding: 0 1.7rem 0 1rem;
+    background-color: #DDEFFF;
+    font-size: 14px;
 }
-
 @media screen and (max-width: 900px) { 
-    .school-cred{
-        width: 80vw;
-        font-size: 17px !important;
-        text-align: center;
-    }
     .ii-wrapper input {
         border-radius: 28.5px;
         border: 1px solid #00284E;
         width: 9rem;
         height: 1.5rem;
         padding: 0 1.7rem 0 1rem;
-
+        background-color: #DDEFFF;
         font-size: 20px;
     }
- 
     .abc-wrapper input {
         border: none;
-    
+        background-color: #DDEFFF;
         font-size: 20px !important;
         margin: 0;
-    }
-    .abc-wrapper button {
-        background-color: transparent ;
-        border: none;
-        padding: .3rem .4rem 0 0 !important;
-        position: absolute;
-        right: 0;
     }
 }
 
@@ -110,14 +93,14 @@
 
 .abc-wrapper input {
     border: none;
-
-    font-size: 12px;
+    background-color: #DDEFFF;
+    font-size: 14px;
     margin: 0;
 }
 .abc-wrapper button {
     background-color: transparent ;
     border: none;
-    padding: .6rem .4rem 0 0;
+    padding: .3rem .4rem 0 0;
     position: absolute;
     right: 0;
 }
@@ -152,8 +135,7 @@
 }
 
 .form1 .yellowBtn {
-    width: 7rem !important;
-    padding: 0.5rem 0 !important;
+    width: 6rem;
 }
 
 .forgot {
