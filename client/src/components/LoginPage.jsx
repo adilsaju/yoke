@@ -182,7 +182,6 @@ const LoginPage = () => {
     </div>
 </div>
 
-
   )
 }
 
