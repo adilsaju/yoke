@@ -347,7 +347,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
 
           <div className="box">
             <div className="topOfTheBox">
-              <h3 className='fontFira-bold' >Upload Documents</h3>
+              <h3>Upload Documents</h3>
             </div>
                 {console.log(students)}
                 {console.log("wah")}
@@ -361,7 +361,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
             <div className="imageupload">
               {/* <div className="uploadSection"> */}
               <div className='uploadBoxes'>
-                  <h3 className='fontFira-bold'>Pilot's License</h3>
+                  <h3>Pilot's License</h3>
                 
                     <div className="fitImg"><img id="pic4" src={students && students.studentRequirements && students.studentRequirements.license? ( students.studentRequirements.license.startsWith("https://")? students.studentRequirements.license : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
@@ -372,7 +372,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 </div>
                 
                 <div className='uploadBoxes'>
-                  <h3 className='fontFira-bold'>Medical License</h3>
+                  <h3>Medical License</h3>
                 
                     <div className="fitImg"><img id="pic2" src={students && students.studentRequirements && students.studentRequirements.medicalLicense? ( students.studentRequirements.medicalLicense.startsWith("https://")? students.studentRequirements.medicalLicense : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
@@ -386,7 +386,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 </div>
 
                 <div className='uploadBoxes'>
-                  <h3 className='fontFira-bold'>Radio License</h3>
+                  <h3>Radio License</h3>
                     <div className="fitImg"><img id="pic3" src={students && students.studentRequirements && students.studentRequirements.radioLicense? ( students.studentRequirements.radioLicense.startsWith("https://")? students.studentRequirements.radioLicense : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l3">Upload</label>
@@ -396,7 +396,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 </div>
             
                 <div className='uploadBoxes'>
-                  <h3 className='fontFira-bold'>English Proficiency</h3>
+                  <h3>English Proficiency</h3>
                 
                     <div className="fitImg"><img id="pic1" src={students && students.studentRequirements && students.studentRequirements.englishProficiency? ( students.studentRequirements.englishProficiency.startsWith("https://")? students.studentRequirements.englishProficiency : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">

@@ -54,7 +54,7 @@ const StudentUpload = (props) => {
 
       <div className='studentupload'>
         <div className="topOfTheBox">
-          <h3 className='fontFira-bold'>Uploaded documents</h3>
+          <h3>Uploaded documents</h3>
           <Link to='/student-account-status/upload-document'><button className="yellowBtn desktopBtn">Update</button></Link>
         </div>
 
