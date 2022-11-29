@@ -433,6 +433,7 @@ button {
   }
   .division{
     width: 100vw;
+    padding-top: 5rem;
   }
   .studentimage{
     display: flex;

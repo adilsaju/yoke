@@ -44,6 +44,9 @@ header img{
   }
 
   @media screen  and (max-width: 900px){
+    header{
+        position: fixed;
+    }
     header img{
     padding-top: 0;
     }
