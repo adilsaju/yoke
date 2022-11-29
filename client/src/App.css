@@ -16,6 +16,9 @@
 button{
   color: black;
 }
+.react-calendar button:disabled{
+  color: rgb(168, 166, 166);
+}
 body{
   margin: 0;
   padding: 0;
