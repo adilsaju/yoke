@@ -113,11 +113,11 @@ const RequestTravelOrder = () => {
             {/* <input type="date" /> <br /> */}
             <div className="buttonWrapper">
               <Link to="/student-travel-order">
-                <button className="transparentBtn duo">
+                <button className="transparentBtn duo mob-button-height">
                     Cancel
                 </button>
               </Link>
-              <button className="yellowBtn duo" onClick={(e) => { req(value, loginCredentials.loggedInUser);setTimeout( openModal,500)} } >Submit</button>
+              <button className="yellowBtn duo mob-button-height" onClick={(e) => { req(value, loginCredentials.loggedInUser);setTimeout( openModal,500)} } >Submit</button>
             </div>
           </div>
         </div>
