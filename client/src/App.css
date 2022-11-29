@@ -38,9 +38,12 @@ width: 1px;
 .fontFira {
   font-family: 'Fira Sans', Helvetica, sans-serif;
 }
-.fontFira-bold{
-  font-family: 'Fira Sans', Helvetica, sans-serif;
+.fontFira-bold,th,h1,h2,h3,h4{
+  font-family: 'Bai Jamjuree', Helvetica, sans-serif !important;
   font-weight:500;
+}
+nav ul li{
+  font-family: 'Bai Jamjuree', Helvetica, sans-serif !important;
 }
 .final-btnn{
     display: flex;
