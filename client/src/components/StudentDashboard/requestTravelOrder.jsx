@@ -104,7 +104,7 @@ const RequestTravelOrder = () => {
       <div className='division'>
 
         <div className="sectionWrapper">
-          <h2>Select Flight Date </h2>
+          <h2 className='fontFira-bold'>Select Flight Date </h2>
           <div className='calendr'>
             <div className='Clendr'>
               <Calendar onChange={onChange} minDate={minimDate} maxDate={maximDate} value={value} />

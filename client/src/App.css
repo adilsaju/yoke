@@ -33,7 +33,10 @@ width: 1px;
 .fontFira {
   font-family: 'Fira Sans', Helvetica, sans-serif;
 }
-
+.fontFira-bold{
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight:500;
+}
 .final-btnn{
     display: flex;
     justify-content: center;

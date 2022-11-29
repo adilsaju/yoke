@@ -79,8 +79,8 @@ if (pathname === "/landing") return null;
           <div className='division setting'>
             <div className="admin-settings">
               <h2 className="fontFira" >Admin Info</h2>
-              { <><h3 className="fontFira">Email: <span className="fontFira">{admin && admin.email}</span></h3>
-              <h3 className="fontFira">Password: <span className="maskPw">{admin && admin.password && admin.password.slice(0,8)}</span></h3></> }
+              { <><h3 className="fontFira-bold">Email:</h3> <span className="fontFira">{admin && admin.email}</span>
+              <h3 className="fontFira-bold">Password:</h3> <span className="maskPw">{admin && admin.password && admin.password.slice(0,8)}</span></> }
               <div>
                 <button className="dBlueBtn" onClick={openModal} >Change Password</button>
               </div>
