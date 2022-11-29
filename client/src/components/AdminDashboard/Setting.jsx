@@ -5,6 +5,7 @@ import SideMenuAdmin from '../Navbar/SideMenuAdmin';
 import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import "./Settingstyle.css";
 
 const fetchTasks = async (admin_id) => {
   let url = `/api/admins/${admin_id}`;
@@ -96,9 +97,11 @@ if (pathname === "/landing") return null;
         style={customStyles}
         contentLabel="Example Modal"
       >
-       
-        <button onClick={closeModal}>close</button>
+        
+       <img className='tickimg' src={require("../images/verified.gif")} alt="" />
+        
         <div>Password reset email has been successfully sent to your email id.</div>
+        <button className='dBlueBtn' onClick={closeModal}><span >OK</span></button>
         {/* <form>
           <input />
           <button>tab navigation</button>

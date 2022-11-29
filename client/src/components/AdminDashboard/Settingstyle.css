@@ -1,0 +1,17 @@
+
+
+.tickimg{
+    max-width: 20%;
+}
+.ReactModal__Content{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 25rem;
+}
+
+.closesetting{
+    justify-content:right !important;
+    
+}
