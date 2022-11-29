@@ -17,6 +17,7 @@
 body{
   margin: 0;
   padding: 0;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
 }
 
 .visually-hidden {
@@ -311,6 +312,9 @@ td a,.studentupload a{
   padding-left: 1rem;
   
  margin: 0;
+}
+.page-name h3{
+  font-family: 'Fira Sans', Helvetica, sans-serif;
 }
 .page-name button{
   margin: 0 0.5rem;
