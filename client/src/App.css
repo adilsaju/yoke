@@ -581,10 +581,10 @@ button {
   .ReactModal__Content--after-open{
     display: inline;
     width: 70vw !important;
+    line-height: 1.5;
+   
   }
-  .ReactModal__Content--after-open button{
-    padding: 1rem 2rem;
-  }
+ 
 
   .hideme{
     display: initial !important;
@@ -785,6 +785,10 @@ button {
   .react-calendar{
     width: 80vw !important;
     height: 40vh !important;
+  }
+
+  .ok-calendr{
+    margin-top: 1rem;
   }
 
 }

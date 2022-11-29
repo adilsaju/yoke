@@ -43,4 +43,9 @@ header img{
     padding-left: 18rem;
   }
 
+  @media screen  and (max-width: 900px){
+    header img{
+    padding-top: 0;
+    }
+  }
   
