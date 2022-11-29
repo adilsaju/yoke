@@ -71,6 +71,7 @@ nav ul li{
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  margin-top: 7rem;
 }
 .cceent img{
   max-width: 15%;
@@ -478,12 +479,7 @@ button {
   .studentTO{
     margin-top: 0 !important;
   }
-  .studentTO th:nth-of-type(3) {
-    display: none;
-  }
-  .studentTO td:nth-of-type(3) {
-    display: none;
-  }
+ 
     
   .studentTO .myTable{
     width: 95vw;
@@ -628,6 +624,7 @@ button {
   .adminTO td:nth-of-type(2),.mobile-data{
     text-align:left;
   }
+ 
 
  .adminTO td:nth-of-type(1),.adminTO td:nth-of-type(3),.adminTO td:nth-of-type(4){
       display: none;
@@ -677,6 +674,7 @@ button {
   .finalListTableDesktop td:nth-of-type(2),.mobile-data{
     text-align:left;
   }
+
 
   .finalListTableDesktop td:nth-of-type(1),.finalListTableDesktop td:nth-of-type(3),.finalListTableDesktop td:nth-of-type(4){
     display: none;
@@ -830,4 +828,8 @@ a  {
   .division {
     margin: 0.5rem 3rem;
   }
+}
+
+.studentTO  td:nth-of-type(1){
+ width: 1rem;
 }

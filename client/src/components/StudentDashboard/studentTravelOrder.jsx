@@ -112,7 +112,6 @@ const StudentTravelOrder = () => {
                   <tr>
                   <th>No.</th>
                     <th className=''>Travel Date</th>
-                    <th className=''>Processed Admin</th>
                     <th className=''>Status</th>
                   </tr>
                 </thead>
@@ -122,7 +121,7 @@ const StudentTravelOrder = () => {
                           <tr className='tay'>
                             <td>{(count++)}</td>
                             <td>{ moment(student.flightDate).format("MM/DD/YYYY")}</td>
-                            <td>{ student.approvedAdmin ? student.approvedAdmin.email : "Not Applicable"  }</td>
+                           
                             <td>{
                               // (student.isApproved ?  <p>Approved</p>: student.isRejected ?  <p>Rejected</p>: student.isExpired ?  <p>Expired</p>: (!student.isExpired) && (!student.isRejected) && (!student.isApproved) ?  <p>Pending</p>: console.log("nothing"))
               

@@ -598,7 +598,7 @@ const postRequestByStudentId = () => {
 const sentToFC = () => {
   return async (req, res, next) => {
     const daftom = new Date();
-daftom.setDate(daftom.getDate()+14);
+daftom.setDate(daftom.getDate()+28);
 let flgg = 1;
 const today = new Date();
     console.log('senttoFc');
@@ -803,7 +803,7 @@ const getFinalList = () => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       const daftom = new Date();
-      daftom.setDate(daftom.getDate()+14);
+      daftom.setDate(daftom.getDate()+28);
  
       const todayy = new Date();
       const tomorrow = new Date(today);

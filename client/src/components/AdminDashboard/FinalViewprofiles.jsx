@@ -165,7 +165,7 @@ const FinalViewprofiles = () => {
             </div>
           </div>
 
-          <div className='studentimage'>
+          <div className='studentimage fullProfile'>
             <div className="profileWrapper"><img src= {request.requestedStudent && request.requestedStudent.photo} className='studentImg' alt='profile of student' /></div>
 
             <div className='studentviews'>

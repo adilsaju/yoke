@@ -11,6 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
+import './finalList.css';
+
 
 let loading = true;
 let emailcheck = true
@@ -162,16 +164,16 @@ const customStyles = {
                
         <div>
           
-          <div className='fullpage'>
+          <div className='fullpage final-list-modal'>
             <SideMenuAdmin/>
-            <Modal
+            <Modal 
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal">
           
-          <h2>Are you sure you want to send ?</h2>
+          <h2>Are you sure you want to send the final list to Flight coordinator?</h2>
           <div className="final-btnn">
           <button className='yellowBtn useyes ' onClick={(e) => {sentEmail();setTimeout( notify,2000);sentToFlightCn();closeModal();setTimeout(() => {window.location.reload(false)
             

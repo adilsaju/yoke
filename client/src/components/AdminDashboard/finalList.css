@@ -1,0 +1,13 @@
+.ReactModal__Content button{
+   height: 2.75rem;
+   width: 6rem;
+   
+}
+.ReactModal__Content{
+    padding: 3rem !important;
+    max-width: 50rem !important;
+    height: 11rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
