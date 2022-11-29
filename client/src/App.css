@@ -491,7 +491,8 @@ button {
     box-shadow: none !important;
     display: flex;
     flex-flow: column;
-    height: 85vh !important; 
+    height: 88vh !important; 
+    padding-bottom: 0 !important;
     width: 100vw !important;
     border-radius: 0 !important;
 
