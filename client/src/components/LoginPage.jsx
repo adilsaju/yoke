@@ -147,7 +147,7 @@ const LoginPage = () => {
       {/* <div className='fullpage'> */}
       {/* <SideMenuAdmin /> */}
       {/* <div className='division'> */}
-      <img src={logoDBlue} alt="Yoke logo"></img>
+      <img className='mobile-logo' src={logoDBlue} alt="Yoke logo"></img>
       <p>Please Login with the flying school credentials</p>
       <div className="inputField">
         <div className="label-input-wrapper">
