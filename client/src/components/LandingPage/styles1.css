@@ -3,6 +3,9 @@ font-family: 'Fira Sans', sans-serif; */
 /* #mySidenav,.nav1,#login {
     display: none;
    } */
+html {
+    scroll-behavior: smooth;
+}
 
 body{
     font-family: 'Fira Sans', sans-serif;
@@ -10,7 +13,10 @@ body{
     background-color: #F9FCFF;
     padding: 0;
     margin: 0;
-    
+}
+
+.get-started-btn a {
+    color:#FEC326;
 }
 
 .logo-landing {
@@ -25,6 +31,13 @@ body{
 img{
     max-width: 100%;
     height: auto;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
 }
 
 h1,h2,h3,h4{
@@ -44,6 +57,7 @@ h1,h2,h3,h4{
 .landing-header img{
     height: 28.53px;
     width: 93.8px;
+    margin-left: 0.5rem;
 }
 ul{
     padding-left: 0;
@@ -69,7 +83,7 @@ li a{
     background-size: contain;
     padding: 13rem 1rem 1rem 1rem;
     color: white;
-    height: 42vh;
+    height: 47vh;
 }
 .heroimage h1{
     line-height: 1.5;
@@ -242,11 +256,13 @@ color: #FEC326;
     float: right;
     margin-left: 5px;
     color: #FEC326;
+    cursor: pointer;
   }
   
   #active:after,#active1:after,#active2:after,#active3:after {
     content: "\2212"; /* Unicode character for "minus" sign (-) */
-  }
+    cursor: pointer;
+}
   
   .sidenav2 a {
     padding: 8px 8px 8px 32px;
@@ -363,13 +379,10 @@ color: #FEC326;
      }
      .plan-two {
         margin-top:0 ;
-     }
-     button.plan-btn.getse {
-        margin-top: 1.4rem;
-    }    
+     }    
     .about-section, .plans {
         padding: 2rem 1.5rem 2rem 1.5rem;
-         background-color: white; 
+         background-color: #F9FCFF; 
         max-width: 900px;
         margin: auto;
     }
@@ -468,5 +481,9 @@ color: #FEC326;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    .landing-header img{
+        width: 150px;
+        height: 40px;
     }
   }

@@ -3,7 +3,6 @@ import "./styles1.css"
 import { FiMenu } from "react-icons/fi"
 
 const Landing = () => {
-    // useEffect(() => {
 
     const openNav = () => {
         document.getElementById("mySidenav").style.width = "100%";
@@ -22,9 +21,41 @@ const Landing = () => {
         } else {
           content.style.display = "block";
         }
+      }
+
+      const open = () => {
+        var coll = document.getElementById("collapsible1");
+        coll.classList.toggle("active1");
+        var content = document.getElementById("hola");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      }
+
+      const open1 = () => {
+        var coll = document.getElementById("collapsible2");
+        coll.classList.toggle("active2");
+        var content = document.getElementById("haha");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      }
+
+      const open2 = () => {
+        var coll = document.getElementById("collapsible3");
+        coll.classList.toggle("active3");
+        var content = document.getElementById("hehe");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
     
       }
-    
 
 
   return (
@@ -60,19 +91,19 @@ const Landing = () => {
                       <div id="mySidenav1" className="sidenav1">
                           <ul>
                               <li>
-                                  <a href="#">About</a>
+                                  <a href="#about-section">About</a>
                               </li>
                               <li>
-                                  <a href="#">Features</a>
+                                  <a href="#app-features">Features</a>
                               </li>
                               <li>
-                                  <a href="#">Pricing</a>
+                                  <a href="#plans">Pricing</a>
                               </li>
                               <li>
-                                  <a href="#">Help</a>
+                                  <a href="#faq-section">Help</a>
                               </li>
                               <li>
-                                  <a href="#">Contact</a>
+                                  <a href="#newsletter">Contact</a>
                               </li>
                           </ul>
                       </div>
@@ -89,17 +120,17 @@ const Landing = () => {
           <main>
               <div className="heroimage">
                   <h1>Fast & Efficient way to manage data in Pilot School.</h1>
-                  <p>Pilot Schools can perchase this app for their daily tasks for maintaing students records and data. Students can update their profiles and request travel order and get approvals.</p>
+                  <p>Pilot Schools can purchase this app for their daily tasks for maintaing students records and data. Students can update their profiles and request travel order and get approvals.</p>
                   <button className="get-started-btn">
-                      Get Started
+                  <a href="https://yokeaviation.ca/login">Get Started</a> 
                   </button>
               </div>
-              <div className="about-section">
+              <div className="about-section" id='about-section'>
                   <h2>About Yoke</h2>
-                  <p>Yoke app is created for Pilot School Management Syetem. In our research, we found that one of the pilot school in Philippines, uses excel sheets for maintaing their students records and information. Whenever they need to update or search something, it becomes hard for them to organise students data regarding flights and licenses with traditional methods. For this reason, our team decided to create an app which will save time and organise data and records with an effective way. The admin can approve or decline students travel requests in a simple and easy way. The documents and licenses of students can be varified by the Admin. Apart from this, students can aslo use this app for updating their information in their profiles and request travel order within a second and got approval with the app features.
+                  <p>Yoke app is created for Pilot School Management System. In our research, we found that one of the pilot school in Philippines, uses excel sheets for maintaing their students records and information. Whenever they need to update or search something, it becomes hard for them to organise students data regarding flights and licenses with traditional methods. For this reason, our team decided to create an app which will save time and organise data and records with an effective way. The admin can approve or decline students travel requests in a simple and easy way. The documents and licenses of students can be varified by the Admin. Apart from this, students can aslo use this app for updating their information in their profiles and request travel order within a second and got approval with the app features.
                   </p>
               </div>
-              <div className="app-features">
+              <div className="app-features" id='app-features'>
                   <h2>App Features</h2>
                   <section className="first-feature">
                       <img src={require("./images/simon.png")} alt="feature-image"/>
@@ -123,38 +154,40 @@ const Landing = () => {
                       their flights."</p>
                   <h3>John Deo</h3>
               </div>
-              <div className="plans">
+              <div className="plans" id='plans'>
                   <h2>Our Plans</h2>
                   <div className="ourplans">
                       <div className="plan-one">
-                          <h3>Freemium</h3>
+                          <h3>Premium</h3>
                           <div className="charges">
-                              <h1>$0</h1>
+                              <h1>$99</h1>
                               <h3>/month</h3>
                           </div>
                           <ul>
-                              <li>50 Profile Accessible</li>
-                              <li>Can give approvals for 1 month only</li>
-                              <li>Student can Upload Documents only for one time</li>
+                              <li>30-day Free Trial</li>
+                              <li>Unlimited Access</li>
+                              <li>Optimization Updates</li>
+                              <li>Technical Support</li>
                           </ul>
-                          <button className="plan-btn">Start Trail</button>
+                          <button className="plan-btn">Start Trial</button>
                       </div>
                       <div className="plan-two">
                           <h3 className="pre">Premium</h3>
                           <div className="charges">
-                              <h1>$30</h1>
-                              <h3>/month</h3>
+                              <h1>$999</h1>
+                              <h3>/year</h3>
                           </div>
                           <ul>
-                              <li>Unlimited Access for Admin</li>
-                              <li>Unlimited Access for Students</li>
-                              <li>Students will be able to request more than 10 times in a month</li>
+                              <li>30-day Free Trial</li>
+                              <li>Unlimited Access</li>
+                              <li>Optimization Updates</li>
+                              <li>Technical Support</li>
                           </ul>
                           <button className="plan-btn getse">Get Started</button>
                       </div>
                   </div>
               </div>
-              <div className="faq-section">
+              <div className="faq-section" id='faq-section'>
                   <h2>FAQ</h2>
                   <div className="fac-one">
                       <div className="heading-background">
@@ -168,7 +201,7 @@ const Landing = () => {
               <div className="fac-two">
                   <div className="heading-background">
                       <h3>How much is the cost of this app?</h3>
-                      <span id='collapsible1'></span>
+                      <span id='collapsible1' onClick={(e) => { open()}}></span>
               </div>
               <div id="hola">
                   <p>Yoke app is created for Pilot School Management System. The admin can approve or decline students travel requests in a simple and easy way. The documents and licenses of students can be varified by the Admin. Apart from this, students can aslo use this app for updating their information in their profiles and request travel order within a second and got approval with the app features.</p>
@@ -176,7 +209,7 @@ const Landing = () => {
           </div><div className="fac-three">
               <div className="heading-background">
                   <h3>Can students use it free of cost?</h3>
-                  <span id="collapsible2"></span>
+                  <span id="collapsible2" onClick={(e) => { open1()}}></span>
           </div><div id="haha">
               <p>Yoke app is created for Pilot School Management System. The admin can approve or decline students travel requests in a simple and easy way. The documents and licenses of students can be varified by the Admin. Apart from this, students can aslo use this app for updating their information in their profiles and request travel order within a second and got approval with the app features.</p>
           </div>
@@ -184,7 +217,7 @@ const Landing = () => {
             <div className="fac-four">
                 <div className="heading-background">
                     <h3>Do I need training to use this app?</h3>
-                    <span id="collapsible3"></span>
+                    <span id="collapsible3" onClick={(e) => { open2()}}></span>
                 </div>
                 <div id="hehe">
                 <p>Yoke app is created for Pilot School Management System. The admin can approve or decline students travel requests in a simple and easy way. The documents and licenses of students can be varified by the Admin. Apart from this, students can aslo use this app for updating their information in their profiles and request travel order within a second and got approval with the app features.</p>
@@ -192,7 +225,7 @@ const Landing = () => {
         </div>
         </div>
     </main>
-    <div className="newsletter">
+    <div className="newsletter" id='newsletter'>
         <h2>Fast & Efficient way to manage data in Pilot School.</h2>
         <div className="news-data">
             <p>Pilot Schools can perchase this app for their daily tasks for maintaing students records and data. Students can update their profiles and request travel order and get approvals.</p>
@@ -204,6 +237,7 @@ const Landing = () => {
             </div>
         </div>
     </div>
+    <div className='footer'>Copyright @2022 Yoke | All Rights Reserved</div>
     </>
 
   )
