@@ -137,7 +137,7 @@ const RequestTravelOrder = () => {
       >
         {/* <img className='tick' src={require('../images/waarn.png')} alt='' /> */}
         {/* {alert(trr)} */}
-       {trr ? <div><img className='tick' src={require('../images/warning.gif')} alt='warning sign' /><h2>{resp}</h2> <Link to="/request"><button className='viewProfileBtn' onClick={closeModal}>OK</button></Link></div> : <div><img className='tick2' src={require('../images/verified.gif')} alt='request verified sign' /><h2>{resp}</h2><Link to="/student-travel-order"><button className='viewProfileBtn' onClick={closeModal}>OK</button></Link></div>}
+       {trr ? <div><img className='tick' src={require('../images/warning.gif')} alt='warning sign' /><h2 className='fontFira-bold'>{resp}</h2> <Link to="/request"><button className='viewProfileBtn fontFira-bold' onClick={closeModal}>OK</button></Link></div> : <div><img className='tick2' src={require('../images/verified.gif')} alt='request verified sign' /><h2 className='fontFira-bold'>{resp}</h2><Link to="/student-travel-order"><button className='viewProfileBtn fontFira-bold' onClick={closeModal}>OK</button></Link></div>}
         
         {/* <form>
           <input />
