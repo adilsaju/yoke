@@ -101,7 +101,7 @@ const RequestTravelOrder = () => {
     <>
       <div className='fullpage'>
       <SideMenu />  
-      <div className='division'>
+      <div className='division mobile-calender-div'>
 
         <div className="sectionWrapper">
           <h2 className='fontFira-bold'>Select Flight Date </h2>

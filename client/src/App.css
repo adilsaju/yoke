@@ -729,7 +729,9 @@ button {
     text-decoration: none;
     color: black;
   }
-
+.mobile-calender-div{
+  background-color: #FFFFFF;
+}
   .Toastify__toast{
     background-color: rgba(229, 243, 255, 1) !important ;
     width: 70vw !important;
@@ -750,6 +752,10 @@ button {
 
   .toast-inn button {
     font-size: 1rem;
+  }
+  .react-calendar{
+    width: 80vw !important;
+    height: 50vh !important;
   }
 
 }
