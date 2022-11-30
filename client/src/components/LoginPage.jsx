@@ -153,7 +153,7 @@ const LoginPage = () => {
         <div className="label-input-wrapper">
           <label htmlFor="loginid">Your Email</label>
           <div className="ii-wrapper email-wrapper"  >
-          <input type="email" name="email" id="loginid" placeholder='email' />
+          <input type="email" name="email" id="loginid" placeholder='email' value="claire@yoke.com" />
           </div>
         </div>
         <div className="label-input-wrapper">
@@ -162,7 +162,7 @@ const LoginPage = () => {
             <div className="abc-wrapper">
 
               <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
-                                                                                                                  login();  }}/>
+                                                                                                                  login();  }} value="12345678" />
               <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
             </div>
               <a href="#">Forgot Password?</a>
