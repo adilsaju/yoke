@@ -589,8 +589,11 @@ button {
     background-color: rgba(229, 243, 255, 0.9) !important;
     border-radius: 15px;
     align-items: center;
-    height: 15rem;
+    height: 14rem;
     margin-top: 35vh !important;
+  }
+  .react-calendar__tile--active{
+    border-radius: 50% !important;
   }
 
   .admin-settings button{
