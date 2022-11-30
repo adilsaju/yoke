@@ -153,7 +153,7 @@ const LoginPage = (props) => {
         <div className="label-input-wrapper">
           <label htmlFor="loginid">Your Email</label>
           <div className="ii-wrapper email-wrapper"  >
-          {props.email? <input type="email" name="email" id="loginid" placeholder='email' value={props.email} />: <input type="email" name="email" id="loginid" placeholder='email' value="claire@yoke.com" />}
+          {props.email? <input type="email" name="email" id="loginid" placeholder='email' defaultValue={props.email} />: <input type="email" name="email" id="loginid" placeholder='email' defaultValue="claire@yoke.com" />}
           </div>
         </div>
         <div className="label-input-wrapper">
@@ -162,12 +162,12 @@ const LoginPage = (props) => {
            { props.password? <div className="abc-wrapper">
 
               <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
-                                                                                                                  login();  }} value={props.password}/>
+                                                                                                                  login();  }} defaultValue={props.password}/>
               <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
             </div>: <div className="abc-wrapper">
 
 <input type="password" name="password" id="password" placeholder='password' onKeyDown={(e)=>{  if (e.keyCode === 13)
-                                                                                                    login();  }} value="12345678" />
+                                                                                                    login();  }} defaultValue="12345678" />
 <button onClick={(e)=>{show()}} > <img id="passwordEye" src={pwEye1} alt="hide password" /> </button>
 </div>}
               <a href="#">Forgot Password?</a>
