@@ -362,6 +362,30 @@ button {
   }
 }
 
+@media screen and (min-width: 760px) and (max-width: 900px) { 
+    .division{
+      max-width: 90vw !important;
+      align-items: center;
+      padding: 2.5rem;
+    }
+    header{
+      width:100vw
+    }
+    .subDivision{
+      max-width: 80vw !important;  
+      
+    }
+    .finalmobile input{
+      max-width: 60vw !important; 
+      margin-right: 7rem;
+    }
+    .finalmobile button{
+    max-width: 65vw !important; 
+    margin-right: 7rem;
+    }
+
+}
+
 /* @media screen and (min-width: 760px) and (max-width: 900px) {
   .division {
     width: unset!important;
