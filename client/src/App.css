@@ -362,7 +362,7 @@ button {
   }
 }
 
-@media screen and (min-width: 760px) and (max-width: 900px) {
+/* @media screen and (min-width: 760px) and (max-width: 900px) {
   .division {
     width: unset!important;
   }
@@ -401,7 +401,7 @@ button {
   .histmob .Searchbar {
     width: unset!important;
   }
-}
+} */
 
 @media screen and (min-width: 900px) { 
 .desktop-calender-div{
@@ -430,6 +430,11 @@ button {
 
   footer p{
     text-align: center;
+  }
+
+  .Clendr{ 
+    padding-bottom: 0 !important;
+
   }
   .division{
     width: 100vw;
@@ -592,9 +597,7 @@ button {
     height: 14rem;
     margin-top: 35vh !important;
   }
-  .react-calendar__tile--active{
-    border-radius: 50% !important;
-  }
+ 
 
   .admin-settings button{
     margin-top: 1rem;
@@ -805,7 +808,7 @@ button {
   }
   .react-calendar{
     width: 80vw !important;
-    height: 40vh !important;
+    
   }
 
   .ok-calendr{
