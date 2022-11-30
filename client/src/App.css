@@ -593,7 +593,7 @@ button {
     margin-top: 35vh !important;
   }
   .react-calendar__tile--active{
-    border-radius: 50% !important;
+    border-radius: 10% !important;
   }
 
   .admin-settings button{
