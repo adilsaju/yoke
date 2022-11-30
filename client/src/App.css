@@ -453,7 +453,9 @@ button {
   .studentTO .topDivision .Searchbar {
     display: none;
   }
-
+  .noteWrapper textarea{
+   max-width: 70vw;
+  }
   .textinf{
     display: none !important;
   }
