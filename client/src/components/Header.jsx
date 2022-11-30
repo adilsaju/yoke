@@ -33,7 +33,7 @@ const {pageTitle} = useContext(UserContext);
 const { pathname } = useLocation();
   console.log(pathname);
 
-  if (pathname === "/login" || pathname === "/logout" || pathname === "/landing") return null;
+  if (pathname === "/login" || pathname === "/login-student" || pathname === "/logout" || pathname === "/landing") return null;
 
 
   return (

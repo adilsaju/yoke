@@ -95,6 +95,7 @@ function App() {
       <Route path='/landing' element={<Landing/>}/>
         <Route path="/dashboard" element={ <Home/> } />
         <Route path="/login" element={ <LoginPage /> } />
+        <Route path="/login-student" element={ <LoginPage email="mohitwadhwa1233@gmail.com" password="12345678" /> } />
         <Route path="/logout" element={ <LoginPage /> } />
         <Route path="/travel-order" element={ <TravelOrder/> } />
         <Route path={"/travel-order/profile/:id"} element={ <Viewprofile/> } />
