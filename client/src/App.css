@@ -371,6 +371,12 @@ button {
     header{
       width:100vw
     }
+
+    .btnnn{
+      width: unset !important;
+      padding: 1rem;
+      height: 3.75rem;
+    }
     .subDivision{
       max-width: 80vw !important;  
       
