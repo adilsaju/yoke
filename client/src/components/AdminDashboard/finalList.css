@@ -6,7 +6,7 @@
 .ReactModal__Content{
     padding: 3rem !important;
     max-width: 50rem !important;
-    height: 11rem;
+    /* height: 11rem; */
     align-items: center;
     display: flex;
     justify-content: center;
