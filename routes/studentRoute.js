@@ -170,6 +170,7 @@ router.route('/sentEmailStudentApproved').post(sentEmailStudentApproved());
 //pass student id
 router.route('/sentEmailStudentDeclined').post(sentEmailStudentDeclined());
 
+//AUTHENTICATION
 
 router.route('/login').post(studentLogin());
 
