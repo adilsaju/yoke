@@ -362,7 +362,31 @@ button {
   }
 }
 
-@media screen and (min-width: 760px) and (max-width: 900px) {
+@media screen and (min-width: 760px) and (max-width: 900px) { 
+    .division{
+      max-width: 90vw !important;
+      align-items: center;
+      padding: 2.5rem;
+    }
+    header{
+      width:100vw
+    }
+    .subDivision{
+      max-width: 80vw !important;  
+      
+    }
+    .finalmobile input{
+      max-width: 60vw !important; 
+      margin-right: 7rem;
+    }
+    .finalmobile button{
+    max-width: 65vw !important; 
+    margin-right: 7rem;
+    }
+
+}
+
+/* @media screen and (min-width: 760px) and (max-width: 900px) {
   .division {
     width: unset!important;
   }
@@ -401,7 +425,7 @@ button {
   .histmob .Searchbar {
     width: unset!important;
   }
-}
+} */
 
 @media screen and (min-width: 900px) { 
 .desktop-calender-div{
@@ -431,6 +455,11 @@ button {
   footer p{
     text-align: center;
   }
+
+  .Clendr{ 
+    padding-bottom: 0 !important;
+
+  }
   .division{
     width: 100vw;
     padding-top: 5rem;
@@ -453,7 +482,9 @@ button {
   .studentTO .topDivision .Searchbar {
     display: none;
   }
-
+  .noteWrapper textarea{
+   max-width: 70vw;
+  }
   .textinf{
     display: none !important;
   }
@@ -472,6 +503,16 @@ button {
   display: none;
   
   }
+  .ReactModal__Content select{
+    margin-top: 1rem;
+    width: 15rem;
+    height: 2rem;
+    font-size: large;
+  }
+  .ReactModal__Content input{
+    height: 2.5rem;
+  }
+
 
   thead th:nth-child(2){
     border-radius: 20px 0 0 20px;
@@ -523,7 +564,7 @@ button {
     box-shadow: none !important;
     display: flex;
     flex-flow: column;
-    height: 95vh !important; 
+    height: 98vh !important; 
     justify-content: unset !important;
     width: 100vw !important;
     border-radius: 0 !important;
@@ -571,13 +612,19 @@ button {
   }
   
   .setting{
-    border: 1px solid black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
     width: 80vw;
-    display:flex;
+    padding: 1rem 0.75rem;
     background-color: rgba(229, 243, 255, 0.9) !important;
     border-radius: 15px;
     align-items: center;
-    height: 50vh;
+    height: 14rem;
+    margin-top: 35vh !important;
+  }
+ 
+
+  .admin-settings button{
+    margin-top: 1rem;
   }
   .ReactModal__Content--after-open{
     display: inline;
@@ -785,7 +832,7 @@ button {
   }
   .react-calendar{
     width: 80vw !important;
-    height: 40vh !important;
+    
   }
 
   .ok-calendr{
