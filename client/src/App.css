@@ -896,6 +896,10 @@ a  {
   }
 }
 
+.accountstatusstdnt .Nav-menu{
+  height: 120vh !important;
+}
+
 .studentTO  td:nth-of-type(1){
  width: 1rem;
 }

@@ -77,7 +77,7 @@ useEffect(() => {
             // console.log(isEmpty);
   return (
     <div>
-       <div className='fullpage'>
+       <div className='fullpage accountstatusstdnt'>
        <SideMenu/>
       <div className='division'>
       
