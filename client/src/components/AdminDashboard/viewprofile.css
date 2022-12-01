@@ -662,12 +662,26 @@ padding: 0;
 } */
 
 
+@media screen and (max-width: 1300px) {
+.licenseimage>.studentimage, .studentupload .imageupload {
+    display: grid !important;
+    grid-template-columns: repeat(2,1fr) !important;
+    justify-items: center;
+}
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1300px) { 
+    .box>.imageupload {
+    display: grid;
+        grid-template-columns: repeat(2,1fr) !important;
+    }
+}
 
 @media screen and (min-width: 1100px) {
     .box {
         margin: 2rem 2%;
     }
-
+   
     .studentAccountName {
         padding: 1rem;
     }
