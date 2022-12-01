@@ -133,9 +133,10 @@ nav ul li{
   height: 3rem;
   gap: 3rem;
 }
-.toast-content{
+.toast-content,.Toastify__toast-body{
   font-size: 1.5rem;
   color: #00284E;;
+  text-align: center;
 }
 
 .dBlueBtn:hover {
@@ -469,7 +470,11 @@ button {
   footer p{
     text-align: center;
   }
-
+  .toast-content,.Toastify__toast-body{
+    font-size: 1rem;
+    color: #00284E;;
+    text-align: center;
+  }
   .Clendr{ 
     padding-bottom: 0 !important;
 
