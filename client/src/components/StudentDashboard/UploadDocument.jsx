@@ -363,7 +363,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
               <div className='uploadBoxes'>
                   <h3 className='fontFira-bold'>Pilot's License</h3>
                 
-                    <div className="fitImg"><img id="pic4" src={students && students.studentRequirements && students.studentRequirements.license? ( students.studentRequirements.license.startsWith("https://")? students.studentRequirements.license : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
+                    <div className="fitImg"><img id="pic4" src={students && students.studentRequirements && students.studentRequirements.license } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l4">Upload</label>
                       <input onInput={ () => { pic1[3].src=window.URL.createObjectURL(l1[3].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l4" id="l4"   />
@@ -374,7 +374,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 <div className='uploadBoxes'>
                   <h3 className='fontFira-bold'>Medical License</h3>
                 
-                    <div className="fitImg"><img id="pic2" src={students && students.studentRequirements && students.studentRequirements.medicalLicense? ( students.studentRequirements.medicalLicense.startsWith("https://")? students.studentRequirements.medicalLicense : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
+                    <div className="fitImg"><img id="pic2" src={students && students.studentRequirements && students.studentRequirements.medicalLicense } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l2">Upload </label>
                        <input onInput={ () => { pic1[1].src=window.URL.createObjectURL(l1[1].files[0]) ; notify1();  } }  accept="image/*" type="file" name="l2" id="l2"     />
@@ -387,7 +387,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
 
                 <div className='uploadBoxes'>
                   <h3 className='fontFira-bold'>Radio License</h3>
-                    <div className="fitImg"><img id="pic3" src={students && students.studentRequirements && students.studentRequirements.radioLicense? ( students.studentRequirements.radioLicense.startsWith("https://")? students.studentRequirements.radioLicense : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
+                    <div className="fitImg"><img id="pic3" src={students && students.studentRequirements && students.studentRequirements.radioLicense } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn' htmlFor="l3">Upload</label>
                       <input onInput={ () => { pic1[2].src=window.URL.createObjectURL(l1[2].files[0]) ; notify1();  } }   accept="image/*" type="file" name="l3" id="l3"  />
@@ -398,7 +398,7 @@ const notify1 = () => toast(`License Image Updated. Click Save to Confirm`,{
                 <div className='uploadBoxes'>
                   <h3 className='fontFira-bold'>English Proficiency</h3>
                 
-                    <div className="fitImg"><img id="pic1" src={students && students.studentRequirements && students.studentRequirements.englishProficiency? ( students.studentRequirements.englishProficiency.startsWith("https://")? students.studentRequirements.englishProficiency : abcd2 )  : abcd2 } alt="uploaded documents by students" /></div>
+                    <div className="fitImg"><img id="pic1" src={students && students.studentRequirements && students.studentRequirements.englishProficiency } alt="uploaded documents by students" /></div>
                     <div className="btnWrapper mobilebtnwrap">
                       <label className='dBlueBtn ' htmlFor="l1">Upload</label>
                       <input onInput={ () => { pic1[0].src=window.URL.createObjectURL(l1[0].files[0]) ; notify1();   } }  accept="image/*" type="file" name="l1" id="l1"    />
