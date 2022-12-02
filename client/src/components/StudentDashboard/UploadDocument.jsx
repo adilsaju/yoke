@@ -101,9 +101,9 @@ const uploadAll = async (loggedInUser, setStudents, medicalFile, radioFile, licF
   await updateLic(loggedInUser, setStudents, licFile)
   await updateEnglish(loggedInUser, setStudents, englishFile)
   notifysave()
-  setTimeout(() => {
-    window.location.reload();
-  }, 2000);
+  window.location.reload();
+  // setTimeout(() => {
+  // }, 2000);
   //page will reload once update is done
   // navigate("/student-account-status")
 }
