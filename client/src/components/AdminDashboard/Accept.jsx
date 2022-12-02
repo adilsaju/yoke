@@ -10,8 +10,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import Decline from './Decline';
 
 let shouldEmail = true;
-
+let studentemail;
 const sentEmailStudentApproved = async (flydate,mailid) => {
+
+
+  
   let url = `/api/sentEmailStudentApproved`;
   let flydate2 = moment(flydate).format("MMMM Do , YYYY")
   const bod1 = {
@@ -19,6 +22,7 @@ const sentEmailStudentApproved = async (flydate,mailid) => {
     "travelDate" : flydate2,
     "mailId" : mailid
     }
+   
       const res = await fetch(url, 
         {
           method: 'POST', 
@@ -27,8 +31,8 @@ const sentEmailStudentApproved = async (flydate,mailid) => {
         }
         );
   const data = await res.json();
-
-  console.log("IMPPPPPPPPPPPPP:",data);
+ 
+  console.log("Responseeeeeeeee:",data);
   return data;
   
 };
@@ -53,6 +57,7 @@ const customStyles = {
   },
 };
 const approve = async (request, loggedInUser, setStudents) => {
+  shouldEmail = true;
   let url = `/api/requests/${request._id}/approve`;
 
 const bod1 = {
@@ -153,6 +158,8 @@ console.log(loginCredentials.loggedInUser.id);
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
       setStudents(tfs);
+      studentemail = tfs.requestedStudent.email;
+      
     };
     getTasks();
   }, []);
@@ -171,9 +178,9 @@ console.log(loginCredentials.loggedInUser.id);
     
       setTimeout(()=>{
         if (shouldEmail){
-         
-        sentEmailStudentApproved(request.flightDate,request.requestedStudent.email);
-        setTimeout( window.location.reload(false),1000 ) 
+       
+        sentEmailStudentApproved(request.flightDate,studentemail);
+        setTimeout( window.location.reload(false),2000 ) 
       }} , 3000);
       
     

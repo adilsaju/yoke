@@ -8,6 +8,7 @@ import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 
 let resss = "";
+let studentemail;
 let shouldEmail = true;
 //undo decline
 const undo = async (request, loggedInUser,setStudents, toastDelay) => {
@@ -114,6 +115,7 @@ const customStyles = {
 
 
 const decline = async (request, loggedInUser, rod) => {
+  shouldEmail = true;
   let url = `/api/requests/${request._id}/decline`;
   const bod1 = {
     "adminId": `${loggedInUser.id}`,
@@ -158,7 +160,7 @@ const Decline = () => {
 
       setTimeout(()=>{
         if (shouldEmail){
-        sentEmailStudentDeclined(request.flightDate,resss,request.requestedStudent.email);
+        sentEmailStudentDeclined(request.flightDate,resss,studentemail);
         setTimeout( window.location.reload(false),1000 ) 
         }
       } , 3000);
@@ -190,6 +192,7 @@ const Decline = () => {
     const getTasks = async () => {
       const tfs = await fetchTasks(params.id);
       setStudents(tfs);
+      studentemail = tfs.requestedStudent.email
     };
     getTasks();
   }, []);
